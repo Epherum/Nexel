@@ -1,0 +1,33 @@
+.projects {
+  background-color: #26272b;
+  z-index: -1;
+  padding-bottom: 50rem;
+  .container {
+    max-width: 1920px;
+    text-align: center;
+    .featured {
+      font-family: var(--font-gilroy);
+      color: #fff;
+      font-size: 7rem;
+      white-space: pre-wrap;
+      transform: rotate(3deg);
+      display: inline-block;
+      position: relative;
+      &::after {
+        content: url("../../../../../public/Vector.svg");
+        display: block;
+        position: absolute;
+        top: 30%;
+        right: 14%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 20px;
+      }
+      span {
+        font-family: var(--font-mazius);
+        font-weight: 400;
+        color: #b18be2;
+      }
+    }
+  }
+}

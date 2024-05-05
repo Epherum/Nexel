@@ -1,0 +1,39 @@
+.projects {
+  font-family: var(--font-gilroy);
+  max-width: 1920px;
+  margin: 0 2.8rem;
+  margin-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20rem;
+
+  .emira {
+    font-size: 8.7rem;
+    margin-top: -2rem;
+    position: relative;
+
+    &::after {
+      content: url("../../../public/Vector.svg"); /* replace with your SVG file */
+      display: block;
+      position: absolute;
+      top: 30%; /* adjust the position to place the icon just under the text */
+      right: 25%;
+      transform: translateX(-50%);
+      width: 20px; /* adjust the width to your liking */
+      height: 20px; /* adjust the height to your liking */
+    }
+  }
+
+  .socials {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    a {
+      color: #000;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+  }
+}

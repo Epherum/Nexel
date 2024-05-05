@@ -1,0 +1,50 @@
+.about {
+  margin-bottom: 8rem;
+  font-family: var(--font-gilroy);
+  position: relative;
+
+  .skewed_div {
+    position: absolute;
+    top: 70%;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 50rem;
+    background-color: #26272b;
+    transform: skewY(-4deg);
+    z-index: -1;
+  }
+  .container {
+    max-width: 1920px;
+    margin: 0 5rem;
+    display: flex;
+    gap: 3rem;
+    justify-content: space-between;
+
+    .text {
+      .small_about {
+        font-family: var(--font-mazius);
+        color: #b18be2;
+        font-size: 2.1rem;
+        margin-left: 1rem;
+      }
+      .title {
+        font-size: 4.5rem;
+        letter-spacing: -1.8px;
+        font-family: var(--font-gilroy);
+        font-style: bold;
+        font-weight: 600;
+      }
+      .desc {
+        margin-top: 1rem;
+        font-size: 1.4rem;
+        line-height: 1.5;
+      }
+    }
+    .image {
+      transform: scale(1.05);
+      margin-top: 1.3rem;
+      margin-right: -1rem;
+    }
+  }
+}

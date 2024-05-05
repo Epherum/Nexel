@@ -1,0 +1,30 @@
+.navbar {
+  font-family: var(--font-gilroy);
+  font-weight: 400;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* subtract 12rem (6rem + 6rem) from 100% */
+  padding: 3rem 6rem;
+  z-index: 1000;
+  background-color: #ffffff00;
+  mix-blend-mode: difference;
+  color: white;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    list-style: none;
+    padding: 0;
+
+    .name {
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+    }
+    .links {
+      display: flex;
+      gap: 2.9rem;
+    }
+  }
+}
