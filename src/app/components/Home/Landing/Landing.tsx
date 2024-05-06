@@ -1,7 +1,10 @@
 import React from "react";
 import Link from "next/link";
 import styles from "./landing.module.scss";
-import image from "../../../../../public/image.png";
+import image from "/public/static/image.webp";
+import behance from "/public/static/behance.svg";
+import instagram from "/public/static/instagram.svg";
+import linkedin from "/public/static/linkedin.svg";
 
 function Landing() {
   return (
@@ -11,9 +14,15 @@ function Landing() {
       <h1 className={styles.emira}>Emira Tlili</h1>
       <p className={styles.graphic}>Graphic designer</p>
       <div className={styles.socials}>
-        <a href="#">Be</a>
-        <a href="#">In</a>
-        <a href="#">in</a>
+        <a href="#">
+          <img src={behance.src} alt="Behance" />
+        </a>
+        <a href="#">
+          <img src={instagram.src} alt="Instagram" />
+        </a>
+        <a href="#">
+          <img src={linkedin.src} alt="Linkedin" />
+        </a>
       </div>
       <div className={styles.buttons}>
         <Link href={"/projects"}>

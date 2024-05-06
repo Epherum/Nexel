@@ -1,5 +1,5 @@
 import React from "react";
-import emira from "../../../../../public/emira.png";
+import emira from "/public/static/emira.webp";
 import styles from "./about.module.scss";
 
 function About() {

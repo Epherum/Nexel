@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import Landing from "./components/Home/Landing/Landing";
 import About from "./components/Home/About/About";
 import Projects from "./components/Home/Projects/Projects";
+import Footer from "./components/Footer/Footer";
 
 export default function Home() {
   useEffect(() => {
@@ -17,6 +18,7 @@ export default function Home() {
       <Landing />
       <About />
       <Projects />
+      <Footer />
     </>
   );
 }

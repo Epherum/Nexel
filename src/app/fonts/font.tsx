@@ -8,6 +8,11 @@ export const Gilroy = localfont({
       style: "normal",
     },
     {
+      path: "./Gilroy-Light.ttf",
+      weight: "300",
+      style: "normal",
+    },
+    {
       path: "./gilroy-mediumitalic.woff2",
       weight: "500",
       style: "italic",
@@ -23,18 +28,8 @@ export const Gilroy = localfont({
 });
 
 export const Mazius = localfont({
-  src: [
-    {
-      path: "./MAZIUSREVIEW20.09-Extraitalic.woff",
-      weight: "500",
-      style: "italic",
-    },
-    {
-      path: "./MAZIUSREVIEW20.09-Italic.woff",
-      weight: "400",
-      style: "italic",
-    },
-  ],
+  src: "./MAZIUS_REVIEW_20.09_Extra_italic_400.otf",
+
   display: "swap",
   variable: "--font-mazius",
 });
