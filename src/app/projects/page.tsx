@@ -2,9 +2,9 @@
 import Link from "next/link";
 import { useEffect } from "react";
 import styles from "./projects.module.scss";
-import behance from "/public/static/behance.svg";
-import instagram from "/public/static/instagram.svg";
-import linkedin from "/public/static/linkedin.svg";
+import Header from "../components/Projects/Header/Header";
+import Footer from "../components/Footer/Footer";
+import Work from "../components/Projects/Works/Works";
 
 export default function Projects() {
   useEffect(() => {
@@ -16,19 +16,10 @@ export default function Projects() {
   }, []);
 
   return (
-    <section className={styles.projects}>
-      <h1 className={styles.emira}>Projects</h1>
-      <div className={styles.socials}>
-        <a href="#">
-          <img src={behance.src} alt="Behance" />
-        </a>
-        <a href="#">
-          <img src={instagram.src} alt="Instagram" />
-        </a>
-        <a href="#">
-          <img src={linkedin.src} alt="Linkedin" />
-        </a>
-      </div>
-    </section>
+    <>
+      <Header />
+      <Work />
+      <Footer />
+    </>
   );
 }

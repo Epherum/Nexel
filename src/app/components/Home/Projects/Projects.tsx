@@ -85,7 +85,7 @@ function Projects() {
           </div>
         </div>
 
-        <Link href={"/projects"} className={styles.button}>
+        <Link href={"/projects"} scroll={false} className={styles.button}>
           <button className={styles.work}>Browse all projects</button>
         </Link>
       </div>

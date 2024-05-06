@@ -2,6 +2,12 @@ import "./globals.css";
 import PageAnimatePresence from "./components/HOC/PageAnimatePresence";
 import Nav from "./components/Nav/Nav";
 import { Gilroy, Mazius } from "./fonts/font";
+import { Metadata } from "next";
+
+export const metadata = {
+  title: "Emira Tlili",
+  icon: "/icon.ico",
+};
 
 export default function RootLayout({
   children,
