@@ -14,20 +14,28 @@
     margin-bottom: 5rem;
     display: flex;
     justify-content: center;
-    gap: 5rem;
+    gap: 6rem;
+
     .first_left {
       position: relative;
-      img {
-        margin-left: 2rem;
-        align-self: flex-start;
-        width: 37rem;
-        height: 37rem;
-        object-fit: cover;
+      width: 37rem;
+      height: 37rem;
+      border-radius: 20px;
+      overflow: hidden;
+      align-self: flex-start;
+      a {
+        img {
+          position: absolute;
+          width: 100%;
+          scale: 1.1;
+          top: -8%;
+          will-change: transform;
+        }
       }
       .date {
         position: absolute;
         bottom: 6rem;
-        left: 3.7rem;
+        left: 2rem;
         background-color: white;
         border-radius: 40px;
         padding: 0.4rem 2rem;
@@ -35,7 +43,7 @@
       .name {
         position: absolute;
         bottom: 1.5rem;
-        left: 4rem;
+        left: 2rem;
         padding: 1rem 2.2rem;
         background-color: white;
         border-radius: 40px;
@@ -44,11 +52,19 @@
     }
     .first_right {
       position: relative;
-
       align-self: flex-end;
-      img {
-        width: auto;
-        height: 30rem;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 24.5rem;
+      width: 20rem;
+      a {
+        img {
+          position: absolute;
+          width: 100%;
+          scale: 1.1;
+          top: -8%;
+          will-change: transform;
+        }
       }
       .date {
         position: absolute;
@@ -70,16 +86,26 @@
     }
   }
   .second {
-    align-self: center;
     position: relative;
-    img {
-      margin-bottom: 5rem;
-      width: 37rem;
-      height: 37rem;
+    align-self: center;
+    overflow: hidden;
+    border-radius: 20px;
+    width: 37rem;
+    height: 37rem;
+    margin-bottom: 5rem;
+    a {
+      img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        scale: 1.05;
+        // top: -8%;
+        will-change: transform;
+      }
     }
     .date {
       position: absolute;
-      bottom: 12rem;
+      bottom: 8rem;
       left: 2rem;
       background-color: white;
       border-radius: 40px;
@@ -87,7 +113,7 @@
     }
     .name {
       position: absolute;
-      bottom: 7rem;
+      bottom: 3rem;
       left: 2rem;
       padding: 1rem 2.2rem;
       background-color: white;
@@ -104,10 +130,21 @@
     .third_left {
       position: relative;
       align-self: center;
-      img {
-        margin-bottom: 3rem;
-        width: 35rem;
-        height: 40rem;
+      overflow: hidden;
+      border-radius: 20px;
+      width: 35rem;
+      height: 40rem;
+      margin-bottom: 3rem;
+      a {
+        img {
+          border-radius: 20px;
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          scale: 1.05;
+          // top: -8%;
+          will-change: transform;
+        }
       }
       .date {
         position: absolute;
@@ -130,10 +167,21 @@
     .third_right {
       .third_right_top {
         position: relative;
-        img {
-          margin-bottom: 14rem;
-          width: 26rem;
-          height: 33rem;
+        overflow: hidden;
+        border-radius: 20px;
+        width: 26rem;
+        height: 33rem;
+        margin-bottom: 14rem;
+        a {
+          img {
+            border-radius: 20px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            scale: 1.05;
+            // top: -8%;
+            will-change: transform;
+          }
         }
         .date {
           position: absolute;
@@ -155,9 +203,20 @@
       }
       .third_right_bottom {
         position: relative;
-        img {
-          width: 21rem;
-          height: 27rem;
+        overflow: hidden;
+        border-radius: 20px;
+        width: 21rem;
+        height: 27rem;
+        a {
+          img {
+            border-radius: 20px;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            scale: 1.05;
+            // top: -8%;
+            will-change: transform;
+          }
         }
         .date {
           position: absolute;

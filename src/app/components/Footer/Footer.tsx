@@ -20,25 +20,32 @@ function Footer() {
         </div>
         <div className={styles.divider}></div>
         <div className={styles.bottom}>
-          <p className={styles.email}>Tliliemira335@gmail.comm</p>
+          <p className={styles.email}>
+            <a href={`mailto:Tliliemira335@gmail.com`}>
+              Tliliemira335@gmail.com
+            </a>
+          </p>
           <p className={styles.rights}>All rights reserved</p>
         </div>
         <div className={styles.socials}>
-          <a href="#">
+          <a
+            href="https://jp.linkedin.com/in/amira-tlili-a3b928167"
+            target="_blank"
+          >
             <img
               src={linkedin.src}
               alt="Linkedin"
               className={styles.social_icon}
             />
           </a>
-          <a href="#">
+          <a href="https://www.behance.net/tliliemira67fa" target="_blank">
             <img
               src={behance.src}
               alt="Behance"
               className={styles.social_icon}
             />
           </a>
-          <a href="#">
+          <a href="https://www.instagram.com/kkitsu.exe/" target="_blank">
             <img
               src={instagram.src}
               alt="Instagram"

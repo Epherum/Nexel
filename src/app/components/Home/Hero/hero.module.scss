@@ -7,7 +7,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-bottom: 15rem;
+  margin-bottom: 19rem;
   height: 90vh;
   .image {
     position: absolute;
@@ -86,16 +86,32 @@
   .scroll {
     font-family: var(--font-gilroy);
     font-weight: 300;
-    transform: rotate(90deg);
     margin-top: 7.3rem;
     letter-spacing: 1px;
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
+    justify-content: center;
+    overflow: visible;
 
-  .scroll_text {
-    font-size: min(1.4rem, 1.6vw);
-    margin-bottom: 0.5rem;
+    img {
+      transform: rotate(90deg);
+      margin-right: 0.8rem;
+
+      &.svg_line {
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+        transition: stroke-dashoffset 2s ease-out;
+
+        &.animate {
+          stroke-dashoffset: 0;
+        }
+      }
+    }
+    .scroll_text {
+      transform: rotate(90deg);
+      font-size: min(1.4rem, 1.6vw);
+      margin-bottom: 1.5rem;
+    }
   }
 }
