@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useRef } from "react";
 import Link from "next/link";
 import behance from "/public/static/behance.svg";
 import instagram from "/public/static/instagram.svg";
 import linkedin from "/public/static/linkedin.svg";
 import styles from "./footer.module.scss";
+import { motion, useScroll, useTransform } from "framer-motion";
 
 function Footer() {
+  const container = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: container,
+    offset: ["start end", "end end"],
+  });
+
+  const y = useTransform(scrollYProgress, [0, 1], [-400, 0]);
+
   return (
-    <footer className={styles.footer}>
+    <motion.footer style={{ y: y }} ref={container} className={styles.footer}>
       <div className={styles.skewed_div}></div>
       <div className={styles.container}>
         <div className={styles.top}>
@@ -54,7 +63,7 @@ function Footer() {
           </a>
         </div>
       </div>
-    </footer>
+    </motion.footer>
   );
 }
 

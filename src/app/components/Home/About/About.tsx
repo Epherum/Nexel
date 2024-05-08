@@ -23,6 +23,9 @@ function About() {
   const y1 = useTransform(scrollYProgress, [0, 1], [-100, 0], {
     ease: easeOut,
   });
+  const y2 = useTransform(scrollYProgress, [0, 1], [-100, 50], {
+    ease: easeOut,
+  });
   const x1 = useTransform(scrollYProgress, [0, 1], [-50, 0], {
     ease: easeOut,
   });
@@ -89,7 +92,7 @@ function About() {
         </div>
         <div ref={imageContainer} className={styles.image}>
           <motion.img
-            style={{ x: x1, y: y1, rotateZ: z2 }}
+            style={{ x: x1, y: y2, rotateZ: z2 }}
             className={styles.rectangle}
             src={rectangle.src}
             alt="rectangle"
