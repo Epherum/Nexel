@@ -7,25 +7,35 @@ function Header() {
     <nav className={styles.header}>
       <ul>
         <li className={styles.logo}>
-          <Link href={"/"}>Emira tlili</Link>
+          <Link href={"/"} scroll={false}>
+            Emira tlili
+          </Link>
         </li>
 
         <div className={styles.nav}>
           <li className={styles.el}>
-            <Link href={"/"}>Home</Link>
+            <Link href={"/"} scroll={false}>
+              Home
+            </Link>
             <div className={styles.indicator}></div>
           </li>
           <li className={styles.el}>
-            <Link href={"/projects"}>Projects</Link>
+            <Link href={"/projects"} scroll={false}>
+              Projects
+            </Link>
             <div className={styles.indicator}></div>
           </li>
           <li className={styles.el}>
-            <Link href={"/projects"}>Contact</Link>
+            <Link href={"/projects"} scroll={false}>
+              Contact
+            </Link>
 
             <div className={styles.indicator}></div>
           </li>
           <li className={styles.el}>
-            <Link href={"/projects"}>FR</Link>
+            <Link href={"/projects"} scroll={false}>
+              FR
+            </Link>
 
             <div className={styles.indicator}></div>
           </li>

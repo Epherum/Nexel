@@ -49,7 +49,9 @@
             height: 100%;
             border-radius: 20px;
             transition: border-radius 0.3s ease-out;
-            &:hover {
+          }
+          &:hover {
+            img {
               border-radius: 50%;
             }
           }
