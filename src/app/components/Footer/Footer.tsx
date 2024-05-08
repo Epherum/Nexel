@@ -17,7 +17,7 @@ function Footer() {
 
   return (
     <motion.footer style={{ y: y }} ref={container} className={styles.footer}>
-      <div className={styles.skewed_div}></div>
+      {/* <div className={styles.skewed_div}></div> */}
       <div className={styles.container}>
         <div className={styles.top}>
           <h4 className={styles.work}>

@@ -20,19 +20,19 @@ function About() {
     offset: ["start end", "center start"],
   });
 
-  const y1 = useTransform(scrollYProgress, [0, 1], [-100, 0], {
+  const y1 = useTransform(scrollYProgress, [0, 1], [-70, 0], {
     ease: easeOut,
   });
-  const y2 = useTransform(scrollYProgress, [0, 1], [-100, 50], {
+  const y2 = useTransform(scrollYProgress, [0, 1], [-70, 35], {
     ease: easeOut,
   });
-  const x1 = useTransform(scrollYProgress, [0, 1], [-50, 0], {
+  const x1 = useTransform(scrollYProgress, [0, 1], [-35, 0], {
     ease: easeOut,
   });
-  const z1 = useTransform(scrollYProgress, [0, 1], [-10, 0], {
+  const z1 = useTransform(scrollYProgress, [0, 1], [-7, 0], {
     ease: easeOut,
   });
-  const z2 = useTransform(scrollYProgress, [0, 1], [-15, 0], {
+  const z2 = useTransform(scrollYProgress, [0, 1], [-10.5, 0], {
     ease: easeOut,
   });
 
@@ -42,7 +42,8 @@ function About() {
   const desc =
     "I'm a Creative Graphic designer, Ui/Ux designer and illustrator based in tunisia. I love arts, design, participating in different cultural activities and connecting with people. I am a creative and keen communicator with an eye for storytelling.";
 
-  const title = "A Creative Graphic Designer";
+  const title = `A Creative 
+                  Graphic Designer`;
 
   return (
     <section className={styles.about}>

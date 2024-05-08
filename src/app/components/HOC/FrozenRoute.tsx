@@ -16,7 +16,7 @@ const FrozenRoute = ({ children }: { children: React.ReactNode }) => {
         // @ts-ignore
         lenisOptions: {
           lerp: 0.08,
-          wheelMultiplier: 1.4,
+          wheelMultiplier: 1.1,
         },
       });
     })();

@@ -1,8 +1,12 @@
+"use client";
 import React from "react";
 import styles from "./header.module.scss";
 import Link from "next/link";
+import { useState } from "react";
+import NavMenu from "./NavMenu";
 
 function Header() {
+  const [isActive, setIsActive] = useState(false);
   return (
     <nav className={styles.header}>
       <ul>
@@ -41,6 +45,17 @@ function Header() {
           </li>
         </div>
       </ul>
+      <div
+        onClick={() => {
+          setIsActive(!isActive);
+        }}
+        className={styles.button}
+      >
+        <div
+          className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}
+        ></div>
+      </div>
+      {isActive && <NavMenu />}
     </nav>
   );
 }
