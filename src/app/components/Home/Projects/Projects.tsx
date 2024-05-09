@@ -96,13 +96,15 @@ export default function index() {
             );
           })}
         </motion.div>
-        <Link href={"/projects"} scroll={false} className={styles.button}>
-          <button className={styles.work}>Browse all projects</button>
-        </Link>
-        <motion.div style={{ height }} className={styles.circleContainer}>
-          <div className={styles.circle}></div>
-        </motion.div>
       </div>
+      <div className={styles.linkContainer}>
+        <Link href={"/projects"} scroll={false} className={styles.link}>
+          Browse all projects
+        </Link>
+      </div>
+      {/* <motion.div style={{ height }} className={styles.circleContainer}>
+          <div className={styles.circle}></div>
+        </motion.div> */}
     </section>
   );
 }

@@ -2,7 +2,7 @@
   background-color: #18181b;
   color: #fff;
   font-family: var(--font-gilroy);
-  padding-top: 6.5rem;
+  padding-top: 9rem;
   padding-bottom: 5rem;
   position: relative;
   .skewed_div {
@@ -43,6 +43,7 @@
           font-size: min(1.2rem, 1.4vw);
           background-color: #ffffff00;
           transition: 0.3s;
+          cursor: pointer;
           &:hover {
             box-shadow: inset 0 -4em 0 0 #b18be2;
             color: #ffffff;
