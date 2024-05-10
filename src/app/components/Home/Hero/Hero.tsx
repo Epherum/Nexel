@@ -87,11 +87,7 @@ function Hero() {
         animate="visible"
       >
         <p className={styles.scroll_text}>scroll</p>
-        <img
-          className={`${styles.svg_line} ${styles.animate}`}
-          src={Line.src}
-          alt=""
-        />
+        <img className={styles.svg_line} src={Line.src} alt="line" />
       </motion.div>
     </section>
   );
