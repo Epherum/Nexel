@@ -21,7 +21,6 @@ export default function RootLayout({
         id="page-container"
       >
         <main>
-          <div className="spacer"></div>
           <Nav />
           <PageAnimatePresence>{children}</PageAnimatePresence>
         </main>

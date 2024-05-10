@@ -12,7 +12,6 @@ body {
 }
 
 body {
-  /* padding: min(2.5rem, 2vw) min(4.2rem, 3.3vw) min(2rem, 1.6vw) min(11.3%, 11vw); */
   color: #000;
   -webkit-font-smoothing: antialiased;
   overflow: auto;
@@ -67,21 +66,6 @@ h6 {
 #root,
 #__next {
   isolation: isolate;
-}
-
-@font-face {
-  font-family: "Gilroy";
-  src: url("/public/fonts/Gilroy-Medium.ttf") format("truetype");
-
-  font-weight: 400;
-  font-size: normal;
-}
-
-@font-face {
-  font-family: "Gilroy";
-  src: url("/public/fonts/Gilroy-SemiBold.ttf") format("truetype");
-  font-weight: 500;
-  font-size: bold;
 }
 
 .spacer {

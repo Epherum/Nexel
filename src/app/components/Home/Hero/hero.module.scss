@@ -10,11 +10,11 @@
   margin-bottom: 19rem;
   height: 90vh;
   & > * {
-    z-index: 2;
+    z-index: 1;
   }
   .image {
     position: absolute;
-    z-index: 1;
+    z-index: 0;
     width: 100%;
     max-width: 100rem;
   }
@@ -70,6 +70,8 @@
     }
 
     .resume {
+      cursor: pointer;
+
       border-radius: 200px;
       border: 1.5px solid black;
       padding: 0 3.5rem;

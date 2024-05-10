@@ -6,9 +6,9 @@ import behance from "/public/static/behance.svg";
 import instagram from "/public/static/instagram.svg";
 import linkedin from "/public/static/linkedin.svg";
 import Line from "./line.svg";
-
 import { motion } from "framer-motion";
 import { variants } from "./animations";
+import Magnetic from "../../Magnetic/Magnetic";
 
 function Hero() {
   return (
@@ -64,16 +64,21 @@ function Hero() {
           <img src={linkedin.src} alt="Linkedin" />
         </a>
       </motion.div>
+
       <motion.div
         className={styles.buttons}
         variants={variants.buttons}
         initial="hidden"
         animate="visible"
       >
-        <Link href={"/projects"}>
-          <button className={styles.work}>See my work</button>
-        </Link>
-        <button className={styles.resume}>Resume </button>
+        <Magnetic>
+          <Link href={"/projects"}>
+            <button className={styles.work}>See my work</button>
+          </Link>
+        </Magnetic>
+        <Magnetic>
+          <button className={styles.resume}>Resume </button>
+        </Magnetic>
       </motion.div>
       <motion.div
         className={styles.scroll}

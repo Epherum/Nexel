@@ -2,61 +2,111 @@
 import React from "react";
 import styles from "./header.module.scss";
 import Link from "next/link";
-import { useState } from "react";
-import NavMenu from "./NavMenu";
+import { useState, useEffect, useLayoutEffect, useRef } from "react";
+import { usePathname } from "next/navigation";
+import Menu from "../Menu/Menu";
+import Magnetic from "../Magnetic/Magnetic";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 function Header() {
   const [isActive, setIsActive] = useState(false);
+  const pathname = usePathname();
+  useEffect(() => {
+    if (isActive) setIsActive(false);
+  }, [pathname]);
+  const button = useRef(null);
+  useLayoutEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+    gsap.to(button.current, {
+      scrollTrigger: {
+        trigger: document.documentElement,
+        start: 0,
+        end: window.innerHeight,
+        onLeave: () => {
+          gsap.to(button.current, {
+            scale: 1,
+            duration: 0.25,
+            ease: "power1.out",
+          });
+        },
+        onEnterBack: () => {
+          gsap.to(
+            button.current,
+            //ts-ignore next-line
+            { scale: 0, duration: 0.25, ease: "power1.out" },
+            setIsActive(false)
+          );
+        },
+      },
+    });
+  }, []);
+
   return (
-    <nav className={styles.header}>
-      <ul>
-        <li className={styles.logo}>
-          <Link href={"/"} scroll={false}>
-            Emira tlili
-          </Link>
-        </li>
+    <>
+      <nav className={styles.header}>
+        <ul>
+          <Magnetic>
+            <li className={styles.logo}>
+              <Link href={"/"} scroll={false}>
+                Emira tlili
+              </Link>
+            </li>
+          </Magnetic>
 
-        <div className={styles.nav}>
-          <li className={styles.el}>
-            <Link href={"/"} scroll={false}>
-              Home
-            </Link>
-            <div className={styles.indicator}></div>
-          </li>
-          <li className={styles.el}>
-            <Link href={"/projects"} scroll={false}>
-              Projects
-            </Link>
-            <div className={styles.indicator}></div>
-          </li>
-          <li className={styles.el}>
-            <Link href={"/projects"} scroll={false}>
-              Contact
-            </Link>
+          <div className={styles.nav}>
+            <Magnetic>
+              <li className={styles.el}>
+                <Link href={"/"} scroll={false}>
+                  Home
+                </Link>
+                <div className={styles.indicator}></div>
+              </li>
+            </Magnetic>
+            <Magnetic>
+              <li className={styles.el}>
+                <Link href={"/projects"} scroll={false}>
+                  Projects
+                </Link>
+                <div className={styles.indicator}></div>
+              </li>
+            </Magnetic>
+            <Magnetic>
+              <li className={styles.el}>
+                <Link href={"/projects"} scroll={false}>
+                  Contact
+                </Link>
 
-            <div className={styles.indicator}></div>
-          </li>
-          <li className={styles.el}>
-            <Link href={"/projects"} scroll={false}>
-              FR
-            </Link>
+                <div className={styles.indicator}></div>
+              </li>
+            </Magnetic>
+            <Magnetic>
+              <li className={styles.el}>
+                <Link href={"/projects"} scroll={false}>
+                  FR
+                </Link>
 
-            <div className={styles.indicator}></div>
-          </li>
-        </div>
-      </ul>
-      <div
-        onClick={() => {
-          setIsActive(!isActive);
-        }}
-        className={styles.button}
-      >
+                <div className={styles.indicator}></div>
+              </li>
+            </Magnetic>
+          </div>
+        </ul>
         <div
-          className={`${styles.burger} ${isActive ? styles.burgerActive : ""}`}
-        ></div>
-      </div>
-      {isActive && <NavMenu />}
-    </nav>
+          onClick={() => {
+            setIsActive(!isActive);
+          }}
+          className={styles.button}
+          ref={button}
+        >
+          <div
+            className={`${styles.burger} ${
+              isActive ? styles.burgerActive : ""
+            }`}
+          ></div>
+        </div>
+      </nav>
+      {/* {isActive && <Menu />} */}
+    </>
   );
 }
 

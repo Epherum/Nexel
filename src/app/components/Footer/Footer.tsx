@@ -5,6 +5,7 @@ import instagram from "/public/static/instagram.svg";
 import linkedin from "/public/static/linkedin.svg";
 import styles from "./footer.module.scss";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Magnetic from "../Magnetic/Magnetic";
 
 function Footer() {
   const container = useRef(null);
@@ -17,15 +18,16 @@ function Footer() {
 
   return (
     <motion.footer style={{ y: y }} ref={container} className={styles.footer}>
-      {/* <div className={styles.skewed_div}></div> */}
       <div className={styles.container}>
         <div className={styles.top}>
           <h4 className={styles.work}>
             Let's work <span>together!</span>
           </h4>
-          <Link href={"/projects"} scroll={false} className={styles.button}>
-            <button>See my work</button>
-          </Link>
+          <Magnetic>
+            <Link href={"/projects"} scroll={false} className={styles.button}>
+              <button>See my work</button>
+            </Link>
+          </Magnetic>
         </div>
         <div className={styles.divider}></div>
         <div className={styles.bottom}>
