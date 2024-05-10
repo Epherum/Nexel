@@ -8,6 +8,8 @@ import Menu from "../Menu/Menu";
 import Magnetic from "../Magnetic/Magnetic";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { variants } from "./animations";
+import { motion } from "framer-motion";
 
 function Header() {
   const [isActive, setIsActive] = useState(false);
@@ -33,7 +35,7 @@ function Header() {
         onEnterBack: () => {
           gsap.to(
             button.current,
-            //ts-ignore next-line
+            // @ts-ignore
             { scale: 0, duration: 0.25, ease: "power1.out" },
             setIsActive(false)
           );
@@ -44,7 +46,12 @@ function Header() {
 
   return (
     <>
-      <nav className={styles.header}>
+      <motion.nav
+        variants={variants.nav}
+        initial="hidden"
+        animate="visible"
+        className={styles.header}
+      >
         <ul>
           <Magnetic>
             <li className={styles.logo}>
@@ -104,7 +111,7 @@ function Header() {
             }`}
           ></div>
         </div>
-      </nav>
+      </motion.nav>
       {/* {isActive && <Menu />} */}
     </>
   );
