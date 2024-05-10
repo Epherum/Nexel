@@ -48,7 +48,7 @@
     padding: 4rem 0;
     .slidingImages {
       rotate: 2deg;
-      // left: 20px;
+      left: 1rem;
       display: flex;
       flex-direction: column;
       gap: 3vw;
@@ -60,11 +60,12 @@
         display: flex;
         position: relative;
         gap: 3vw;
-        // width: 110vw;
+        width: 110vw;
         .project {
           position: relative;
           width: 33vw;
           height: 33vw;
+          cursor: pointer;
           .imageContainer {
             position: relative;
             width: 100%;

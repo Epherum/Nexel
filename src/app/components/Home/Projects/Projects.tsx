@@ -108,7 +108,7 @@ export default function index() {
         Featured Wo<span>r</span>ks
       </motion.h2>
       <div className={styles.slidingImagesContainer}>
-        <div className={styles.slidingImages}>
+        <div ref={container} className={styles.slidingImages}>
           <motion.div style={{ x: x1 }} className={styles.slider}>
             {slider1.map((project, index) => {
               return (
