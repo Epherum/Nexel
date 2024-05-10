@@ -8,18 +8,17 @@ import { motion } from "framer-motion";
 
 function Modal({ active }: { active: boolean }) {
   const scaleAnimation = {
-    //no idea why y is so huge help (it works tho)
-    initial: { scale: 0, x: "-8%", y: "-921%" },
+    initial: { scale: 0, x: "-8%", y: "-160%" },
     enter: {
       scale: 1,
       x: "-8%",
-      y: "-921%",
+      y: "-160%",
       transition: { duration: 0.4, ease: [0.76, 0, 0.24, 1] },
     },
     closed: {
       scale: 0,
       x: "-8%",
-      y: "-921%",
+      y: "-160%",
       transition: { duration: 0.4, ease: [0.32, 0, 0.67, 0] },
     },
   };

@@ -6,13 +6,15 @@
   &::before {
     content: "";
     position: absolute;
-    left: 0;
+    left: 0px;
     right: 0;
     bottom: -40px;
     height: 100px;
+    width: 100%;
     background-color: inherit;
     transform: skewY(2deg);
-    box-shadow: 0px 60px 50px rgba(0, 0, 0, 0.748);
+    // box-shadow: 0px 60px 50px rgba(0, 0, 0, 0.748);
+    border-radius: 20px;
   }
 
   .featured {
@@ -20,7 +22,7 @@
     color: #fff;
     font-size: 6rem;
     transform: rotate(2deg);
-    margin-bottom: 6rem;
+    margin-bottom: 2rem;
     text-align: center;
     display: block;
     position: relative;
@@ -41,45 +43,51 @@
       color: #b18be2;
     }
   }
-
-  .slidingImages {
-    rotate: 2deg;
-    display: flex;
-    flex-direction: column;
-    gap: 3vw;
-    position: relative;
-    background-color: #26272b;
-    .slider {
+  .slidingImagesContainer {
+    overflow: hidden;
+    padding: 4rem 0;
+    .slidingImages {
+      rotate: 2deg;
+      // left: 20px;
       display: flex;
-      position: relative;
+      flex-direction: column;
       gap: 3vw;
-      width: 110vw;
-      // left: -5rem;
-      .project {
+      position: relative;
+      background-color: #26272b;
+      width: 100vw;
+
+      .slider {
+        display: flex;
         position: relative;
-        width: 33vw;
-        height: 33vw;
-        .imageContainer {
+        gap: 3vw;
+        // width: 110vw;
+        .project {
           position: relative;
-          width: 100%;
-          height: 100%;
-          img {
-            object-fit: cover;
-            border-radius: 20px;
-            transition: border-radius 0.3s ease-out;
-          }
-          &:hover {
+          width: 33vw;
+          height: 33vw;
+          .imageContainer {
+            position: relative;
+            width: 100%;
+            height: 100%;
             img {
-              border-radius: 50%;
+              object-fit: cover;
+              border-radius: 20px;
+              transition: border-radius 0.3s ease-out;
+            }
+            &:hover {
+              img {
+                border-radius: 50%;
+              }
             }
           }
         }
       }
     }
   }
+
   .linkContainer {
     background-color: #26272b;
-    padding-top: 5rem;
+    padding-top: 3rem;
     padding-bottom: 3rem;
     .link {
       display: block;

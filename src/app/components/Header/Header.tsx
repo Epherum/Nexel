@@ -24,7 +24,7 @@ function Header() {
       scrollTrigger: {
         trigger: document.documentElement,
         start: 0,
-        end: window.innerHeight,
+        end: window.innerHeight / 2,
         onLeave: () => {
           gsap.to(button.current, {
             scale: 1,
