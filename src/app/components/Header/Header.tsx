@@ -12,7 +12,7 @@ import { variants } from "./animations";
 import { motion } from "framer-motion";
 
 function Header() {
-  const [isActive, setIsActive] = useState(true);
+  const [isActive, setIsActive] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
