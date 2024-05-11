@@ -42,8 +42,8 @@ function About() {
   const desc =
     "I'm a Creative Graphic designer, Ui/Ux designer and illustrator based in tunisia. I love arts, design, participating in different cultural activities and connecting with people. I am a creative and keen communicator with an eye for storytelling.";
 
-  const title = `A Creative 
-                  Graphic Designer`;
+  const title1 = `A Creative`;
+  const title2 = `Graphic Designer`;
 
   return (
     <section className={styles.about}>
@@ -58,22 +58,40 @@ function About() {
           >
             About
           </motion.p>
-          <h2 ref={titleContainer} className={styles.title}>
-            {title.split(" ").map((word, index) => {
-              return (
-                <span key={index} className={styles.mask}>
-                  <motion.span
-                    custom={index}
-                    variants={slideUp}
-                    initial="initial"
-                    animate={isInView ? "open" : "closed"}
-                  >
-                    {word}
-                  </motion.span>
-                </span>
-              );
-            })}
-          </h2>
+          <div>
+            <h2 ref={titleContainer} className={styles.title}>
+              {title1.split(" ").map((word, index) => {
+                return (
+                  <span key={index} className={styles.mask}>
+                    <motion.span
+                      custom={index}
+                      variants={slideUp}
+                      initial="initial"
+                      animate={isInView ? "open" : "closed"}
+                    >
+                      {word}
+                    </motion.span>
+                  </span>
+                );
+              })}
+            </h2>
+            <h2 ref={titleContainer} className={styles.title}>
+              {title2.split(" ").map((word, index) => {
+                return (
+                  <span key={index} className={styles.mask}>
+                    <motion.span
+                      custom={index}
+                      variants={slideUp}
+                      initial="initial"
+                      animate={isInView ? "open" : "closed"}
+                    >
+                      {word}
+                    </motion.span>
+                  </span>
+                );
+              })}
+            </h2>
+          </div>
           <p className={styles.desc}>
             {desc.split(" ").map((word, index) => {
               return (

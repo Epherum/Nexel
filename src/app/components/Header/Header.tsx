@@ -4,7 +4,7 @@ import styles from "./header.module.scss";
 import Link from "next/link";
 import { useState, useEffect, useLayoutEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import Menu from "../Menu/Menu";
+import Menu from "./Menu/Menu";
 import Magnetic from "../Magnetic/Magnetic";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -12,12 +12,15 @@ import { variants } from "./animations";
 import { motion } from "framer-motion";
 
 function Header() {
-  const [isActive, setIsActive] = useState(false);
+  const [isActive, setIsActive] = useState(true);
   const pathname = usePathname();
+
   useEffect(() => {
     if (isActive) setIsActive(false);
   }, [pathname]);
+
   const button = useRef(null);
+
   useLayoutEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
     gsap.to(button.current, {
@@ -112,7 +115,16 @@ function Header() {
           ></div>
         </div>
       </motion.nav>
-      {/* {isActive && <Menu />} */}
+      {isActive && <Menu setIsActive={setIsActive} />}
+      {isActive && (
+        <style>
+          {`
+            body {
+              overflow: hidden;
+            }
+          `}
+        </style>
+      )}
     </>
   );
 }
