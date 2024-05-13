@@ -1,12 +1,11 @@
 import React from "react";
-import emira from "/public/static/emira.webp";
+import emira from "/public/static/emira2.png";
 import styles from "./about.module.scss";
 import rectangle from "/public/static/rectangle.png";
 import {
   motion,
   useScroll,
   useTransform,
-  useSpring,
   useInView,
   easeOut,
 } from "framer-motion";

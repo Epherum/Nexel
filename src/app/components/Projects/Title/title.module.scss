@@ -33,6 +33,9 @@
     margin-top: 2rem;
     a {
       color: #000;
+      &:last-child {
+        margin-bottom: 2px;
+      }
     }
   }
 }

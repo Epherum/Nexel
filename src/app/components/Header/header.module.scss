@@ -1,12 +1,13 @@
 .header {
   font-family: var(--font-gilroy);
   font-weight: 400;
-  position: relative; //dont touch
+  position: fixed;
+  top: 0;
   width: 100%;
   padding: 3.5rem 5rem 0rem 5rem;
   z-index: 2;
-  background-color: #ffffff00;
-  color: black;
+  color: #000;
+
   ul {
     display: flex;
     justify-content: space-between;

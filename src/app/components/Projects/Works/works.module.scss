@@ -9,6 +9,7 @@
   z-index: 1;
   background-color: white;
   transition: background-color 0.3s;
+  border-bottom-left-radius: 100px;
 
   .hover {
     transition: filter 0.3s ease-in-out;
@@ -22,10 +23,10 @@
     left: 0;
     right: 0;
     bottom: -40px;
-    height: 100px;
+    height: 120px;
     background-color: inherit;
+    // background-color: #9c0707;
     transform: skewY(2deg);
-    box-shadow: 0px 60px 50px rgba(0, 0, 0, 0.748);
     border-radius: 20px;
   }
 

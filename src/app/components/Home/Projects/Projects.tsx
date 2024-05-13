@@ -104,9 +104,11 @@ export default function index() {
       ref={sectionRef}
       className={styles.projects}
     >
-      <motion.h2 className={styles.featured}>
-        Featured Wo<span>r</span>ks
-      </motion.h2>
+      <div className={styles.featuredContainer}>
+        <motion.h2 className={styles.featured}>
+          Featured Wo<span>r</span>ks
+        </motion.h2>
+      </div>
       <div className={styles.slidingImagesContainer}>
         <div ref={container} className={styles.slidingImages}>
           <motion.div style={{ x: x1 }} className={styles.slider}>

@@ -2,51 +2,11 @@
 import React from "react";
 import styles from "./header.module.scss";
 import Link from "next/link";
-import { useState, useEffect, useLayoutEffect, useRef } from "react";
-import { usePathname } from "next/navigation";
-import Menu from "./Menu/Menu";
 import Magnetic from "../Magnetic/Magnetic";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { variants } from "./animations";
 import { motion } from "framer-motion";
 
 function Header() {
-  const [isActive, setIsActive] = useState(false);
-  const pathname = usePathname();
-
-  useEffect(() => {
-    if (isActive) setIsActive(false);
-  }, [pathname]);
-
-  const button = useRef(null);
-
-  useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.to(button.current, {
-      scrollTrigger: {
-        trigger: document.documentElement,
-        start: 0,
-        end: window.innerHeight / 2,
-        onLeave: () => {
-          gsap.to(button.current, {
-            scale: 1,
-            duration: 0.25,
-            ease: "power1.out",
-          });
-        },
-        onEnterBack: () => {
-          gsap.to(
-            button.current,
-            // @ts-ignore
-            { scale: 0, duration: 0.25, ease: "power1.out" },
-            setIsActive(false)
-          );
-        },
-      },
-    });
-  }, []);
-
   return (
     <>
       <motion.nav
@@ -101,30 +61,8 @@ function Header() {
             </Magnetic>
           </div>
         </ul>
-        <div
-          onClick={() => {
-            setIsActive(!isActive);
-          }}
-          className={styles.button}
-          ref={button}
-        >
-          <div
-            className={`${styles.burger} ${
-              isActive ? styles.burgerActive : ""
-            }`}
-          ></div>
-        </div>
+        <div className={styles.button}></div>
       </motion.nav>
-      {isActive && <Menu setIsActive={setIsActive} />}
-      {isActive && (
-        <style>
-          {`
-            body {
-              overflow: hidden;
-            }
-          `}
-        </style>
-      )}
     </>
   );
 }

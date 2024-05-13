@@ -24,6 +24,9 @@ function Projects() {
     if (modal && overrideColor) {
       document.body.style.backgroundColor = "#18181b";
       (sectionRef.current ?? document.body).style.backgroundColor = color;
+    } else if (!modal && overrideColor) {
+      document.body.style.backgroundColor = "#18181b";
+      (sectionRef.current ?? document.body).style.backgroundColor = color;
     } else if (modal) {
       document.body.style.backgroundColor = color;
       (sectionRef.current ?? document.body).style.backgroundColor = color;
@@ -92,7 +95,7 @@ function Projects() {
             handleHover("#c3c8d8", true);
           }}
           onMouseOut={() => {
-            handleHover("white", false);
+            handleHover("white", false, false);
           }}
         >
           <Link href={"#"}>
@@ -112,7 +115,7 @@ function Projects() {
             handleHover("#fe9fad", true);
           }}
           onMouseOut={() => {
-            handleHover("white", false);
+            handleHover("white", false, false);
           }}
         >
           <Link href={"#"}>
@@ -175,7 +178,7 @@ function Projects() {
               handleHover("#c3c8d8", true, true);
             }}
             onMouseOut={() => {
-              handleHover("white", false, false);
+              handleHover("white", false, true);
             }}
           >
             <Link href={"#"}>
@@ -195,7 +198,7 @@ function Projects() {
             onMouseOver={() => {
               handleHover("#bbb", true, true);
             }}
-            onMouseOut={() => handleHover("white", false, false)}
+            onMouseOut={() => handleHover("white", false, true)}
           >
             <Link href={"#"}>
               <img
