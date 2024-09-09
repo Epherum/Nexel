@@ -98,7 +98,7 @@ function Projects() {
             handleHover("white", false, false);
           }}
         >
-          <Link href={"#"}>
+          <Link href={"/projects/evense"}>
             <img
               data-scroll
               data-scroll-speed="-0.1"
