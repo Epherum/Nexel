@@ -3,10 +3,14 @@
   align-items: center;
   justify-content: center;
   margin-top: 10rem;
-  position: relative;
   z-index: 2;
   .image {
     position: relative;
+    margin: 0 auto;
+    width: 95%;
+    img {
+      width: 100%;
+    }
   }
   .logo {
     position: absolute;
