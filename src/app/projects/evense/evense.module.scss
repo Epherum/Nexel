@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 70px;
+  margin-top: 10rem;
   position: relative;
   z-index: 2;
   .image {
@@ -43,13 +43,20 @@
     .imageLeft {
       align-self: center;
       justify-self: center;
-      margin-right: 20px;
+      margin-right: 4rem;
     }
     .textRight {
       color: #26272b;
       font-size: 1rem;
       font-family: var(--font-gilroy);
       line-height: 30px;
+    }
+    .videoLeft {
+      video {
+        border-radius: 40px;
+        width: 90%;
+        height: 100%;
+      }
     }
     .contentRight {
       padding: 20px;
@@ -170,7 +177,7 @@
     .color {
       display: flex;
       flex-direction: column;
-      align-items: start;
+      align-items: flex-start;
       margin-left: 1rem;
       font-weight: 300;
 
@@ -336,6 +343,63 @@
     img {
       width: 100%;
     }
+  }
+}
+
+.homePage {
+  background-color: black;
+  padding-top: 15rem;
+  padding-bottom: 10rem;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  .color {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    background-color: #121617;
+    height: 20%;
+  }
+  .mainImage {
+    position: relative;
+    // z-index: 1;
+  }
+  .mobile1 {
+    position: absolute;
+    top: 16%;
+    right: -13rem;
+  }
+  .mobile2 {
+    position: absolute;
+    top: 45%;
+    left: -13rem;
+  }
+  .mobile3 {
+    position: absolute;
+    top: 74%;
+    right: -13rem;
+  }
+
+  .green {
+    position: absolute;
+    top: 4rem;
+    left: 8rem;
+  }
+  .blue {
+    position: absolute;
+    top: 32%;
+    right: 0;
+  }
+  .red {
+    position: absolute;
+    bottom: 30%;
+    left: 0;
+  }
+  .yellow {
+    position: absolute;
+    bottom: -1%;
+    right: 15rem;
   }
 }
 

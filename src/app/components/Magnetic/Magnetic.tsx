@@ -20,7 +20,6 @@ export default function Magnetic({ children }) {
       const { clientX, clientY } = e;
       const { height, width, left, top } =
         // @ts-ignore
-
         magnetic.current.getBoundingClientRect();
       const x = clientX - (left + width / 2);
       const y = clientY - (top + height / 2);

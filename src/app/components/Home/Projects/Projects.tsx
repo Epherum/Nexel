@@ -57,7 +57,7 @@ export default function index() {
   const x3 = useTransform(containerScrollYProgress, [0, 1], [-300, 50], {
     ease: easeOut,
   });
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
 
   const { scrollYProgress: sectionScrollYProgress } = useScroll({
     target: sectionRef,
@@ -72,16 +72,20 @@ export default function index() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + window.innerHeight;
-      // @ts-ignore
-      const sectionOffsetTop = sectionRef.current.offsetTop;
-      const sectionMiddle =
-        // @ts-ignore i love typescript
-        sectionOffsetTop + sectionRef.current.offsetHeight / 2;
-      setScrollPosition(scrollPosition);
-      setSectionMiddle(sectionMiddle);
+
+      if (sectionRef.current) {
+        const sectionOffsetTop = sectionRef.current.offsetTop;
+        const sectionMiddle =
+          sectionOffsetTop + sectionRef.current.offsetHeight / 2;
+
+        setScrollPosition(scrollPosition);
+        setSectionMiddle(sectionMiddle);
+      }
     };
-    handleScroll();
+
+    handleScroll(); // Run the function on mount to get the initial position
     window.addEventListener("scroll", handleScroll);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };

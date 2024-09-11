@@ -10,7 +10,7 @@ function Projects() {
   const [color, setColor] = useState("");
   const [modal, setModal] = useState(false);
   const [overrideColor, setOverrideColor] = useState(false);
-  const sectionRef = useRef(null);
+  const sectionRef = useRef<HTMLElement | null>(null);
 
   const handleHover = (color: any, isOpen: boolean, override?: boolean) => {
     setModal(isOpen);
@@ -50,16 +50,20 @@ function Projects() {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY + window.innerHeight;
-      //@ts-ignore
-      const sectionOffsetTop = sectionRef.current.offsetTop;
-      //@ts-ignore
-      const sectionHeight = sectionRef.current.offsetHeight;
-      setScrollPosition(scrollPosition);
-      setSectionTop40Percent(sectionOffsetTop + sectionHeight * 0.4);
-      setSectionBottom50Percent(sectionOffsetTop + sectionHeight * 0.5);
+
+      if (sectionRef.current) {
+        const sectionOffsetTop = sectionRef.current.offsetTop;
+        const sectionHeight = sectionRef.current.offsetHeight;
+
+        setScrollPosition(scrollPosition);
+        setSectionTop40Percent(sectionOffsetTop + sectionHeight * 0.4);
+        setSectionBottom50Percent(sectionOffsetTop + sectionHeight * 0.5);
+      }
     };
-    handleScroll();
+
+    handleScroll(); // Run the function on mount to get the initial position
     window.addEventListener("scroll", handleScroll);
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
@@ -80,6 +84,7 @@ function Projects() {
       document.body.style.background = "white";
     };
   }, [scrollPosition, sectionTop40Percent, sectionBottom50Percent]);
+
   return (
     <motion.section
       style={{ scale }}
@@ -98,7 +103,7 @@ function Projects() {
             handleHover("white", false, false);
           }}
         >
-          <Link href={"/projects/evense"}>
+          <Link href={"/projects/evense"} scroll={false}>
             <img
               data-scroll
               data-scroll-speed="-0.1"

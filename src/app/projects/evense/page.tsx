@@ -3,7 +3,7 @@ import React from "react";
 import styles from "./evense.module.scss";
 import Footer from "@/app/components/Footer/Footer";
 import { useRef } from "react";
-import { useScroll, useTransform, motion } from "framer-motion";
+import { useScroll, useTransform, motion, easeOut } from "framer-motion";
 import { useState, useEffect } from "react";
 
 function page() {
@@ -72,8 +72,8 @@ function page() {
             element was carefully selected and refined to convey the brand's
             identity succinctly.
           </p>
-          <div className={styles.videoRight}>
-            <img src="/static/evense-video.png" alt="" />
+          <div className={styles.videoLeft}>
+            <video src="/static/evense-introVid.mp4" autoPlay loop />
           </div>
           <div className={styles.contentRight}>
             <p>
@@ -242,6 +242,68 @@ function page() {
         <div data-scroll data-scroll-speed="-0.1" className={styles.image}>
           <img src="/static/evense-de.png" alt="" />
         </div>
+      </section>
+      <section className={styles.homePage}>
+        <div className={styles.color} />
+        <div className={styles.mainImage}>
+          <img src="/static/evense-homePage.png" alt="" />
+          <motion.div>
+            <motion.img
+              data-scroll
+              data-scroll-speed="-0.05"
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-400px" }}
+              initial={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: easeOut }}
+              className={styles.mobile1}
+              src="/static/evense-homePageMobile1.png"
+              alt=""
+            />
+
+            <motion.img
+              data-scroll
+              data-scroll-speed="-0.05"
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-400px" }}
+              initial={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: easeOut }}
+              className={styles.mobile2}
+              src="/static/evense-homePageMobile2.png"
+              alt=""
+            />
+            <motion.img
+              data-scroll
+              data-scroll-speed="-0.1"
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-300px" }}
+              initial={{ opacity: 0 }}
+              transition={{ duration: 0.4, ease: easeOut }}
+              className={styles.mobile3}
+              src="/static/evense-homePageMobile3.png"
+              alt=""
+            />
+          </motion.div>
+        </div>
+        <img
+          className={styles.green}
+          src="/static/evense-homePageGreen.png"
+          alt=""
+        />
+        <img
+          className={styles.yellow}
+          src="/static/evense-homePageYellow.png"
+          alt=""
+        />
+        <img
+          className={styles.blue}
+          src="/static/evense-homePageBlue.png"
+          alt=""
+        />
+        <img
+          className={styles.red}
+          src="/static/evense-homePageRed.png"
+          alt=""
+        />
       </section>
       <section className={styles.services}>
         <div className={styles.text}>
