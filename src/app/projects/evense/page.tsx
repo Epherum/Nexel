@@ -252,7 +252,7 @@ function page() {
               data-scroll
               data-scroll-speed="-0.05"
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "-400px" }}
+              viewport={{ once: true, margin: "-300px" }}
               initial={{ opacity: 0 }}
               transition={{ duration: 0.4, ease: easeOut }}
               className={styles.mobile1}
@@ -264,7 +264,7 @@ function page() {
               data-scroll
               data-scroll-speed="-0.05"
               whileInView={{ opacity: 1 }}
-              viewport={{ once: true, margin: "-400px" }}
+              viewport={{ once: true, margin: "-300px" }}
               initial={{ opacity: 0 }}
               transition={{ duration: 0.4, ease: easeOut }}
               className={styles.mobile2}

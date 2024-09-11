@@ -8,6 +8,7 @@ const FrozenRoute = ({ children }: { children: React.ReactNode }) => {
   const frozen = useRef(context).current;
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     (async () => {
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
       const locomotiveScroll = new LocomotiveScroll({

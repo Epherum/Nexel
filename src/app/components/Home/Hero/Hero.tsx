@@ -72,7 +72,7 @@ function Hero() {
         animate="visible"
       >
         <Magnetic>
-          <Link href={"/projects"}>
+          <Link href={"/projects"} scroll={false}>
             <button className={styles.work}>See my work</button>
           </Link>
         </Magnetic>
