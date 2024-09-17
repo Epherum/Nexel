@@ -111,7 +111,7 @@ function Projects() {
               alt="Image"
             />
             <p className={styles.date}>2017</p>
-            <p className={styles.name}>Tresors naturels</p>
+            <p className={styles.name}>Evense</p>
           </Link>
         </div>
         <div
@@ -132,7 +132,7 @@ function Projects() {
             />
           </Link>
           <p className={styles.date}>2017</p>
-          <p className={styles.name}>Tresors naturels</p>
+          <p className={styles.name}>Social Media</p>
         </div>
       </div>
       <div
@@ -153,7 +153,7 @@ function Projects() {
           />
         </Link>
         <p className={styles.date}>2017</p>
-        <p className={styles.name}>Tresors naturels</p>
+        <p className={styles.name}>Book app</p>
       </div>
       <div className={styles.third}>
         <div
