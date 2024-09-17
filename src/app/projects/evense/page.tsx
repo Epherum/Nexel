@@ -52,9 +52,9 @@ function page() {
       <section className={styles.first}>
         <div data-scroll data-scroll-speed="-0.1">
           <div className={styles.image}>
-            <img src="/static/evense-1.png" alt="" />
+            <img src="/static/evense/evense-1.png" alt="" />
             <div className={styles.logo}>
-              <img src="/static/evense-logo.svg" alt="" />
+              <img src="/static/evense/evense-logo.svg" alt="" />
             </div>
           </div>
         </div>
@@ -63,7 +63,7 @@ function page() {
       <section className={styles.introduction}>
         <div className={styles.container}>
           <div className={styles.imageLeft}>
-            <img src="/static/evense-logoBlack.svg" alt="" />
+            <img src="/static/evense/evense-logoBlack.svg" alt="" />
           </div>
           <p className={styles.textRight}>
             The logo design was crafted with a deliberate focus on achieving a
@@ -73,7 +73,7 @@ function page() {
             identity succinctly.
           </p>
           <div className={styles.videoLeft}>
-            <video src="/static/evense-introVid.mp4" autoPlay loop />
+            <video src="/static/evense/evense-introVid.mp4" autoPlay loop />
           </div>
           <div className={styles.contentRight}>
             <p>
@@ -84,7 +84,7 @@ function page() {
               brand's identity succinctly.
             </p>
             <div className={styles.image}>
-              <img src="/static/evense-phone.png" alt="" />
+              <img src="/static/evense/evense-phone.png" alt="" />
             </div>
           </div>
         </div>
@@ -225,28 +225,40 @@ function page() {
             various digital platforms.
           </p>
         </div>
-        <img className={styles.pink} src="/static/evense-pink.svg" alt="" />
-        <img className={styles.yellow} src="/static/evense-yellow.svg" alt="" />
-        <img className={styles.blue} src="/static/evense-blue.svg" alt="" />
-        {/* <img className={styles.green} src="/static/evense-green.svg" alt="" /> */}
+        <img
+          className={styles.pink}
+          src="/static/evense/evense-pink.svg"
+          alt=""
+        />
+        <img
+          className={styles.yellow}
+          src="/static/evense/evense-yellow.svg"
+          alt=""
+        />
+        <img
+          className={styles.blue}
+          src="/static/evense/evense-blue.svg"
+          alt=""
+        />
+        {/* <img className={styles.green} src="/static/evense/evense-green.svg" alt="" /> */}
       </section>
       <section className={styles.userFlow}>
         <div className={styles.container}>
           <h2 className={styles.text}>User Flow</h2>
           <div className={styles.flow}>
-            <img src="/static/evense-flow.png" alt="" />
+            <img src="/static/evense/evense-flow.png" alt="" />
           </div>
         </div>
       </section>
       <section className={styles.digitalEvents}>
         <div data-scroll data-scroll-speed="-0.1" className={styles.image}>
-          <img src="/static/evense-de.png" alt="" />
+          <img src="/static/evense/evense-de.png" alt="" />
         </div>
       </section>
       <section className={styles.homePage}>
         <div className={styles.color} />
         <div className={styles.mainImage}>
-          <img src="/static/evense-homePage.png" alt="" />
+          <img src="/static/evense/evense-homePage.png" alt="" />
           <motion.div>
             <motion.img
               data-scroll
@@ -256,7 +268,7 @@ function page() {
               initial={{ opacity: 0 }}
               transition={{ duration: 0.4, ease: easeOut }}
               className={styles.mobile1}
-              src="/static/evense-homePageMobile1.png"
+              src="/static/evense/evense-homePageMobile1.png"
               alt=""
             />
 
@@ -268,7 +280,7 @@ function page() {
               initial={{ opacity: 0 }}
               transition={{ duration: 0.4, ease: easeOut }}
               className={styles.mobile2}
-              src="/static/evense-homePageMobile2.png"
+              src="/static/evense/evense-homePageMobile2.png"
               alt=""
             />
             <motion.img
@@ -279,29 +291,29 @@ function page() {
               initial={{ opacity: 0 }}
               transition={{ duration: 0.4, ease: easeOut }}
               className={styles.mobile3}
-              src="/static/evense-homePageMobile3.png"
+              src="/static/evense/evense-homePageMobile3.png"
               alt=""
             />
           </motion.div>
         </div>
         <img
           className={styles.green}
-          src="/static/evense-homePageGreen.png"
+          src="/static/evense/evense-homePageGreen.png"
           alt=""
         />
         <img
           className={styles.yellow}
-          src="/static/evense-homePageYellow.png"
+          src="/static/evense/evense-homePageYellow.png"
           alt=""
         />
         <img
           className={styles.blue}
-          src="/static/evense-homePageBlue.png"
+          src="/static/evense/evense-homePageBlue.png"
           alt=""
         />
         <img
           className={styles.red}
-          src="/static/evense-homePageRed.png"
+          src="/static/evense/evense-homePageRed.png"
           alt=""
         />
       </section>
@@ -324,28 +336,28 @@ function page() {
         <div className={styles.typesOfServices}>
           <div className={styles.inPerson}>
             <p>In person</p>
-            <img src="/static/evense-inPerson.png" alt="" />
+            <img src="/static/evense/evense-inPerson.png" alt="" />
             <img
               className={styles.ellipse1}
-              src="/static/evense-ellipse.svg"
+              src="/static/evense/evense-ellipse.svg"
               alt=""
             />
           </div>
           <div className={styles.digital}>
             <p>Digital</p>
-            <img src="/static/evense-digital.png" alt="" />
+            <img src="/static/evense/evense-digital.png" alt="" />
             <img
               className={styles.ellipse2}
-              src="/static/evense-ellipse.svg"
+              src="/static/evense/evense-ellipse.svg"
               alt=""
             />
           </div>
           <div className={styles.hybrid}>
             <p>Hybrid</p>
-            <img src="/static/evense-hybrid.png" alt="" />
+            <img src="/static/evense/evense-hybrid.png" alt="" />
             <img
               className={styles.ellipse3}
-              src="/static/evense-ellipse.svg"
+              src="/static/evense/evense-ellipse.svg"
               alt=""
             />
           </div>
@@ -357,13 +369,13 @@ function page() {
         </h2>
         <div className={styles.vids}>
           <div>
-            <img src="/static/evense-vid1.png" alt="" />
+            <img src="/static/evense/evense-vid1.png" alt="" />
           </div>
           <div>
-            <img src="/static/evense-vid2.png" alt="" />
+            <img src="/static/evense/evense-vid2.png" alt="" />
           </div>
           <div>
-            <img src="/static/evense-vid3.png" alt="" />
+            <img src="/static/evense/evense-vid3.png" alt="" />
           </div>
         </div>
       </section>
@@ -373,12 +385,9 @@ function page() {
         className={styles.last}
       >
         <div>
-          <img src="/static/evense-last.png" alt="" />
+          <img src="/static/evense/evense-last.png" alt="" />
         </div>
       </motion.section>
-      <div className={styles.skewedContainer}>
-        <div className={styles.skewed} />
-      </div>
 
       <Footer />
     </>

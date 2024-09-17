@@ -6,10 +6,9 @@
   z-index: 2;
   position: relative;
   .image {
-    // outline: 1px solid red;
     position: relative;
     margin: 0 auto;
-    width: 100%;
+    width: 93vw;
     img {
       width: 100%;
     }
@@ -524,17 +523,3 @@
     }
   }
 }
-// .skewedContainer {
-//   position: relative;
-//   .skewed {
-//     position: absolute;
-//     left: 0;
-//     right: 0;
-//     bottom: -30px;
-//     height: 120px;
-//     z-index: 3;
-//     background-color: #18181b;
-//     transform: skewY(2deg);
-//     border-radius: 20px;
-//   }
-// }

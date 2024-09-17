@@ -1,0 +1,59 @@
+.hero {
+  position: relative;
+  .heroImage {
+    width: 100vw;
+    object-fit: cover;
+  }
+  .heroLogo {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+    z-index: 2;
+  }
+}
+
+.firstShowcase {
+  position: relative;
+  z-index: 2;
+
+  padding: 5rem 0;
+  background-color: #d9d9d9;
+  display: flex;
+  gap: 3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 28vw;
+    object-fit: cover;
+  }
+  .skewed {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -40px;
+    height: 110px;
+    background-color: inherit;
+    transform: skewY(2deg);
+    border-radius: 20px;
+  }
+}
+.last {
+  border-bottom-left-radius: 40px;
+}
+
+.secondShowcase {
+  position: relative;
+  padding: 10rem 0;
+  background-color: #c0c2cb;
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+  align-items: center;
+  img {
+    width: 40vw;
+    object-fit: cover;
+  }
+}

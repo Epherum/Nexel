@@ -107,7 +107,7 @@ function Projects() {
             <img
               data-scroll
               data-scroll-speed="-0.1"
-              src="/static/9.png"
+              src="/static/evense-thumbnail.png"
               alt="Image"
             />
             <p className={styles.date}>2017</p>
@@ -123,11 +123,11 @@ function Projects() {
             handleHover("white", false, false);
           }}
         >
-          <Link href={"#"}>
+          <Link href={"/projects/laboTresorsNaturels"} scroll={false}>
             <img
               data-scroll
               data-scroll-speed="-0.1"
-              src="/static/10.png"
+              src="/static/9.png"
               alt="Image"
             />
           </Link>
@@ -144,11 +144,11 @@ function Projects() {
           handleHover("white", false);
         }}
       >
-        <Link href={"#"}>
+        <Link href={"/projects/bookApp"} scroll={false}>
           <img
             data-scroll
             data-scroll-speed="-0.1"
-            src="/static/3.png"
+            src="/static/bookApp-thumbnail.png"
             alt="Image"
           />
         </Link>
@@ -190,7 +190,7 @@ function Projects() {
               <img
                 data-scroll
                 data-scroll-speed="-0.1"
-                src="/static/5.png"
+                src="/static/10.png"
                 alt="Image"
               />
 

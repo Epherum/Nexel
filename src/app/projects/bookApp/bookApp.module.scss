@@ -1,0 +1,90 @@
+.bookApp {
+  padding-top: 10rem;
+  padding-bottom: 6rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 6rem;
+  background-color: #dbe6f0;
+
+  .first {
+    overflow: hidden;
+    position: relative;
+    width: 80rem;
+    height: 60rem;
+    border-radius: 40px;
+
+    .image {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      scale: 1.05;
+      object-fit: cover;
+      will-change: transform;
+    }
+    .heading {
+      position: absolute;
+      top: 2rem;
+      left: 4rem;
+      font-family: var(--font-gilroy);
+      color: white;
+      .title {
+        font-size: 4.5rem;
+      }
+      .undertitle {
+        font-size: 2.25rem;
+        display: flex;
+        align-items: start;
+        font-weight: 300;
+        .icons {
+          display: flex;
+          margin-left: 1rem;
+          gap: 0.5rem;
+        }
+      }
+    }
+  }
+  .second,
+  .fourth {
+    overflow: hidden;
+    position: relative;
+    width: 80rem;
+    height: 60rem;
+    border-radius: 40px;
+
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      scale: 1.05;
+      object-fit: cover;
+      will-change: transform;
+    }
+  }
+
+  .third {
+    width: 100vw;
+    height: 120vh;
+    overflow: hidden;
+    position: relative;
+    img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      scale: 1.05;
+      object-fit: cover;
+      will-change: transform;
+    }
+  }
+}
+.fifth {
+  z-index: 2;
+  position: relative;
+  width: 100%;
+  img {
+    width: 100%;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+  }
+}
