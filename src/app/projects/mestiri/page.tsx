@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import styles from "./labo.module.scss";
+import styles from "./mestiri.module.scss";
 import Footer from "@/app/components/Footer/Footer";
 import { useRef } from "react";
 import { useScroll, useTransform, motion, easeOut } from "framer-motion";
@@ -49,40 +49,29 @@ function page() {
   }, [scrollPosition, sectionRef]);
 
   const firstShowcaseImages = [
-    "/static/labo/1.png",
-    "/static/labo/2.png",
-    "/static/labo/3.png",
-    "/static/labo/4.png",
-    "/static/labo/5.png",
-    "/static/labo/6.png",
+    "/static/mestiri/1.png",
+    "/static/mestiri/2.png",
+    "/static/mestiri/3.png",
+    "/static/mestiri/4.png",
+    "/static/mestiri/5.png",
+    "/static/mestiri/6.png",
   ];
 
-  const secondShowcaseImages = ["/static/labo/7.png", "/static/labo/8.png"];
+  const secondShowcaseImages = [
+    "/static/mestiri/7.png",
+    "/static/mestiri/8.png",
+  ];
 
   const thirdShowcaseImages = [
-    "/static/labo/9.png",
-    "/static/labo/10.png",
-    "/static/labo/11.png",
-    "/static/labo/12.png",
-    "/static/labo/13.png",
-    "/static/labo/14.png",
-    "/static/labo/15.png",
-    "/static/labo/16.png",
-    "/static/labo/17.png",
-  ];
-
-  const fourthShowcaseImages = ["/static/labo/18.png", "/static/labo/19.png"];
-
-  const lastShowcaseImages = [
-    "/static/labo/20.png",
-    "/static/labo/21.png",
-    "/static/labo/22.png",
-    "/static/labo/24.png",
-    "/static/labo/25.png",
-    "/static/labo/26.png",
-    "/static/labo/27.png",
-    "/static/labo/28.png",
-    "/static/labo/29.png",
+    "/static/mestiri/9.png",
+    "/static/mestiri/10.png",
+    "/static/mestiri/11.png",
+    "/static/mestiri/12.png",
+    "/static/mestiri/13.png",
+    "/static/mestiri/14.png",
+    "/static/mestiri/15.png",
+    "/static/mestiri/16.png",
+    "/static/mestiri/17.png",
   ];
 
   return (
@@ -92,12 +81,12 @@ function page() {
           data-scroll
           data-scroll-speed="-0.1"
           className={styles.heroImage}
-          src="/static/labo/hero.png"
+          src="/static/mestiri/hero.png"
           alt=""
         />
         <img
           className={styles.heroLogo}
-          src="/static/labo/socialMedia.svg"
+          src="/static/mestiri/socialMedia.svg"
           alt=""
         />
       </section>
@@ -160,50 +149,14 @@ function page() {
         ))}
       </section>
 
-      {/* Fourth Showcase */}
-      <section className={styles.secondShowcase}>
-        {fourthShowcaseImages.map((src, index) => (
-          <div className={styles.imageContainer}>
-            <motion.img
-              data-scroll
-              data-scroll-speed="-0.1"
-              key={index}
-              src={src}
-              alt=""
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.5,
-                delay: index * 0.1,
-              }}
-            />
-          </div>
-        ))}
-      </section>
-
-      {/* Last Showcase with ref and scale */}
       <motion.section
         style={{ scale }}
         ref={sectionRef}
-        className={`${styles.firstShowcase} ${styles.last}`}
+        className={styles.last}
       >
-        {lastShowcaseImages.map((src, index) => (
-          <motion.img
-            key={index}
-            src={src}
-            alt=""
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{
-              duration: 0.5,
-              delay: index * 0.1,
-            }}
-          />
-        ))}
-        <div className={styles.skewed} />
+        <img src="/static/mestiri/18.png" alt="" />
       </motion.section>
+
       <Footer />
     </>
   );

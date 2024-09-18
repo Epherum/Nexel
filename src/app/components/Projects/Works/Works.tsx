@@ -123,16 +123,16 @@ function Projects() {
             handleHover("white", false, false);
           }}
         >
-          <Link href={"/projects/laboTresorsNaturels"} scroll={false}>
+          <Link href={"#"} scroll={false}>
             <img
               data-scroll
               data-scroll-speed="-0.1"
-              src="/static/9.png"
+              src="/static/10.png"
               alt="Image"
             />
           </Link>
           <p className={styles.date}>2017</p>
-          <p className={styles.name}>Social Media</p>
+          <p className={styles.name}>Study Platform</p>
         </div>
       </div>
       <div
@@ -165,11 +165,11 @@ function Projects() {
             handleHover("white", false);
           }}
         >
-          <Link href={"#"}>
+          <Link href={"/projects/laboTresorsNaturels"} scroll={false}>
             <img
               data-scroll
               data-scroll-speed="-0.1"
-              src="/static/4.png"
+              src="/static/tresors-thumbnail.png"
               alt="Image"
             />
             <p className={styles.date}>2017</p>
@@ -186,16 +186,16 @@ function Projects() {
               handleHover("white", false, true);
             }}
           >
-            <Link href={"#"}>
+            <Link href={"/projects/mestiri"} scroll={false}>
               <img
                 data-scroll
                 data-scroll-speed="-0.1"
-                src="/static/10.png"
+                src="/static/mestiri-thumbnail.png"
                 alt="Image"
               />
 
               <p className={styles.date}>2017</p>
-              <p className={styles.name}>Tresors naturels</p>
+              <p className={styles.name}>Mestiri</p>
             </Link>
           </div>
           <div
@@ -205,15 +205,15 @@ function Projects() {
             }}
             onMouseOut={() => handleHover("white", false, true)}
           >
-            <Link href={"#"}>
+            <Link href={"/projects/amazone"} scroll={false}>
               <img
                 data-scroll
                 data-scroll-speed="-0.1"
-                src="/static/6.png"
+                src="/static/amazone/8.png"
                 alt="Image"
               />
               <p className={styles.date}>2017</p>
-              <p className={styles.name}>Tresors naturels</p>
+              <p className={styles.name}>Amazone</p>
             </Link>
           </div>
         </div>

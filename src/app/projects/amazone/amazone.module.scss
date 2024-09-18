@@ -65,9 +65,8 @@
     height: 45rem;
     border-radius: 40px;
     img {
+      width: 100%;
       position: absolute;
-      // scale: 1.05;
-      object-fit: cover;
       will-change: transform;
       width: 40vw;
       object-fit: cover;
