@@ -123,7 +123,7 @@ function Projects() {
             handleHover("white", false, false);
           }}
         >
-          <Link href={"#"} scroll={false}>
+          <Link href={"/projects/lectureRapide"} scroll={false}>
             <img
               data-scroll
               data-scroll-speed="-0.1"
