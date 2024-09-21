@@ -5,6 +5,27 @@ import Footer from "@/app/components/Footer/Footer";
 import { useRef } from "react";
 import { useScroll, useTransform, motion, easeOut } from "framer-motion";
 import { useState, useEffect } from "react";
+import Image from "next/image";
+import image1 from "/public/static/mestiri/1.webp";
+import image2 from "/public/static/mestiri/2.webp";
+import image3 from "/public/static/mestiri/3.webp";
+import image4 from "/public/static/mestiri/4.webp";
+import image5 from "/public/static/mestiri/5.webp";
+import image6 from "/public/static/mestiri/6.webp";
+import image7 from "/public/static/mestiri/7.webp";
+import image8 from "/public/static/mestiri/8.webp";
+import image9 from "/public/static/mestiri/9.webp";
+import image10 from "/public/static/mestiri/10.webp";
+import image11 from "/public/static/mestiri/11.webp";
+import image12 from "/public/static/mestiri/12.webp";
+import image13 from "/public/static/mestiri/13.webp";
+import image14 from "/public/static/mestiri/14.webp";
+import image15 from "/public/static/mestiri/15.webp";
+import image16 from "/public/static/mestiri/16.webp";
+import image17 from "/public/static/mestiri/17.webp";
+import image18 from "/public/static/mestiri/18.webp";
+import hero from "/public/static/mestiri/hero.webp";
+import socialMedia from "/public/static/mestiri/socialMedia.webp";
 
 function page() {
   const sectionRef = useRef(null);
@@ -48,56 +69,41 @@ function page() {
     };
   }, [scrollPosition, sectionRef]);
 
-  const firstShowcaseImages = [
-    "/static/mestiri/1.png",
-    "/static/mestiri/2.png",
-    "/static/mestiri/3.png",
-    "/static/mestiri/4.png",
-    "/static/mestiri/5.png",
-    "/static/mestiri/6.png",
-  ];
+  const firstShowcaseImages = [image1, image2, image3, image4, image5, image6];
 
-  const secondShowcaseImages = [
-    "/static/mestiri/7.png",
-    "/static/mestiri/8.png",
-  ];
+  const secondShowcaseImages = [image7, image8];
 
   const thirdShowcaseImages = [
-    "/static/mestiri/9.png",
-    "/static/mestiri/10.png",
-    "/static/mestiri/11.png",
-    "/static/mestiri/12.png",
-    "/static/mestiri/13.png",
-    "/static/mestiri/14.png",
-    "/static/mestiri/15.png",
-    "/static/mestiri/16.png",
-    "/static/mestiri/17.png",
+    image9,
+    image10,
+    image11,
+    image12,
+    image13,
+    image14,
+    image15,
+    image16,
+    image17,
   ];
 
   return (
     <>
       <section className={styles.hero}>
-        <img
+        <Image
+          className={styles.heroImage}
           data-scroll
           data-scroll-speed="-0.1"
-          className={styles.heroImage}
-          src="/static/mestiri/hero.png"
-          alt=""
+          src={hero}
+          alt="hero"
+          priority
         />
-        <img
-          className={styles.heroLogo}
-          src="/static/mestiri/socialMedia.svg"
-          alt=""
-        />
+        <Image className={styles.heroLogo} src={socialMedia} alt="logo" />
       </section>
 
       {/* First Showcase */}
       <section className={styles.firstShowcase}>
         {firstShowcaseImages.map((src, index) => (
-          <motion.img
+          <motion.div
             key={index}
-            src={src}
-            alt=""
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -105,7 +111,9 @@ function page() {
               duration: 0.5,
               delay: index * 0.1,
             }}
-          />
+          >
+            <Image src={src} alt="pic" />
+          </motion.div>
         ))}
       </section>
 
@@ -113,12 +121,8 @@ function page() {
       <section className={styles.secondShowcase}>
         {secondShowcaseImages.map((src, index) => (
           <div className={styles.imageContainer}>
-            <motion.img
-              data-scroll
-              data-scroll-speed="-0.1"
+            <motion.div
               key={index}
-              src={src}
-              alt=""
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
@@ -126,7 +130,9 @@ function page() {
                 duration: 0.5,
                 delay: index * 0.1,
               }}
-            />
+            >
+              <Image src={src} alt="yes" data-scroll data-scroll-speed="-0.1" />
+            </motion.div>
           </div>
         ))}
       </section>
@@ -134,10 +140,8 @@ function page() {
       {/* Third Showcase */}
       <section className={styles.firstShowcase}>
         {thirdShowcaseImages.map((src, index) => (
-          <motion.img
+          <motion.div
             key={index}
-            src={src}
-            alt=""
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -145,7 +149,9 @@ function page() {
               duration: 0.5,
               delay: index * 0.1,
             }}
-          />
+          >
+            <Image src={src} alt="yes" />
+          </motion.div>
         ))}
       </section>
 
@@ -154,7 +160,7 @@ function page() {
         ref={sectionRef}
         className={styles.last}
       >
-        <img src="/static/mestiri/18.png" alt="" />
+        <Image src={image18} alt="last" />
       </motion.section>
 
       <Footer />
