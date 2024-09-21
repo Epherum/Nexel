@@ -30,8 +30,9 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+
   img {
-    width: 28vw;
+    width: 100%;
     object-fit: cover;
   }
   .skewed {
@@ -58,13 +59,13 @@
     position: relative;
     overflow: hidden;
     width: 35rem;
-    height: 45rem;
+    height: 38rem;
     border-radius: 40px;
     img {
       position: absolute;
       object-fit: cover;
       will-change: transform;
-      width: 40vw;
+      width: 100%;
       object-fit: cover;
     }
   }

@@ -9,16 +9,16 @@ const FrozenRoute = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    // (async () => {
-    //   const LocomotiveScroll = (await import("locomotive-scroll")).default;
-    //   const locomotiveScroll = new LocomotiveScroll({
-    //     // // @ts-ignore
-    //     // lenisOptions: {
-    //     //   lerp: 0.08,
-    //     //   wheelMultiplier: 1.1,
-    //     // },
-    //   });
-    // })();
+    (async () => {
+      const LocomotiveScroll = (await import("locomotive-scroll")).default;
+      const locomotiveScroll = new LocomotiveScroll({
+        // // @ts-ignore
+        // lenisOptions: {
+        //   lerp: 0.08,
+        //   wheelMultiplier: 1.1,
+        // },
+      });
+    })();
   }, []);
 
   return (
