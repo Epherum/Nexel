@@ -141,13 +141,16 @@
             height: 100%;
           }
         }
-        .leftContent {
+        .rightContent {
           width: 100%;
           & > div {
             display: flex;
             justify-content: space-between;
             margin-bottom: 5rem;
             padding: 0 2rem;
+          }
+          .logos {
+            justify-content: space-around;
           }
           .fontImages {
             display: flex;
@@ -165,8 +168,8 @@
             display: flex;
             justify-content: space-between;
             div {
-              width: 104px;
-              height: 181px;
+              width: 114px;
+              height: 201px;
               border-radius: 32px;
               &:nth-child(1) {
                 background-color: #252531;

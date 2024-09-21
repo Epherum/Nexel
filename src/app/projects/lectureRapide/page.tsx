@@ -121,9 +121,9 @@ function page() {
                 src="/static/lecture/child.png"
                 alt=""
               />
-              <div className={styles.leftContent}>
+              <div className={styles.rightContent}>
                 <div className={styles.logos}>
-                  <img src="/static/lecture/logo.svg" alt="" />
+                  <img src="/static/lecture/logo2.svg" alt="" />
                   <img src="/static/lecture/favicon.svg" alt="" />
                 </div>
                 <div className={styles.font}>
