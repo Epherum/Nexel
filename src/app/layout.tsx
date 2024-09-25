@@ -3,6 +3,7 @@ import PageAnimatePresence from "./components/HOC/PageAnimatePresence";
 import Nav from "./components/Header/Header";
 import { Gilroy, Mazius } from "./fonts/font";
 import { Metadata } from "next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata = {
   title: "Emira Tlili",
