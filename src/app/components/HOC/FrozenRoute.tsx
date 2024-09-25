@@ -2,6 +2,7 @@
 
 import { useContext, useRef, useEffect } from "react";
 import { LayoutRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import { initializeScroll, destroyScroll } from "./smoothScroll"; // Import the scroll manager
 
 const FrozenRoute = ({ children }: { children: React.ReactNode }) => {
   const context = useContext(LayoutRouterContext);
@@ -9,16 +10,21 @@ const FrozenRoute = ({ children }: { children: React.ReactNode }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    (async () => {
-      const LocomotiveScroll = (await import("locomotive-scroll")).default;
-      const locomotiveScroll = new LocomotiveScroll({
-        // @ts-ignore
+
+    const setupScroll = async () => {
+      await initializeScroll({
         lenisOptions: {
           lerp: 0.1,
           wheelMultiplier: 1.1,
         },
       });
-    })();
+    };
+
+    setupScroll();
+
+    return () => {
+      destroyScroll(); // Clean up scroll instance on unmount
+    };
   }, []);
 
   return (
