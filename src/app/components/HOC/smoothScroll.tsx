@@ -8,7 +8,7 @@ export const initializeScroll = async (options = {}) => {
   locomotiveScroll = new LocomotiveScroll({
     //@ts-ignore
     lenisOptions: {
-      lerp: 0.08,
+      lerp: 0.06,
       wheelMultiplier: 1.3,
     },
   });

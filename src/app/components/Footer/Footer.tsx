@@ -21,7 +21,7 @@ function Footer() {
       <div className={styles.container}>
         <div className={styles.top}>
           <h4 className={styles.work}>
-            Let's work <span>together!</span>
+            Let&apos;s work <span>together!</span>
           </h4>
           <Magnetic>
             <Link href={"/projects"} scroll={false} className={styles.button}>

@@ -69,8 +69,8 @@ export default function Page() {
             The logo design was crafted with a deliberate focus on achieving a
             balance between minimalism and professionalism, while infusing a
             modern sensibility. Emphasizing simplicity and sophistication, each
-            element was carefully selected and refined to convey the brand's
-            identity succinctly.
+            element was carefully selected and refined to convey the
+            brand&apos;s identity succinctly.
           </p>
           <div className={styles.videoLeft}>
             <video src="/static/evense/evense-introVid.mp4" autoPlay loop />
@@ -81,7 +81,7 @@ export default function Page() {
               balance between minimalism and professionalism, while infusing a
               modern sensibility. Emphasizing simplicity and sophistication,
               each element was carefully selected and refined to convey the
-              brand's identity succinctly.
+              brand&apos;s identity succinctly.
             </p>
             <div className={styles.image}>
               <img src="/static/evense/evense-phone.png" alt="" />
@@ -125,11 +125,11 @@ export default function Page() {
               <p className={styles.number}>3</p>
               <div className={styles.content}>
                 <p className={styles.title}>
-                  Prototyping and Concept Development{" "}
+                  Prototyping and Concept Development
                 </p>
                 <p className={styles.text}>
                   Creation and refinement of prototypes and concepts,
-                  solidifying the project’s design foundation.
+                  solidifying the project&apos;s design foundation.
                 </p>
               </div>
             </div>
@@ -161,10 +161,10 @@ export default function Page() {
           <h2>Logo colour palette and typography</h2>
           <p>
             Our color palette for this project was carefully curated, blending
-            the client's preferences with my design expertise to ensure a
+            the client&apos;s preferences with my design expertise to ensure a
             vibrant and cohesive aesthetic. Each color was selected
             thoughtfully, aiming to resonate with the target audience while
-            maintaining the brand's identity.
+            maintaining the brand&apos;s identity.
           </p>
         </div>
         <div className={styles.colors}>
@@ -221,8 +221,8 @@ export default function Page() {
             optimal readability and usability, adhering to established web
             design principles and preferences. This deliberate choice not only
             enhances the visual appeal of the project but also contributes to a
-            seamless user experience, reinforcing the brand's identity across
-            various digital platforms.
+            seamless user experience, reinforcing the brand&apos;s identity
+            across various digital platforms.
           </p>
         </div>
         <img
@@ -327,10 +327,11 @@ export default function Page() {
             optimal readability and usability, adhering to established web
             design principles and preferences. This deliberate choice not only
             enhances the visual appeal of the project but also contributes to a
-            seamless user experience, reinforcing the brand's identity across
-            various digital platforms. <br /> <br />
+            seamless user experience, reinforcing the brand&apos;s identity
+            across various digital platforms. <br /> <br />
             the project but also contributes to a seamless user experience,
-            reinforcing the brand's identity across various digital platforms
+            reinforcing the brand&apos;s identity across various digital
+            platforms
           </p>
         </div>
         <div className={styles.typesOfServices}>

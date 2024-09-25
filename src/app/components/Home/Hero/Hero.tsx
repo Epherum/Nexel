@@ -28,7 +28,7 @@ function Hero() {
         initial="hidden"
         animate="visible"
       >
-        Hey, I'm
+        Hey, I&apos;m
       </motion.p>
       <motion.h1
         className={styles.emira}
@@ -78,7 +78,7 @@ function Hero() {
           </Link>
         </Magnetic>
         <Magnetic>
-          <button className={styles.resume}>Resume </button>
+          <button className={styles.resume}>Resume</button>
         </Magnetic>
       </motion.div>
       <motion.div

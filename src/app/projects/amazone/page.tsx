@@ -115,11 +115,10 @@ export default function Page() {
       {/* Second Showcase */}
       <section className={styles.secondShowcase}>
         {secondShowcaseImages.map((src, index) => (
-          <div className={styles.imageContainer}>
+          <div className={styles.imageContainer} key={index}>
             <motion.img
               data-scroll
               data-scroll-speed="-0.1"
-              key={index}
               src={src}
               alt=""
               initial={{ opacity: 0 }}
