@@ -9,6 +9,7 @@ const FrozenRoute = ({ children }: { children: React.ReactNode }) => {
   const frozen = useRef(context).current;
 
   useEffect(() => {
+    //it doesnt work in dev mode but it works in build
     window.scrollTo(0, 0);
 
     const setupScroll = async () => {

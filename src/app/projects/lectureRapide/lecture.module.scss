@@ -148,9 +148,12 @@
             justify-content: space-between;
             margin-bottom: 5rem;
             padding: 0 2rem;
+            padding-right: 5rem;
           }
+
           .logos {
             justify-content: space-around;
+            padding: 0 1rem;
           }
           .fontImages {
             display: flex;
@@ -167,6 +170,7 @@
             padding: 0;
             display: flex;
             justify-content: space-between;
+            margin-right: 5rem;
             div {
               width: 114px;
               height: 201px;

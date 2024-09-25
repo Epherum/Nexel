@@ -5,6 +5,29 @@ import Footer from "@/app/components/Footer/Footer";
 import { useRef } from "react";
 import { useScroll, useTransform, motion, easeOut } from "framer-motion";
 import { useState, useEffect } from "react";
+import Image from "next/image";
+
+import hero from "/public/static/lecture/hero.webp"; // Import hero image as webp
+import logo from "/public/static/lecture/logo.svg";
+import figma from "/public/static/lecture/figma.svg";
+import ps from "/public/static/lecture/ps.svg";
+import illustrator from "/public/static/lecture/illustrator.svg";
+import clipboard from "/public/static/lecture/clipboard.webp";
+import child from "/public/static/lecture/child.webp";
+import logo2 from "/public/static/lecture/logo2.svg";
+import favicon from "/public/static/lecture/favicon.svg";
+import regular from "/public/static/lecture/Regular.svg";
+import medium from "/public/static/lecture/Medium.svg";
+import bold from "/public/static/lecture/bold.svg";
+import aa from "/public/static/lecture/Aa.svg";
+import mockup from "/public/static/lecture/mockup.webp";
+import flow from "/public/static/lecture/flow.webp";
+import pic1 from "/public/static/lecture/1.webp";
+import pic2 from "/public/static/lecture/2.webp";
+import wireframe from "/public/static/lecture/wireframe.webp";
+import visual from "/public/static/lecture/visual.webp";
+import lightbulb from "/public/static/lecture/lightbulb.svg";
+import info from "/public/static/lecture/info.svg";
 
 export default function Page() {
   const sectionRef = useRef(null);
@@ -47,24 +70,23 @@ export default function Page() {
       document.body.style.background = "white";
     };
   }, [scrollPosition, sectionRef]);
-
   return (
     <>
       <section className={styles.hero}>
         <div className={styles.heroImage}>
-          <img src="/static/lecture/hero.png" alt="" />
+          <Image src={hero} alt="Hero" priority />
         </div>
         <div className={styles.content}>
           <div className={styles.logo}>
-            <img src="/static/lecture/logo.svg" alt="" />
+            <Image src={logo} alt="Logo" />
           </div>
           <div className={styles.text}>
             <h1>Study platform</h1>
             <h4>UX\UI</h4>
             <div className={styles.tools}>
-              <img src="/static/lecture/figma.svg" alt="" />
-              <img src="/static/lecture/ps.svg" alt="" />
-              <img src="/static/lecture/illustrator.svg" alt="" />
+              <Image src={figma} alt="Figma" />
+              <Image src={ps} alt="Photoshop" />
+              <Image src={illustrator} alt="Illustrator" />
             </div>
           </div>
         </div>
@@ -75,14 +97,14 @@ export default function Page() {
         <div className={styles.colorMiddle} />
         <div className={styles.container}>
           <div className={styles.logo}>
-            <img src="/static/lecture/logo.svg" alt="" />
+            <Image src={logo} alt="Logo" />
           </div>
           <div className={styles.overview}>
             <div className={styles.content}>
               <h2>Overview</h2>
               <div className={styles.aboutSection}>
                 <div className={styles.about}>
-                  <img src="/static/lecture/info.svg" alt="" />
+                  <Image src={info} alt="Info" />
                   <h4>About</h4>
                 </div>
                 <p>
@@ -90,12 +112,12 @@ export default function Page() {
                   literate Francophone children over the age of eight. Their
                   platform was created based on the work of leading specialists
                   in the field of rapid reading and brand new learning
-                  methodologies.{" "}
+                  methodologies.
                 </p>
               </div>
               <div className={styles.conceptSection}>
                 <div className={styles.concept}>
-                  <img src="/static/lecture/lightbulb.svg" alt="" />
+                  <Image src={lightbulb} alt="Concept" />
                   <h4>Concept</h4>
                 </div>
                 <p>
@@ -110,40 +132,36 @@ export default function Page() {
               </div>
             </div>
             <div className={styles.image}>
-              <img src="/static/lecture/clipboard.png" alt="" />
+              <Image src={clipboard} alt="Clipboard" />
             </div>
           </div>
           <div className={styles.corporate}>
             <h2>Corporate identity</h2>
             <div className={styles.content}>
-              <img
-                className={styles.child}
-                src="/static/lecture/child.png"
-                alt=""
-              />
+              <Image src={child} alt="Child" />
               <div className={styles.rightContent}>
                 <div className={styles.logos}>
-                  <img src="/static/lecture/logo2.svg" alt="dad" />
-                  <img src="/static/lecture/favicon.svg" alt="" />
+                  <Image src={logo} alt="Logo2" />
+                  <Image src={favicon} alt="Favicon" />
                 </div>
                 <div className={styles.font}>
-                  <p>font</p>
+                  <p>Font</p>
                   <p>Ubuntu</p>
                 </div>
                 <div className={styles.fontImages}>
                   <div className={styles.weights}>
                     <div>
-                      <img src="/static/lecture/Regular.svg" alt="" />
+                      <Image src={regular} alt="Regular" />
                     </div>
                     <div>
-                      <img src="/static/lecture/Medium.svg" alt="" />
+                      <Image src={medium} alt="Medium" />
                     </div>
                     <div>
-                      <img src="/static/lecture/bold.svg" alt="" />
+                      <Image src={bold} alt="Bold" />
                     </div>
                   </div>
                   <div>
-                    <img src="/static/lecture/Aa.svg" alt="" />
+                    <Image src={aa} alt="Aa" />
                   </div>
                 </div>
                 <div className={styles.colors}>
@@ -171,22 +189,18 @@ export default function Page() {
               the user can achieve it.
             </p>
           </div>
-          <img src="/static/lecture/mockup.png" alt="" />
+          <Image src={mockup} alt="Mockup" />
         </div>
-        <img
-          className={styles.flowImage}
-          src="/static/lecture/flow.png"
-          alt=""
-        />
+        <Image className={styles.flowImage} src={flow} alt="Flow" />
       </section>
 
       <section className={styles.pictures}>
         <div className={styles.top}>
           <div>
-            <img src="/static/lecture/1.png" alt="" />
+            <Image src={pic1} alt="Picture 1" />
           </div>
           <div>
-            <img src="/static/lecture/2.png" alt="" />
+            <Image src={pic2} alt="Picture 2" />
           </div>
         </div>
       </section>
@@ -196,7 +210,7 @@ export default function Page() {
           <h5>UX Design</h5>
           <h2>Wireframes</h2>
         </div>
-        <img src="/static/lecture/wireframe.png" alt="" />
+        <Image src={wireframe} alt="Wireframe" />
       </section>
 
       <motion.section
@@ -208,7 +222,7 @@ export default function Page() {
           <h5>UI Design</h5>
           <h2>Visual Design</h2>
         </div>
-        <img src="/static/lecture/visual.png" alt="" />
+        <Image src={visual} alt="Visual Design" />
       </motion.section>
 
       <Footer />

@@ -6,11 +6,11 @@ import { useRef } from "react";
 import { useScroll, useTransform, motion, easeOut } from "framer-motion";
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import img1 from "/public/static/bookApp/1.png";
-import img2 from "/public/static/bookApp/2.png";
-import img3 from "/public/static/bookApp/3.png";
-import img4 from "/public/static/bookApp/4.png";
-import img5 from "/public/static/bookApp/5.png";
+import img1 from "/public/static/bookApp/1.webp";
+import img2 from "/public/static/bookApp/2.webp";
+import img3 from "/public/static/bookApp/3.webp";
+import img4 from "/public/static/bookApp/4.webp";
+import img5 from "/public/static/bookApp/5.webp";
 
 export default function Page() {
   const sectionRef = useRef(null);
