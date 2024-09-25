@@ -13,12 +13,7 @@ const FrozenRoute = ({ children }: { children: React.ReactNode }) => {
     window.scrollTo(0, 0);
 
     const setupScroll = async () => {
-      await initializeScroll({
-        lenisOptions: {
-          lerp: 0.1,
-          wheelMultiplier: 1.1,
-        },
-      });
+      await initializeScroll();
     };
 
     setupScroll();
