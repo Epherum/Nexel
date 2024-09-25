@@ -5,6 +5,17 @@ import { useState, useEffect, useRef } from "react";
 import Modal from "../Modal/Modal";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Title from "../Title/Title";
+import Image from "next/image";
+
+import bookApp from "/public/static/thumbnails/bookApp-thumbnail.png";
+import evense from "/public/static/thumbnails/evense-thumbnail.png";
+import lecture from "/public/static/thumbnails/lecture-thumbnail.png";
+import tresors from "/public/static/thumbnails/tresors-thumbnail.png";
+import virginia from "/public/static/thumbnails/virginia-thumbnail.webp";
+import digital from "/public/static/thumbnails/digital-thumbnail.webp";
+import mestiri from "/public/static/thumbnails/mestiri-thumbnail.png";
+import amazone from "/public/static/thumbnails/amazone-thumbnail.png";
+import placeholder from "/public/static/thumbnails/placeholder-thumbnail.png";
 
 function Projects() {
   const [color, setColor] = useState("");
@@ -104,11 +115,11 @@ function Projects() {
           }}
         >
           <Link href={"/projects/evense"} scroll={false}>
-            <img
+            <Image
               data-scroll
               data-scroll-speed="-0.1"
-              src="/static/evense-thumbnail.png"
-              alt="Image"
+              src={evense}
+              alt="evense"
             />
             <p className={styles.date}>2017</p>
             <p className={styles.name}>Evense</p>
@@ -124,11 +135,11 @@ function Projects() {
           }}
         >
           <Link href={"/projects/lectureRapide"} scroll={false}>
-            <img
+            <Image
               data-scroll
               data-scroll-speed="-0.1"
-              src="/static/10.png"
-              alt="Image"
+              src={lecture}
+              alt="lecture Rapide"
             />
           </Link>
           <p className={styles.date}>2017</p>
@@ -145,11 +156,11 @@ function Projects() {
         }}
       >
         <Link href={"/projects/bookApp"} scroll={false}>
-          <img
+          <Image
             data-scroll
             data-scroll-speed="-0.1"
-            src="/static/bookApp-thumbnail.png"
-            alt="Image"
+            src={bookApp}
+            alt="book app"
           />
         </Link>
         <p className={styles.date}>2017</p>
@@ -166,10 +177,10 @@ function Projects() {
           }}
         >
           <Link href={"/projects/laboTresorsNaturels"} scroll={false}>
-            <img
+            <Image
               data-scroll
               data-scroll-speed="-0.1"
-              src="/static/tresors-thumbnail.png"
+              src={tresors}
               alt="Image"
             />
             <p className={styles.date}>2017</p>
@@ -186,16 +197,16 @@ function Projects() {
               handleHover("white", false, true);
             }}
           >
-            <Link href={"/projects/mestiri"} scroll={false}>
-              <img
+            <Link href={"/projects/digital"} scroll={false}>
+              <Image
                 data-scroll
                 data-scroll-speed="-0.1"
-                src="/static/mestiri-thumbnail.png"
+                src={digital}
                 alt="Image"
               />
 
               <p className={styles.date}>2017</p>
-              <p className={styles.name}>Mestiri</p>
+              <p className={styles.name}>Digital Lifestyle</p>
             </Link>
           </div>
           <div
@@ -206,10 +217,10 @@ function Projects() {
             onMouseOut={() => handleHover("white", false, true)}
           >
             <Link href={"/projects/amazone"} scroll={false}>
-              <img
+              <Image
                 data-scroll
                 data-scroll-speed="-0.1"
-                src="/static/amazone/8.png"
+                src={amazone}
                 alt="Image"
               />
               <p className={styles.date}>2017</p>
@@ -217,6 +228,68 @@ function Projects() {
             </Link>
           </div>
         </div>
+      </div>
+      <div className={styles.first}>
+        <div
+          className={`${styles.first_left} ${styles.hover}`}
+          onMouseOver={() => {
+            handleHover("#c3c8d8", true);
+          }}
+          onMouseOut={() => {
+            handleHover("white", false, false);
+          }}
+        >
+          <Link href={"/projects/virginia"} scroll={false}>
+            <Image
+              data-scroll
+              data-scroll-speed="-0.1"
+              src={virginia}
+              alt="Image"
+            />
+            <p className={styles.date}>2017</p>
+            <p className={styles.name}>Virginia</p>
+          </Link>
+        </div>
+        <div
+          className={`${styles.first_right} ${styles.hover}`}
+          onMouseOver={() => {
+            handleHover("#fe9fad", true);
+          }}
+          onMouseOut={() => {
+            handleHover("white", false, false);
+          }}
+        >
+          <Link href={"/projects/mestiri"} scroll={false}>
+            <Image
+              data-scroll
+              data-scroll-speed="-0.1"
+              src={mestiri}
+              alt="Image"
+            />
+          </Link>
+          <p className={styles.date}>2017</p>
+          <p className={styles.name}>Mestiri</p>
+        </div>
+      </div>
+      <div
+        className={`${styles.second} ${styles.hover}`}
+        onMouseOver={() => {
+          handleHover("#c3c8d8", true);
+        }}
+        onMouseOut={() => {
+          handleHover("white", false);
+        }}
+      >
+        <Link href={"#"} scroll={false}>
+          <Image
+            data-scroll
+            data-scroll-speed="-0.1"
+            src={placeholder}
+            alt="Image"
+          />
+        </Link>
+        <p className={styles.date}>2017</p>
+        <p className={styles.name}>Book app</p>
       </div>
       <div className={styles.skewed} />
       <Modal active={modal} />

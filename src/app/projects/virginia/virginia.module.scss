@@ -23,7 +23,6 @@
 .firstShowcase {
   position: relative;
   z-index: 2;
-
   padding: 5rem 0;
   background-color: #d9d9d9;
   display: flex;
@@ -31,8 +30,9 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+
   img {
-    width: 28vw;
+    width: 100%;
     object-fit: cover;
   }
   .skewed {
@@ -45,9 +45,6 @@
     transform: skewY(2deg);
     border-radius: 20px;
   }
-}
-.last {
-  border-bottom-left-radius: 40px;
 }
 
 .secondShowcase {
@@ -65,11 +62,23 @@
     height: 38rem;
     border-radius: 40px;
     img {
-      width: 100%;
       position: absolute;
+      object-fit: cover;
       will-change: transform;
-      width: 40vw;
+      width: 100%;
       object-fit: cover;
     }
+  }
+}
+
+.last {
+  position: relative;
+  z-index: 2;
+  width: 100vw;
+  img {
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    width: 100%;
+    object-fit: cover;
   }
 }

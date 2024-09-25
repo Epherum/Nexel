@@ -52,7 +52,7 @@
           position: absolute;
           width: 100%;
           scale: 1.1;
-          top: -8%;
+          object-fit: fill;
           will-change: transform;
         }
       }
@@ -79,14 +79,14 @@
       align-self: flex-end;
       border-radius: 20px;
       overflow: hidden;
-      height: 24.5rem;
-      width: 20rem;
+      height: 27rem;
+      width: 26rem;
       a {
         img {
           position: absolute;
           width: 100%;
-          scale: 1.1;
           top: -8%;
+          object-fit: fill;
           will-change: transform;
         }
       }
@@ -150,7 +150,7 @@
     gap: 5rem;
     justify-content: center;
     margin: 0rem 3rem;
-    margin-bottom: 15rem;
+    margin-bottom: 11rem;
     .third_left {
       position: relative;
       align-self: center;

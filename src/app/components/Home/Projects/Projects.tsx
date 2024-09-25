@@ -5,43 +5,35 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
+import bookApp from "/public/static/thumbnails/bookApp-thumbnail.png";
+import evense from "/public/static/thumbnails/evense-thumbnail.png";
+import lecture from "/public/static/thumbnails/lecture-thumbnail.png";
+import tresors from "/public/static/thumbnails/tresors-thumbnail.png";
+import virginia from "/public/static/thumbnails/virginia-thumbnail.webp";
+import digital from "/public/static/thumbnails/digital-thumbnail.webp";
+import mestiri from "/public/static/thumbnails/mestiri-thumbnail.png";
+import amazone from "/public/static/thumbnails/amazone-thumbnail.png";
+import placeholder from "/public/static/thumbnails/placeholder-thumbnail.png";
+
 const slider1 = [
-  {
-    src: "/static/1.png",
-  },
-  {
-    src: "/static/2.png",
-  },
-  {
-    src: "/static/3.png",
-  },
+  { src: bookApp, name: "bookApp" },
+  { src: evense, name: "evense" },
+  { src: lecture, name: "lectureRapide" },
 ];
 
 const slider2 = [
-  {
-    src: "/static/4.png",
-  },
-  {
-    src: "/static/5.png",
-  },
-  {
-    src: "/static/6.png",
-  },
+  { src: tresors, name: "laboTresorsNaturels" },
+  { src: virginia, name: "virginia" },
+  { src: digital, name: "digital" },
 ];
 
 const slider3 = [
-  {
-    src: "/static/7.png",
-  },
-  {
-    src: "/static/8.png",
-  },
-  {
-    src: "/static/1.png",
-  },
+  { src: mestiri, name: "mestiri" },
+  { src: amazone, name: "amazone" },
+  { src: placeholder, name: "#" }, // Assuming you're reusing the same image/project
 ];
 
-export default function index() {
+export default function Projects() {
   const container = useRef(null);
   const { scrollYProgress: containerScrollYProgress } = useScroll({
     target: container,
@@ -115,38 +107,43 @@ export default function index() {
       </div>
       <div className={styles.slidingImagesContainer}>
         <div ref={container} className={styles.slidingImages}>
+          {/* Slider 1 */}
           <motion.div style={{ x: x1 }} className={styles.slider}>
-            {slider1.map((project, index) => {
-              return (
-                <div key={index} className={styles.project}>
+            {slider1.map((project, index) => (
+              <div key={index} className={styles.project}>
+                <Link href={`/projects/${project.name}`} scroll={false}>
                   <div className={styles.imageContainer}>
-                    <Image fill={true} alt={"image"} src={project.src} />
+                    <Image fill={true} alt={project.name} src={project.src} />
                   </div>
-                </div>
-              );
-            })}
+                </Link>
+              </div>
+            ))}
           </motion.div>
+
+          {/* Slider 2 */}
           <motion.div style={{ x: x2 }} className={styles.slider}>
-            {slider2.map((project, index) => {
-              return (
-                <div key={index} className={styles.project}>
-                  <div key={index} className={styles.imageContainer}>
-                    <Image fill={true} alt={"image"} src={project.src} />
+            {slider2.map((project, index) => (
+              <div key={index} className={styles.project}>
+                <Link href={`/projects/${project.name}`} scroll={false}>
+                  <div className={styles.imageContainer}>
+                    <Image fill={true} alt={project.name} src={project.src} />
                   </div>
-                </div>
-              );
-            })}
+                </Link>
+              </div>
+            ))}
           </motion.div>
+
+          {/* Slider 3 */}
           <motion.div style={{ x: x3 }} className={styles.slider}>
-            {slider3.map((project, index) => {
-              return (
-                <div key={index} className={styles.project}>
-                  <div key={index} className={styles.imageContainer}>
-                    <Image fill={true} alt={"image"} src={project.src} />
+            {slider3.map((project, index) => (
+              <div key={index} className={styles.project}>
+                <Link href={`/projects/${project.name}`} scroll={false}>
+                  <div className={styles.imageContainer}>
+                    <Image fill={true} alt={project.name} src={project.src} />
                   </div>
-                </div>
-              );
-            })}
+                </Link>
+              </div>
+            ))}
           </motion.div>
         </div>
       </div>

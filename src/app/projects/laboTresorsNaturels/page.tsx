@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { useScroll, useTransform, motion, easeOut } from "framer-motion";
 import { useState, useEffect } from "react";
 
-function page() {
+export default function Page() {
   const sectionRef = useRef(null);
 
   const { scrollYProgress: sectionScrollYProgress } = useScroll({
@@ -49,40 +49,40 @@ function page() {
   }, [scrollPosition, sectionRef]);
 
   const firstShowcaseImages = [
-    "/static/labo/1.png",
-    "/static/labo/2.png",
-    "/static/labo/3.png",
-    "/static/labo/4.png",
-    "/static/labo/5.png",
-    "/static/labo/6.png",
+    "/static/labo/1.webp",
+    "/static/labo/2.webp",
+    "/static/labo/3.webp",
+    "/static/labo/4.webp",
+    "/static/labo/5.webp",
+    "/static/labo/6.webp",
   ];
 
-  const secondShowcaseImages = ["/static/labo/7.png", "/static/labo/8.png"];
+  const secondShowcaseImages = ["/static/labo/7.webp", "/static/labo/8.webp"];
 
   const thirdShowcaseImages = [
-    "/static/labo/9.png",
-    "/static/labo/10.png",
-    "/static/labo/11.png",
-    "/static/labo/12.png",
-    "/static/labo/13.png",
-    "/static/labo/14.png",
-    "/static/labo/15.png",
-    "/static/labo/16.png",
-    "/static/labo/17.png",
+    "/static/labo/9.webp",
+    "/static/labo/10.webp",
+    "/static/labo/11.webp",
+    "/static/labo/12.webp",
+    "/static/labo/13.webp",
+    "/static/labo/14.webp",
+    "/static/labo/15.webp",
+    "/static/labo/16.webp",
+    "/static/labo/17.webp",
   ];
 
-  const fourthShowcaseImages = ["/static/labo/18.png", "/static/labo/19.png"];
+  const fourthShowcaseImages = ["/static/labo/18.webp", "/static/labo/19.webp"];
 
   const lastShowcaseImages = [
-    "/static/labo/20.png",
-    "/static/labo/21.png",
-    "/static/labo/22.png",
-    "/static/labo/24.png",
-    "/static/labo/25.png",
-    "/static/labo/26.png",
-    "/static/labo/27.png",
-    "/static/labo/28.png",
-    "/static/labo/29.png",
+    "/static/labo/20.webp",
+    "/static/labo/21.webp",
+    "/static/labo/22.webp",
+    "/static/labo/24.webp",
+    "/static/labo/25.webp",
+    "/static/labo/26.webp",
+    "/static/labo/27.webp",
+    "/static/labo/28.webp",
+    "/static/labo/29.webp",
   ];
 
   return (
@@ -92,7 +92,7 @@ function page() {
           data-scroll
           data-scroll-speed="-0.1"
           className={styles.heroImage}
-          src="/static/labo/hero.png"
+          src="/static/labo/hero.webp"
           alt=""
         />
         <img
@@ -101,7 +101,6 @@ function page() {
           alt=""
         />
       </section>
-
       {/* First Showcase */}
       <section className={styles.firstShowcase}>
         {firstShowcaseImages.map((src, index) => (
@@ -119,15 +118,13 @@ function page() {
           />
         ))}
       </section>
-
       {/* Second Showcase */}
       <section className={styles.secondShowcase}>
         {secondShowcaseImages.map((src, index) => (
-          <div className={styles.imageContainer}>
+          <div className={styles.imageContainer} key={index}>
             <motion.img
               data-scroll
               data-scroll-speed="-0.1"
-              key={index}
               src={src}
               alt=""
               initial={{ opacity: 0 }}
@@ -141,7 +138,6 @@ function page() {
           </div>
         ))}
       </section>
-
       {/* Third Showcase */}
       <section className={styles.firstShowcase}>
         {thirdShowcaseImages.map((src, index) => (
@@ -159,15 +155,13 @@ function page() {
           />
         ))}
       </section>
-
       {/* Fourth Showcase */}
       <section className={styles.secondShowcase}>
         {fourthShowcaseImages.map((src, index) => (
-          <div className={styles.imageContainer}>
+          <div className={styles.imageContainer} key={index}>
             <motion.img
               data-scroll
               data-scroll-speed="-0.1"
-              key={index}
               src={src}
               alt=""
               initial={{ opacity: 0 }}
@@ -181,7 +175,6 @@ function page() {
           </div>
         ))}
       </section>
-
       {/* Last Showcase with ref and scale */}
       <motion.section
         style={{ scale }}
@@ -208,5 +201,3 @@ function page() {
     </>
   );
 }
-
-export default page;

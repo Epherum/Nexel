@@ -5,8 +5,14 @@ import Footer from "@/app/components/Footer/Footer";
 import { useRef } from "react";
 import { useScroll, useTransform, motion, easeOut } from "framer-motion";
 import { useState, useEffect } from "react";
+import Image from "next/image";
+import img1 from "/public/static/bookApp/1.png";
+import img2 from "/public/static/bookApp/2.png";
+import img3 from "/public/static/bookApp/3.png";
+import img4 from "/public/static/bookApp/4.png";
+import img5 from "/public/static/bookApp/5.png";
 
-function page() {
+export default function Page() {
   const sectionRef = useRef(null);
 
   const { scrollYProgress: sectionScrollYProgress } = useScroll({
@@ -47,15 +53,16 @@ function page() {
       document.body.style.background = "white";
     };
   }, [scrollPosition, sectionRef]);
+
   return (
     <>
       <section className={styles.bookApp}>
         <div className={styles.first}>
-          <img
+          <Image
             className={styles.image}
             data-scroll
             data-scroll-speed="-0.1"
-            src="/static/bookApp/bookApp1.png"
+            src={img1}
             alt=""
           />
           <div className={styles.heading}>
@@ -70,28 +77,13 @@ function page() {
           </div>
         </div>
         <div className={styles.second}>
-          <img
-            data-scroll
-            data-scroll-speed="-0.1"
-            src="/static/bookApp/bookApp2.png"
-            alt=""
-          />
+          <Image data-scroll data-scroll-speed="-0.1" src={img2} alt="" />
         </div>
         <div className={styles.third}>
-          <img
-            data-scroll
-            data-scroll-speed="-0.1"
-            src="/static/bookApp/bookApp3.png"
-            alt=""
-          />
+          <Image data-scroll data-scroll-speed="-0.1" src={img3} alt="" />
         </div>
         <div className={styles.fourth}>
-          <img
-            data-scroll
-            data-scroll-speed="-0.1"
-            src="/static/bookApp/bookApp4.png"
-            alt=""
-          />
+          <Image data-scroll data-scroll-speed="-0.1" src={img4} alt="" />
         </div>
       </section>
       <motion.section
@@ -100,12 +92,10 @@ function page() {
         className={styles.fifth}
       >
         <div>
-          <img src="/static/bookApp/bookApp5.png" alt="" />
+          <Image src={img5} alt="" />
         </div>
       </motion.section>
       <Footer />
     </>
   );
 }
-
-export default page;

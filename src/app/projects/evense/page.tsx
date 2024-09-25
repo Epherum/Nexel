@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { useScroll, useTransform, motion, easeOut } from "framer-motion";
 import { useState, useEffect } from "react";
 
-function page() {
+export default function Page() {
   const sectionRef = useRef(null);
 
   const { scrollYProgress: sectionScrollYProgress } = useScroll({
@@ -393,5 +393,3 @@ function page() {
     </>
   );
 }
-
-export default page;

@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { useScroll, useTransform, motion, easeOut } from "framer-motion";
 import { useState, useEffect } from "react";
 
-function page() {
+export default function Page() {
   const sectionRef = useRef(null);
 
   const { scrollYProgress: sectionScrollYProgress } = useScroll({
@@ -49,47 +49,47 @@ function page() {
   }, [scrollPosition, sectionRef]);
 
   const firstShowcaseImages = [
-    "/static/amazone/1.png",
-    "/static/amazone/2.png",
-    "/static/amazone/3.png",
-    "/static/amazone/4.png",
-    "/static/amazone/5.png",
-    "/static/amazone/6.png",
+    "/static/amazone/1.webp",
+    "/static/amazone/2.webp",
+    "/static/amazone/3.webp",
+    "/static/amazone/4.webp",
+    "/static/amazone/5.webp",
+    "/static/amazone/6.webp",
   ];
 
   const secondShowcaseImages = [
-    "/static/amazone/7.png",
-    "/static/amazone/8.png",
+    "/static/amazone/7.webp",
+    "/static/amazone/8.webp",
   ];
 
   const thirdShowcaseImages = [
-    "/static/amazone/9.png",
-    "/static/amazone/10.png",
-    "/static/amazone/11.png",
-    "/static/amazone/12.png",
-    "/static/amazone/13.png",
-    "/static/amazone/14.png",
-    "/static/amazone/15.png",
-    "/static/amazone/16.png",
-    "/static/amazone/17.png",
-    "/static/amazone/18.png",
-    "/static/amazone/19.png",
-    "/static/amazone/20.png",
+    "/static/amazone/9.webp",
+    "/static/amazone/10.webp",
+    "/static/amazone/11.webp",
+    "/static/amazone/12.webp",
+    "/static/amazone/13.webp",
+    "/static/amazone/14.webp",
+    "/static/amazone/15.webp",
+    "/static/amazone/21.webp",
+    "/static/amazone/17.webp",
+    "/static/amazone/18.webp",
+    "/static/amazone/19.webp",
+    "/static/amazone/20.webp",
   ];
 
   return (
-    <>
+    <section>
       <section className={styles.hero}>
         <img
           data-scroll
           data-scroll-speed="-0.1"
           className={styles.heroImage}
-          src="/static/amazone/hero.png"
+          src="/static/amazone/hero.webp"
           alt=""
         />
         <img
           className={styles.heroLogo}
-          src="/static/amazone/socialMedia.svg"
+          src="/static/amazone/socialMedia.webp"
           alt=""
         />
       </section>
@@ -157,8 +157,6 @@ function page() {
         <div className={styles.skewed} />
       </motion.section>
       <Footer />
-    </>
+    </section>
   );
 }
-
-export default page;

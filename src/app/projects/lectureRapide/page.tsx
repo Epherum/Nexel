@@ -6,7 +6,7 @@ import { useRef } from "react";
 import { useScroll, useTransform, motion, easeOut } from "framer-motion";
 import { useState, useEffect } from "react";
 
-function page() {
+export default function Page() {
   const sectionRef = useRef(null);
 
   const { scrollYProgress: sectionScrollYProgress } = useScroll({
@@ -123,7 +123,7 @@ function page() {
               />
               <div className={styles.rightContent}>
                 <div className={styles.logos}>
-                  <img src="/static/lecture/logo2.svg" alt="" />
+                  <img src="/static/lecture/logo2.svg" alt="dad" />
                   <img src="/static/lecture/favicon.svg" alt="" />
                 </div>
                 <div className={styles.font}>
@@ -215,5 +215,3 @@ function page() {
     </>
   );
 }
-
-export default page;

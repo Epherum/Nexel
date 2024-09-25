@@ -1,24 +1,24 @@
 import React from "react";
 import styles from "./modal.module.scss";
-import image from "/public/static/1.png";
 import circle from "/public/static/circle.svg";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { motion } from "framer-motion";
+import image from "/public/static/thumbnails/placeholder-thumbnail.png";
 
 function Modal({ active }: { active: boolean }) {
   const scaleAnimation = {
-    initial: { scale: 0, x: "-8%", y: "-160%" },
+    initial: { scale: 0, x: "-10%", y: "-30%" },
     enter: {
       scale: 1,
-      x: "-8%",
-      y: "-160%",
+      x: "-10%",
+      y: "-30%",
       transition: { duration: 0.4, ease: [0.76, 0, 0.24, 1] },
     },
     closed: {
       scale: 0,
-      x: "-8%",
-      y: "-160%",
+      x: "-10%",
+      y: "-30%",
       transition: { duration: 0.4, ease: [0.32, 0, 0.67, 0] },
     },
   };

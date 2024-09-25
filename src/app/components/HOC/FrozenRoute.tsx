@@ -12,11 +12,11 @@ const FrozenRoute = ({ children }: { children: React.ReactNode }) => {
     (async () => {
       const LocomotiveScroll = (await import("locomotive-scroll")).default;
       const locomotiveScroll = new LocomotiveScroll({
-        // // @ts-ignore
-        // lenisOptions: {
-        //   lerp: 0.08,
-        //   wheelMultiplier: 1.1,
-        // },
+        // @ts-ignore
+        lenisOptions: {
+          lerp: 0.1,
+          wheelMultiplier: 1.1,
+        },
       });
     })();
   }, []);
