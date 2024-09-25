@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./modal.module.scss";
-import circle from "/public/static/circle.svg";
+import circle from "/public/static/home/circle.svg";
 import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { motion } from "framer-motion";

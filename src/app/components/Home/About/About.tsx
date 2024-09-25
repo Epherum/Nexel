@@ -1,7 +1,8 @@
 import React from "react";
-import emira from "/public/static/emira2.png";
+import emira from "/public/static/home/emira.webp";
 import styles from "./about.module.scss";
-import rectangle from "/public/static/rectangle.png";
+import rectangle from "/public/static/home/rectangle.png";
+import Image from "next/image";
 import {
   motion,
   useScroll,
@@ -109,18 +110,19 @@ function About() {
           </p>
         </div>
         <div ref={imageContainer} className={styles.image}>
-          <motion.img
+          <motion.div
             style={{ x: x1, y: y2, rotateZ: z2 }}
             className={styles.rectangle}
-            src={rectangle.src}
-            alt="rectangle"
-          />
-          <motion.img
+          >
+            <Image src={rectangle} alt="rectangle" />
+          </motion.div>
+
+          <motion.div
             style={{ x: x1, y: y1, rotateZ: z1 }}
             className={styles.emira}
-            src={emira.src}
-            alt="emira"
-          />
+          >
+            <Image src={emira} alt="emira" priority />
+          </motion.div>
         </div>
       </div>
     </section>

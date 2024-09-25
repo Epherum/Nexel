@@ -1,26 +1,27 @@
 import React from "react";
 import Link from "next/link";
 import styles from "./hero.module.scss";
-import image from "/public/static/image.webp";
-import behance from "/public/static/behance.svg";
-import instagram from "/public/static/instagram.svg";
-import linkedin from "/public/static/linkedin.svg";
-import Line from "./line.svg";
 import { motion } from "framer-motion";
 import { variants } from "./animations";
 import Magnetic from "../../Magnetic/Magnetic";
+import background from "/public/static/home/background.webp";
+import behance from "/public/static/home/behance.svg";
+import instagram from "/public/static/home/instagram.svg";
+import linkedin from "/public/static/home/linkedin.svg";
+import line from "/public/static/home/line.svg";
+import Image from "next/image";
 
 function Hero() {
   return (
     <section className={styles.landing}>
-      <motion.img
+      <motion.div
         className={styles.image}
-        src={image.src}
-        alt="Background"
         variants={variants.image}
         initial="hidden"
         animate="visible"
-      />
+      >
+        <Image src={background} alt="Background" />
+      </motion.div>
       <motion.p
         className={styles.hey}
         variants={variants.text}
@@ -52,16 +53,16 @@ function Hero() {
         animate="visible"
       >
         <a href="https://www.behance.net/tliliemira67fa" target="_blank">
-          <img src={behance.src} alt="Behance" />
+          <Image src={behance} alt="Behance" />
         </a>
         <a href="https://www.instagram.com/kkitsu.exe/" target="_blank">
-          <img src={instagram.src} alt="Instagram" />
+          <Image src={instagram} alt="Instagram" />
         </a>
         <a
           href="https://jp.linkedin.com/in/amira-tlili-a3b928167"
           target="_blank"
         >
-          <img src={linkedin.src} alt="Linkedin" />
+          <Image src={linkedin} alt="Linkedin" />
         </a>
       </motion.div>
 
@@ -87,7 +88,7 @@ function Hero() {
         animate="visible"
       >
         <p className={styles.scroll_text}>scroll</p>
-        <img className={styles.svg_line} src={Line.src} alt="line" />
+        <img className={styles.svg_line} src={line.src} alt="line" />
       </motion.div>
     </section>
   );

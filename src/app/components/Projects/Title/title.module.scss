@@ -15,7 +15,7 @@
     position: relative;
 
     &::after {
-      content: url("./vector.svg");
+      content: url("/static/home/vector.svg");
       display: block;
       position: absolute;
       top: 30%;

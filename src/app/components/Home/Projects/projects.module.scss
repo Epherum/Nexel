@@ -27,7 +27,7 @@
       display: inline-block;
 
       &::after {
-        content: url("./vector.svg");
+        content: url("/static/home/vector.svg");
         display: block;
         position: absolute;
         top: 35px;

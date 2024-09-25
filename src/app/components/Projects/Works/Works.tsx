@@ -6,7 +6,6 @@ import Modal from "../Modal/Modal";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Title from "../Title/Title";
 import Image from "next/image";
-import { getScrollInstance } from "../../HOC/smoothScroll";
 
 import bookApp from "/public/static/thumbnails/bookApp-thumbnail.png";
 import evense from "/public/static/thumbnails/evense-thumbnail.png";
@@ -31,14 +30,6 @@ function Projects() {
       setOverrideColor(override);
     }
   };
-
-  // useEffect(() => {
-  //   const scroll = getScrollInstance();
-  //   if (scroll) {
-  //     // Use the scroll instance
-  //     scroll.scrollTo(0, { duration: 0, disableLerp: true });
-  //   }
-  // }, []);
 
   useEffect(() => {
     if (modal && overrideColor) {

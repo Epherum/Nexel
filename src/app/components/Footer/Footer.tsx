@@ -1,8 +1,8 @@
 import React, { useRef } from "react";
 import Link from "next/link";
-import behance from "/public/static/behance.svg";
-import instagram from "/public/static/instagram.svg";
-import linkedin from "/public/static/linkedin.svg";
+import behance from "/public/static/home/behance.svg";
+import instagram from "/public/static/home/instagram.svg";
+import linkedin from "/public/static/home/linkedin.svg";
 import styles from "./footer.module.scss";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Magnetic from "../Magnetic/Magnetic";
