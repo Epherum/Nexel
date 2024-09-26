@@ -5,6 +5,26 @@ import Footer from "@/app/components/Footer/Footer";
 import { useRef } from "react";
 import { useScroll, useTransform, motion, easeOut } from "framer-motion";
 import { useState, useEffect } from "react";
+import Image from "next/image";
+import evense1 from "/public/static/evense/evense-1.webp";
+import evensePhone from "/public/static/evense/evense-phone.webp";
+import evenseFlow from "/public/static/evense/evense-flow.webp";
+import evenseDe from "/public/static/evense/evense-de.webp";
+import evenseHomePage from "/public/static/evense/evense-homePage.webp";
+import evenseHomePageMobile1 from "/public/static/evense/evense-homePageMobile1.webp";
+import evenseHomePageMobile2 from "/public/static/evense/evense-homePageMobile2.webp";
+import evenseHomePageMobile3 from "/public/static/evense/evense-homePageMobile3.webp";
+import evenseHomePageGreen from "/public/static/evense/evense-homePageGreen.webp";
+import evenseHomePageYellow from "/public/static/evense/evense-homePageYellow.webp";
+import evenseHomePageBlue from "/public/static/evense/evense-homePageBlue.webp";
+import evenseHomePageRed from "/public/static/evense/evense-homePageRed.webp";
+import evenseInPerson from "/public/static/evense/evense-inPerson.webp";
+import evenseDigital from "/public/static/evense/evense-digital.webp";
+import evenseHybrid from "/public/static/evense/evense-hybrid.webp";
+import evenseVid1 from "/public/static/evense/evense-vid1.webp";
+import evenseVid2 from "/public/static/evense/evense-vid2.webp";
+import evenseVid3 from "/public/static/evense/evense-vid3.webp";
+import evenseLast from "/public/static/evense/evense-last.webp";
 
 export default function Page() {
   const sectionRef = useRef(null);
@@ -52,7 +72,7 @@ export default function Page() {
       <section className={styles.first}>
         <div data-scroll data-scroll-speed="-0.1">
           <div className={styles.image}>
-            <img src="/static/evense/evense-1.png" alt="" />
+            <Image src={evense1} alt="" priority />
             <div className={styles.logo}>
               <img src="/static/evense/evense-logo.svg" alt="" />
             </div>
@@ -84,7 +104,7 @@ export default function Page() {
               brand&apos;s identity succinctly.
             </p>
             <div className={styles.image}>
-              <img src="/static/evense/evense-phone.png" alt="" />
+              <Image src={evensePhone} alt="" />
             </div>
           </div>
         </div>
@@ -246,76 +266,68 @@ export default function Page() {
         <div className={styles.container}>
           <h2 className={styles.text}>User Flow</h2>
           <div className={styles.flow}>
-            <img src="/static/evense/evense-flow.png" alt="" />
+            <Image src={evenseFlow} alt="" />
           </div>
         </div>
       </section>
       <section className={styles.digitalEvents}>
         <div data-scroll data-scroll-speed="-0.1" className={styles.image}>
-          <img src="/static/evense/evense-de.png" alt="" />
+          <Image src={evenseDe} alt="" />
         </div>
       </section>
       <section className={styles.homePage}>
         <div className={styles.color} />
         <div className={styles.mainImage}>
-          <img src="/static/evense/evense-homePage.png" alt="" />
+          <Image src={evenseHomePage} alt="" />
           <motion.div>
-            <motion.img
-              data-scroll
-              data-scroll-speed="-0.05"
+            <motion.div
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-300px" }}
               initial={{ opacity: 0 }}
               transition={{ duration: 0.4, ease: easeOut }}
               className={styles.mobile1}
-              src="/static/evense/evense-homePageMobile1.png"
-              alt=""
-            />
-
-            <motion.img
-              data-scroll
-              data-scroll-speed="-0.05"
+            >
+              <Image
+                data-scroll
+                data-scroll-speed="-0.05"
+                src={evenseHomePageMobile1}
+                alt=""
+              />
+            </motion.div>
+            <motion.div
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-300px" }}
               initial={{ opacity: 0 }}
               transition={{ duration: 0.4, ease: easeOut }}
               className={styles.mobile2}
-              src="/static/evense/evense-homePageMobile2.png"
-              alt=""
-            />
-            <motion.img
-              data-scroll
-              data-scroll-speed="-0.1"
+            >
+              <Image
+                data-scroll
+                data-scroll-speed="-0.05"
+                src={evenseHomePageMobile2}
+                alt=""
+              />
+            </motion.div>
+            <motion.div
               whileInView={{ opacity: 1 }}
               viewport={{ once: true, margin: "-300px" }}
               initial={{ opacity: 0 }}
               transition={{ duration: 0.4, ease: easeOut }}
               className={styles.mobile3}
-              src="/static/evense/evense-homePageMobile3.png"
-              alt=""
-            />
+            >
+              <Image
+                data-scroll
+                data-scroll-speed="-0.1"
+                src={evenseHomePageMobile3}
+                alt=""
+              />
+            </motion.div>
           </motion.div>
         </div>
-        <img
-          className={styles.green}
-          src="/static/evense/evense-homePageGreen.png"
-          alt=""
-        />
-        <img
-          className={styles.yellow}
-          src="/static/evense/evense-homePageYellow.png"
-          alt=""
-        />
-        <img
-          className={styles.blue}
-          src="/static/evense/evense-homePageBlue.png"
-          alt=""
-        />
-        <img
-          className={styles.red}
-          src="/static/evense/evense-homePageRed.png"
-          alt=""
-        />
+        <Image className={styles.green} src={evenseHomePageGreen} alt="" />
+        <Image className={styles.yellow} src={evenseHomePageYellow} alt="" />
+        <Image className={styles.blue} src={evenseHomePageBlue} alt="" />
+        <Image className={styles.red} src={evenseHomePageRed} alt="" />
       </section>
       <section className={styles.services}>
         <div className={styles.text}>
@@ -337,7 +349,7 @@ export default function Page() {
         <div className={styles.typesOfServices}>
           <div className={styles.inPerson}>
             <p>In person</p>
-            <img src="/static/evense/evense-inPerson.png" alt="" />
+            <Image src={evenseInPerson} alt="" />
             <img
               className={styles.ellipse1}
               src="/static/evense/evense-ellipse.svg"
@@ -346,7 +358,7 @@ export default function Page() {
           </div>
           <div className={styles.digital}>
             <p>Digital</p>
-            <img src="/static/evense/evense-digital.png" alt="" />
+            <Image src={evenseDigital} alt="" />
             <img
               className={styles.ellipse2}
               src="/static/evense/evense-ellipse.svg"
@@ -355,7 +367,7 @@ export default function Page() {
           </div>
           <div className={styles.hybrid}>
             <p>Hybrid</p>
-            <img src="/static/evense/evense-hybrid.png" alt="" />
+            <Image src={evenseHybrid} alt="" />
             <img
               className={styles.ellipse3}
               src="/static/evense/evense-ellipse.svg"
@@ -370,13 +382,13 @@ export default function Page() {
         </h2>
         <div className={styles.vids}>
           <div>
-            <img src="/static/evense/evense-vid1.png" alt="" />
+            <Image src={evenseVid1} alt="" />
           </div>
           <div>
-            <img src="/static/evense/evense-vid2.png" alt="" />
+            <Image src={evenseVid2} alt="" />
           </div>
           <div>
-            <img src="/static/evense/evense-vid3.png" alt="" />
+            <Image src={evenseVid3} alt="" />
           </div>
         </div>
       </section>
@@ -386,7 +398,7 @@ export default function Page() {
         className={styles.last}
       >
         <div>
-          <img src="/static/evense/evense-last.png" alt="" />
+          <Image src={evenseLast} alt="" />
         </div>
       </motion.section>
 
