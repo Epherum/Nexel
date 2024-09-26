@@ -138,7 +138,7 @@ export default function Page() {
           <div className={styles.corporate}>
             <h2>Corporate identity</h2>
             <div className={styles.content}>
-              <Image src={child} alt="Child" />
+              <Image className={styles.child} src={child} alt="Child" />
               <div className={styles.rightContent}>
                 <div className={styles.logos}>
                   <Image src={logo} alt="Logo2" />
@@ -161,7 +161,7 @@ export default function Page() {
                     </div>
                   </div>
                   <div>
-                    <Image src={aa} alt="Aa" />
+                    <Image className={styles.aa} src={aa} alt="Aa" />
                   </div>
                 </div>
                 <div className={styles.colors}>
@@ -189,7 +189,9 @@ export default function Page() {
               the user can achieve it.
             </p>
           </div>
-          <Image src={mockup} alt="Mockup" />
+          <div className={styles.mockup}>
+            <Image src={mockup} alt="Mockup" />
+          </div>
         </div>
         <Image className={styles.flowImage} src={flow} alt="Flow" />
       </section>
