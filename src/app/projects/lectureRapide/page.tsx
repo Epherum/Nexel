@@ -141,7 +141,7 @@ export default function Page() {
               <Image className={styles.child} src={child} alt="Child" />
               <div className={styles.rightContent}>
                 <div className={styles.logos}>
-                  <Image src={logo} alt="Logo2" />
+                  <Image className={styles.logo2} src={logo} alt="Logo2" />
                   <Image src={favicon} alt="Favicon" />
                 </div>
                 <div className={styles.font}>
