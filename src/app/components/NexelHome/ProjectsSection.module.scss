@@ -1,0 +1,137 @@
+// src/components/ProjectsSection.module.scss
+
+@use "../../../styles/variables.scss" as *;
+
+.projectsSection {
+  padding: 8rem 4rem;
+  background-color: $dark-bg;
+}
+
+.mainTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 500;
+  margin-bottom: 4rem;
+}
+
+.contentWrapper {
+  display: flex;
+  gap: 4rem;
+  align-items: flex-start; // Crucial for sticky positioning to work correctly
+
+  // On smaller screens, stack the columns
+  @media (max-width: 1024px) {
+    flex-direction: column;
+  }
+}
+
+// --- Left Column ---
+.leftColumn {
+  flex: 1 1 35%;
+  // The left column needs to be a flex container to position the button correctly
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  // This ensures the column itself spans the full height needed for scrolling
+  min-height: 100vh;
+
+  @media (max-width: 1024px) {
+    min-height: auto; // Reset height on smaller screens
+    width: 100%;
+  }
+}
+
+.stickyContent {
+  position: sticky;
+  // Stick to 40px below the navbar
+  top: calc(#{$nav-height} + 40px);
+  height: fit-content;
+
+  @media (max-width: 1024px) {
+    position: static; // Disable sticky on smaller screens
+    margin-bottom: 3rem;
+  }
+}
+
+.subHeader {
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: $secondary-text;
+  margin-bottom: 1rem;
+}
+
+.headline {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  color: $primary-text;
+  line-height: 1.3;
+  margin-bottom: 1.5rem;
+
+  .highlight {
+    color: $accent-color;
+  }
+}
+
+.description {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: $primary-text;
+  max-width: 400px;
+}
+
+// --- Right Column ---
+.rightColumn {
+  flex: 1 1 60%;
+  display: grid;
+  // Create a 2-column grid for the projects
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; // Stack to a single column on mobile
+  }
+}
+
+.projectCard {
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #222; // Placeholder background
+
+  .projectImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+// --- Button at the Bottom ---
+.viewAllButton {
+  background-color: $accent-color;
+  color: #000;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  font-family: inherit;
+  align-self: flex-start;
+  // Pushes the button to the bottom of the section's natural flow
+  margin-top: auto;
+  // Adds space above it once scrolling is done.
+  padding-top: 14px;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 1024px) {
+    margin-top: 2rem; // Adjust spacing for stacked layout
+  }
+}

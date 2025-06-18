@@ -1,0 +1,91 @@
+// src/app/about/components/AboutHero.module.scss
+
+@use "../../../styles/variables.scss" as *;
+
+.heroSection {
+  min-height: 100vh;
+  background-color: $dark-bg;
+  color: $primary-text;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: $nav-height 4rem 4rem 4rem; // Padding for nav and bottom bar
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+}
+
+.headline {
+  font-size: clamp(5rem, 15vw, 12rem);
+  font-weight: 500;
+  line-height: 1;
+}
+
+.descriptionBox {
+  max-width: 450px;
+  margin: 0 auto;
+
+  p {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+}
+
+.exploreButton {
+  background-color: $accent-color;
+  color: #000;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  font-family: inherit;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 2rem;
+  right: 4rem;
+  color: $secondary-text;
+  font-size: 0.9rem;
+  writing-mode: vertical-rl; // Rotates text vertically
+  letter-spacing: 2px;
+
+  @media (max-width: 768px) {
+    display: none; // Often hidden on mobile
+  }
+}
+
+.bottomBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: $secondary-text;
+  font-size: 0.9rem;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+}

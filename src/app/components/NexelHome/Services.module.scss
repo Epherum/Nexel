@@ -1,0 +1,80 @@
+// src/components/Services.module.scss
+
+@use "../../../styles/variables.scss" as *;
+
+.servicesSection {
+  padding: 6rem 4rem; // Using hardcoded padding values for now
+  background-color: $dark-bg;
+}
+
+.sectionTitle {
+  margin-bottom: 3rem;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: $primary-text;
+}
+
+.servicesList {
+  border-top: 1px solid rgba($primary-text, 0.15);
+}
+
+.serviceItem {
+  position: relative; // This is the anchor for the absolute positioned pills
+  display: flex;
+  align-items: center; // Vertically center the letter with the title block
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba($primary-text, 0.15);
+  // Allows the huge text to overflow without increasing item height
+  overflow: hidden;
+}
+
+.letter {
+  font-size: 1.2rem;
+  color: $primary-text;
+  margin-right: 4rem;
+}
+
+.content {
+  // This div is a flex-child that grows to take available space
+  flex-grow: 1;
+  position: relative; // Fallback anchor if needed
+}
+
+.serviceTitle {
+  font-size: clamp(3rem, 10vw, 7rem); // Responsive font size
+  font-weight: 500;
+  color: $secondary-text;
+  line-height: 1.1;
+  text-transform: capitalize; // Matches "Brand Strategy" style
+  white-space: nowrap; // Prevents text from wrapping
+  // We make it slightly transparent to sit in the background
+  opacity: 0.5;
+}
+
+.pill {
+  position: absolute;
+  padding: 10px 22px;
+  border-radius: 99px; // Pill shape
+  color: #000;
+  font-size: clamp(0.8rem, 1.5vw, 1rem); // Responsive font size for pill
+  font-weight: 500;
+  white-space: nowrap; // Ensure pill text doesn't wrap
+  z-index: 2; // Make sure pills are on top of the text
+
+  // Assign background colors using the variables
+  &--blue {
+    background-color: $pill-color-blue;
+  }
+  &--purple {
+    background-color: $pill-color-purple;
+  }
+  &--teal {
+    background-color: $pill-color-teal;
+  }
+  &--orange {
+    background-color: $pill-color-orange;
+  }
+  &--green {
+    background-color: $accent-color;
+  } // Reuse main accent color
+}

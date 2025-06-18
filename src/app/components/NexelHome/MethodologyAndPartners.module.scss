@@ -1,0 +1,113 @@
+// src/components/MethodologyAndPartners.module.scss
+
+@use "../../../styles/variables.scss" as *;
+
+// Renamed from .mainSection. This now acts as the outer container.
+.sectionWrapper {
+  padding: 8rem 1rem; // Vertical padding, and 1rem on the sides for the margin
+  background-color: $dark-bg;
+}
+
+// NEW: This is our white content box
+.whiteContainer {
+  background-color: $primary-text; // White background
+  color: $dark-bg; // Default text color is now dark
+  border-radius: 24px;
+  padding: 6rem 0; // Generous vertical padding inside the container
+  overflow: hidden; // Important for containing the slider within the rounded corners
+}
+
+.sectionTitle {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1.3;
+  margin-bottom: 3rem;
+  padding: 0 4rem;
+  color: $dark-bg; // Ensure title text is dark
+}
+
+// --- Methodology Slider Styles ---
+.methodologyContainer {
+  margin-bottom: 8rem;
+}
+
+.sliderWrapper {
+  padding-left: 4rem;
+}
+
+.slide {
+  width: 300px !important;
+  height: auto;
+
+  @media (max-width: 768px) {
+    width: 260px !important;
+  }
+}
+
+.card {
+  height: 380px;
+  padding: 2rem;
+  border-radius: 16px;
+  color: $dark-bg; // UPDATED: Text inside cards should be dark
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(0, 0, 0, 0.1); // Use a subtle dark border
+
+  &--purple {
+    background-color: $card-color-purple;
+  }
+  &--green {
+    background-color: $card-color-green;
+  }
+  &--teal {
+    background-color: $card-color-teal;
+  }
+  &--blue {
+    background-color: $card-color-blue;
+  }
+}
+
+.cardDescription {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.cardStep {
+  font-size: 1rem;
+  line-height: 1.4;
+  opacity: 0.6;
+  font-weight: 500;
+}
+
+// --- Partners Grid Styles ---
+.partnersContainer {
+  padding-top: 4rem;
+}
+
+.partnersGrid {
+  padding: 2rem 4rem;
+  // UPDATED: Use a dark border color
+  border-top: 1px solid rgba($dark-bg, 0.15);
+  border-bottom: 1px solid rgba($dark-bg, 0.15);
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 3rem 2rem;
+}
+
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.partnerLogo {
+  // REMOVED filter: brightness(0) invert(1);
+  // The logos are now on a white background, so we want their original black color.
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    opacity: 1;
+  }
+}

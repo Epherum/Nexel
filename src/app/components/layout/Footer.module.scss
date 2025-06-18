@@ -1,0 +1,145 @@
+// src/components/Footer.module.scss
+
+@use "../../../styles/variables.scss" as *;
+
+.footerWrapper {
+  // This wrapper provides the margin around the main container
+  padding: 2rem 1rem 1rem 1rem;
+  background-color: $dark-bg;
+}
+
+.footerContainer {
+  background-color: #1c1c1c; // The specified dark grey
+  border-radius: 24px;
+  padding: 4rem;
+  color: $primary-text;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem; // Space between rows
+
+  @media (max-width: 768px) {
+    padding: 2rem;
+  }
+}
+
+// --- Top Row ---
+.topRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap; // Allow wrapping on small screens
+  gap: 2rem;
+}
+
+.ctaContainer {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.talkButton {
+  background-color: $accent-color;
+  color: #000;
+  border-radius: 12px;
+  padding: 1rem 2rem;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 500;
+  transition: transform 0.2s ease;
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.arrowButton {
+  background-color: $accent-color;
+  color: #000;
+  border-radius: 12px;
+  width: 70px;
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  transition: transform 0.2s ease;
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.upNextContainer {
+  text-align: right;
+  a {
+    display: block; // To make the whole area clickable
+  }
+}
+
+.upNextLabel {
+  display: block;
+  color: $secondary-text;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.upNextLink {
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  font-weight: 500;
+  color: $primary-text;
+}
+
+// --- Middle Row ---
+.logoContainer {
+  // This row doesn't need much styling, just hosts the logo
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: 500;
+  span {
+    color: $accent-color;
+  }
+}
+
+// --- Bottom Row ---
+.bottomRow {
+  border-top: 1px solid rgba($primary-text, 0.15);
+  padding-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  color: $secondary-text;
+}
+
+.socials {
+  display: flex;
+  gap: 1rem;
+
+  a {
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba($primary-text, 0.3);
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $primary-text;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background-color: $accent-color;
+      color: #000;
+      border-color: $accent-color;
+    }
+  }
+}
