@@ -6,10 +6,6 @@ const nextConfig = {
       path.join(__dirname, "src/styles"),
       path.join(__dirname, "src/app/styles"),
     ],
-    //disable lint when building
-    eslint: {
-      ignoreDuringBuilds: true,
-    },
   },
 };
 
