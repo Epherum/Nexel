@@ -24,7 +24,7 @@ const HowWeDoIt: React.FC = () => {
             focusing on collaborative problem-solving, even when tackling the
             most complex challenges.
           </p>
-          <Link href="/about">className={styles.aboutButton}About Us</Link>
+          <Link href="/about"className={styles.aboutButton}>About Us</Link>
         </div>
       </div>
     </section>

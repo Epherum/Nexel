@@ -4,9 +4,9 @@
 
 .howWeDoItSection {
   // Using rem for padding is great. We'll make it responsive.
-  padding: 6rem 2rem;
+  padding: 3rem 2rem;
   @media (min-width: map-get($breakpoints, "md")) {
-    padding: 8rem 4rem;
+    padding: 4rem 4rem;
   }
   background-color: $dark-bg;
 }
