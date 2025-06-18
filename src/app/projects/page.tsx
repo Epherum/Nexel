@@ -1,6 +1,6 @@
 "use client";
-import Footer from "../components/Footer/Footer";
-import Work from "../components/Projects/Works/Works";
+import Footer from "@/app/components/layout/Footer";
+import Work from "../components/shared/ProjectsComponents/Works/Works";
 
 export default function Projects() {
   return (

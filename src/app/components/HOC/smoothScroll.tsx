@@ -1,5 +1,4 @@
-// scrollManager.ts
-
+// src/app/components/HOC/smoothScroll.tsx
 let locomotiveScroll: LocomotiveScroll | null = null;
 
 export const initializeScroll = async (options = {}) => {

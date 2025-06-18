@@ -1,7 +1,6 @@
-import "./globals.scss";
+import "@/styles/globals.scss";
 import PageAnimatePresence from "./components/HOC/PageAnimatePresence";
-import { Gilroy, Mazius } from "./fonts/font";
-import { Metadata } from "next";
+import { Gilroy, Mazius, Clovergrotesk } from "../fonts/font"; // 1. Import Clovergrotesk
 import Navbar from "./components/layout/Navbar";
 import Footer from "./components/layout/Footer";
 export const metadata = {
@@ -17,7 +16,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${Gilroy.variable} ${Mazius.variable}`}
+        className={`${Clovergrotesk.variable} ${Gilroy.variable} ${Mazius.variable}`}
         id="page-container"
       >
         <main>

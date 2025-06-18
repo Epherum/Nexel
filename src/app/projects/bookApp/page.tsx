@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import styles from "./bookApp.module.scss";
-import Footer from "@/app/components/Footer/Footer";
+import Footer from "@/app/components/layout/Footer";
 import { useRef } from "react";
 import { useScroll, useTransform, motion, easeOut } from "framer-motion";
 import { useState, useEffect } from "react";
