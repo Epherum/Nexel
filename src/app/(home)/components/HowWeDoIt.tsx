@@ -2,6 +2,7 @@
 
 import React from "react";
 import styles from "./HowWeDoIt.module.scss";
+import Link from "next/link";
 
 const HowWeDoIt: React.FC = () => {
   return (
@@ -23,7 +24,7 @@ const HowWeDoIt: React.FC = () => {
             focusing on collaborative problem-solving, even when tackling the
             most complex challenges.
           </p>
-          <button className={styles.aboutButton}>About Us</button>
+          <Link href="/about">className={styles.aboutButton}About Us</Link>
         </div>
       </div>
     </section>

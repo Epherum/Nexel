@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import styles from "./ProjectsSection.module.scss";
+import Link from "next/link";
 
 // Define our project data
 const projects = [
@@ -38,7 +39,9 @@ const ProjectsSection: React.FC = () => {
               speak for themselves.
             </p>
           </div>
-          <button className={styles.viewAllButton}>View all projects</button>
+          <Link href={"/projects"} className={styles.viewAllButton}>
+            View all projects
+          </Link>
         </div>
 
         {/* Right Column (Scrollable Grid) */}
