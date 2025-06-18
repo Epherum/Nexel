@@ -1,0 +1,72 @@
+@use "src/styles/variables" as *;
+@use "src/styles/typography" as t;
+
+.projectsPage {
+  background-color: $dark-bg;
+  color: $primary-text;
+
+  // Consistent, responsive padding for the whole page
+  padding: 8rem 2rem 4rem 2rem; // Extra top padding
+  @media (min-width: map-get($breakpoints, "md")) {
+    padding: 10rem 4rem 4rem 4rem;
+  }
+}
+
+.header {
+  text-align: center;
+  margin: 0 auto 7rem auto; // Center the header and add space below
+  max-width: 1500px;
+}
+
+.headline {
+  font-weight: 500;
+  line-height: 1.25;
+
+  // Use a large scale for the page's main title
+  @include t.text-style("4xl");
+}
+
+.highlight {
+  // Same highlight style from the homepage hero
+  color: $accent-color;
+  // Use `display: inline-block` to allow padding and border-radius
+  display: inline-block;
+}
+
+.projectsGrid {
+  display: grid;
+  gap: 1rem; // Gap between grid items
+
+  // Desktop: 3 columns
+  grid-template-columns: repeat(3, 1fr);
+
+  // Tablet: 2 columns
+  @media (max-width: map-get($breakpoints, "lg")) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  // Mobile: 1 column
+  @media (max-width: map-get($breakpoints, "md")) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.projectCard {
+  position: relative; // Needed for next/image with fill={true}
+  border-radius: 16px;
+  overflow: hidden; // Ensures the image respects the border-radius
+  // Enforce a consistent aspect ratio for all cards
+  aspect-ratio: 3 / 4;
+  cursor: pointer; // Indicates the cards are clickable
+}
+
+.projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; // Fills the card without stretching the image
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  .projectCard:hover & {
+    transform: scale(1.05);
+  }
+}

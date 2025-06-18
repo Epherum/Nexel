@@ -1,0 +1,46 @@
+@use "src/styles/variables" as *;
+@use "src/styles/typography" as t;
+
+.beliefSection {
+  background-color: $dark-bg;
+  color: $primary-text;
+
+  // Consistent section padding
+  padding: 8rem 2rem;
+  @media (min-width: map-get($breakpoints, "md")) {
+    padding: 10rem 4rem;
+  }
+}
+
+.contentWrapper {
+  display: flex;
+  gap: 4rem;
+  // This aligns the smaller description paragraph with the bottom of the large headline
+  align-items: flex-end;
+
+  @media (max-width: map-get($breakpoints, "lg")) {
+    flex-direction: column;
+    // On stacked layout, align to the start (left)
+    align-items: flex-start;
+    gap: 2rem;
+  }
+}
+
+.headline {
+  flex: 2 1 60%; // Allows the headline to take up more space
+  font-weight: 500;
+  line-height: 1.25;
+
+  // Use a large, impactful scale for the main statement
+  @include t.text-style("4xl");
+}
+
+.description {
+  flex: 1 1 35%; // Takes up the remaining space
+  line-height: 1.6;
+  color: $secondary-text;
+  max-width: 45ch; // Limits line length for better readability
+
+  // Use the standard base scale for body copy
+  @include t.text-style("base");
+}

@@ -1,23 +1,118 @@
 // src/styles/variables.scss
 
 // Colors
-$dark-bg: #111111;
+$dark-bg: #141515;
 $primary-text: #ffffff;
-$secondary-text: #a1a1a1;
-$accent-color: #bfff00;
+$secondary-text: #919191;
+$accent-color: #b0fa4f;
+
+$services-text: #8e8e8e; // Dark background for service items
+
+$footer-bg: #1d1f20;
 
 // NEW: Pill Colors
-$pill-color-blue: #b0e0e6; // A soft powder blue
-$pill-color-purple: #d8bfd8; // A gentle thistle/purple
-$pill-color-teal: #98e8c1; // A minty teal
-$pill-color-orange: #ffab76; // A soft orange
+$pill-color-blue: #acd9e9; // A soft powder blue
+$pill-color-purple: #d0c0e9; // A gentle thistle/purple
+$pill-color-teal: #7bddb8; // A minty teal
+$pill-color-orange: #ff7447; // A soft orange
 
 // Layout
 $nav-height: 80px;
-$container-padding: 0 4rem;
+$container-padding: 0 2.8rem;
 
 // NEW: Methodology Card Colors
-$card-color-purple: #d8bfd833; // Purple with alpha for background
-$card-color-green: #bfff0033; // Accent Green with alpha
-$card-color-teal: #98e8c133; // Teal with alpha
-$card-color-blue: #b0e0e633; // Blue with alpha
+$card-color-purple: #d0c0e9; // Purple with alpha for background
+$card-text-purple: #b39cd7; // Purple text color
+$card-color-green: #b0fa4f; // Accent Green with alpha
+$card-text-green: #9bcf56; // Green text color
+$card-color-teal: #7bddb8; // Teal with alpha
+$card-text-teal: #6ec1a2; // Teal text color
+$card-color-blue: #d4e0ef; // Blue with alpha
+$card-text-blue: #a9bad0; // Blue text color
+
+// --- NEW: Responsive Typography Architecture ---
+
+// 1. Set the root font size for easy rem calculations.
+// 16px (browser default) * 62.5% = 10px. This means 1rem = 10px.
+$base-font-size-px: 16px;
+
+// 2. Define Breakpoints as a map for easy access.
+$breakpoints: (
+  "md": 768px,
+  "lg": 1024px,
+  "xl": 1440px,
+);
+
+// 3. Define the Typographic Scale as a map.
+// This is where the magic happens. We define a min and max font size (in rem) for each step in our scale.
+// The key is the name (e.g., '3xl'), and the value is a map of min/max sizes.
+$type-scale: (
+  // Heading Sizes
+  "6xl":
+    (
+      min: 6.2rem,
+      max: 13.2rem,
+    ),
+  // Was: 6rem->20rem  | Approx: 48px -> 120px
+  "5xl":
+    (
+      min: 4rem,
+      max: 5rem,
+    ),
+  // Was: 5.2rem->9.6rem | Approx: 40px -> 96px (The Hero Headline)
+  "4xl":
+    (
+      min: 2.5rem,
+      max: 4.4rem,
+    ),
+  // Was: 4.8rem->9rem   | Approx: 36px -> 72px
+  "3xl":
+    (
+      min: 3rem,
+      max: 4.8rem,
+    ),
+  // Was: 4rem->7.2rem   | Approx: 30px -> 48px
+  "2xl":
+    (
+      min: 2.4rem,
+      max: 3.6rem,
+    ),
+  // Was: 3.6rem->6.4rem | Approx: 24px -> 36px
+  "xl":
+    (
+      min: 2rem,
+      max: 2.8rem,
+    ),
+  // Was: 3.2rem->4.8rem | Approx: 20px -> 28px
+  // Body & UI Sizes
+  "lg":
+    (
+      min: 0.85rem,
+      max: 1.25rem,
+    ),
+  // Was: 2.8rem->3.2rem | Approx: 18px -> 22px
+  "md":
+    (
+      min: 1.8rem,
+      max: 2.2rem,
+    ),
+  // Was: 2.2rem->2.4rem | Approx: 16px -> 18px
+  "base":
+    (
+      min: 1.6rem,
+      max: 1.6rem,
+    ),
+  // Was: 1.6rem->1.6rem | Approx: 16px (No scaling for body text)
+  "sm":
+    (
+      min: 1.1rem,
+      max: 1.1rem,
+    ),
+  // Was: 1.8rem->2.0rem | Approx: 14px (Static small text)
+  "xs":
+    (
+      min: 0.7rem,
+      max: 0.7rem,
+    )
+    // Was: 1.4rem->1.4rem | Approx: 12px (Static tiny text, for copyrights etc.)
+);

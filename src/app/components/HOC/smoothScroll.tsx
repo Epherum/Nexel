@@ -4,8 +4,8 @@ let locomotiveScroll: LocomotiveScroll | null = null;
 export const initializeScroll = async (options = {}) => {
   const LocomotiveScroll = (await import("locomotive-scroll")).default;
 
+  //@ts-ignore
   locomotiveScroll = new LocomotiveScroll({
-    //@ts-ignore
     lenisOptions: {
       lerp: 0.06,
       wheelMultiplier: 1.3,

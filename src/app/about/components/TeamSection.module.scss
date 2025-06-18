@@ -1,0 +1,131 @@
+@use "src/styles/variables" as *;
+@use "src/styles/typography" as t;
+
+.teamSection {
+  background-color: $dark-bg;
+  color: $primary-text;
+  padding-top: 8rem; // Remove horizontal padding to allow slider to touch the edges
+
+  @media (min-width: map-get($breakpoints, "md")) {
+    padding-top: 10rem;
+  }
+}
+
+// Container for the headline and CTA to give them padding
+.contentContainer {
+  padding: 0 2rem;
+  @media (min-width: map-get($breakpoints, "md")) {
+    padding: 0 4rem;
+  }
+}
+
+.headline {
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 6rem;
+  // Apply padding inside the content container
+  padding: 0 2rem;
+  @media (min-width: map-get($breakpoints, "md")) {
+    padding: 0 4rem;
+  }
+  @include t.text-style("5xl");
+}
+
+.highlight {
+  border-bottom: 6px solid $accent-color;
+  padding-bottom: 0.2em;
+  color: $accent-color;
+}
+
+// REMOVED: .teamGrid styles are gone.
+
+// NEW: Styles for the Swiper container
+.teamSlider {
+  margin-bottom: 3rem;
+  // Add padding to the left so the slider starts aligned with content
+  padding-left: 2rem;
+  @media (min-width: map-get($breakpoints, "md")) {
+    padding-left: 4rem;
+  }
+}
+
+// NEW: Styles for each individual Swiper slide
+.slide {
+  // Give each slide a fixed width, which is respected by `slidesPerView: 'auto'`
+  width: 570px !important; // Use !important to override Swiper's inline styles if needed
+  height: 720px; // Let height be determined by content
+
+  @media (max-width: map-get($breakpoints, "md")) {
+    width: 260px !important;
+  }
+}
+
+// The .teamCard styles are perfect as they are. They just live inside a .slide now.
+.teamCard {
+  background-color: $dark-bg;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%; // Make card fill the slide's height
+}
+
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 40px;
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.cardInfo {
+  padding: 2rem 1rem;
+}
+
+.name {
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+  @include t.text-style("lg");
+}
+
+.role {
+  color: $secondary-text;
+  @include t.text-style("sm");
+}
+
+.contactCta {
+  // Apply padding inside the content container
+  padding: 3rem 2rem 0 2rem;
+  @media (min-width: map-get($breakpoints, "md")) {
+    padding: 2rem 4rem 0 4rem;
+  }
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 2rem;
+
+  @media (max-width: map-get($breakpoints, "lg")) {
+    flex-direction: column;
+  }
+}
+
+.ctaLabel {
+  color: $secondary-text;
+  @include t.text-style("sm");
+}
+
+.ctaText {
+  max-width: 700px;
+  line-height: 1.3;
+  font-weight: 500;
+  @include t.text-style("base");
+}

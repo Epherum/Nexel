@@ -1,25 +1,30 @@
-// src/components/ProjectsSection.module.scss
-
-@use "../../../styles/variables.scss" as *;
+// Import our system files
+@use "src/styles/variables" as *;
+@use "src/styles/typography" as t;
 
 .projectsSection {
-  padding: 8rem 4rem;
+  // Make padding responsive
+  padding: 6rem 2rem;
+  @media (min-width: map-get($breakpoints, "md")) {
+    padding: 8rem 4.5rem;
+  }
   background-color: $dark-bg;
 }
 
 .mainTitle {
-  font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 500;
-  margin-bottom: 4rem;
+  margin-bottom: 5rem;
+
+  @include t.text-style("2xl");
 }
 
 .contentWrapper {
   display: flex;
   gap: 4rem;
-  align-items: flex-start; // Crucial for sticky positioning to work correctly
+  align-items: flex-start;
 
-  // On smaller screens, stack the columns
-  @media (max-width: 1024px) {
+  // Use the breakpoint from our system for consistency
+  @media (max-width: map-get($breakpoints, "lg")) {
     flex-direction: column;
   }
 }
@@ -27,75 +32,84 @@
 // --- Left Column ---
 .leftColumn {
   flex: 1 1 35%;
-  // The left column needs to be a flex container to position the button correctly
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  // This ensures the column itself spans the full height needed for scrolling
   min-height: 100vh;
 
-  @media (max-width: 1024px) {
-    min-height: auto; // Reset height on smaller screens
+  @media (max-width: map-get($breakpoints, "lg")) {
+    min-height: auto;
     width: 100%;
   }
 }
 
 .stickyContent {
   position: sticky;
-  // Stick to 40px below the navbar
   top: calc(#{$nav-height} + 40px);
   height: fit-content;
 
-  @media (max-width: 1024px) {
-    position: static; // Disable sticky on smaller screens
+  @media (max-width: map-get($breakpoints, "lg")) {
+    position: static;
     margin-bottom: 3rem;
   }
 }
 
 .subHeader {
-  font-size: 0.9rem;
   font-weight: 500;
   letter-spacing: 0.1em;
   color: $secondary-text;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
+
+  // BEFORE: font-size: 0.9rem; (9px, too small for accessibility)
+  // AFTER: Use 'xs' scale (12px) for a small but readable label.
+  @include t.text-style("xs");
 }
 
 .headline {
-  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 500;
   color: $primary-text;
   line-height: 1.3;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
 
-  .highlight {
-    color: $accent-color;
-  }
+  // BEFORE: font-size: clamp(2rem, 4vw, 3rem); (20px -> 30px)
+  // AFTER: Use '2xl' scale (24px -> 36px) for a prominent sub-headline.
+  @include t.text-style("md");
+
+  color: $accent-color;
 }
 
 .description {
-  font-size: 1rem;
   line-height: 1.6;
   color: $primary-text;
   max-width: 400px;
+
+  // BEFORE: font-size: 1rem; (10px, too small)
+  // AFTER: Use 'base' scale (16px) for standard paragraph text.
+  @include t.text-style("xs");
 }
 
 // --- Right Column ---
 .rightColumn {
   flex: 1 1 60%;
   display: grid;
-  // Create a 2-column grid for the projects
   grid-template-columns: repeat(2, 1fr);
   gap: 2rem;
 
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr; // Stack to a single column on mobile
+  // Use the breakpoint from our system
+  @media (max-width: map-get($breakpoints, "md")) {
+    grid-template-columns: 1fr;
   }
 }
 
 .projectCard {
   border-radius: 16px;
   overflow: hidden;
-  background-color: #222; // Placeholder background
+  background-color: #222;
+  height: 23rem;
+  //make every other card lower margin
+  &:nth-child(even) {
+    margin-bottom: 2rem;
+  }
 
   .projectImage {
     width: 100%;
@@ -114,24 +128,26 @@
   background-color: $accent-color;
   color: #000;
   border: none;
-  padding: 14px 28px;
+  // Use rem for padding consistency
+  padding: 0.7rem 1.2rem; // Was 14px 28px
+
   border-radius: 10px;
-  font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
   font-family: inherit;
   align-self: flex-start;
-  // Pushes the button to the bottom of the section's natural flow
   margin-top: auto;
-  // Adds space above it once scrolling is done.
-  padding-top: 14px;
+
+  // BEFORE: font-size: 1rem; (10px, too small)
+  // AFTER: Use 'base' scale (16px) for a standard, readable button.
+  @include t.text-style("xs");
 
   &:hover {
     transform: scale(1.05);
   }
 
-  @media (max-width: 1024px) {
-    margin-top: 2rem; // Adjust spacing for stacked layout
+  @media (max-width: map-get($breakpoints, "lg")) {
+    margin-top: 2rem;
   }
 }

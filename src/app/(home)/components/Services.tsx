@@ -8,28 +8,26 @@ const servicesData = [
   {
     letter: "A",
     title: "Brand Strategy",
-    pills: [
-      { text: "Visual identity", color: "blue", top: "30%", left: "20%" },
-    ],
+    pills: [{ text: "Visual identity", color: "blue", top: "55%", left: "6%" }],
   },
   {
     letter: "B",
     title: "Web/App Design",
-    pills: [{ text: "UX/UI Design", color: "purple", top: "65%", left: "35%" }],
+    pills: [{ text: "UX/UI Design", color: "purple", top: "60%", left: "23%" }],
   },
   {
     letter: "C",
     title: "Web Development",
     pills: [
-      { text: "UX Strategy", color: "green", top: "-15%", left: "15%" },
-      { text: "Digital Experiences", color: "teal", top: "60%", left: "55%" },
+      { text: "UX Strategy", color: "green", top: "-32%", left: "1%" },
+      { text: "Digital Experiences", color: "teal", top: "50%", left: "38%" },
     ],
   },
   {
     letter: "D",
     title: "Social Media & Marketing",
     pills: [
-      { text: "Content Strategy", color: "orange", top: "30%", left: "40%" },
+      { text: "Content Strategy", color: "orange", top: "-40%", left: "28%" },
     ],
   },
 ];

@@ -1,8 +1,9 @@
-// src/app/about/components/AboutHero.module.scss
-
-@use "../../../styles/variables.scss" as *;
+// Import our system files
+@use "variables" as *;
+@use "typography" as t;
 
 .heroSection {
+  margin-top: 2rem;
   min-height: 100vh;
   background-color: $dark-bg;
   color: $primary-text;
@@ -12,31 +13,42 @@
   align-items: center;
   position: relative;
   overflow: hidden;
-  padding: $nav-height 4rem 4rem 4rem; // Padding for nav and bottom bar
+
+  // Make padding responsive
+  padding: $nav-height 2rem 6rem 2rem;
+  @media (min-width: map-get($breakpoints, "md")) {
+    padding: $nav-height 4rem 8rem 4rem;
+  }
 }
 
 .contentWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  gap: 3rem;
   text-align: center;
 }
 
 .headline {
-  font-size: clamp(5rem, 15vw, 12rem);
   font-weight: 500;
   line-height: 1;
+
+  @include t.text-style("6xl");
 }
 
 .descriptionBox {
-  max-width: 450px;
+  max-width: 550px;
   margin: 0 auto;
+  text-align: center;
 
   p {
-    font-size: 1.25rem;
-    line-height: 1.6;
-    margin-bottom: 2rem;
+    margin-top: -1.5rem;
+    line-height: 1.3;
+    margin-bottom: 1rem;
+
+    // BEFORE: font-size: 1.25rem; (12.5px)
+    // AFTER: Use the 'md' scale (16px -> 18px) for a prominent paragraph.
+    @include t.text-style("lg");
   }
 }
 
@@ -44,13 +56,17 @@
   background-color: $accent-color;
   color: #000;
   border: none;
-  padding: 12px 32px;
+  // Use rem for padding
+  padding: 0.6rem 1.3rem;
   border-radius: 8px;
-  font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
   font-family: inherit;
+
+  // BEFORE: font-size: 1rem; (10px, too small)
+  // AFTER: Use 'base' scale (16px) for standard button text.
+  @include t.text-style("xs");
 
   &:hover {
     transform: scale(1.05);
@@ -59,31 +75,38 @@
 
 .scrollIndicator {
   position: absolute;
-  bottom: 2rem;
+  bottom: 5rem;
   right: 4rem;
   color: $secondary-text;
-  font-size: 0.9rem;
-  writing-mode: vertical-rl; // Rotates text vertically
   letter-spacing: 2px;
 
-  @media (max-width: 768px) {
-    display: none; // Often hidden on mobile
+  // BEFORE: font-size: 0.9rem; (9px, accessibility issue)
+  // AFTER: Use 'xs' scale (12px) for tiny, non-critical text.
+  @include t.text-style("xs");
+
+  // Use system breakpoint
+  @media (max-width: map-get($breakpoints, "md")) {
+    display: none;
   }
 }
 
 .bottomBar {
   position: absolute;
-  bottom: 0;
+  bottom: 0rem;
   left: 0;
-  width: 100%;
+  width: 80%;
   padding: 1rem 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: $secondary-text;
-  font-size: 0.9rem;
 
-  @media (max-width: 768px) {
+  // BEFORE: font-size: 0.9rem; (9px, accessibility issue)
+  // AFTER: Use 'xs' scale (12px).
+  @include t.text-style("xs");
+
+  // Use system breakpoint
+  @media (max-width: map-get($breakpoints, "md")) {
     flex-direction: column;
     gap: 0.5rem;
     align-items: flex-start;

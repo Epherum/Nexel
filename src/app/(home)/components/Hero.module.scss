@@ -1,24 +1,33 @@
-// src/components/Hero.module.scss
-
-// WRONG: @import 'variables';
-// CORRECT:
-@use "../../../styles/variables.scss" as *;
+// Use our new architecture files with an alias 't' for typography
+@use "variables" as *;
+@use "typography" as t;
 
 .hero {
+  margin-top: -1rem;
   min-height: calc(100vh - #{$nav-height});
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 4rem;
+
+  // Make padding responsive. Less on mobile, more on desktop.
+  padding: 0 2rem;
+  @media (min-width: map-get($breakpoints, "md")) {
+    padding: $container-padding; // Uses the 0 4rem from variables
+  }
+
   text-align: center;
 }
 
 .headline {
-  font-size: clamp(3rem, 10vw, 6.5rem);
-  font-weight: 500;
-  line-height: 1.2;
-  max-width: 1200px;
+  // BEFORE: font-size: clamp(3rem, 10vw, 6.5rem);
+  // AFTER: Use our semantic, centrally-managed text style.
+  @include t.text-style("5xl");
 
+  font-weight: 500; // This can be adjusted based on the font
+  line-height: 1.2; // Unitless line-height is best practice
+  max-width: 1400px;
+
+  // These utility spans are perfect as they are.
   .white {
     color: $primary-text;
   }
@@ -30,7 +39,8 @@
   .highlight {
     color: #000;
     background-color: $accent-color;
-    padding: 0 0.5rem;
+    // Use em units for padding so it scales with the font size
+    padding: -1.05em -1.25em;
     border-radius: 8px;
     display: inline-block;
   }
@@ -39,11 +49,17 @@
 .imagePlaceholder {
   display: inline-block;
   position: relative;
-  width: clamp(60px, 12vw, 120px);
-  height: clamp(40px, 8vw, 80px);
+
+  // --- THE BIG IMPROVEMENT ---
+  // Use 'em' units. This makes the image size directly proportional
+  // to the font size of the text it sits in. As the headline fluidly
+  // scales, the image will scale with it perfectly.
+  width: 1em;
+  height: 0.7em;
+
   margin: 0 0.2em;
-  top: 0.1em;
-  transform: rotate(-10deg);
+  // Adjust 'top' slightly using ems for perfect vertical alignment
+  top: -0.12em;
   vertical-align: middle;
 
   .snippetImage {

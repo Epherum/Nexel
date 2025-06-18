@@ -1,29 +1,31 @@
-// src/components/Navbar.module.scss
+// src/components/layout/Navbar.module.scss
 
-// WRONG: @import '../styles/variables.scss';
-// CORRECT:
-@use "../../../styles/variables.scss" as *;
+@use "src/styles/variables" as *;
+@use "src/styles/typography" as t; // Import our typography system
 
 .navbar {
   position: fixed;
-  top: 0;
+  top: 5px;
   left: 0;
   width: 100%;
   height: $nav-height;
-  padding: $container-padding;
+  z-index: 1000;
+
+  // Responsive padding
+  padding: 0 1rem;
+  @media (min-width: map-get($breakpoints, "md")) {
+    padding: $container-padding;
+  }
+
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1000;
 }
 
 .logo {
-  font-size: 1.5rem;
-  font-weight: 500;
-
-  span {
-    color: $accent-color;
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .menuIcon {
@@ -43,13 +45,17 @@
   background-color: $accent-color;
   color: #000;
   border: none;
-  padding: 12px 24px;
-  border-radius: 99px;
-  font-size: 1rem;
+  // Use rem for padding for consistency with our 'rem' based system
+  padding: 0.6rem 1.2rem; // was 12px 24px
+  border-radius: 10px;
   font-weight: 500;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
   font-family: inherit;
+
+  // BEFORE: font-size: 1rem; (10px, too small)
+  // AFTER: Use the 'base' scale (16px) for standard button text.
+  @include t.text-style("xs");
 
   &:hover {
     transform: scale(1.05);

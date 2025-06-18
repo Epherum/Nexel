@@ -1,23 +1,25 @@
-// src/components/Footer.module.scss
+// src/components/layout/Footer.module.scss
 
-@use "../../../styles/variables.scss" as *;
+@use "src/styles/variables" as *;
+@use "src/styles/typography" as t; // Import our typography system
 
 .footerWrapper {
-  // This wrapper provides the margin around the main container
-  padding: 2rem 1rem 1rem 1rem;
+  padding: 2rem;
   background-color: $dark-bg;
 }
 
 .footerContainer {
-  background-color: #1c1c1c; // The specified dark grey
+  background-color: $footer-bg;
   border-radius: 24px;
   padding: 4rem;
+  padding-bottom: 1.5rem;
+  padding-left: 1.5rem;
   color: $primary-text;
   display: flex;
   flex-direction: column;
-  gap: 4rem; // Space between rows
+  gap: 4rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: map-get($breakpoints, "md")) {
     padding: 2rem;
   }
 }
@@ -27,8 +29,9 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap; // Allow wrapping on small screens
+  flex-wrap: wrap;
   gap: 2rem;
+  margin-bottom: 3rem;
 }
 
 .ctaContainer {
@@ -41,10 +44,14 @@
   background-color: $accent-color;
   color: #000;
   border-radius: 12px;
-  padding: 1rem 2rem;
-  font-size: clamp(2rem, 4vw, 3rem);
+  padding: 1rem 1.5rem;
   font-weight: 500;
   transition: transform 0.2s ease;
+
+  // BEFORE: font-size: clamp(2rem, 4vw, 3rem); (20px -> 30px)
+  // AFTER: Use the 'lg' scale (28px -> 32px) for a large call to action.
+  @include t.text-style("2xl");
+
   &:hover {
     transform: scale(1.05);
   }
@@ -54,18 +61,22 @@
   background-color: $accent-color;
   color: #000;
   border-radius: 12px;
-  width: 70px;
-  height: 70px;
+  width: 110px;
+  height: 110px;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 1.5rem;
   transition: transform 0.2s ease;
+
+  // BEFORE: font-size: 1.5rem;
+  // AFTER: Use the 'base' scale (16px) for icon sizing.
+  @include t.text-style("base");
+
   &:hover {
     transform: scale(1.05);
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: map-get($breakpoints, "md")) {
     width: 60px;
     height: 60px;
   }
@@ -74,32 +85,37 @@
 .upNextContainer {
   text-align: right;
   a {
-    display: block; // To make the whole area clickable
+    display: block;
   }
 }
 
 .upNextLabel {
   display: block;
   color: $secondary-text;
-  font-size: 0.9rem;
   letter-spacing: 0.1em;
   margin-bottom: 0.5rem;
+
+  // BEFORE: font-size: 0.9rem; (9px, accessibility issue)
+  // AFTER: Use the smallest system size, 'xs' (14px).
+  @include t.text-style("xs");
 }
 
 .upNextLink {
-  font-size: clamp(1.8rem, 3vw, 2.5rem);
   font-weight: 500;
   color: $primary-text;
+
+  // BEFORE: font-size: clamp(1.8rem, 3vw, 2.5rem); (18px -> 25px)
+  // AFTER: Use the 'md' scale (22px -> 24px) for a clear sub-heading.
+  @include t.text-style("md");
 }
 
 // --- Middle Row ---
 .logoContainer {
-  // This row doesn't need much styling, just hosts the logo
 }
 
 .logo {
-  font-size: 1.8rem;
   font-weight: 500;
+  @include t.text-style("sm");
   span {
     color: $accent-color;
   }
@@ -117,8 +133,11 @@
 }
 
 .copyright {
-  font-size: 0.9rem;
   color: $secondary-text;
+
+  // BEFORE: font-size: 0.9rem; (9px, accessibility issue)
+  // AFTER: Use the smallest system size, 'xs' (14px).
+  @include t.text-style("xs");
 }
 
 .socials {
@@ -135,6 +154,7 @@
     align-items: center;
     color: $primary-text;
     transition: all 0.3s ease;
+    // Icon size can be set here if needed, e.g., @include t.text-style('base');
 
     &:hover {
       background-color: $accent-color;

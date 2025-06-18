@@ -9,7 +9,7 @@ const Hero: React.FC = () => {
       <h1 className={styles.headline}>
         <span className={styles.white}>A</span>{" "}
         <span className={styles.grey}>viral</span>{" "}
-        <span className={styles.white}>business</span>{" "}
+        <span className={styles.white}>business</span> <br />
         <span className={styles.grey}>is</span>{" "}
         <span className={styles.white}>the</span>
         <div className={styles.imagePlaceholder}>
@@ -22,7 +22,7 @@ const Hero: React.FC = () => {
           />
         </div>
         <span className={styles.white}>result</span>{" "}
-        <span className={styles.grey}>of a</span>{" "}
+        <span className={styles.grey}>of a</span> <br />
         <span className={styles.white}>great</span>{" "}
         <span className={styles.highlight}>design</span>
       </h1>

@@ -1,6 +1,7 @@
 // src/styles/globals.scss
 
-@use "../styles/variables.scss" as *;
+@use "variables" as *;
+@use "typography";
 
 * {
   box-sizing: border-box;
@@ -14,6 +15,7 @@ body {
   overflow-x: hidden;
   background-color: $dark-bg;
   color: $primary-text;
+  @include typography.text-style("base");
 }
 
 // Add this line to use the font variable from layout.tsx
@@ -29,5 +31,5 @@ a {
 }
 
 main {
-  padding-top: 0;
+  padding-top: 0rem;
 }

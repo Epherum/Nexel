@@ -1,0 +1,47 @@
+@use "sass:math";
+@use "variables" as *;
+
+// --- Helper Function: Convert px to rem ---
+// (This function is correct, no changes needed)
+@function to-rem($px-value) {
+  @return math.div($px-value, $base-font-size-px) * 1rem;
+}
+
+// --- Core Function: The Fluid Font Size Generator ---
+// (This is where the fix is)
+@function get-fluid-font-size($font-size-map) {
+  $min-size: map-get($font-size-map, "min");
+  $max-size: map-get($font-size-map, "max");
+
+  @if $min-size == $max-size {
+    @return $min-size;
+  }
+
+  $min-vw: to-rem(map-get($breakpoints, "md"));
+  $max-vw: to-rem(map-get($breakpoints, "xl"));
+
+  $slope: math.div($max-size - $min-size, $max-vw - $min-vw);
+  $y-intercept: $min-size - $slope * $min-vw;
+
+  // --- THIS IS THE FIXED LINE ---
+  // BEFORE (Buggy):
+  // $preferred-value: #{$y-intercept} + #{$slope * 100}vw;
+
+  // AFTER (Corrected): We explicitly create a calc() string.
+  // This ensures the '+' is treated as a CSS operator, not a string concatenation.
+  $preferred-value: calc(#{$y-intercept} + #{$slope * 100}vw);
+  // --- END OF FIX ---
+
+  @return clamp(#{$min-size}, #{$preferred-value}, #{$max-size});
+}
+
+// --- Mixin: Easy-to-use text style applicator ---
+// (This mixin is correct, no changes needed)
+@mixin text-style($scale-key) {
+  @if not map-has-key($type-scale, $scale-key) {
+    @error "The key '#{$scale-key}' was not found in the $type-scale map.";
+  }
+
+  $font-size-map: map-get($type-scale, $scale-key);
+  font-size: get-fluid-font-size($font-size-map);
+}
