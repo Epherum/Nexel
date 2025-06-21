@@ -13,7 +13,7 @@
 
 .sectionTitle {
   margin-bottom: 1rem;
-  font-weight: 400;
+  font-weight: 300;
   color: $primary-text;
 
   @include t.text-style("lg");
@@ -43,14 +43,14 @@
 }
 
 .headline {
-  font-weight: 500;
+  font-weight: 300;
   color: $primary-text;
   line-height: 1.2;
   letter-spacing: -3px;
 
   // BEFORE: font-size: clamp(2.5rem, 5vw, 4rem); (25px -> 40px)
   // AFTER: Use the '3xl' scale (30px -> 48px) for a strong, consistent headline.
-  @include t.text-style("2xl");
+  @include t.text-style("3xl");
 }
 
 .rightColumn {
@@ -68,16 +68,15 @@
 
 .description {
   color: $primary-text;
-  font-weight: 300;
+  font-weight: 100;
   max-width: 450px;
   margin-top: 0.4rem;
   margin-bottom: 0.1rem;
-  letter-spacing: -1px;
-
   @include t.text-style("xs");
 }
 
 .aboutButton {
+  margin-top: 0.4rem;
   background-color: $accent-color;
   color: #000;
   border: none;

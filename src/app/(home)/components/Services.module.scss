@@ -13,7 +13,7 @@
 
 .sectionTitle {
   margin-bottom: 1rem;
-  font-weight: 400;
+  font-weight: 300;
   color: $primary-text;
 
   @include t.text-style("lg");
@@ -29,6 +29,7 @@
 .letter {
   color: $primary-text;
   margin-right: 4rem;
+  font-weight: 300;
 
   // BEFORE: font-size: 1.2rem; (12px)
   // AFTER: Use the 'xs' scale, our smallest readable text size.
@@ -41,7 +42,8 @@
 }
 
 .serviceTitle {
-  font-weight: 500;
+  font-weight: 300;
+
   color: $services-text;
   line-height: 1.1;
   text-transform: capitalize;
@@ -58,7 +60,8 @@
   padding: 0.7rem 0.8rem; // Was 10px 22px
   border-radius: 99px;
   color: #000;
-  font-weight: 500;
+  font-weight: 300;
+
   white-space: nowrap;
   z-index: 2;
 

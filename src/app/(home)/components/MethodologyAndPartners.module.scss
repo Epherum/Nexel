@@ -63,7 +63,7 @@
 }
 
 .card {
-  height: 360px;
+  min-height: 400px;
   padding: 1.2rem;
   border-radius: 8px;
   color: $dark-bg;
@@ -91,6 +91,10 @@
 }
 
 .cardStep {
+  margin-top: auto;
+
+  padding-top: 1rem;
+
   opacity: 0.2;
   font-weight: 500;
   @include t.text-style("lg");
