@@ -54,6 +54,7 @@
 
 .slide {
   width: 390px !important;
+  display: flex;
   height: auto;
 
   // Use the breakpoint from our system
@@ -64,6 +65,7 @@
 
 .card {
   min-height: 400px;
+
   padding: 1.2rem;
   border-radius: 8px;
   color: $dark-bg;
@@ -71,6 +73,9 @@
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid rgba(0, 0, 0, 0.1);
+
+  width: 100%;
+  flex-grow: 1;
 
   &--purple {
     background-color: $card-color-purple;
@@ -134,11 +139,12 @@
 }
 
 .partnerLogo {
-  opacity: 0.7;
+  opacity: 1;
   transition: opacity 0.3s ease;
-  filter: invert(1);
 
   &:hover {
-    opacity: 1;
+    //size changes
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
   }
 }

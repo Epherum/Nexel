@@ -49,7 +49,7 @@ const TeamSection = () => {
       <Swiper
         modules={[FreeMode]}
         slidesPerView={"auto"} // Crucial for respecting slide CSS width
-        spaceBetween={32} // Gap between slides (2rem)
+        spaceBetween={10} // Gap between slides (2rem)
         freeMode={true} // Allows for free-flowing, non-snapping scroll
         className={styles.teamSlider}
       >

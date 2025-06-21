@@ -40,22 +40,32 @@ const methodologySteps = [
     step: 4,
     title: "Development",
     description:
-      "Designing and developing digital assets, from websites to interactive content, and aligning them with the brand strategy and visual guidelines.",
+      "Developing digital assets, from websites to interactive content, aligning them with the brand strategy and visual guidelines.",
     color: "blue",
   },
-  // You can easily add more steps here
 ];
 
-// Create a dummy array for the logos. We'll generate 21 placeholders.
-const partnerLogos = Array.from({ length: 21 }, (_, i) => ({ id: i + 1 }));
+// NEW: Define the type for the props this component will receive
+interface MethodologyAndPartnersProps {
+  logoPaths: string[];
+}
 
-const MethodologyAndPartners = () => {
+const MethodologyAndPartners = ({ logoPaths }: MethodologyAndPartnersProps) => {
+  // Helper function to create a clean alt text from a file path
+  const getLogoNameFromPath = (path: string) => {
+    try {
+      // Example: "/static/nexel/logos/some-company-logo.svg"
+      const filename = path.split("/").pop() || "logo"; // -> "some-company-logo.svg"
+      const name = filename.split(".")[0]; // -> "some-company-logo"
+      return name.replace(/-/g, " "); // -> "some company logo"
+    } catch {
+      return "Partner logo"; // Fallback
+    }
+  };
+
   return (
-    // This is the outer wrapper for the section, providing the dark background and side margins
     <section className={styles.sectionWrapper}>
-      {/* This is the new white container */}
       <div className={styles.whiteContainer}>
-        {/* All previous content now goes inside this container */}
         <div className={styles.methodologyContainer}>
           <h2 className={styles.sectionTitle}>
             How we design and develop
@@ -88,17 +98,20 @@ const MethodologyAndPartners = () => {
 
         <div className={styles.partnersContainer}>
           <h2 className={`${styles.sectionTitle} ${styles.borderBottom}`}>
-            Partner and friends
+            Partners and friends
           </h2>
           <div className={styles.partnersGrid}>
-            {partnerLogos.map((logo) => (
-              <div key={logo.id} className={styles.logoWrapper}>
+            {/* Loop over the logoPaths prop from the server component */}
+            {logoPaths.map((logoPath) => (
+              <div key={logoPath} className={styles.logoWrapper}>
                 <Image
-                  src="/static/nexel/nexel-logo.svg"
-                  alt={`Partner logo ${logo.id}`}
-                  width={100}
+                  src={logoPath}
+                  alt={getLogoNameFromPath(logoPath)}
+                  width={90} // Using slightly larger dimensions for clarity
                   height={40}
                   className={styles.partnerLogo}
+                  // This style ensures logos fit within the box without stretching
+                  style={{ objectFit: "contain" }}
                 />
               </div>
             ))}

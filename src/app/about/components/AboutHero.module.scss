@@ -74,14 +74,15 @@
 
 .scrollIndicator {
   position: absolute;
-  bottom: 5rem;
+  bottom: 9rem;
   right: 4rem;
   color: $secondary-text;
   letter-spacing: 2px;
+  font-weight: 300;
 
   // BEFORE: font-size: 0.9rem; (9px, accessibility issue)
   // AFTER: Use 'xs' scale (12px) for tiny, non-critical text.
-  @include t.text-style("xs");
+  @include t.text-style("xxs");
 
   // Use system breakpoint
   @media (max-width: map-get($breakpoints, "md")) {
@@ -100,9 +101,11 @@
   align-items: center;
   color: $secondary-text;
 
-  // BEFORE: font-size: 0.9rem; (9px, accessibility issue)
-  // AFTER: Use 'xs' scale (12px).
   @include t.text-style("xs");
+
+  .tagline {
+    color: $primary-text;
+  }
 
   // Use system breakpoint
   @media (max-width: map-get($breakpoints, "md")) {

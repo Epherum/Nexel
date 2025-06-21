@@ -1,46 +1,66 @@
+// BeliefSection.module.scss
+
+// Import your system's variables and typography mixins
 @use "src/styles/variables" as *;
 @use "src/styles/typography" as t;
 
 .beliefSection {
+  // Using color variables
   background-color: $dark-bg;
   color: $primary-text;
 
-  // Consistent section padding
-  padding: 8rem 2rem;
-  @media (min-width: map-get($breakpoints, "md")) {
-    padding: 10rem 4rem;
+  // Consistent section padding (adjust as needed)
+  padding: 6rem 4rem;
+
+  // Use `display: flow-root` to correctly contain the floated element.
+  // This is the modern replacement for "clearfix" hacks.
+  display: flow-root;
+
+  // Use the breakpoint from your variables map
+  @media (max-width: map-get($breakpoints, "lg")) {
+    display: flex;
+    flex-direction: column;
+    padding: 3rem 2rem;
   }
 }
 
-.contentWrapper {
-  display: flex;
-  gap: 4rem;
-  // This aligns the smaller description paragraph with the bottom of the large headline
-  align-items: flex-end;
+.description {
+  float: right;
+  width: 35%;
+  max-width: 35ch;
+  margin-left: 3rem;
 
+  // --- RESPONSIVE MARGIN-TOP ---
+  // This is the key to perfect alignment. We calculate the margin
+  // dynamically based on the headline's '3xl' type scale.
+  // We want to push it down by ~3 lines.
+  // Formula: 3 * line-height * font-size
+  // Min: 3 * 1.25 * 2.4rem = 9rem
+  // Max: 3 * 1.25 * 3.6rem = 13.5rem
+  margin-top: clamp(9rem, 20vw, 13.5rem);
+
+  // Use the 'lg' scale from your typography system
+  @include t.text-style("lg");
+  line-height: 1.6;
+
+  // On mobile, undo all float styling
   @media (max-width: map-get($breakpoints, "lg")) {
-    flex-direction: column;
-    // On stacked layout, align to the start (left)
-    align-items: flex-start;
-    gap: 2rem;
+    float: none;
+    width: auto;
+    max-width: 100%;
+    margin: 3rem 0 0 0;
+    order: 2; // Ensure it appears after the headline
   }
 }
 
 .headline {
-  flex: 2 1 60%; // Allows the headline to take up more space
-  font-weight: 500;
-  line-height: 1.25;
-
-  // Use a large, impactful scale for the main statement
+  // Use the '3xl' scale from your typography system
   @include t.text-style("4xl");
-}
+  line-height: 1.25;
+  font-weight: 400; // The font in the design looks like a regular weight
+  margin: 0;
 
-.description {
-  flex: 1 1 35%; // Takes up the remaining space
-  line-height: 1.6;
-  color: $secondary-text;
-  max-width: 45ch; // Limits line length for better readability
-
-  // Use the standard base scale for body copy
-  @include t.text-style("base");
+  @media (max-width: map-get($breakpoints, "lg")) {
+    order: 1; // Ensure it appears first
+  }
 }

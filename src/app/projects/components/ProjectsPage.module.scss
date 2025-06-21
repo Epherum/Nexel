@@ -8,22 +8,21 @@
   // Consistent, responsive padding for the whole page
   padding: 8rem 2rem 4rem 2rem; // Extra top padding
   @media (min-width: map-get($breakpoints, "md")) {
-    padding: 10rem 4rem 4rem 4rem;
+    padding: 10rem 3rem 4rem 3rem;
   }
 }
 
 .header {
   text-align: center;
   margin: 0 auto 7rem auto; // Center the header and add space below
-  max-width: 1500px;
+  max-width: 1000px;
 }
 
 .headline {
-  font-weight: 500;
-  line-height: 1.25;
+  font-weight: 300;
 
   // Use a large scale for the page's main title
-  @include t.text-style("4xl");
+  @include t.text-style("3xl");
 }
 
 .highlight {

@@ -48,12 +48,11 @@ $breakpoints: (
 // The key is the name (e.g., '3xl'), and the value is a map of min/max sizes.
 $type-scale: (
   // Heading Sizes
-  "6xl":
-    (
+  "6xl": //200px
+  (
       min: 6.2rem,
       max: 13.2rem,
     ),
-  // Was: 6rem->20rem  | Approx: 48px -> 120px
   "5xl": //96px
   (
       min: 4rem,
@@ -79,15 +78,16 @@ $type-scale: (
       min: 1.5rem,
       max: 2.3rem,
     ),
+  "2lg": (
+    //32px
+    min: 1.3rem,
+    max: 1.5rem
+  ),
   "lg": // 24px
   (
       min: 0.85rem,
       max: 1.25rem,
     ),
-  "md": (
-    min: 1.8rem,
-    max: 2.2rem,
-  ),
   // Was: 2.2rem->2.4rem | Approx: 16px -> 18px
   "base":
     (
@@ -95,10 +95,10 @@ $type-scale: (
       max: 1.6rem,
     ),
   // Was: 1.6rem->1.6rem | Approx: 16px (No scaling for body text)
-  "sm":
-    (
-      min: 1.1rem,
-      max: 1.1rem,
+  "sm": //20px
+  (
+      min: 0.8rem,
+      max: 0.8rem,
     ),
   // Was: 1.8rem->2.0rem | Approx: 14px (Static small text)
   "xs": //16px
@@ -106,7 +106,7 @@ $type-scale: (
       min: 0.7rem,
       max: 0.7rem,
     ),
-  "xxs": //16px
+  "xxs": //14px
   (
       min: 0.5rem,
       max: 0.5rem,

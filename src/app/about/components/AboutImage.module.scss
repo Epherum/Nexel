@@ -1,0 +1,21 @@
+// components/FullscreenImageSection.module.scss
+
+.fullscreenSection {
+  // Set the section to be exactly the height of the browser's viewport.
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 4rem;
+  // --- This is now REQUIRED ---
+  // The parent of a next/image component with the `fill` prop
+  // must have `position: relative`.
+  position: relative;
+}
+
+.fullscreenImage {
+  // These styles are applied directly to the <Image> component.
+  // The most important one is `object-fit: cover`.
+  // It ensures the image fills the space without being stretched.
+  object-fit: cover;
+  object-position: center; // Good default for positioning the crop
+}

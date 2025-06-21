@@ -1,13 +1,13 @@
-@use "src/styles/variables" as *;
-@use "src/styles/typography" as t;
+@use "variables" as *;
+@use "typography" as t;
 
 .teamSection {
   background-color: $dark-bg;
   color: $primary-text;
-  padding-top: 8rem; // Remove horizontal padding to allow slider to touch the edges
+  padding-top: 4rem; // Remove horizontal padding to allow slider to touch the edges
 
   @media (min-width: map-get($breakpoints, "md")) {
-    padding-top: 10rem;
+    padding-top: 6rem;
   }
 }
 
@@ -22,7 +22,7 @@
 .headline {
   font-weight: 300;
   line-height: 1.2;
-  margin-bottom: 6rem;
+  margin-bottom: 4rem;
   // Apply padding inside the content container
   padding: 0 2rem;
   @media (min-width: map-get($breakpoints, "md")) {
@@ -38,23 +38,21 @@
   color: $accent-color;
 }
 
-// REMOVED: .teamGrid styles are gone.
-
 // NEW: Styles for the Swiper container
 .teamSlider {
   margin-bottom: 3rem;
   // Add padding to the left so the slider starts aligned with content
-  padding-left: 2rem;
+  padding: 0 3rem;
   @media (min-width: map-get($breakpoints, "md")) {
-    padding-left: 4rem;
+    padding: 0 4rem;
   }
 }
 
 // NEW: Styles for each individual Swiper slide
 .slide {
   // Give each slide a fixed width, which is respected by `slidesPerView: 'auto'`
-  width: 570px !important; // Use !important to override Swiper's inline styles if needed
-  height: 720px; // Let height be determined by content
+  width: 440px !important; // Use !important to override Swiper's inline styles if needed
+  height: 550px; // Let height be determined by content
 
   @media (max-width: map-get($breakpoints, "md")) {
     width: 260px !important;
@@ -74,7 +72,7 @@
   width: 100%;
   aspect-ratio: 4 / 5;
   overflow: hidden;
-  border-radius: 40px;
+  border-radius: 32px;
 }
 
 .cardImage {
@@ -89,25 +87,25 @@
 }
 
 .cardInfo {
-  padding: 2rem 1rem;
+  padding: 1rem 0.7rem;
 }
 
 .name {
-  font-weight: 500;
-  margin-bottom: 0.5rem;
+  font-weight: 300;
   @include t.text-style("lg");
 }
 
 .role {
   color: $secondary-text;
-  @include t.text-style("sm");
+  @include t.text-style("xs");
+  font-weight: 100;
 }
 
 .contactCta {
   // Apply padding inside the content container
-  padding: 3rem 2rem 0 2rem;
+  padding: 3rem 2rem 1rem 2rem;
   @media (min-width: map-get($breakpoints, "md")) {
-    padding: 2rem 4rem 0 4rem;
+    padding: 2rem 4rem 2rem 4rem;
   }
   display: flex;
   justify-content: space-between;
@@ -125,8 +123,8 @@
 }
 
 .ctaText {
-  max-width: 700px;
-  line-height: 1.3;
-  font-weight: 500;
-  @include t.text-style("base");
+  margin-right: -2rem;
+  max-width: 600px;
+  font-weight: 300;
+  @include t.text-style("2lg");
 }
