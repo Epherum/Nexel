@@ -12,7 +12,7 @@ const BeliefSection = () => {
 
       {/* 2. This headline will now wrap around the floated description. */}
       <h2 className={styles.headline}>
-        We believe design works best when it's thoughtful, brave, and
+        We believe design works best when it&apos;s thoughtful, brave, and
         well-rooted
       </h2>
     </section>
