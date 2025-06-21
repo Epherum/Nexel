@@ -4,7 +4,7 @@ import React from "react";
 import styles from "./HowWeDoIt.module.scss";
 import Link from "next/link";
 
-const HowWeDoIt: React.FC = () => {
+const HowWeDoIt = () => {
   return (
     <section className={styles.howWeDoItSection}>
       <h2 className={styles.sectionTitle}>How we do it</h2>
@@ -24,7 +24,9 @@ const HowWeDoIt: React.FC = () => {
             focusing on collaborative problem-solving, even when tackling the
             most complex challenges.
           </p>
-          <Link href="/about"className={styles.aboutButton}>About Us</Link>
+          <Link href="/about" className={styles.aboutButton}>
+            About Us
+          </Link>
         </div>
       </div>
     </section>

@@ -49,7 +49,7 @@ const methodologySteps = [
 // Create a dummy array for the logos. We'll generate 21 placeholders.
 const partnerLogos = Array.from({ length: 21 }, (_, i) => ({ id: i + 1 }));
 
-const MethodologyAndPartners: React.FC = () => {
+const MethodologyAndPartners = () => {
   return (
     // This is the outer wrapper for the section, providing the dark background and side margins
     <section className={styles.sectionWrapper}>
@@ -63,7 +63,7 @@ const MethodologyAndPartners: React.FC = () => {
           </h2>
           <div className={styles.sliderWrapper}>
             <Swiper
-              spaceBetween={30}
+              spaceBetween={20}
               slidesPerView={"auto"}
               className="methodology-swiper"
             >
@@ -87,7 +87,9 @@ const MethodologyAndPartners: React.FC = () => {
         </div>
 
         <div className={styles.partnersContainer}>
-          <h2 className={styles.sectionTitle}>Partner and friends</h2>
+          <h2 className={`${styles.sectionTitle} ${styles.borderBottom}`}>
+            Partner and friends
+          </h2>
           <div className={styles.partnersGrid}>
             {partnerLogos.map((logo) => (
               <div key={logo.id} className={styles.logoWrapper}>

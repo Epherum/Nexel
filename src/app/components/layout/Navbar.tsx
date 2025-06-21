@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image"; // 1. Import the Image component
 import styles from "./Navbar.module.scss";
 
-const Navbar: React.FC = () => {
+const Navbar = () => {
   const variants = {
     visible: { y: 0 },
     hidden: { y: "-100%" },

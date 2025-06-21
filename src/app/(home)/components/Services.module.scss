@@ -4,9 +4,9 @@
 
 .servicesSection {
   // Make padding responsive for better mobile display
-  padding: 3rem 2rem;
+  padding: 1rem 2rem;
   @media (min-width: map-get($breakpoints, "md")) {
-    padding: 2rem 3rem;
+    padding: 0rem 3rem;
   }
   background-color: $dark-bg;
 }
@@ -32,7 +32,7 @@
 
   // BEFORE: font-size: 1.2rem; (12px)
   // AFTER: Use the 'xs' scale, our smallest readable text size.
-  @include t.text-style("sm");
+  @include t.text-style("lg");
 }
 
 .content {
@@ -49,8 +49,6 @@
   opacity: 0.5;
   letter-spacing: -3px;
 
-  // BEFORE: font-size: clamp(3rem, 10vw, 7rem); (30px -> 70px)
-  // AFTER: Use the '4xl' scale (36px -> 72px) for a large, impactful headline.
   @include t.text-style("4xl");
 }
 
@@ -64,8 +62,6 @@
   white-space: nowrap;
   z-index: 2;
 
-  // BEFORE: font-size: clamp(0.8rem, 1.5vw, 1rem); (8-10px, illegible)
-  // AFTER: Use 'xs' (12px) for a small but readable, static pill size.
   @include t.text-style("xs");
 
   // Assign background colors using the variables (these are perfect)

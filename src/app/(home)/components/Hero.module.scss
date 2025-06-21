@@ -8,7 +8,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
   // Make padding responsive. Less on mobile, more on desktop.
   padding: 0 2rem;
   @media (min-width: map-get($breakpoints, "md")) {
@@ -21,12 +20,12 @@
 .headline {
   // BEFORE: font-size: clamp(3rem, 10vw, 6.5rem);
   // AFTER: Use our semantic, centrally-managed text style.
-  @include t.text-style("5xl");
+  @include t.text-style("5xl"); //good
 
   font-weight: 500; // This can be adjusted based on the font
   line-height: 1.2; // Unitless line-height is best practice
   max-width: 1400px;
-
+  letter-spacing: -3px;
   // These utility spans are perfect as they are.
   .white {
     color: $primary-text;

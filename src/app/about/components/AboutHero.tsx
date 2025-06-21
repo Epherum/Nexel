@@ -3,7 +3,7 @@
 import React from "react";
 import styles from "./AboutHero.module.scss";
 
-const AboutHero: React.FC = () => {
+const AboutHero = () => {
   return (
     <section className={styles.heroSection}>
       <div className={styles.contentWrapper}>

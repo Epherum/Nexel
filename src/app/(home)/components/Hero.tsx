@@ -3,7 +3,7 @@
 import Image from "next/image";
 import styles from "./Hero.module.scss";
 
-const Hero: React.FC = () => {
+const Hero = () => {
   return (
     <section className={styles.hero}>
       <h1 className={styles.headline}>

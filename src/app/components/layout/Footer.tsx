@@ -1,12 +1,10 @@
 import React from "react";
 import Link from "next/link";
-import Image from "next/image"; // 1. Import the Next.js Image component
+import Image from "next/image";
 import styles from "./Footer.module.scss";
-
-// 2. We only need the arrow icon from react-icons now
 import { FaArrowRight } from "react-icons/fa";
 
-const Footer: React.FC = () => {
+const Footer = () => {
   return (
     <footer className={styles.footerWrapper}>
       <div className={styles.footerContainer}>
@@ -14,14 +12,14 @@ const Footer: React.FC = () => {
         <div className={styles.topRow}>
           <div className={styles.ctaContainer}>
             <Link href="/contact" className={styles.talkButton}>
-              Let&apos;s talk
+              Let's talk
             </Link>
             <Link
               href="/contact"
               className={styles.arrowButton}
               aria-label="Contact Us"
             >
-              <FaArrowRight /> {/* This icon can remain for now */}
+              <FaArrowRight />
             </Link>
           </div>
           <div className={styles.upNextContainer}>
@@ -32,9 +30,8 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* --- Middle Row: Logo --- */}
-        <div className={styles.logoContainer}>
-          {/* 3. BONUS: Replaced text logo with SVG for consistency */}
+        {/* --- Bottom Row: Logo, Copyright, and Socials --- */}
+        <div className={styles.bottomRow}>
           <Link href="/" className={styles.logo}>
             <Image
               src="/static/nexel/nexel-logo.svg"
@@ -43,15 +40,10 @@ const Footer: React.FC = () => {
               height={25}
             />
           </Link>
-        </div>
-
-        {/* --- Bottom Row: Copyright and Socials --- */}
-        <div className={styles.bottomRow}>
           <p className={styles.copyright}>
             © 2023 Nexel Digital Studio. All rights reserved.
           </p>
           <div className={styles.socials}>
-            {/* 4. Replaced all social icons with Image components */}
             <a
               href="https://linkedin.com"
               target="_blank"
@@ -60,9 +52,9 @@ const Footer: React.FC = () => {
             >
               <Image
                 src="/static/nexel/linkedin.svg"
-                alt="" // Alt is empty because aria-label provides context
-                width={25}
-                height={25}
+                alt=""
+                width={30}
+                height={30}
               />
             </a>
             <a
@@ -73,9 +65,9 @@ const Footer: React.FC = () => {
             >
               <Image
                 src="/static/nexel/instagram.svg"
-                alt="" // Alt is empty because aria-label provides context
-                width={25}
-                height={25}
+                alt=""
+                width={30}
+                height={30}
               />
             </a>
             <a
@@ -86,9 +78,9 @@ const Footer: React.FC = () => {
             >
               <Image
                 src="/static/nexel/whatsapp.svg"
-                alt="" // Alt is empty because aria-label provides context
-                width={25}
-                height={25}
+                alt=""
+                width={30}
+                height={30}
               />
             </a>
           </div>

@@ -1,21 +1,22 @@
 // Import our system files
-@use "src/styles/variables" as *;
-@use "src/styles/typography" as t;
+@use "variables" as *;
+@use "typography" as t;
 
 .projectsSection {
   // Make padding responsive
   padding: 6rem 2rem;
   @media (min-width: map-get($breakpoints, "md")) {
-    padding: 8rem 4.5rem;
+    padding: 8rem 3rem;
   }
   background-color: $dark-bg;
 }
 
 .mainTitle {
-  font-weight: 500;
-  margin-bottom: 5rem;
+  font-weight: 400;
+  margin-bottom: 4rem;
+  letter-spacing: -2px;
 
-  @include t.text-style("2xl");
+  @include t.text-style("3xl");
 }
 
 .contentWrapper {
@@ -55,13 +56,15 @@
 }
 
 .subHeader {
-  font-weight: 500;
-  letter-spacing: 0.1em;
+  font-weight: 200;
+  letter-spacing: -0.2px;
   color: $secondary-text;
-  margin-bottom: 3rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
 
-  // BEFORE: font-size: 0.9rem; (9px, too small for accessibility)
-  // AFTER: Use 'xs' scale (12px) for a small but readable label.
+  //border bottom
+  border-bottom: 1px solid $secondary-text;
+
   @include t.text-style("xs");
 }
 
@@ -69,19 +72,20 @@
   font-weight: 500;
   color: $primary-text;
   line-height: 1.3;
+  letter-spacing: -1.5px;
   margin-bottom: 0.5rem;
 
-  // BEFORE: font-size: clamp(2rem, 4vw, 3rem); (20px -> 30px)
-  // AFTER: Use '2xl' scale (24px -> 36px) for a prominent sub-headline.
-  @include t.text-style("md");
+  @include t.text-style("xl");
 
   color: $accent-color;
 }
 
 .description {
-  line-height: 1.6;
   color: $primary-text;
-  max-width: 400px;
+  max-width: 350px;
+  font-weight: 300;
+
+  letter-spacing: -1px;
 
   // BEFORE: font-size: 1rem; (10px, too small)
   // AFTER: Use 'base' scale (16px) for standard paragraph text.

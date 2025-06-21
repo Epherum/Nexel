@@ -60,7 +60,7 @@ const projects = [
   },
 ];
 
-const ProjectsPage: React.FC = () => {
+const ProjectsPage = () => {
   return (
     <main className={styles.projectsPage}>
       <header className={styles.header}>

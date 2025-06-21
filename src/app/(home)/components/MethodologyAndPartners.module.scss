@@ -1,12 +1,12 @@
 // Import our system files
-@use "src/styles/variables" as *;
-@use "src/styles/typography" as t;
+@use "variables" as *;
+@use "typography" as t;
 
 .sectionWrapper {
   // Make padding responsive
   padding: 0rem 2rem;
   @media (min-width: map-get($breakpoints, "md")) {
-    padding: 0rem 2rem;
+    padding: 0rem 1rem;
   }
   background-color: $dark-bg;
 }
@@ -14,30 +14,29 @@
 .whiteContainer {
   background-color: $primary-text;
   color: $dark-bg;
-  border-radius: 24px;
+  border-radius: 16px;
   // Make padding responsive
   padding: 4rem 0;
+  padding-bottom: 1.5rem;
   @media (min-width: map-get($breakpoints, "md")) {
     padding: 3rem 0;
+    padding-bottom: 1.5rem;
   }
   overflow: hidden;
 }
 
 .sectionTitle {
   font-weight: 500;
-  line-height: 1.3;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   color: $dark-bg;
-  letter-spacing: 1px;
+  letter-spacing: -1px;
   // Make padding responsive
   padding: 0 2rem;
   @media (min-width: map-get($breakpoints, "md")) {
-    padding: 0 4rem;
+    padding: 0 3rem;
   }
 
-  // BEFORE: font-size: clamp(2rem, 5vw, 3.5rem); (20px -> 35px)
-  // AFTER: Use the '2xl' scale (24px -> 36px) for a clear section title.
-  @include t.text-style("2xl");
+  @include t.text-style("3xl");
 }
 
 // --- Methodology Slider Styles ---
@@ -49,12 +48,12 @@
   // Make padding responsive
   padding-left: 2rem;
   @media (min-width: map-get($breakpoints, "md")) {
-    padding-left: 4rem;
+    padding-left: 3rem;
   }
 }
 
 .slide {
-  width: 470px !important;
+  width: 390px !important;
   height: auto;
 
   // Use the breakpoint from our system
@@ -64,9 +63,9 @@
 }
 
 .card {
-  height: 440px;
+  height: 360px;
   padding: 1.2rem;
-  border-radius: 16px;
+  border-radius: 8px;
   color: $dark-bg;
   display: flex;
   flex-direction: column;
@@ -88,15 +87,13 @@
 }
 
 .cardDescription {
-  line-height: 1.4;
-  @include t.text-style("sm");
+  @include t.text-style("lg");
 }
 
 .cardStep {
-  line-height: 1.4;
-  opacity: 0.6;
+  opacity: 0.2;
   font-weight: 500;
-  @include t.text-style("sm");
+  @include t.text-style("lg");
 }
 
 // --- Partners Grid Styles ---
@@ -104,16 +101,25 @@
   padding-top: 4rem;
 }
 
+.borderBottom {
+  border-bottom: 1px solid rgba($dark-bg, 0.2);
+  // Make padding responsive
+  padding: 0 2rem;
+  padding-bottom: 1rem;
+  @media (min-width: map-get($breakpoints, "md")) {
+    padding: 0 3rem;
+    padding-bottom: 1rem;
+  }
+}
+
 .partnersGrid {
-  border-top: 1px solid rgba($dark-bg, 0.15);
-  border-bottom: 1px solid rgba($dark-bg, 0.15);
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   gap: 3rem 2rem;
   // Make padding responsive
   padding: 2rem;
   @media (min-width: map-get($breakpoints, "md")) {
-    padding: 2rem 4rem;
+    padding: 2rem 3rem;
   }
 }
 
@@ -126,6 +132,7 @@
 .partnerLogo {
   opacity: 0.7;
   transition: opacity 0.3s ease;
+  filter: invert(1);
 
   &:hover {
     opacity: 1;

@@ -1,25 +1,21 @@
 // Import both variables and our typography system
-@use "src/styles/variables" as *;
-@use "src/styles/typography" as t;
+@use "variables" as *;
+@use "typography" as t;
 
 .howWeDoItSection {
   // Using rem for padding is great. We'll make it responsive.
   padding: 3rem 2rem;
   @media (min-width: map-get($breakpoints, "md")) {
-    padding: 4rem 4rem;
+    padding: 4rem 3rem;
   }
   background-color: $dark-bg;
 }
 
 .sectionTitle {
-  margin-bottom: 2rem;
-  margin-left: 0.8rem;
+  margin-bottom: 1rem;
   font-weight: 400;
   color: $primary-text;
-  letter-spacing: 3px;
 
-  // BEFORE: font-size: 1.25rem; (12.5px, too small for a title)
-  // AFTER: Promote to the 'lg' scale for proper hierarchy and readability.
   @include t.text-style("lg");
 }
 
@@ -49,7 +45,8 @@
 .headline {
   font-weight: 500;
   color: $primary-text;
-  line-height: 1.3;
+  line-height: 1.2;
+  letter-spacing: -3px;
 
   // BEFORE: font-size: clamp(2.5rem, 5vw, 4rem); (25px -> 40px)
   // AFTER: Use the '3xl' scale (30px -> 48px) for a strong, consistent headline.
@@ -61,7 +58,7 @@
   max-width: 31%;
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 0.4rem;
 
   @media (max-width: map-get($breakpoints, "lg")) {
     max-width: 100%;
@@ -70,13 +67,13 @@
 }
 
 .description {
-  line-height: 1.6;
   color: $primary-text;
   font-weight: 300;
   max-width: 450px;
+  margin-top: 0.4rem;
+  margin-bottom: 0.1rem;
+  letter-spacing: -1px;
 
-  // BEFORE: font-size: 1rem; (10px, too small for body text)
-  // AFTER: Use the 'base' scale (16px) for standard, accessible paragraph text.
   @include t.text-style("xs");
 }
 
@@ -85,7 +82,7 @@
   color: #000;
   border: none;
   // Convert padding to rem for system consistency
-  padding: 0.7rem 1.2rem; // Was 14px 28px
+  padding: 0.7rem 1.3rem; // Was 14px 28px
   border-radius: 10px;
   font-weight: 500;
   cursor: pointer;

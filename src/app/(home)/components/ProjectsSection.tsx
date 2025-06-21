@@ -15,7 +15,7 @@ const projects = [
   { id: 6 },
 ];
 
-const ProjectsSection: React.FC = () => {
+const ProjectsSection = () => {
   return (
     <section className={styles.projectsSection}>
       <h2 className={styles.mainTitle}>Projects Built to Last</h2>

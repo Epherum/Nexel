@@ -32,7 +32,7 @@ const servicesData = [
   },
 ];
 
-const Services: React.FC = () => {
+const Services = () => {
   return (
     <section className={styles.servicesSection}>
       <h2 className={styles.sectionTitle}>Our Services</h2>

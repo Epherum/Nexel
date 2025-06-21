@@ -1,6 +1,6 @@
 import styles from "./BeliefSection.module.scss";
 
-const BeliefSection: React.FC = () => {
+const BeliefSection = () => {
   return (
     <section className={styles.beliefSection}>
       <div className={styles.contentWrapper}>

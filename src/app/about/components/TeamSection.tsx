@@ -37,7 +37,7 @@ const teamMembers = [
   },
 ];
 
-const TeamSection: React.FC = () => {
+const TeamSection = () => {
   return (
     <section className={styles.teamSection}>
       <h2 className={styles.headline}>
