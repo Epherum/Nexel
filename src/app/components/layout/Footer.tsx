@@ -12,7 +12,7 @@ const Footer = () => {
         <div className={styles.topRow}>
           <div className={styles.ctaContainer}>
             <Link href="/contact" className={styles.talkButton}>
-              Let's talk
+              Let&apos;s talk
             </Link>
             <Link
               href="/contact"
