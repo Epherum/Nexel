@@ -3,7 +3,6 @@
 
 import { motion, Variants } from "framer-motion";
 import styles from "@/app/(home)/components/Services.module.scss";
-import { easings } from "@/utils/easings"; // Import our new easings
 import { useMemo } from "react";
 
 // Types remain the same...
@@ -21,8 +20,8 @@ interface FloatingPillProps {
 const FloatingPill = ({ pill }: FloatingPillProps) => {
   // We still use useMemo to create a unique floating pattern for each pill
   const floatingAnimation = useMemo(() => {
-    const y = (Math.random() - 0.5) * 12;
-    const x = (Math.random() - 0.5) * 12;
+    const y = (Math.random() - 0.5) * 20;
+    const x = (Math.random() - 0.5) * 20;
     const duration = 2.5 + Math.random() * 1.5;
 
     return {
