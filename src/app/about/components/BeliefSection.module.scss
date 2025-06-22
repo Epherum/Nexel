@@ -24,21 +24,24 @@
   }
 }
 
+.headline {
+  // Use the '3xl' scale from your typography system
+  @include t.text-style("4xl");
+  line-height: 1.25;
+  font-weight: 300; // The font in the design looks like a regular weight
+  margin: 0;
+
+  @media (max-width: map-get($breakpoints, "lg")) {
+    order: 1; // Ensure it appears first
+  }
+}
+
 .description {
   float: right;
   width: 35%;
   max-width: 35ch;
   margin-left: 3rem;
-
-  // --- RESPONSIVE MARGIN-TOP ---
-  // This is the key to perfect alignment. We calculate the margin
-  // dynamically based on the headline's '3xl' type scale.
-  // We want to push it down by ~3 lines.
-  // Formula: 3 * line-height * font-size
-  // Min: 3 * 1.25 * 2.4rem = 9rem
-  // Max: 3 * 1.25 * 3.6rem = 13.5rem
-  margin-top: clamp(9rem, 20vw, 13.5rem);
-
+  font-weight: 100;
   // Use the 'lg' scale from your typography system
   @include t.text-style("lg");
   line-height: 1.6;
@@ -50,17 +53,5 @@
     max-width: 100%;
     margin: 3rem 0 0 0;
     order: 2; // Ensure it appears after the headline
-  }
-}
-
-.headline {
-  // Use the '3xl' scale from your typography system
-  @include t.text-style("4xl");
-  line-height: 1.25;
-  font-weight: 400; // The font in the design looks like a regular weight
-  margin: 0;
-
-  @media (max-width: map-get($breakpoints, "lg")) {
-    order: 1; // Ensure it appears first
   }
 }

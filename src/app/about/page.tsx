@@ -8,6 +8,8 @@ import MethodologyAndPartners from "../(home)/components/MethodologyAndPartners"
 import AboutImage from "./components/AboutImage";
 import styles from "./page.module.scss"; // You can create a simple scss file for this page
 
+import Footer from "@/components/layout/Footer";
+
 import fs from "fs";
 import path from "path";
 
@@ -31,6 +33,7 @@ const AboutPage = () => {
       <MethodologyAndPartners logoPaths={logoPaths} />
 
       <TeamSection />
+      <Footer />
     </main>
   );
 };

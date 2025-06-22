@@ -4,13 +4,6 @@
 
 @use "typography" as t;
 
-// This is the mask for our word-reveal animation.
-.wordWrapper {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: bottom;
-}
-
 .sectionWrapper {
   // Make padding responsive
   padding: 0rem 2rem;

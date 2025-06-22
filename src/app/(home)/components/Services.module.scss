@@ -61,14 +61,6 @@
   display: inline-block; // Important for layout
 }
 
-// Ensure the wordWrapper from the Hero component is available or redefined
-// If not already globally available, add it here too:
-.wordWrapper {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: bottom;
-}
-
 .pill {
   position: absolute;
   // Use rem for padding for consistency

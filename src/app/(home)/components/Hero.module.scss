@@ -2,12 +2,6 @@
 @use "variables" as *;
 @use "typography" as t;
 
-.wordWrapper {
-  display: inline-block; // Crucial for transforms and overflow to work correctly
-  overflow: hidden; // This is the "mask" that hides the text
-  vertical-align: bottom; // Helps align wrapped words with non-wrapped elements
-}
-
 .hero {
   margin-top: -1rem;
   min-height: calc(115vh - #{$nav-height});

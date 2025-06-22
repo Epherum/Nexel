@@ -6,6 +6,7 @@ import HowWeDoIt from "@/app/(home)/components/HowWeDoIt";
 import ProjectsSection from "@/app/(home)/components/ProjectsSection";
 import MethodologyAndPartners from "@/app/(home)/components/MethodologyAndPartners";
 import styles from "./page.module.scss";
+import Footer from "@/components/layout/Footer";
 
 // Import Node.js modules to read files from the server
 import fs from "fs";
@@ -36,6 +37,7 @@ export default function Home() {
       <ProjectsSection />
       {/* 4. Pass the generated logo paths as a prop */}
       <MethodologyAndPartners logoPaths={logoPaths} />
+      <Footer />
     </main>
   );
 }

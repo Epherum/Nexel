@@ -2,12 +2,6 @@
 @use "variables" as *;
 @use "typography" as t;
 
-.wordWrapper {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: bottom;
-}
-
 .projectsSection {
   // Make padding responsive
   padding: 6rem 2rem;

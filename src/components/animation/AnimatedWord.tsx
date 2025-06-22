@@ -2,7 +2,7 @@
 "use client";
 
 import { motion, Variants } from "framer-motion";
-import styles from "@/app/(home)/components/Services.module.scss";
+import styles from "./AnimatedWord.module.scss";
 
 interface AnimatedWordProps {
   children: React.ReactNode;

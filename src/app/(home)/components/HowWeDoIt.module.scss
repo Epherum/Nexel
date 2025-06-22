@@ -2,12 +2,6 @@
 @use "variables" as *;
 @use "typography" as t;
 
-.wordWrapper {
-  display: inline-block;
-  overflow: hidden;
-  vertical-align: bottom;
-}
-
 .howWeDoItSection {
   // Using rem for padding is great. We'll make it responsive.
   padding: 4rem 2rem;

@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import ProjectsPage from "./components/ProjectsPage";
+import Footer from "@/components/layout/Footer";
 
 export const metadata: Metadata = {
   title: "Our Work | Nexel",
@@ -13,6 +14,7 @@ export default function Page() {
   return (
     <>
       <ProjectsPage />
+      <Footer />
     </>
   );
 }
