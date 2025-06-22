@@ -43,15 +43,30 @@
 
 .serviceTitle {
   font-weight: 300;
-
-  color: $services-text;
   line-height: 1.1;
   text-transform: capitalize;
   white-space: nowrap;
-  opacity: 0.5;
   letter-spacing: -3px;
 
+  // --- THE CHANGE IS HERE ---
+  // BEFORE: color: $primary-text; (white)
+  // AFTER: Set the default color to the "dim" state.
+  color: $services-text; // This should be your grey color (e.g., #888)
+
   @include t.text-style("4xl");
+}
+
+// NEW STYLE for the reveal mask
+.titleWrapper {
+  display: inline-block; // Important for layout
+}
+
+// Ensure the wordWrapper from the Hero component is available or redefined
+// If not already globally available, add it here too:
+.wordWrapper {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
 }
 
 .pill {

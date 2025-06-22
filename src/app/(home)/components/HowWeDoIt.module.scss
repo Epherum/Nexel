@@ -2,11 +2,19 @@
 @use "variables" as *;
 @use "typography" as t;
 
+.wordWrapper {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
 .howWeDoItSection {
   // Using rem for padding is great. We'll make it responsive.
-  padding: 3rem 2rem;
+  padding: 4rem 2rem;
+  padding-bottom: 0;
   @media (min-width: map-get($breakpoints, "md")) {
-    padding: 4rem 3rem;
+    padding: 5rem 3rem;
+    padding-bottom: 0;
   }
   background-color: $dark-bg;
 }

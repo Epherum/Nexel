@@ -1,6 +1,15 @@
+// src/app/(home)/components/MethodologyAndPartners.module.scss
 // Import our system files
 @use "variables" as *;
+
 @use "typography" as t;
+
+// This is the mask for our word-reveal animation.
+.wordWrapper {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
 
 .sectionWrapper {
   // Make padding responsive

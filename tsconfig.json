@@ -26,8 +26,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/components/shared/Magnetic.tsx",
-    "src/app/components/shared/Magnetic.tsx"
+    "src/components/shared/Magnetic.tsx",
+    "src/components/shared/Magnetic.tsx"
   ],
   "exclude": ["node_modules"]
 }

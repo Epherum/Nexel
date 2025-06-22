@@ -1,18 +1,19 @@
-// src/components/MethodologyAndPartners.tsx
-
-"use client"; // This component uses the Swiper library
+// src/app/(home)/components/MethodologyAndPartners.tsx
+"use client";
 
 import React from "react";
 import Image from "next/image";
 import styles from "./MethodologyAndPartners.module.scss";
 
-// Import Swiper React components
+// --- Animation Imports ---
+import { motion, useInView, Variants } from "framer-motion";
+import { useRef } from "react";
+import AnimatedWord from "@/components/animation/AnimatedWord";
+import { easings } from "@/utils/easings";
+
+// --- Swiper Imports ---
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
-
-// --- Data for the component ---
 
 const methodologySteps = [
   {
@@ -50,8 +51,58 @@ interface MethodologyAndPartnersProps {
   logoPaths: string[];
 }
 
+// --- Animation Variants ---
+
+// For word-by-word reveal (titles)
+const wordRevealContainer: Variants = {
+  visible: { transition: { staggerChildren: 0.05 } },
+};
+const wordVariants: Variants = {
+  hidden: { y: "110%" },
+  visible: { y: "0%", transition: { duration: 0.8, ease: easings.easeOut } },
+};
+
+// For Swiper slides (left-to-right fade-in)
+const sliderContainerVariants: Variants = {
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
+};
+const slideVariants: Variants = {
+  hidden: { opacity: 0, x: -50 },
+  visible: (i: number) => ({
+    // `i` will be the index of the slide
+    opacity: 1,
+    x: 0,
+    transition: {
+      delay: i * 0.1, // Create a cascading delay
+      duration: 0.8,
+      ease: easings.easeOut,
+    },
+  }),
+};
+
+// For Partners logos (cascading opacity)
+const partnersContainerVariants: Variants = {
+  visible: { transition: { staggerChildren: 0.05, delayChildren: 0.2 } },
+};
+const logoVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { duration: 0.5, ease: "linear" } },
+};
+
 const MethodologyAndPartners = ({ logoPaths }: MethodologyAndPartnersProps) => {
-  // Helper function to create a clean alt text from a file path
+  // --- Refs and Triggers ---
+  const methodologyRef = useRef(null);
+  const isMethodologyInView = useInView(methodologyRef, {
+    margin: "0px 0px -200px 0px",
+    once: true,
+  });
+
+  const partnersRef = useRef(null);
+  const arePartnersInView = useInView(partnersRef, {
+    margin: "0px 0px -200px 0px",
+    once: true,
+  });
+
   const getLogoNameFromPath = (path: string) => {
     try {
       // Example: "/static/nexel/logos/some-company-logo.svg"
@@ -66,57 +117,95 @@ const MethodologyAndPartners = ({ logoPaths }: MethodologyAndPartnersProps) => {
   return (
     <section className={styles.sectionWrapper}>
       <div className={styles.whiteContainer}>
-        <div className={styles.methodologyContainer}>
-          <h2 className={styles.sectionTitle}>
-            How we design and develop
-            <br />a Business strategy & methodology
-          </h2>
+        {/* --- Methodology Section --- */}
+        <motion.div
+          ref={methodologyRef}
+          className={styles.methodologyContainer}
+          initial="hidden"
+          animate={isMethodologyInView ? "visible" : "hidden"}
+        >
+          <motion.h2
+            className={styles.sectionTitle}
+            variants={wordRevealContainer}
+          >
+            {"How we design and develop a Business strategy & methodology"
+              .split(" ")
+              .map((word, index) => (
+                <AnimatedWord key={index} variants={wordVariants}>
+                  {word}
+                  {index < 10 ? "\u00A0" : ""}
+                </AnimatedWord>
+              ))}
+          </motion.h2>
           <div className={styles.sliderWrapper}>
+            {/* The Swiper component is now clean. It does not need motion props. */}
             <Swiper
               spaceBetween={20}
-              slidesPerView={"auto"}
+              slidesPerView={3.5}
               className="methodology-swiper"
             >
-              {methodologySteps.map((item) => (
-                <SwiperSlide key={item.step} className={styles.slide}>
-                  <div
+              {/* We need the index from the map function */}
+              {methodologySteps.map((item, index) => (
+                <SwiperSlide key={item.step}>
+                  <motion.div
                     className={`${styles.card} ${
                       styles[`card--${item.color}`]
                     }`}
+                    variants={slideVariants}
+                    // Pass the index as a custom prop to the variants
+                    custom={index}
                   >
                     <p className={styles.cardDescription}>{item.description}</p>
                     <div className={styles.cardStep}>
                       Step {item.step}: <br />
                       {item.title}
                     </div>
-                  </div>
+                  </motion.div>
                 </SwiperSlide>
               ))}
             </Swiper>
           </div>
-        </div>
-
-        <div className={styles.partnersContainer}>
-          <h2 className={`${styles.sectionTitle} ${styles.borderBottom}`}>
-            Partners and friends
-          </h2>
-          <div className={styles.partnersGrid}>
-            {/* Loop over the logoPaths prop from the server component */}
+        </motion.div>
+        {/* --- Partners Section --- */}
+        <motion.div
+          ref={partnersRef}
+          className={styles.partnersContainer}
+          initial="hidden"
+          animate={arePartnersInView ? "visible" : "hidden"}
+        >
+          <motion.h2
+            className={`${styles.sectionTitle} ${styles.borderBottom}`}
+            variants={wordRevealContainer}
+          >
+            {"Partners and friends".split(" ").map((word, index) => (
+              <AnimatedWord key={index} variants={wordVariants}>
+                {word}
+                {index < 2 ? "\u00A0" : ""}
+              </AnimatedWord>
+            ))}
+          </motion.h2>
+          <motion.div
+            className={styles.partnersGrid}
+            variants={partnersContainerVariants}
+          >
             {logoPaths.map((logoPath) => (
-              <div key={logoPath} className={styles.logoWrapper}>
+              <motion.div
+                key={logoPath}
+                className={styles.logoWrapper}
+                variants={logoVariants}
+              >
                 <Image
                   src={logoPath}
                   alt={getLogoNameFromPath(logoPath)}
-                  width={90} // Using slightly larger dimensions for clarity
+                  width={90}
                   height={40}
                   className={styles.partnerLogo}
-                  // This style ensures logos fit within the box without stretching
                   style={{ objectFit: "contain" }}
                 />
-              </div>
+              </motion.div>
             ))}
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );

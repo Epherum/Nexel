@@ -2,6 +2,12 @@
 @use "variables" as *;
 @use "typography" as t;
 
+.wordWrapper {
+  display: inline-block; // Crucial for transforms and overflow to work correctly
+  overflow: hidden; // This is the "mask" that hides the text
+  vertical-align: bottom; // Helps align wrapped words with non-wrapped elements
+}
+
 .hero {
   margin-top: -1rem;
   min-height: calc(115vh - #{$nav-height});
@@ -38,9 +44,15 @@
   .highlight {
     color: #000;
     background-color: $accent-color;
-    // Use em units for padding so it scales with the font size
-    padding: -1.05em -1.25em;
-    border-radius: 8px;
+    border-radius: 40px;
+
+    padding: 0em 0.2em;
+    position: relative;
+  }
+
+  .white,
+  .grey,
+  .highlight {
     display: inline-block;
   }
 }
@@ -55,8 +67,6 @@
   // scales, the image will scale with it perfectly.
   width: 1em;
   height: 0.7em;
-
-  margin: 0 0.2em;
   // Adjust 'top' slightly using ems for perfect vertical alignment
   top: -0.12em;
   vertical-align: middle;

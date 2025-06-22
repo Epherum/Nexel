@@ -1,9 +1,34 @@
-// src/components/Services.tsx
+// src/app/(home)/components/Services.tsx
+"use client";
 
 import React from "react";
 import styles from "./Services.module.scss";
+import ServiceItem from "@/components/animation/ServiceItem";
 
-// Define the data for our services to keep the JSX clean
+// Animation imports
+import { motion, useInView, Variants } from "framer-motion";
+import { useRef } from "react";
+import AnimatedWord from "@/components/animation/AnimatedWord";
+import { easings } from "@/utils/easings";
+
+// Variants for the "Our Services" H2 Title
+const titleContainerVariants: Variants = {
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+    },
+  },
+};
+
+const titleWordVariants: Variants = {
+  hidden: { y: "100%" },
+  visible: {
+    y: "0%",
+    transition: { duration: 0.7, ease: easings.easeOut },
+  },
+};
+
+// Data for the services list
 const servicesData = [
   {
     letter: "A",
@@ -33,30 +58,34 @@ const servicesData = [
 ];
 
 const Services = () => {
+  const titleRef = useRef(null);
+
+  // The hook is updated here for the delayed trigger
+  const isTitleInView = useInView(titleRef, {
+    margin: "0px 0px -200px 0px", // Delays trigger until element is 200px into the viewport
+    once: true,
+  });
+
   return (
     <section className={styles.servicesSection}>
-      <h2 className={styles.sectionTitle}>Our Services</h2>
+      <motion.h2
+        ref={titleRef}
+        className={styles.sectionTitle}
+        variants={titleContainerVariants}
+        initial="hidden"
+        animate={isTitleInView ? "visible" : "hidden"}
+      >
+        {"Our Services".split(" ").map((word, index) => (
+          <AnimatedWord key={index} variants={titleWordVariants}>
+            {word}
+            {index < 1 ? "\u00A0" : ""}
+          </AnimatedWord>
+        ))}
+      </motion.h2>
+
       <div className={styles.servicesList}>
         {servicesData.map((service) => (
-          <div key={service.letter} className={styles.serviceItem}>
-            <span className={styles.letter}>{service.letter}</span>
-            <div className={styles.content}>
-              <h3 className={styles.serviceTitle}>{service.title}</h3>
-              {service.pills.map((pill) => (
-                <div
-                  key={pill.text}
-                  className={`${styles.pill} ${styles[`pill--${pill.color}`]}`}
-                  style={{
-                    top: pill.top,
-                    left: pill.left,
-                    // You can also use 'right' if needed, e.g., right: pill.right
-                  }}
-                >
-                  {pill.text}
-                </div>
-              ))}
-            </div>
-          </div>
+          <ServiceItem key={service.letter} service={service} />
         ))}
       </div>
     </section>

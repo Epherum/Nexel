@@ -2,6 +2,12 @@
 @use "variables" as *;
 @use "typography" as t;
 
+.wordWrapper {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+}
+
 .projectsSection {
   // Make padding responsive
   padding: 6rem 2rem;
@@ -60,12 +66,22 @@
   letter-spacing: -0.2px;
   color: $secondary-text;
   margin-bottom: 1rem;
-  padding-bottom: 1rem;
-
-  //border bottom
-  border-bottom: 1px solid $secondary-text;
+  // --- REMOVE THESE ---
+  // padding-bottom: 1rem;
+  // border-bottom: 1px solid $secondary-text;
 
   @include t.text-style("xs");
+}
+
+// --- ADD THIS NEW STYLE ---
+// This will be our animatable line.
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: $secondary-text;
+  // This is the key: it makes the element scale from its left edge.
+  transform-origin: left;
+  margin: 1rem 0;
 }
 
 .headline {
@@ -105,10 +121,14 @@
   border-radius: 16px;
   overflow: hidden;
   background-color: #222;
-  height: 23rem;
-  //make every other card lower margin
+  // Let's use aspect-ratio for a more robust card size
+  aspect-ratio: 5 / 6;
+  height: auto; // Remove fixed height
+
+  // --- THE LAYOUT FIX ---
+  // Apply a top margin to every even-numbered card to push it down.
   &:nth-child(even) {
-    margin-bottom: 2rem;
+    margin-top: 4rem; // Using a larger value for a more pronounced effect
   }
 
   .projectImage {
@@ -122,7 +142,6 @@
     }
   }
 }
-
 // --- Button at the Bottom ---
 .viewAllButton {
   background-color: $accent-color;
