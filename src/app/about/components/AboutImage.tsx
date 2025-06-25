@@ -20,6 +20,8 @@ const AboutImage = ({ imageSrc, altText }: any) => {
         // If this image is "above the fold" (visible on initial page load),
         // the `priority` prop tells Next.js to load it immediately for better LCP.
         priority
+        data-scroll
+        data-scroll-speed="-0.1"
       />
     </section>
   );

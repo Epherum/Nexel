@@ -1,5 +1,4 @@
 // src/app/page.tsx
-
 import Hero from "@/app/(home)/components/Hero";
 import Services from "@/app/(home)/components/Services";
 import HowWeDoIt from "@/app/(home)/components/HowWeDoIt";
@@ -8,13 +7,10 @@ import MethodologyAndPartners from "@/app/(home)/components/MethodologyAndPartne
 import styles from "./page.module.scss";
 import Footer from "@/components/layout/Footer";
 
-// Import Node.js modules to read files from the server
 import fs from "fs";
 import path from "path";
 
 export default function Home() {
-  // --- This logic runs on the server ---
-
   // 1. Get the full path to the logos directory
   const logosDirectory = path.join(process.cwd(), "public/static/nexel/logos");
 
@@ -26,16 +22,12 @@ export default function Home() {
   const logoPaths = logoFilenames.map(
     (filename) => `/static/nexel/logos/${filename}`
   );
-
-  // --- End of server-side logic ---
-
   return (
     <main className={styles.main}>
       <Hero />
       <Services />
       <HowWeDoIt />
       <ProjectsSection />
-      {/* 4. Pass the generated logo paths as a prop */}
       <MethodologyAndPartners logoPaths={logoPaths} />
       <Footer />
     </main>

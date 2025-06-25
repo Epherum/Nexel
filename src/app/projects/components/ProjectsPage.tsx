@@ -1,12 +1,15 @@
-// src/app/projects/components/ProjectsPage.tsx
+//src/app/projects/components/ProjectsPage.tsx
+
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./ProjectsPage.module.scss";
 import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
 import AnimatedWord from "@/components/animation/AnimatedWord";
 import { easings } from "@/utils/easings";
+import { allProjects } from "@/data/allProjects"; // <-- USE THE MASTER LIST
 
 // --- Data (Unchanged) ---
 const projects = [
@@ -94,7 +97,6 @@ const ProjectsPage = () => {
     once: true,
   });
 
-  // --- THE FIX: Pre-split the text for cleaner JSX ---
   const headlineStart =
     "Explore the work that defines our standards and drives";
   const headlineHighlight = "real impact.";
@@ -108,15 +110,12 @@ const ProjectsPage = () => {
         animate="visible"
       >
         <h1 className={styles.headline}>
-          {/* Map over the first part of the headline */}
           {headlineStart.split(" ").map((word, index) => (
             <AnimatedWord key={index} variants={wordVariants}>
-              {/* Add a non-breaking space after each word */}
               {word}
               {"\u00A0"}
             </AnimatedWord>
           ))}
-          {/* Render the highlighted part separately */}
           <span className={styles.highlight}>
             <AnimatedWord variants={wordVariants}>
               {headlineHighlight}
@@ -124,7 +123,6 @@ const ProjectsPage = () => {
           </span>
         </h1>
       </motion.header>
-
       <motion.div
         ref={gridRef}
         className={styles.projectsGrid}
@@ -132,21 +130,30 @@ const ProjectsPage = () => {
         initial="hidden"
         animate={isGridInView ? "visible" : "hidden"}
       >
-        {projects.map((project) => (
-          <motion.div
-            key={project.id}
-            className={styles.projectCard}
-            variants={cardVariants}
-          >
-            <Image
-              src={project.imageUrl}
-              alt={project.alt}
-              fill
-              className={styles.projectImage}
-              sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            />
-          </motion.div>
-        ))}
+        {allProjects.map(
+          (
+            project // 3. Map over the dynamic projectsData
+          ) => (
+            <motion.div
+              key={project.slug} // Use unique slug for the key
+              className={styles.projectCard}
+              variants={cardVariants}
+            >
+              {/* 4. Make each card a link to its project page */}
+              <Link href={`/projects/${project.slug}`}>
+                <Image
+                  src={project.thumbnail}
+                  alt={`Thumbnail for ${project.title} project`}
+                  fill
+                  className={styles.projectImage}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                  data-scroll
+                  data-scroll-speed="-0.1"
+                />
+              </Link>
+            </motion.div>
+          )
+        )}
       </motion.div>
     </main>
   );

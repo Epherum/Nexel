@@ -13,7 +13,7 @@ import { easings } from "@/utils/easings";
 const containerVariants: Variants = {
   visible: {
     transition: {
-      staggerChildren: 0.08, // A snappy, premium stagger speed
+      staggerChildren: 0.02, // A snappy, premium stagger speed
       delayChildren: 0.3, // A small delay to let the page load before animating
     },
   },
@@ -21,29 +21,29 @@ const containerVariants: Variants = {
 
 // The standard masking reveal for all text words
 const wordVariants: Variants = {
-  hidden: { y: "110%" },
+  hidden: { y: "-110%" },
   visible: {
     y: "0%",
-    transition: { duration: 0.8, ease: easings.easeOut },
+    transition: { duration: 1, ease: easings.easeOut },
   },
 };
 
-// The special reveal for the inline image
-const imageVariants: Variants = {
-  hidden: {
-    y: "110%",
-    width: "0em",
-  },
-  visible: {
-    y: "0%",
-    width: "1em", // Corresponds to the width in your SCSS
-    transition: {
-      type: "spring",
-      damping: 12,
-      stiffness: 100,
-    },
-  },
-};
+// // The special reveal for the inline image
+// const imageVariants: Variants = {
+//   hidden: {
+//     y: "-110%",
+//     width: "0em",
+//   },
+//   visible: {
+//     y: "0%",
+//     width: "1em", // Corresponds to the width in your SCSS
+//     transition: {
+//       type: "spring",
+//       damping: 12,
+//       stiffness: 100,
+//     },
+//   },
+// };
 
 const Hero = () => {
   return (
@@ -74,17 +74,18 @@ const Hero = () => {
           is{"\u00A0"}
         </AnimatedWord>
         <AnimatedWord className={styles.white} variants={wordVariants}>
-          the{"\u2009"}
+          the{"\u2008"}
+          {"\u2008"}
         </AnimatedWord>
 
         {/* The image is treated as just another "word" in the sequence */}
-        <AnimatedWord variants={imageVariants}>
+        <AnimatedWord variants={wordVariants}>
           <div className={styles.imagePlaceholder}>
             <Image
               src="/static/nexel/test.jpg"
               alt="Design snippet"
-              layout="fill"
-              objectFit="cover"
+              fill
+              style={{ objectFit: "cover" }}
               className={styles.snippetImage}
               priority // Add priority=true for LCP (Largest Contentful Paint) images
             />
@@ -92,7 +93,8 @@ const Hero = () => {
         </AnimatedWord>
 
         <AnimatedWord className={styles.white} variants={wordVariants}>
-          {"\u2009"}result{"\u00A0"}
+          {"\u2008"}
+          {"\u2008"}result{"\u00A0"}
         </AnimatedWord>
         <AnimatedWord className={styles.grey} variants={wordVariants}>
           of a

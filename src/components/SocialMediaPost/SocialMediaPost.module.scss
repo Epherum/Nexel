@@ -1,0 +1,77 @@
+.postContainer {
+  background-color: #fff;
+  border: 1px solid #dbdbdb;
+  border-radius: 16px;
+  max-width: 470px;
+  width: 100%;
+  margin-right: 3rem; // Add some margin for spacing
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  color: black;
+}
+
+.postHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid #efefef;
+}
+
+.profileInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profileIcon {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profileName {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.moreOptions {
+  color: #262626;
+}
+
+.imageWrapper {
+  // The Image component with layout="responsive" will handle the aspect ratio
+  // No specific styles needed here unless you want to constrain height.
+  // The container will grow with the image.
+  img {
+    object-fit: cover;
+  }
+}
+
+.postFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px 12px;
+}
+
+.actionsLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  svg {
+    cursor: pointer;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}
+
+.actionsRight {
+  svg {
+    cursor: pointer;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+}

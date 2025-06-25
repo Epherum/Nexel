@@ -36,9 +36,22 @@
   cursor: pointer;
 
   .line {
-    width: 28px;
+    width: 40px;
     height: 2px;
     background-color: $primary-text;
+    transition: transform 0.4s ease, opacity 0.3s ease;
+    transform-origin: center;
+  }
+
+  // --- ADD THESE NEW STYLES ---
+  // When the menu is open, transform the lines into an 'X'
+  &.isOpen {
+    .line:first-child {
+      transform: translateY(4px) rotate(45deg);
+    }
+    .line:last-child {
+      transform: translateY(-4px) rotate(-46deg);
+    }
   }
 }
 

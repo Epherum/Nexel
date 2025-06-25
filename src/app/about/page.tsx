@@ -25,6 +25,7 @@ const AboutPage = () => {
   const logoPaths = logoFilenames.map(
     (filename) => `/static/nexel/logos/${filename}`
   );
+
   return (
     <main className={styles.main}>
       <AboutHero />

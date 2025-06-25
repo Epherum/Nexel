@@ -1,4 +1,4 @@
-// src/app/(home)/components/ProjectsSection.tsx
+//src/components/ProjectsSection/ProjectsSection.tsx
 "use client";
 
 import React from "react";
@@ -7,10 +7,11 @@ import Link from "next/link";
 import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
 import AnimatedWord from "@/components/animation/AnimatedWord";
-import ProjectCard from "@/components/animation/ProjectCard";
 import { easings } from "@/utils/easings";
+import Image from "next/image";
+import { allProjects } from "@/data/allProjects"; // <-- USE THE MASTER LIST
 
-// --- Data & Variants are unchanged ---
+// --- Data & Variants ---
 const projects = [
   { id: 1 },
   { id: 2 },
@@ -34,17 +35,28 @@ const lineVariants: Variants = {
   },
 };
 
+// --- NEW: Variants for individual card and button animation ---
+const itemFadeInUp: Variants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: easings.easeOut,
+    },
+  },
+};
+
 const ProjectsSection = () => {
-  // --- THE FIX: Create two separate triggers ---
   const titleRef = useRef(null);
   const isTitleInView = useInView(titleRef, {
-    margin: "0px 0px -150px 0px", // Trigger for the main title
+    margin: "0px 0px -150px 0px",
     once: true,
   });
-
   const contentRef = useRef(null);
   const isContentInView = useInView(contentRef, {
-    margin: "0px 0px -200px 0px", // A separate trigger for the left column content
+    margin: "0px 0px -200px 0px",
     once: true,
   });
 
@@ -52,10 +64,10 @@ const ProjectsSection = () => {
   const descriptionText =
     "Every case study represents a challenge met, a standard raised, and a client empowered. See how we turn vision into results that speak for themselves.";
 
+  const projectsToShow = allProjects.slice(0, 6);
+
   return (
-    // This is now a regular <section>, not a motion component.
     <section className={styles.projectsSection}>
-      {/* Main Title now has its OWN trigger */}
       <motion.h2
         ref={titleRef}
         className={styles.mainTitle}
@@ -72,15 +84,13 @@ const ProjectsSection = () => {
       </motion.h2>
 
       <div className={styles.contentWrapper}>
-        {/* We attach the second ref to the left column */}
         <div ref={contentRef} className={styles.leftColumn}>
-          {/* This content is now triggered by isContentInView */}
           <motion.div
-            className={styles.stickyContent}
             variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
             initial="hidden"
             animate={isContentInView ? "visible" : "hidden"}
           >
+            {/* The text content remains the same */}
             <motion.div variants={wordRevealContainer}>
               <p className={styles.subHeader}>
                 {subHeaderText.split(" ").map((word, index) => (
@@ -94,7 +104,6 @@ const ProjectsSection = () => {
               </p>
               <motion.div className={styles.line} variants={lineVariants} />
             </motion.div>
-
             <motion.h3
               className={styles.headline}
               variants={wordRevealContainer}
@@ -107,7 +116,6 @@ const ProjectsSection = () => {
                 {"\u00A0"}Inspire
               </AnimatedWord>
             </motion.h3>
-
             <motion.p
               className={styles.description}
               variants={wordRevealContainer}
@@ -121,33 +129,44 @@ const ProjectsSection = () => {
                 </AnimatedWord>
               ))}
             </motion.p>
-          </motion.div>
 
-          {/* The button is also triggered by isContentInView */}
-          <motion.div
-            variants={wordRevealContainer}
-            initial="hidden"
-            animate={isContentInView ? "visible" : "hidden"}
-          >
-            <Link href={"/projects"} className={styles.viewAllButton}>
-              {"View all projects".split(" ").map((word, index) => (
-                <AnimatedWord key={index} variants={wordVariants}>
-                  {word}
-                  {index < 2 ? "\u00A0" : ""}
-                </AnimatedWord>
-              ))}
-            </Link>
+            {/* --- FIX: Wrap the button in its own motion component for animation --- */}
+            <motion.div variants={itemFadeInUp}>
+              <Link href={"/projects"} className={styles.viewAllButton}>
+                {"View all projects"}
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
 
         <div className={styles.rightColumn} id="projects-grid">
-          {projects.map((project) => (
-            <ProjectCard
-              key={project.id}
-              id={project.id}
-              src="/static/nexel/test.jpg"
-            />
-          ))}
+          {projectsToShow.map(
+            (
+              project // 3. Map over our dynamic data
+            ) => (
+              <motion.div
+                key={project.slug} // Use unique slug for the key
+                className={styles.projectCard}
+                variants={itemFadeInUp}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.3 }}
+              >
+                {/* 4. Use project slug for the link and thumbnail for the image */}
+                <Link href={`/projects/${project.slug}`} scroll={false}>
+                  <Image
+                    src={project.thumbnail}
+                    alt={`Thumbnail for ${project.title} project`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className={styles.projectImage}
+                    data-scroll
+                    data-scroll-speed="-0.1"
+                  />
+                </Link>
+              </motion.div>
+            )
+          )}
         </div>
       </div>
     </section>

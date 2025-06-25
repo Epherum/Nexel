@@ -20,27 +20,22 @@ const teamMembers = [
   {
     name: "Mira Tlili",
     role: "Lead UX/UI Designer",
-    image: "/static/nexel/test.jpg",
+    image: "/static/nexel/team/emira2.png",
   },
   {
     name: "Haroun Dardour",
     role: "Art Director",
-    image: "/static/nexel/test.jpg",
+    image: "/static/nexel/team/haroun.png",
   },
   {
     name: "Wassim Fekih",
     role: "Full-Stack Developer",
-    image: "/static/nexel/test.jpg",
+    image: "/static/nexel/team/wassim.png",
   },
   {
     name: "John Doe",
     role: "Project Manager",
-    image: "/static/nexel/test.jpg",
-  },
-  {
-    name: "Jane Smith",
-    role: "Marketing Lead",
-    image: "/static/nexel/test.jpg",
+    image: "/static/nexel/team/emira2.png",
   },
 ];
 

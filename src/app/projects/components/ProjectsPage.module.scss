@@ -5,8 +5,7 @@
   background-color: $dark-bg;
   color: $primary-text;
 
-  // Consistent, responsive padding for the whole page
-  padding: 8rem 2rem 4rem 2rem; // Extra top padding
+  padding: 8rem 2rem 4rem 2rem;
   @media (min-width: map-get($breakpoints, "md")) {
     padding: 10rem 3rem 4rem 3rem;
   }
@@ -14,58 +13,50 @@
 
 .header {
   text-align: center;
-  margin: 0 auto 7rem auto; // Center the header and add space below
+  margin: 0 auto 7rem auto;
   max-width: 1100px;
 }
 
 .headline {
   font-weight: 300;
-
-  // Use a large scale for the page's main title
   @include t.text-style("3xl");
 }
 
 .highlight {
-  // Same highlight style from the homepage hero
   color: $accent-color;
-  // Use `display: inline-block` to allow padding and border-radius
   display: inline-block;
 }
 
 .projectsGrid {
   display: grid;
-  gap: 1rem; // Gap between grid items
-
-  // Desktop: 3 columns
+  gap: 1rem;
   grid-template-columns: repeat(3, 1fr);
 
-  // Tablet: 2 columns
   @media (max-width: map-get($breakpoints, "lg")) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  // Mobile: 1 column
   @media (max-width: map-get($breakpoints, "md")) {
     grid-template-columns: 1fr;
   }
 }
 
 .projectCard {
-  position: relative; // Needed for next/image with fill={true}
+  position: relative;
   border-radius: 16px;
-  overflow: hidden; // Ensures the image respects the border-radius
-  // Enforce a consistent aspect ratio for all cards
+  overflow: hidden;
   aspect-ratio: 3 / 4;
-  cursor: pointer; // Indicates the cards are clickable
-}
+  cursor: pointer;
 
-.projectImage {
-  width: 100%;
-  height: 100%;
-  object-fit: cover; // Fills the card without stretching the image
-  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  .projectImage {
+    border-radius: 16px;
+    // --- ADJUSTED FOR PARALLAX EFFECT ---
+    scale: 1; // A more subtle scale for a better effect.
+    object-fit: cover; // Prevents image distortion.
 
-  .projectCard:hover & {
-    transform: scale(1.05);
+    // --- Unchanged ---
+    position: absolute;
+    width: 100%;
+    will-change: transform;
   }
 }

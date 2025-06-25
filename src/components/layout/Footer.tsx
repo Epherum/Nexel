@@ -1,13 +1,46 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./Footer.module.scss";
 import { FaArrowRight } from "react-icons/fa";
+import { usePathname } from "next/navigation";
+import { allProjects } from "@/data/allProjects";
 
 const Footer = () => {
+  const pathname = usePathname();
+
+  // We now need two separate classes for independent control
+  let wrapperThemeClass = "";
+  let containerThemeClass = "";
+
+  // Case 1: The main /projects index page
+  if (pathname === "/projects") {
+    // Wrapper stays default (dark), but the inner container becomes light.
+    containerThemeClass = styles.containerThemeLight;
+  }
+  // Case 2: Individual project detail pages
+  else {
+    const currentProject = allProjects.find(
+      (p) => pathname === `/projects/${p.slug}`
+    );
+    if (currentProject) {
+      if (currentProject.type === "dynamic") {
+        // Social media page: Wrapper becomes light, container stays default.
+        wrapperThemeClass = styles.wrapperThemeLight;
+      } else if (currentProject.type === "hardcoded") {
+        // Hardcoded project page: Wrapper becomes dark, container stays default.
+        wrapperThemeClass = styles.wrapperThemeDark;
+      }
+    }
+  }
+
+  // Case 3 (Default): For any other page (homepage, contact), both classes are empty.
+
   return (
-    <footer className={styles.footerWrapper}>
-      <div className={styles.footerContainer}>
+    <footer className={`${styles.footerWrapper} ${wrapperThemeClass}`}>
+      <div className={`${styles.footerContainer} ${containerThemeClass}`}>
         {/* --- Top Row: CTA and Up Next --- */}
         <div className={styles.topRow}>
           <div className={styles.ctaContainer}>

@@ -6,6 +6,7 @@ import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
 import styles from "@/app/(home)/components/ProjectsSection.module.scss";
 import { easings } from "@/utils/easings";
+import Link from "next/link";
 
 interface ProjectCardProps {
   id: number;
@@ -36,18 +37,22 @@ const ProjectCard = ({ id, src }: ProjectCardProps) => {
   return (
     <motion.div
       ref={ref}
-      className={styles.projectCard}
       variants={cardVariants}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
+      className={styles.projectCard}
     >
-      <Image
-        src={src}
-        alt={`Project ${id}`}
-        width={500}
-        height={600}
-        className={styles.projectImage}
-      />
+      <Link href={"/projects/evense"} scroll={false}>
+        <Image
+          src={src}
+          alt={`Project ${id}`}
+          width={500}
+          height={600}
+          className={styles.projectImage}
+          data-scroll
+          data-scroll-speed="-0.1"
+        />
+      </Link>
     </motion.div>
   );
 };
