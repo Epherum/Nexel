@@ -28,10 +28,22 @@
 
 // --- Mixin: Easy-to-use text style applicator ---
 @mixin text-style($scale-key) {
+  // Error checking
+  @if not map-has-key($mobile-type-scale, $scale-key) {
+    @error "The key '#{$scale-key}' was not found in the $mobile-type-scale map.";
+  }
   @if not map-has-key($type-scale, $scale-key) {
     @error "The key '#{$scale-key}' was not found in the $type-scale map.";
   }
 
-  $font-size-map: map-get($type-scale, $scale-key);
-  font-size: get-fluid-font-size($font-size-map);
+  // --- Mobile First ---
+  // Apply the fixed font size from our new mobile map by default.
+  font-size: map-get($mobile-type-scale, $scale-key);
+
+  // --- Tablet/Desktop and up ---
+  // At the 'md' breakpoint, switch to the fluid typography system.
+  @media (min-width: map-get($breakpoints, "md")) {
+    $font-size-map: map-get($type-scale, $scale-key);
+    font-size: get-fluid-font-size($font-size-map);
+  }
 }

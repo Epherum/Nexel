@@ -116,3 +116,30 @@ $type-scale: (
       max: 0.5rem,
     )
 );
+
+$mobile-type-scale: (
+  "6xl": 3rem,
+  // ~60px
+  "5xl": 2.8rem,
+  // ~38px
+  "4xl": 1.5rem,
+  // ~32px
+  "3xl": 1.8rem,
+  // ~28px
+  "2xl": 2.4rem,
+  // ~24px
+  "xl": 2rem,
+
+  "2lg": 1.6rem,
+  // ~20px
+  "lg": 0.8rem,
+  // ~18px
+  "base": 1.5rem,
+  // ~15px (Mobile body text slightly smaller)
+  "sm": 1.3rem,
+  // ~13px
+  "xs": 0.4rem,
+  // ~12px
+  "xxs": 1.1rem,
+  // ~11px
+);

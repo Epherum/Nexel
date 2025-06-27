@@ -1,22 +1,22 @@
-// Import both our variables and our typography system
+// src/app/(home)/components/Services.module.scss
+
 @use "src/styles/variables" as *;
 @use "src/styles/typography" as t;
 
 .servicesSection {
-  // Make padding responsive for better mobile display
-  padding: 1rem 2rem;
+  padding: 4rem 1.5rem; // Adjust padding for mobile
+
   @media (min-width: map-get($breakpoints, "md")) {
-    padding: 0rem 3rem;
+    padding: 6rem 3rem;
   }
   background-color: $dark-bg;
 }
 
 .sectionTitle {
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   font-weight: 300;
   color: $primary-text;
-
-  @include t.text-style("lg");
+  @include t.text-style("lg"); // Automatically responsive!
 }
 
 .serviceItem {
@@ -28,12 +28,13 @@
 
 .letter {
   color: $primary-text;
-  margin-right: 4rem;
+  margin-right: 2rem; // Less margin on mobile
   font-weight: 300;
+  @include t.text-style("lg"); // Automatically responsive!
 
-  // BEFORE: font-size: 1.2rem; (12px)
-  // AFTER: Use the 'xs' scale, our smallest readable text size.
-  @include t.text-style("lg");
+  @media (min-width: map-get($breakpoints, "md")) {
+    margin-right: 4rem;
+  }
 }
 
 .content {
@@ -45,36 +46,42 @@
   font-weight: 300;
   line-height: 1.1;
   text-transform: capitalize;
-  white-space: nowrap;
-  letter-spacing: -3px;
+  letter-spacing: -0.1rem; // Less aggressive spacing on mobile
 
-  // --- THE CHANGE IS HERE ---
-  // BEFORE: color: $primary-text; (white)
-  // AFTER: Set the default color to the "dim" state.
-  color: $services-text; // This should be your grey color (e.g., #888)
+  // Allow text to wrap on small screens to prevent overflow
+  white-space: normal;
 
-  @include t.text-style("4xl");
+  @media (min-width: map-get($breakpoints, "md")) {
+    white-space: nowrap; // Prevent wrapping on larger screens
+    letter-spacing: -3px;
+  }
+
+  color: $services-text;
+  @include t.text-style("4xl"); // Automatically responsive!
 }
 
-// NEW STYLE for the reveal mask
 .titleWrapper {
-  display: inline-block; // Important for layout
+  display: inline-block;
 }
 
 .pill {
   position: absolute;
-  // Use rem for padding for consistency
-  padding: 0.7rem 0.8rem; // Was 10px 22px
+  padding: 0.5rem 1rem; // Slightly smaller padding for smaller text
   border-radius: 99px;
   color: #000;
   font-weight: 300;
-
   white-space: nowrap;
   z-index: 2;
 
-  @include t.text-style("xs");
+  // HIDE pills on mobile to avoid complex overlap issues.
+  // This is a common strategy. Re-enabling them for tablets and up.
+  display: none;
+  @media (min-width: map-get($breakpoints, "md")) {
+    display: block;
+  }
 
-  // Assign background colors using the variables (these are perfect)
+  @include t.text-style("xs"); // Automatically responsive!
+
   &--blue {
     background-color: $pill-color-blue;
   }

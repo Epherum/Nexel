@@ -27,6 +27,12 @@
   align-items: center;
   gap: 3rem;
   text-align: center;
+
+  // --- MODIFICATION ---
+  // Added position and z-index to ensure this content block
+  // sits on top of the new .cardsContainer.
+  position: relative;
+  z-index: 1;
 }
 
 .headline {
@@ -45,8 +51,6 @@
     margin-top: -1rem;
     margin-bottom: 1rem;
     font-weight: 100;
-    // BEFORE: font-size: 1.25rem; (12.5px)
-    // AFTER: Use the 'md' scale (16px -> 18px) for a prominent paragraph.
     @include t.text-style("lg");
   }
 }
@@ -55,16 +59,12 @@
   background-color: $accent-color;
   color: #000;
   border: none;
-  // Use rem for padding
   padding: 0.6rem 1.3rem;
   border-radius: 8px;
   font-weight: 500;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
   font-family: inherit;
-
-  // BEFORE: font-size: 1rem; (10px, too small)
-  // AFTER: Use 'base' scale (16px) for standard button text.
   @include t.text-style("xs");
 
   &:hover {
@@ -79,12 +79,8 @@
   color: $secondary-text;
   letter-spacing: 2px;
   font-weight: 300;
-
-  // BEFORE: font-size: 0.9rem; (9px, accessibility issue)
-  // AFTER: Use 'xs' scale (12px) for tiny, non-critical text.
   @include t.text-style("xxs");
 
-  // Use system breakpoint
   @media (max-width: map-get($breakpoints, "md")) {
     display: none;
   }
@@ -100,17 +96,57 @@
   justify-content: space-between;
   align-items: center;
   color: $secondary-text;
-
   @include t.text-style("xs");
 
   .tagline {
     color: $primary-text;
   }
 
-  // Use system breakpoint
   @media (max-width: map-get($breakpoints, "md")) {
     flex-direction: column;
     gap: 0.5rem;
     align-items: flex-start;
   }
+}
+
+// --- NEW STYLES FOR ANIMATED CARDS ---
+
+// Container for all the cards. It's positioned absolutely to fill the hero
+// section and sits in the background (z-index: 0).
+.cardsContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  pointer-events: none; // Prevents the container from blocking text interaction
+}
+
+// Individual card styling for the "polaroid" effect.
+.card {
+  position: absolute;
+  // Using a responsive unit for padding that scales with the viewport.
+  padding: 1.2vmin;
+  // Using your primary text color (likely white) for the default card background.
+  background-color: $primary-text;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  // Using the same border-radius as your button for consistency.
+  border-radius: 8px;
+
+  // Modifier class for the lime green card.
+  &.lime {
+    // Using your existing accent color variable.
+    background-color: $accent-color;
+  }
+}
+
+// A wrapper for the Next.js Image to ensure it fits within the card's padding.
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  // A smaller inner radius for the photo itself.
+  border-radius: 4px;
 }

@@ -1,28 +1,30 @@
-//src/app/components/HOC/FrozenRoute.tsx
 "use client";
 
 import { useContext, useRef, useEffect } from "react";
 import { LayoutRouterContext } from "next/dist/shared/lib/app-router-context.shared-runtime";
-import { initializeScroll, destroyScroll } from "./smoothScroll"; // Import the scroll manager
+// CHANGE: Import from your new lenis utility
+import { initializeScroll, destroyScroll } from "./smoothScroll";
+import { usePathname } from "next/navigation";
 
 const FrozenRoute = ({ children }: { children: React.ReactNode }) => {
   const context = useContext(LayoutRouterContext);
   const frozen = useRef(context).current;
+  const pathname = usePathname();
 
   useEffect(() => {
-    //it doesnt work in dev mode but it works in build
+    // Scroll to top on route change
     window.scrollTo(0, 0);
 
-    const setupScroll = async () => {
-      await initializeScroll();
-    };
+    // CHANGE: Initialize Lenis on EVERY page load.
+    // This ensures a consistent scroll experience and provides an instance
+    // for the /about page to control.
+    initializeScroll();
 
-    setupScroll();
-
+    // The cleanup function will be called when the component unmounts (on route change)
     return () => {
-      destroyScroll(); // Clean up scroll instance on unmount
+      destroyScroll();
     };
-  }, []);
+  }, [pathname]); // Rerun this effect on path change
 
   return (
     <LayoutRouterContext.Provider value={frozen}>

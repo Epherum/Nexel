@@ -65,7 +65,7 @@ const HowWeDoIt = () => {
         {"How we do it".split(" ").map((word, index) => (
           <AnimatedWord key={index} variants={wordVariants}>
             {word}
-            {index < 2 ? "\u00A0" : ""}
+            {index < 3 ? "\u00A0" : ""}
           </AnimatedWord>
         ))}
       </motion.h2>

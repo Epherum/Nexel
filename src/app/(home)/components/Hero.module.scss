@@ -1,32 +1,38 @@
-// Use our new architecture files with an alias 't' for typography
-@use "variables" as *;
-@use "typography" as t;
+// src/app/(home)/components/Hero.module.scss
+
+@use "src/styles/variables" as *;
+@use "src/styles/typography" as t;
 
 .hero {
-  margin-top: -1rem;
-  min-height: calc(115vh - #{$nav-height});
+  margin-top: 2rem; // Remove negative margin for mobile
+  min-height: 90vh; // A bit less than full height on mobile
   display: flex;
   align-items: center;
   justify-content: center;
-  // Make padding responsive. Less on mobile, more on desktop.
-  padding: 0 2rem;
-  @media (min-width: map-get($breakpoints, "md")) {
-    padding: $container-padding; // Uses the 0 4rem from variables
-  }
-
+  padding: 0 1.5rem; // Less padding on mobile
   text-align: center;
+
+  @media (min-width: map-get($breakpoints, "md")) {
+    margin-top: -1rem;
+    min-height: calc(115vh - #{$nav-height});
+    padding: $container-padding;
+  }
 }
 
 .headline {
-  // BEFORE: font-size: clamp(3rem, 10vw, 6.5rem);
-  // AFTER: Use our semantic, centrally-managed text style.
-  @include t.text-style("5xl"); //good
+  @include t.text-style(
+    "5xl"
+  ); // This now handles both mobile and desktop sizes!
 
-  font-weight: 500; // This can be adjusted based on the font
-  line-height: 1.2; // Unitless line-height is best practice
+  font-weight: 500;
+  line-height: 1.2;
   max-width: 1400px;
-  letter-spacing: -3px;
-  // These utility spans are perfect as they are.
+  letter-spacing: -0.1rem; // Less aggressive spacing for mobile
+
+  @media (min-width: map-get($breakpoints, "md")) {
+    letter-spacing: -3px; // Restore desktop spacing
+  }
+
   .white {
     color: $primary-text;
   }
@@ -38,10 +44,12 @@
   .highlight {
     color: #000;
     background-color: $accent-color;
-    border-radius: 40px;
-
+    border-radius: 20px; // Slightly smaller radius for smaller text
     padding: 0em 0.2em;
     position: relative;
+    @media (min-width: map-get($breakpoints, "md")) {
+      border-radius: 40px;
+    }
   }
 
   .white,
@@ -54,19 +62,18 @@
 .imagePlaceholder {
   display: inline-block;
   position: relative;
-
-  // --- THE BIG IMPROVEMENT ---
-  // Use 'em' units. This makes the image size directly proportional
-  // to the font size of the text it sits in. As the headline fluidly
-  // scales, the image will scale with it perfectly.
   width: 1em;
   height: 0.7em;
-  // Adjust 'top' slightly using ems for perfect vertical alignment
   top: -0.02em;
   vertical-align: middle;
+  border-radius: 8px; // Smaller radius for mobile
+
+  @media (min-width: map-get($breakpoints, "md")) {
+    border-radius: 12px;
+  }
 
   .snippetImage {
-    border-radius: 12px;
+    border-radius: inherit; // Inherit the radius from the placeholder
     object-fit: cover;
     width: 100%;
     height: 100%;
