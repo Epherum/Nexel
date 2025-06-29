@@ -7,8 +7,8 @@ import BeliefSection from "./components/BeliefSection";
 import MethodologyAndPartners from "../(home)/components/MethodologyAndPartners";
 import AboutImage from "./components/AboutImage";
 import styles from "./page.module.scss"; // You can create a simple scss file for this page
-
 import Footer from "@/components/layout/Footer";
+import { ReactLenis, useLenis } from "lenis/react";
 
 import fs from "fs";
 import path from "path";
@@ -27,15 +27,20 @@ const AboutPage = () => {
   );
 
   return (
-    <main className={styles.main}>
-      <AboutHero />
-      <AboutImage imageSrc="/static/nexel/grape.png" altText="our office" />
-      <BeliefSection />
-      <MethodologyAndPartners logoPaths={logoPaths} />
+    <ReactLenis
+      root
+      options={{ smoothWheel: true, lerp: 0.06, wheelMultiplier: 1.3 }}
+    >
+      <main className={styles.main}>
+        <AboutHero />
+        <AboutImage imageSrc="/static/nexel/grape.png" altText="our office" />
+        <BeliefSection />
+        <MethodologyAndPartners logoPaths={logoPaths} />
 
-      <TeamSection />
-      <Footer />
-    </main>
+        <TeamSection />
+        <Footer />
+      </main>
+    </ReactLenis>
   );
 };
 

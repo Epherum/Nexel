@@ -17,6 +17,7 @@
 .contentWrapper {
   display: flex;
   gap: 5rem;
+  position: relative;
 
   // --- FIX: Change 'center' to 'flex-start' for top alignment ---
   align-items: flex-start;
@@ -30,8 +31,9 @@
 // --- Left Column (Unchanged) ---
 .leftColumn {
   flex: 1 1 35%;
+  position: sticky;
+  top: 5rem;
 }
-//... (subHeader, line, headline, description styles are unchanged)
 
 .subHeader {
   font-weight: 200;

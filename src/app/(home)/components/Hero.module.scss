@@ -1,62 +1,56 @@
-// src/app/(home)/components/Hero.module.scss
+/* --- Step 1: Define CSS Variables (Converted from variables.scss) --- */
+:root {
+  --primary-text: #ffffff;
+  --secondary-text: #919191;
+  --accent-color: #b0fa4f;
+  --nav-height: 80px;
+  --container-padding-h: 2.8rem; /* Horizontal padding from a variable */
 
-@use "src/styles/variables" as *;
-@use "src/styles/typography" as t;
+  /* Breakpoint values (for reference, used in media queries below) */
+  --breakpoint-md: 768px;
+}
 
+/* --- Step 2: Component Styles (Converted from Hero.module.scss) --- */
 .hero {
-  margin-top: 2rem; // Remove negative margin for mobile
-  min-height: 90vh; // A bit less than full height on mobile
+  margin-top: 2rem;
+  min-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 1.5rem; // Less padding on mobile
+  padding: 0 1.5rem;
   text-align: center;
-
-  @media (min-width: map-get($breakpoints, "md")) {
-    margin-top: -1rem;
-    min-height: calc(115vh - #{$nav-height});
-    padding: $container-padding;
-  }
 }
 
 .headline {
-  @include t.text-style(
-    "5xl"
-  ); // This now handles both mobile and desktop sizes!
+  /* --- Pre-calculated from @include t.text-style("5xl") --- */
+  /* Mobile font-size from $mobile-type-scale: */
+  font-size: 2.8rem;
+  /* ---------------------------------------------------- */
 
   font-weight: 500;
   line-height: 1.2;
   max-width: 1400px;
-  letter-spacing: -0.1rem; // Less aggressive spacing for mobile
+  letter-spacing: -0.1rem;
+}
 
-  @media (min-width: map-get($breakpoints, "md")) {
-    letter-spacing: -3px; // Restore desktop spacing
-  }
+/* These were nested in .headline, but in CSS Modules they are top-level */
+.white {
+  color: var(--primary-text);
+  display: inline-block;
+}
 
-  .white {
-    color: $primary-text;
-  }
+.grey {
+  color: var(--secondary-text);
+  display: inline-block;
+}
 
-  .grey {
-    color: $secondary-text;
-  }
-
-  .highlight {
-    color: #000;
-    background-color: $accent-color;
-    border-radius: 20px; // Slightly smaller radius for smaller text
-    padding: 0em 0.2em;
-    position: relative;
-    @media (min-width: map-get($breakpoints, "md")) {
-      border-radius: 40px;
-    }
-  }
-
-  .white,
-  .grey,
-  .highlight {
-    display: inline-block;
-  }
+.highlight {
+  color: #000;
+  background-color: var(--accent-color);
+  border-radius: 20px;
+  padding: 0em 0.2em;
+  position: relative;
+  display: inline-block;
 }
 
 .imagePlaceholder {
@@ -66,16 +60,39 @@
   height: 0.7em;
   top: -0.02em;
   vertical-align: middle;
-  border-radius: 8px; // Smaller radius for mobile
+  border-radius: 8px;
+}
 
-  @media (min-width: map-get($breakpoints, "md")) {
-    border-radius: 12px;
+.snippetImage {
+  border-radius: inherit;
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+/* --- Media Queries (Converted from @media blocks) --- */
+
+@media (min-width: 768px) {
+  .hero {
+    margin-top: -1rem;
+    min-height: calc(115vh - var(--nav-height));
+    padding: 0 var(--container-padding-h);
   }
 
-  .snippetImage {
-    border-radius: inherit; // Inherit the radius from the placeholder
-    object-fit: cover;
-    width: 100%;
-    height: 100%;
+  .headline {
+    letter-spacing: -3px;
+
+    /* --- Pre-calculated fluid font size from get_fluid_font_size() --- */
+    /* This clamp() function creates a font that smoothly scales from 4rem at 768px to 5rem at 1440px */
+    font-size: clamp(4rem, 2.857rem + 2.381vw, 5rem);
+    /* --------------------------------------------------------------- */
+  }
+
+  .highlight {
+    border-radius: 40px;
+  }
+
+  .imagePlaceholder {
+    border-radius: 12px;
   }
 }

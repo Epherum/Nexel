@@ -2,22 +2,30 @@
 @use "variables" as *;
 @use "typography" as t;
 
+/* NEW: The tall wrapper that enables the sticky scroll effect */
+.scrollWrapper {
+  // Adjust height to control animation "speed". 300vh = 3 screens of scrolling.
+  height: 300vh;
+  position: relative;
+}
+
+/* MODIFIED: Your .heroSection is now the sticky element */
 .heroSection {
-  margin-top: 2rem;
-  min-height: 100vh;
+  height: 110vh; // Use height instead of min-height for sticky to work correctly
   background-color: $dark-bg;
   color: $primary-text;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: relative;
-  overflow: hidden;
+  position: sticky; /* <-- The magic! */
+  top: 0; /* <-- Stick to the top */
+  overflow: hidden; /* <-- Important for preventing elements from showing outside bounds */
 
   // Make padding responsive
-  padding: $nav-height 2rem 6rem 2rem;
+  padding: 10rem 2rem 6rem 2rem;
   @media (min-width: map-get($breakpoints, "md")) {
-    padding: $nav-height 4rem 8rem 4rem;
+    padding: 10rem 4rem 8rem 4rem;
   }
 }
 
@@ -27,12 +35,9 @@
   align-items: center;
   gap: 3rem;
   text-align: center;
-
-  // --- MODIFICATION ---
-  // Added position and z-index to ensure this content block
-  // sits on top of the new .cardsContainer.
   position: relative;
-  z-index: 1;
+  /* CRITICAL FIX: Make sure text is on top of the cards */
+  z-index: 10;
 }
 
 .headline {
@@ -73,30 +78,22 @@
 }
 
 .scrollIndicator {
-  position: absolute;
-  bottom: 9rem;
-  right: 4rem;
-  color: $secondary-text;
-  letter-spacing: 2px;
-  font-weight: 300;
-  @include t.text-style("xxs");
-
-  @media (max-width: map-get($breakpoints, "md")) {
-    display: none;
-  }
+  /* This can be removed or kept, but it's no longer functionally necessary */
+  display: none; // Hiding for now as the scroll animation is the indicator
 }
 
 .bottomBar {
   position: absolute;
   bottom: 0rem;
   left: 0;
-  width: 80%;
+  width: 100%; // Changed to 100% to fill the sticky container
   padding: 1rem 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: $secondary-text;
   @include t.text-style("xs");
+  z-index: 10; /* CRITICAL FIX: Ensure it's also above cards */
 
   .tagline {
     color: $primary-text;
@@ -109,44 +106,34 @@
   }
 }
 
-// --- NEW STYLES FOR ANIMATED CARDS ---
-
-// Container for all the cards. It's positioned absolutely to fill the hero
-// section and sits in the background (z-index: 0).
 .cardsContainer {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 4;
-  pointer-events: none; // Prevents the container from blocking text interaction
+  // Cards should be behind the text content.
+  // z-index: 4 was fine, but let's lower it to be safe.
+  z-index: 5;
+  pointer-events: none;
 }
 
-// Individual card styling for the "polaroid" effect.
 .card {
   position: absolute;
-  // Using a responsive unit for padding that scales with the viewport.
   padding: 1.2vmin;
-  // Using your primary text color (likely white) for the default card background.
   background-color: $primary-text;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
-  // Using the same border-radius as your button for consistency.
   border-radius: 8px;
 
-  // Modifier class for the lime green card.
   &.lime {
-    // Using your existing accent color variable.
     background-color: $accent-color;
   }
 }
 
-// A wrapper for the Next.js Image to ensure it fits within the card's padding.
 .imageContainer {
   position: relative;
   width: 100%;
   height: 100%;
   overflow: hidden;
-  // A smaller inner radius for the photo itself.
   border-radius: 4px;
 }

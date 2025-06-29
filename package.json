@@ -1,34 +1,33 @@
 {
-  "name": "emira-tlili-portfolio",
+  "name": "nexel",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "check": "next build && next start"
+    "lint": "next lint"
   },
   "dependencies": {
-    "@types/locomotive-scroll": "^4.1.3",
-    "@vercel/speed-insights": "^1.0.12",
-    "framer-motion": "^11.1.7",
-    "gsap": "^3.12.5",
-    "locomotive-scroll": "^5.0.0-beta.12",
-    "next": "^14.2.30",
-    "react": "^18",
-    "react-dom": "^18",
-    "react-icons": "^5.2.1",
-    "sharp": "^0.33.3",
-    "swiper": "^11.2.8"
+    "@gsap/react": "^2.1.2",
+    "framer-motion": "^12.19.2",
+    "gsap": "^3.13.0",
+    "lenis": "^1.3.4",
+    "next": "15.3.4",
+    "next-view-transitions": "^0.3.4",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
+    "react-icons": "^5.5.0",
+    "split-type": "^0.3.4",
+    "swiper": "^11.2.10"
   },
   "devDependencies": {
+    "@eslint/eslintrc": "^3",
     "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "8.57.1",
-    "eslint-config-next": "14.2.13",
-    "sass": "^1.76.0",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.3.4",
     "typescript": "^5"
   }
 }

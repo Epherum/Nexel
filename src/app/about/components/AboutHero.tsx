@@ -1,16 +1,14 @@
 "use client";
 
-import React, { useEffect, useState, useRef } from "react";
+import React, { useRef } from "react";
 import styles from "./AboutHero.module.scss";
-import { motion, Variants } from "framer-motion";
-import Image from "next/image";
+import { motion, useScroll, Variants } from "framer-motion";
+import ScrollAnimatedCard from "./ScrollAnimatedCard";
+// 1. Re-import the components and utils needed for the text animation
 import AnimatedWord from "@/components/animation/AnimatedWord";
 import { easings } from "@/utils/easings";
-// CHANGE: Import the Lenis instance getter
-import { getScrollInstance } from "@/components/HOC/smoothScroll";
 
-// --- Data and Variants are unchanged, so they are omitted for brevity ---
-// ... (paste your teamImages, mainContainer, wordRevealContainer, etc. here)
+// --- DATA ---
 const teamImages = [
   {
     id: 1,
@@ -103,182 +101,108 @@ const teamImages = [
     color: "white",
   },
 ];
-const mainContainer: Variants = {
-  visible: { transition: { staggerChildren: 0.2 } },
+const descriptionText =
+  "We’re a team of diverse talents, each person valued not just for what they do, but for who they are.";
+
+// 2. Define the variants for the initial text reveal (as you had before)
+const textContainerVariants: Variants = {
+  visible: {
+    transition: {
+      staggerChildren: 0.05,
+      delayChildren: 0.2,
+    },
+  },
 };
-const wordRevealContainer: Variants = {
-  visible: { transition: { staggerChildren: 0.05 } },
-};
+
 const wordVariants: Variants = {
-  hidden: { y: "110%" },
-  visible: { y: "0%", transition: { duration: 0.8, ease: easings.easeOut } },
-};
-const delayedWordVariants: Variants = {
   hidden: { y: "110%" },
   visible: {
     y: "0%",
-    transition: { duration: 0.8, ease: easings.easeOut, delay: 0.5 },
-  },
-};
-
-// --- NEW, more premium card animation variants ---
-const cardContainerVariants: Variants = {
-  // The parent doesn't need variants, but let's keep it clean
-  initial: {},
-  animate: {
-    transition: {
-      // Stagger the reveal of each card
-      staggerChildren: 0.15,
-      delayChildren: 0.2, // Start revealing cards slightly after the container is ready
-    },
-  },
-};
-
-const cardVariants: Variants = {
-  // Start the cards off-screen at the bottom
-  initial: { y: "110vh", rotate: 15 },
-  // Animate to their final position based on the style prop
-  animate: {
-    y: 0,
-    rotate: 0, // We can let the style prop handle the final rotation
-    transition: {
-      duration: 1.4,
-      ease: [0.22, 1, 0.36, 1], // A high-quality quintic ease-out
-    },
+    transition: { duration: 0.8, ease: easings.easeOut },
   },
 };
 
 const AboutHero = () => {
-  const descriptionText =
-    "We’re a team of diverse talents, each person valued not just for what they do, but for who they are.";
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
 
-  const [introAnimationComplete, setIntroAnimationComplete] = useState(false);
+  const { scrollYProgress } = useScroll({
+    target: scrollContainerRef,
+    offset: ["start start", "end end"],
+  });
 
-  // This effect handles the entire scroll lock/unlock logic
-  useEffect(() => {
-    const lenis = getScrollInstance();
-
-    // On mount, immediately stop scrolling
-    // A slight delay ensures Lenis is definitely initialized
-    setTimeout(() => {
-      lenis?.stop();
-    }, 50);
-
-    // This function will be called when the component unmounts
-    return () => {
-      // CRITICAL: Always re-enable scrolling when the user navigates away
-      // or the component unmounts for any reason.
-      lenis?.start();
-    };
-  }, []); // Empty dependency array means this runs only once on mount and cleanup on unmount
-
-  const handleIntroAnimationComplete = () => {
-    // This is called when the final card has animated into view.
-    // Now, we can re-enable scrolling.
-    setIntroAnimationComplete(true);
-    const lenis = getScrollInstance();
-    lenis?.start();
-  };
+  // 3. REMOVED the useTransform hooks for contentOpacity and contentY
 
   return (
-    // We remove the onAnimationComplete from the section, as we'll trigger it from the cards
-    <motion.section
-      className={styles.heroSection}
-      variants={mainContainer}
-      initial="hidden"
-      animate="visible"
-    >
-      {/* CHANGE: The card animation is now driven by a single parent container */}
-      {/* This will animate all cards sequentially on load, no scroll needed yet */}
-      <motion.div
-        className={styles.cardsContainer}
-        variants={cardContainerVariants}
-        initial="initial"
-        animate="animate"
-        // CHANGE: When the LAST card finishes its stagger, unlock the scroll
-        onAnimationComplete={handleIntroAnimationComplete}
-      >
-        {teamImages.map((card) => (
-          <motion.div
-            key={card.id}
-            className={`${styles.card} ${
-              card.color === "lime" ? styles.lime : ""
-            }`}
-            style={card.style} // The final resting position and rotation
-            variants={cardVariants}
-            // initial and animate are inherited from the parent
-          >
-            <div className={styles.imageContainer}>
-              <Image
-                src={card.src}
-                alt={card.alt}
-                fill
-                sizes="(max-width: 768px) 30vw, 25vw"
-                style={{ objectFit: "cover" }}
-                priority // Good to have for LCP images
-              />
-            </div>
-          </motion.div>
-        ))}
-      </motion.div>
+    <div ref={scrollContainerRef} className={styles.scrollWrapper}>
+      <section className={styles.heroSection}>
+        <div className={styles.cardsContainer}>
+          {teamImages.map((card, index) => (
+            <ScrollAnimatedCard
+              key={card.id}
+              card={card}
+              index={index}
+              totalCards={teamImages.length}
+              scrollYProgress={scrollYProgress}
+            />
+          ))}
+        </div>
 
-      {/* --- ORIGINAL TEXT CONTENT (Unchanged) --- */}
-      <motion.div
-        className={styles.contentWrapper}
-        variants={wordRevealContainer}
-      >
-        <h1 className={styles.headline}>
-          <AnimatedWord variants={wordVariants}>Creative</AnimatedWord>
-        </h1>
+        {/* 4. Use standard motion props for a one-time animation on load */}
         <motion.div
-          className={styles.descriptionBox}
-          variants={wordRevealContainer}
+          className={styles.contentWrapper}
+          variants={textContainerVariants}
+          initial="hidden"
+          animate="visible"
+          // REMOVED style={{ opacity: contentOpacity, y: contentY }}
         >
-          <motion.p variants={wordRevealContainer}>
-            {descriptionText.split(" ").map((word, index) => (
-              <AnimatedWord key={index} variants={wordVariants}>
-                {word}
-                {index < descriptionText.split(" ").length - 1 ? "\u00A0" : ""}
-              </AnimatedWord>
-            ))}
-          </motion.p>
-          <AnimatedWord variants={wordVariants}>
-            <button className={styles.exploreButton}>Explore</button>
-          </AnimatedWord>
+          <h1 className={styles.headline}>
+            <AnimatedWord variants={wordVariants}>Creative</AnimatedWord>
+          </h1>
+          <motion.div
+            className={styles.descriptionBox}
+            variants={textContainerVariants} // Stagger the children inside
+          >
+            <p>
+              {descriptionText.split(" ").map((word, index) => (
+                <AnimatedWord key={index} variants={wordVariants}>
+                  {word}
+                  {index < descriptionText.split(" ").length - 1
+                    ? "\u00A0"
+                    : ""}
+                </AnimatedWord>
+              ))}
+            </p>
+            <AnimatedWord variants={wordVariants}>
+              <button className={styles.exploreButton}>Explore</button>
+            </AnimatedWord>
+          </motion.div>
+          <h1 className={styles.headline}>
+            <AnimatedWord variants={wordVariants}>Inspiring</AnimatedWord>
+          </h1>
         </motion.div>
-        <h1 className={styles.headline}>
-          <AnimatedWord variants={wordVariants}>Inspiring</AnimatedWord>
-        </h1>
-      </motion.div>
 
-      {/* --- SCROLL INDICATOR --- */}
-      {/* We can use Framer Motion to fade this in only when scrolling is unlocked */}
-      <motion.div
-        className={styles.scrollIndicator}
-        animate={{ opacity: introAnimationComplete ? 1 : 0 }}
-        transition={{ duration: 0.5, delay: 0.5 }}
-      >
-        <AnimatedWord variants={delayedWordVariants}>Scroll down</AnimatedWord>
-      </motion.div>
-
-      <motion.div className={styles.bottomBar} variants={wordRevealContainer}>
-        <span className={styles.valueLabel}>
-          <AnimatedWord variants={wordVariants}>
-            Our{"\u00A0"}value
-          </AnimatedWord>
-        </span>
-        <span className={styles.tagline}>
-          {"Heart-led, idea-fueled, and always creating."
-            .split(" ")
-            .map((word, index) => (
-              <AnimatedWord key={index} variants={wordVariants}>
-                {word}
-                {index < 5 ? "\u00A0" : ""}
-              </AnimatedWord>
-            ))}
-        </span>
-      </motion.div>
-    </motion.section>
+        <motion.div
+          className={styles.bottomBar}
+          variants={textContainerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <span className={styles.valueLabel}>
+            <AnimatedWord variants={wordVariants}>Our value</AnimatedWord>
+          </span>
+          <span className={styles.tagline}>
+            {"Heart-led, idea-fueled, and always creating."
+              .split(" ")
+              .map((word, index) => (
+                <AnimatedWord key={index} variants={wordVariants}>
+                  {word}
+                  {index < 5 ? "\u00A0" : ""}
+                </AnimatedWord>
+              ))}
+          </span>
+        </motion.div>
+      </section>
+    </div>
   );
 };
 

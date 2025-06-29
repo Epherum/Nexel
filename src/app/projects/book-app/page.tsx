@@ -9,10 +9,11 @@ import styles from "./book-app.module.scss";
 import Footer from "@/components/layout/Footer";
 import AnimatedWord from "@/components/animation/AnimatedWord";
 import { easings } from "@/utils/easings";
+import { ReactLenis, useLenis } from "lenis/react";
 
 // --- Local Image Imports ---
-import img1 from "/public/static/book-app/1.webp";
-import img2 from "/public/static/book-app/2.webp";
+import img1 from "/public/static/book-app/1.png";
+import img2 from "/public/static/book-app/1.webp";
 import img3 from "/public/static/book-app/3.webp";
 import img4 from "/public/static/book-app/4.webp";
 import img5 from "/public/static/book-app/5.webp";
@@ -101,7 +102,10 @@ export default function BookAppPage() {
   };
 
   return (
-    <>
+    <ReactLenis
+      root
+      options={{ smoothWheel: true, lerp: 0.06, wheelMultiplier: 1.3 }}
+    >
       <header className={styles.hero}>
         <motion.h1
           className={styles.heroHeadline}
@@ -215,6 +219,6 @@ export default function BookAppPage() {
       </main>
 
       <Footer />
-    </>
+    </ReactLenis>
   );
 }
