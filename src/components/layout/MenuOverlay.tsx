@@ -30,7 +30,7 @@ const navLinks = [
   },
   {
     title: "Contact",
-    href: "/about",
+    href: "/contact",
     imgSrc: "/static/book-app/4.webp",
     alt: "Preview of the contact page",
   },
