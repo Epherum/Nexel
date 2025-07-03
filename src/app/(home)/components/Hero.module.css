@@ -14,8 +14,26 @@
   position: relative;
   margin: 5rem 1rem;
   margin-bottom: 0.5rem;
-  overflow: hidden;
+  overflow: hidden; /* This is still crucial */
   border-radius: 10px;
+}
+
+/* This wrapper scales, containing the image and overlay */
+.imageWrapper {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* This overlay is now positioned relative to its parent, the .imageWrapper */
+.revealOverlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--dark-bg);
+  z-index: 2; /* Still needs to be on top of the Image component */
 }
 
 .textContainer {
@@ -31,12 +49,10 @@
   text-align: center;
 }
 
-/* --- CHANGE START --- */
-/* This new class applies consistent spacing between all words and the inline image */
+/* Applies consistent spacing between all words and the inline image */
 .word {
   margin-right: 0.25em; /* Using 'em' makes the space scale with the font size */
 }
-/* --- CHANGE END --- */
 
 .headline .white {
   color: var(--primary-text);

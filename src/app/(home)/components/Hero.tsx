@@ -7,7 +7,8 @@ import styles from "./Hero.module.css";
 import AnimatedWord from "@/components/animation/AnimatedWord";
 import { easings } from "@/utils/easings";
 
-const containerVariants: Variants = {
+// --- Text animation variants (unchanged) ---
+const textContainerVariants: Variants = {
   visible: {
     transition: {
       staggerChildren: 0.02,
@@ -24,28 +25,78 @@ const wordVariants: Variants = {
   },
 };
 
+// --- Image reveal animation variants (unchanged) ---
+const imageRevealVariants: Variants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2,
+    },
+  },
+};
+
+const imageScaleVariants: Variants = {
+  hidden: { scale: 1.15 },
+  visible: {
+    scale: 1,
+    transition: {
+      duration: 1.2,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+const revealOverlayVariants: Variants = {
+  hidden: { y: "0%" },
+  visible: {
+    y: "-100%",
+    transition: {
+      duration: 1,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
 const Hero = () => {
   return (
     <section className={styles.hero}>
-      {/* ... mobile image container ... */}
-      <div className={styles.mobileImageContainer}>
-        <Image
-          src="/static/nexel/mobile-hero.png"
-          alt="A collage of design assets including a cartoon planet mascot."
-          fill
-          style={{ objectFit: "cover" }}
-          priority
-        />
-      </div>
+      {/* --- STRUCTURAL FIX START --- */}
+      {/* This outer container orchestrates the animation */}
+      <motion.div
+        className={styles.mobileImageContainer}
+        variants={imageRevealVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* This wrapper now handles the SCALE animation and contains BOTH the overlay and the image */}
+        <motion.div
+          className={styles.imageWrapper}
+          variants={imageScaleVariants}
+        >
+          {/* The overlay is now INSIDE the scaling wrapper */}
+          <motion.div
+            className={styles.revealOverlay}
+            variants={revealOverlayVariants}
+          />
+          <Image
+            src="/static/nexel/mobile-hero.png"
+            alt="A collage of design assets including a cartoon planet mascot."
+            fill
+            style={{ objectFit: "cover" }}
+            priority
+          />
+        </motion.div>
+      </motion.div>
 
       <div className={styles.textContainer}>
         <motion.h1
           className={styles.headline}
-          variants={containerVariants}
+          variants={textContainerVariants}
           initial="hidden"
           animate="visible"
         >
-          {/* --- CHANGE START: Added .word class, removed {"\u00A0"} --- */}
+          {/* ... all other AnimatedWord components remain the same ... */}
           <AnimatedWord
             className={`${styles.word} ${styles.white}`}
             variants={wordVariants}
@@ -64,9 +115,7 @@ const Hero = () => {
           >
             business
           </AnimatedWord>
-
           <br className={styles.desktopBreak} />
-
           <AnimatedWord
             className={`${styles.word} ${styles.grey}`}
             variants={wordVariants}
@@ -79,7 +128,6 @@ const Hero = () => {
           >
             the
           </AnimatedWord>
-
           <span className={styles.inlineImageContainer}>
             <AnimatedWord className={styles.word} variants={wordVariants}>
               <div className={styles.imagePlaceholder}>
@@ -92,7 +140,6 @@ const Hero = () => {
               </div>
             </AnimatedWord>
           </span>
-
           <AnimatedWord
             className={`${styles.word} ${styles.white}`}
             variants={wordVariants}
@@ -103,28 +150,18 @@ const Hero = () => {
             className={`${styles.word} ${styles.grey}`}
             variants={wordVariants}
           >
-            of
+            of a
           </AnimatedWord>
-          <AnimatedWord
-            className={`${styles.word} ${styles.grey}`}
-            variants={wordVariants}
-          >
-            a
-          </AnimatedWord>
-
           <br className={styles.desktopBreak} />
-
           <AnimatedWord
             className={`${styles.word} ${styles.white}`}
             variants={wordVariants}
           >
             great
           </AnimatedWord>
-          {/* The last word doesn't need the .word class for margin */}
           <AnimatedWord className={styles.highlight} variants={wordVariants}>
             design
           </AnimatedWord>
-          {/* --- CHANGE END --- */}
         </motion.h1>
       </div>
     </section>
