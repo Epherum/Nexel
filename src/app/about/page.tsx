@@ -1,14 +1,12 @@
 // src/app/about/page.tsx
-
 import React from "react";
 import AboutHero from "./components/AboutHero";
 import TeamSection from "./components/TeamSection";
 import BeliefSection from "./components/BeliefSection";
 import MethodologyAndPartners from "../(home)/components/MethodologyAndPartners";
 import AboutImage from "./components/AboutImage";
-import styles from "./page.module.scss"; // You can create a simple scss file for this page
 import Footer from "@/components/layout/Footer";
-import { ReactLenis, useLenis } from "lenis/react";
+import { ReactLenis } from "lenis/react";
 
 import fs from "fs";
 import path from "path";
@@ -31,9 +29,9 @@ const AboutPage = () => {
       root
       options={{ smoothWheel: true, lerp: 0.06, wheelMultiplier: 1.3 }}
     >
-      <main className={styles.main}>
+      <main>
         <AboutHero />
-        <AboutImage imageSrc="/static/nexel/grape.png" altText="our office" />
+        <AboutImage />
         <BeliefSection />
         <MethodologyAndPartners logoPaths={logoPaths} />
 

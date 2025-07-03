@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import ProjectsPage from "./components/ProjectsPage";
 import Footer from "@/components/layout/Footer";
-import { ReactLenis, useLenis } from "lenis/react";
+import { ReactLenis } from "lenis/react";
 
 export const metadata: Metadata = {
   title: "Our Work | Nexel",

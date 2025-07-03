@@ -1,0 +1,114 @@
+/* src/styles/globals.css */
+
+/* ==========================================================================
+   1. CSS Custom Properties (Formerly variables.scss)
+   ========================================================================== */
+:root {
+  /* --- Colors --- */
+  --dark-bg: #141515;
+  --primary-text: #ffffff;
+  --secondary-text: #919191;
+  --accent-color: #b0fa4f;
+  --services-text: #676767;
+  --footer-bg: #1d1f20;
+
+  /* --- Pill Colors --- */
+  --pill-color-blue: #acd9e9;
+  --pill-color-purple: #d0c0e9;
+  --pill-color-teal: #7bddb8;
+  --pill-color-orange: #ff7447;
+
+  /* --- Social Media Colors --- */
+  --social-media-bg1: #d9d9d9;
+  --social-media-bg2: #c0c2cb;
+
+  /* --- Methodology Card Colors --- */
+  --card-color-purple: #d0c0e9;
+  --card-text-purple: #b39cd7;
+  --card-color-green: #b0fa4f;
+  --card-text-green: #9bcf56;
+  --card-color-teal: #7bddb8;
+  --card-text-teal: #6ec1a2;
+  --card-color-blue: #d4e0ef;
+  --card-text-blue: #a9bad0;
+
+  /* --- Layout --- */
+  --nav-height: 80px;
+  --container-padding: 0 2.8rem;
+
+  /* --- Breakpoints (for reference) --- */
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1440px;
+
+  /* ==========================================================================
+     2. Pre-calculated Font Sizes
+     ========================================================================== */
+
+  --font-size-6xl: clamp(6.2rem, -1.8rem + 16.667vw, 13.2rem); /* 200px */
+  --font-size-5xl: clamp(4rem, 2.857rem + 2.381vw, 5rem); /* 96px */
+  --font-size-4-5xl: clamp(2.8rem, 0.638rem + 4.505vw, 4.7rem); /* 80px */
+  --font-size-4xl: clamp(2.5rem, 0.938rem + 3.255vw, 4.4rem); /* 72px */
+  --font-size-3xl: clamp(2.4rem, 1.114rem + 2.679vw, 3.6rem); /* 64px */
+  --font-size-2xl: clamp(1.9rem, 1.424rem + 0.992vw, 2.3rem); /* 48px */
+  --font-size-xl: clamp(1.5rem, 0.071rem + 2.976vw, 2.3rem); /* 40px */
+  --font-size-2lg: clamp(1.3rem, 1.062rem + 0.496vw, 1.5rem); /* 32px */
+  --font-size-lg: clamp(0.85rem, -0.093rem + 1.964vw, 1.25rem); /* 24px */
+  --font-size-base: 1.6rem; /* ??px - Static size */
+  --font-size-sm: 0.8rem; /* 20px - Static size */
+  --font-size-xs: 0.7rem; /* 16px - Static size */
+  --font-size-xss: 0.6rem; /* 16px - Static size */
+  --font-size-xxs: 0.5rem; /* 14px - Static size */
+}
+
+/* ==========================================================================
+   3. Global Styles
+   ========================================================================== */
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  max-width: 100%;
+  background-color: var(--dark-bg);
+
+  color: var(--primary-text);
+  /* Replaces @include text-style("base") */
+  font-size: var(--font-size-base);
+}
+
+/* This rule should stay as it uses a CSS variable from Next.js/layout.tsx */
+body {
+  font-family: var(--font-clovergrotesk), -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+    sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+main {
+  padding-top: 0rem;
+}
+
+/* Smooth Scroll Library Styles (no changes needed) */
+html.has-scroll-smooth {
+  overflow: hidden;
+}
+
+html.has-scroll-dragging {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.has-scroll-smooth body {
+  overflow: hidden;
+}

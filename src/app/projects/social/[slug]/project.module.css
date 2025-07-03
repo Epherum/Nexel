@@ -1,0 +1,142 @@
+/* src/app/projects/social/[slug]/project.module.css */
+
+/* --- DYNAMIC HERO STYLES (Your New Mobile Styles) --- */
+.projectHero {
+  height: 26vh;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: var(--primary-text);
+}
+
+.heroBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.heroBackground::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--dark-bg);
+  opacity: 0.6;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  padding: 1rem 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 100%;
+}
+
+.heroTitle p {
+  color: var(--accent-color);
+  font-size: var(--font-size-xs);
+  margin: 0;
+  font-weight: 100;
+}
+
+.heroTitle h1 {
+  font-size: var(--font-size-xs);
+  margin: 0;
+  line-height: 1.1;
+  font-weight: 100;
+}
+
+.heroMeta {
+  text-align: right;
+}
+
+.heroYear {
+  font-size: var(--font-size-lg);
+  font-weight: 100;
+}
+
+.heroScroll {
+  font-size: var(--font-size-xxs);
+  color: var(--secondary-text);
+}
+
+/* --- SOCIAL MEDIA GRID (Your New Mobile Styles) --- */
+.firstShowcase {
+  position: relative;
+  padding: 1rem 0.5rem;
+  background-color: var(--social-media-bg1);
+  display: grid;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 90rem;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+/* --- SECOND SHOWCASE (Your New Mobile Styles) --- */
+.secondShowcase {
+  position: relative;
+  padding: 2rem 0;
+  background-color: var(--social-media-bg2);
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.secondShowcase .imageContainer {
+  position: relative;
+  overflow: hidden;
+  width: 22rem;
+  max-width: 90%;
+  height: 30rem;
+  border-radius: 40px;
+}
+
+.secondShowcase .imageContainer img {
+  position: absolute;
+  object-fit: cover;
+  will-change: transform;
+  width: 100%;
+  height: 100%;
+}
+
+/* ==========================================================================
+   Desktop Overrides (Reverting to the old desktop look)
+   ========================================================================== */
+@media (min-width: 768px) {
+  /* Revert Hero styles */
+  .projectHero {
+    height: 100vh;
+  }
+
+  .heroContent {
+    padding: 4rem;
+  }
+
+  /* Revert font sizes to the original '2xl' for desktop */
+  .heroTitle p,
+  .heroTitle h1,
+  .heroYear {
+    font-size: var(--font-size-2xl);
+  }
+
+  .heroScroll {
+    font-size: var(--font-size-xs);
+  }
+
+  /* Revert Showcase styles */
+  .firstShowcase {
+    padding: 5rem 2rem;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .secondShowcase {
+    padding: 5rem 0;
+  }
+}

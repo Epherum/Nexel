@@ -1,0 +1,90 @@
+/* src/components/layout/Navbar.module.css */
+
+.navbar {
+  position: fixed;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  z-index: 1000;
+  padding: 0 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --- THEME MODIFIER --- */
+.navbar.themeLight .logo img {
+  filter: invert(1);
+}
+.navbar.themeLight .menuIcon .line {
+  background-color: var(--dark-bg);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.menuIcon {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.menuIcon .line {
+  width: 40px;
+  height: 2px;
+  background-color: var(--primary-text);
+  transition: all 0.4s ease;
+  transform-origin: center;
+}
+
+.menuIcon.isOpen .line:first-child {
+  transform: translateY(4px) rotate(45deg);
+}
+
+.menuIcon.isOpen .line:last-child {
+  transform: translateY(-4px) rotate(-46deg);
+}
+
+/* ADDED: Hide the CTA container by default on mobile */
+.ctaButtonContainer {
+  display: none;
+}
+
+.ctaButton {
+  background-color: var(--accent-color);
+  color: #000;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  font-family: inherit;
+  /* Font size is now only needed for desktop since it's hidden on mobile */
+}
+
+.ctaButton:hover {
+  transform: scale(1.05);
+}
+
+/* Media query for medium screens and up */
+@media (min-width: 768px) {
+  .navbar {
+    padding: var(--container-padding);
+    top: 10px;
+  }
+
+  /* ADDED: Show the CTA container on larger screens */
+  .ctaButtonContainer {
+    display: block;
+  }
+
+  .ctaButton {
+    font-size: var(--font-size-xs);
+  }
+}

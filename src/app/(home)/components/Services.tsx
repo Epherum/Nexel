@@ -1,9 +1,8 @@
-// src/app/(home)/components/Services.tsx
 "use client";
 
 import React from "react";
-import styles from "./Services.module.scss";
-import ServiceItem from "@/components/animation/ServiceItem";
+import styles from "./Services.module.css"; // CHANGED: Import .css file
+import ServiceItem from "@/components/animation/home/ServiceItem";
 
 // Animation imports
 import { motion, useInView, Variants } from "framer-motion";
@@ -60,9 +59,8 @@ const servicesData = [
 const Services = () => {
   const titleRef = useRef(null);
 
-  // The hook is updated here for the delayed trigger
   const isTitleInView = useInView(titleRef, {
-    margin: "0px 0px -200px 0px", // Delays trigger until element is 200px into the viewport
+    margin: "0px 0px -200px 0px",
     once: true,
   });
 

@@ -1,0 +1,149 @@
+/* src/app/(home)/components/MethodologyAndPartners.module.css */
+
+/* --- Mobile First Styles --- */
+.sectionWrapper {
+  padding: 0 0.5rem; /* Tighter horizontal padding */
+  background-color: var(--dark-bg);
+}
+
+.whiteContainer {
+  background-color: var(--primary-text);
+  color: var(--dark-bg);
+  border-radius: 16px;
+  padding: 1rem 0; /* Tighter vertical padding */
+  padding-bottom: 1.5rem;
+}
+
+.sectionTitle {
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: var(--dark-bg);
+  letter-spacing: -1px;
+  line-height: 1.2;
+  padding: 0 1rem; /* Tighter padding for titles */
+  font-size: var(--font-size-2xl);
+}
+
+.methodologyContainer {
+  margin-bottom: 3rem;
+}
+
+/* MOBILE: A simple stacked grid */
+.methodologyGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  padding: 0 0.5rem; /* Padding for the grid container */
+}
+
+/* MOBILE: The cards are simple blocks */
+.card {
+  min-height: 350px;
+  padding: 1rem;
+  border-radius: 8px;
+  color: var(--dark-bg);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+.card--purple {
+  background-color: var(--card-color-purple);
+}
+.card--green {
+  background-color: var(--card-color-green);
+}
+.card--teal {
+  background-color: var(--card-color-teal);
+}
+.card--blue {
+  background-color: var(--card-color-blue);
+}
+
+.cardDescription {
+  font-size: var(--font-size-lg);
+}
+
+.cardStep {
+  margin-top: auto;
+  padding-top: 1rem;
+  opacity: 0.2;
+  font-weight: 500;
+  font-size: var(--font-size-lg);
+}
+
+/* Hide desktop-only Swiper elements on mobile */
+.methodologySwiper,
+.slide {
+  display: none;
+}
+
+/* --- Partners Section --- */
+.borderBottom {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  padding-bottom: 0.5rem;
+}
+.partnersGrid {
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(100px, 1fr)
+  ); /* Smaller min for mobile */
+  gap: 3rem 1.5rem; /* Tighter gap */
+  padding: 0.5rem 1rem;
+}
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.partnerLogo {
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+.partnerLogo:hover {
+  transform: scale(1.05);
+}
+
+/* --- Responsive Styles (Desktop) --- */
+@media (min-width: 1024px) {
+  .sectionWrapper {
+    padding: 0 1rem;
+  }
+  .whiteContainer {
+    padding: 5rem 0; /* More padding on desktop */
+  }
+  .sectionTitle {
+    padding: 0 3rem;
+    font-size: var(--font-size-3xl);
+  }
+  .methodologyContainer {
+    margin-bottom: 5rem;
+  }
+
+  /* HIDE mobile grid on desktop */
+  .methodologyGrid {
+    display: none;
+  }
+  /* SHOW Swiper on desktop */
+  .methodologySwiper {
+    display: block;
+  }
+  .slide {
+    display: flex; /* Re-enable flex for the slide itself */
+    width: 390px;
+    height: auto;
+  }
+
+  .card {
+    min-height: 450px; /* Restore original desktop min-height */
+    flex-grow: 1; /* This makes the card stretch to fill its parent slide */
+  }
+
+  .partnersGrid {
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 3rem 2rem;
+    padding: 2rem 3rem;
+  }
+}

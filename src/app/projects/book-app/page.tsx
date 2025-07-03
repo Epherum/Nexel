@@ -3,22 +3,22 @@
 
 import React, { useRef, useState } from "react"; // Import useState
 import { motion, useInView, Variants } from "framer-motion";
-import Image from "next/image";
+import Image from "@/components/animation/ParallaxImage";
 
-import styles from "./book-app.module.scss";
+import styles from "./book-app.module.css";
 import Footer from "@/components/layout/Footer";
 import AnimatedWord from "@/components/animation/AnimatedWord";
 import { easings } from "@/utils/easings";
 import { ReactLenis, useLenis } from "lenis/react";
 
 // --- Local Image Imports ---
-import img1 from "/public/static/book-app/1.png";
-import img2 from "/public/static/book-app/1.webp";
+import img1 from "/public/static/book-app/1.webp";
+import img2 from "/public/static/book-app/2.webp";
 import img3 from "/public/static/book-app/3.webp";
 import img4 from "/public/static/book-app/4.webp";
 import img5 from "/public/static/book-app/5.webp";
+import img6 from "/public/static/book-app/6.webp";
 // NOTE: Using img5 as the alternate image for the toggle. Replace if you have a different one.
-const img4_alt = img5;
 
 // --- Local Text Data (Unchanged) ---
 const heroHeadlineLine1 = "More than a bookshelf";
@@ -187,7 +187,7 @@ export default function BookAppPage() {
               className={!isImg4Toggled ? styles.visible : styles.hidden}
             />
             <Image
-              src={img4_alt} // The alternate image
+              src={img5} // The alternate image
               alt="Book app UI detail - alternate view"
               data-scroll
               data-scroll-speed="-0.1"
@@ -204,7 +204,7 @@ export default function BookAppPage() {
         <section className={styles.fullWidthImageSection}>
           <div className={styles.imageContainer}>
             <Image
-              src={img5}
+              src={img6}
               alt="Close up of app UI elements"
               data-scroll
               data-scroll-speed="-0.1"

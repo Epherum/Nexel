@@ -1,0 +1,26 @@
+/* --- Mobile-First Styles --- */
+.fullscreenSection {
+  /* Use a smaller height for mobile to prevent taking up the whole screen */
+  height: 60vh;
+  width: 100%;
+  overflow: hidden;
+  /* Reduce the top margin for a tighter layout on mobile */
+  margin-top: 2rem;
+  position: relative;
+}
+
+.fullscreenImage {
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ==========================================================================
+   Desktop Overrides
+   ========================================================================== */
+@media (min-width: 768px) {
+  /* Restore the original desktop styles */
+  .fullscreenSection {
+    height: 100vh;
+    margin-top: 4rem;
+  }
+}

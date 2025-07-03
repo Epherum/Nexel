@@ -1,6 +1,7 @@
+//src/components/SocialMediaPost/SocialMediaPost.tsx
 import React from "react";
 import Image, { StaticImageData } from "next/image";
-import styles from "./SocialMediaPost.module.scss";
+import styles from "./SocialMediaPost.module.css"; // UPDATED
 
 // Define the props the component will accept
 interface SocialMediaPostProps {
@@ -25,8 +26,8 @@ const SocialMediaPost: React.FC<SocialMediaPostProps> = ({
             src={profileIcon}
             alt={`${name} profile icon`}
             className={styles.profileIcon}
-            width={40}
-            height={40}
+            width={20}
+            height={20}
           />
           <span className={styles.profileName}>{name}</span>
         </div>
@@ -124,8 +125,8 @@ const SocialMediaPost: React.FC<SocialMediaPostProps> = ({
               strokeWidth="2"
             ></polygon>
           </svg>
-        </div>
-      </div> */}
+        </div> */}
+      {/* </div> */}
     </div>
   );
 };

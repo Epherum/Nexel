@@ -1,7 +1,7 @@
 // src/app/about/components/BeliefSection.tsx
 "use client";
 
-import styles from "./BeliefSection.module.scss";
+import styles from "./BeliefSection.module.css"; // UPDATED
 import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
 import AnimatedWord from "@/components/animation/AnimatedWord";

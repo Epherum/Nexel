@@ -1,0 +1,102 @@
+/* src/app/(home)/components/HowWeDoIt.module.css */
+
+.howWeDoItSection {
+  padding: 0rem 0.5rem;
+  padding-bottom: 1rem;
+  background-color: var(--dark-bg);
+  font-weight: 300;
+}
+
+.sectionTitle {
+  margin-bottom: 1rem;
+  font-size: var(--font-size-lg);
+  font-weight: 300;
+  margin-left: 0rem;
+  color: var(--primary-text);
+}
+
+.contentWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 4rem;
+}
+
+.leftColumn {
+  flex: 1 1 55%;
+  max-width: 55%;
+}
+
+.headline {
+  font-weight: 300;
+  color: var(--primary-text);
+  line-height: 1.2;
+  letter-spacing: -3px;
+  font-size: var(--font-size-2xl);
+}
+
+.rightColumn {
+  flex: 1 1 35%;
+  max-width: 31%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.description {
+  color: var(--primary-text);
+  font-weight: 100;
+  max-width: 450px;
+  margin-bottom: 0.1rem;
+  font-size: var(--font-size-xss);
+}
+
+.aboutButton {
+  margin-top: 0.4rem;
+  background-color: var(--accent-color);
+  color: #000;
+  border: none;
+  padding: 0.7rem 1.3rem;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  font-family: inherit;
+  align-self: flex-start;
+  font-size: var(--font-size-xs); /* Added font size back in here */
+}
+
+.aboutButton:hover {
+  transform: scale(1.05);
+}
+
+/* --- Responsive Styles --- */
+
+/* On tablets and smaller screens, stack the columns */
+@media (max-width: 1024px) {
+  .contentWrapper {
+    flex-direction: column;
+    /* CHANGED: Reduced gap to bring headline and description closer on mobile */
+    gap: 0.5rem;
+  }
+
+  .leftColumn,
+  .rightColumn {
+    max-width: 100%;
+    flex-basis: auto;
+  }
+
+  /* ADDED: New rule to make the button full-width on mobile */
+  .aboutButton {
+    display: block;
+    text-align: center;
+  }
+}
+
+/* On medium screens and up, increase section padding (This section is untouched) */
+@media (min-width: 768px) {
+  .howWeDoItSection {
+    padding: 5rem 3rem;
+    padding-bottom: 0;
+  }
+}

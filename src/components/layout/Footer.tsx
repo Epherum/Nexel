@@ -1,46 +1,35 @@
+//src/components/layout/Footer.tsx
 "use client";
 
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import styles from "./Footer.module.scss";
+import styles from "./Footer.module.css";
 import { FaArrowRight } from "react-icons/fa";
 import { usePathname } from "next/navigation";
-import { allProjects } from "@/data/allProjects";
 
 const Footer = () => {
   const pathname = usePathname();
 
-  // We now need two separate classes for independent control
   let wrapperThemeClass = "";
-  let containerThemeClass = "";
 
-  // Case 1: The main /projects index page
-  if (pathname === "/projects") {
-    // Wrapper stays default (dark), but the inner container becomes light.
-    containerThemeClass = styles.containerThemeLight;
-  }
-  // Case 2: Individual project detail pages
-  else {
-    const currentProject = allProjects.find(
-      (p) => pathname === `/projects/${p.slug}`
-    );
-    if (currentProject) {
-      if (currentProject.type === "dynamic") {
-        // Social media page: Wrapper becomes light, container stays default.
-        wrapperThemeClass = styles.wrapperThemeLight;
-      } else if (currentProject.type === "hardcoded") {
-        // Hardcoded project page: Wrapper becomes dark, container stays default.
-        wrapperThemeClass = styles.wrapperThemeDark;
-      }
-    }
+  // Check if the current URL path is for a branding or social project
+  if (
+    pathname.startsWith("/projects/branding/") ||
+    pathname.startsWith("/projects/social/")
+  ) {
+    // If it is, we'll use the class that makes the wrapper white.
+    // Based on your old CSS, let's create a clear new class or reuse an old one.
+    // Let's call it wrapperThemeWhite for clarity.
+    wrapperThemeClass = styles.wrapperThemeWhite;
   }
 
-  // Case 3 (Default): For any other page (homepage, contact), both classes are empty.
+  // NOTE: Your old logic for '.containerThemeLight' on the /projects page
+  // can be added back here if needed, but this solves the current request.
 
   return (
     <footer className={`${styles.footerWrapper} ${wrapperThemeClass}`}>
-      <div className={`${styles.footerContainer} ${containerThemeClass}`}>
+      <div className={styles.footerContainer}>
         {/* --- Top Row: CTA and Up Next --- */}
         <div className={styles.topRow}>
           <div className={styles.ctaContainer}>

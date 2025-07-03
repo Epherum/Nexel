@@ -1,3 +1,4 @@
+//src/components/layout/MenuOverlay.tsx
 "use client";
 
 import React from "react";
@@ -5,7 +6,7 @@ import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { easings } from "@/utils/easings";
-import styles from "./MenuOverlay.module.scss";
+import styles from "./MenuOverlay.module.css";
 
 // --- Props Interface ---
 interface MenuOverlayProps {
@@ -22,8 +23,8 @@ const navLinks = [
   },
 
   {
-    title: "Journal",
-    href: "#",
+    title: "About Us",
+    href: "/about",
     imgSrc: "/static/book-app/3.webp",
     alt: "Preview of journal entries",
   },

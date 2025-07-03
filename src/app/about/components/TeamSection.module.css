@@ -1,0 +1,126 @@
+/* src/app/about/components/TeamSection.module.css */
+
+/* --- Base Styles (Mobile-First) --- */
+.teamSection {
+  background-color: var(--dark-bg);
+  color: var(--primary-text);
+  padding: 4rem 0; /* Vertical padding only */
+}
+
+.headline {
+  font-weight: 300;
+  line-height: 1.2;
+  letter-spacing: -3px;
+  margin-bottom: 3rem;
+  padding: 0 1.5rem; /* Gutters for mobile */
+  font-size: var(--font-size-2xl); /* Responsive clamp() value */
+}
+
+.highlight {
+  border-bottom: 5px solid var(--accent-color);
+  color: var(--accent-color);
+}
+
+/* --- NEW: CSS Grid for Team Members --- */
+.teamGrid {
+  display: grid;
+  padding: 0 1.5rem; /* Match headline gutters */
+  gap: 1.5rem; /* Gap between cards on mobile */
+  margin-bottom: 3rem;
+  /* Mobile default: single column */
+  grid-template-columns: 1fr;
+}
+
+/* --- Team Card styles (largely unchanged) --- */
+.teamCard {
+  background-color: var(--dark-bg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.imageWrapper {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  border-radius: 20px; /* Smaller radius for mobile */
+}
+
+.cardImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.cardImage:hover {
+  transform: scale(1.05);
+}
+
+.cardInfo {
+  padding: 1rem 0.5rem;
+}
+
+.name {
+  font-weight: 300;
+  font-size: var(--font-size-lg);
+}
+
+.role {
+  color: var(--secondary-text);
+  font-size: var(--font-size-xs);
+  font-weight: 100;
+}
+
+/* --- CTA Section (Mobile-First) --- */
+.contactCta {
+  padding: 2rem 1.5rem; /* Match gutters */
+  display: flex;
+  flex-direction: column; /* Stacked by default */
+  gap: 1.5rem;
+}
+
+.ctaLabel {
+  color: var(--secondary-text);
+  font-size: var(--font-size-sm);
+}
+
+.ctaText {
+  max-width: 600px;
+  font-weight: 300;
+  font-size: var(--font-size-2lg);
+}
+
+/* ==========================================================================
+   Desktop Overrides
+   ========================================================================== */
+@media (min-width: 1024px) {
+  .teamSection {
+    padding-top: 6rem;
+  }
+
+  .headline {
+    padding: 0 2rem;
+    margin-bottom: 4rem;
+    font-size: var(--font-size-5xl);
+  }
+
+  .teamGrid {
+    /* Switch to a 3-column layout */
+    grid-template-columns: repeat(3, 1fr);
+    padding: 0 2rem;
+    gap: 0.5rem;
+  }
+
+  .imageWrapper {
+    border-radius: 32px;
+  }
+
+  .contactCta {
+    padding: 1rem 2rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+}

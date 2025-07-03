@@ -1,110 +1,76 @@
+//src/app/about/components/AboutHero.tsx
 "use client";
 
 import React, { useRef } from "react";
-import styles from "./AboutHero.module.scss";
+import styles from "./AboutHero.module.css";
 import { motion, useScroll, Variants } from "framer-motion";
 import ScrollAnimatedCard from "./ScrollAnimatedCard";
-// 1. Re-import the components and utils needed for the text animation
 import AnimatedWord from "@/components/animation/AnimatedWord";
 import { easings } from "@/utils/easings";
 
 // --- DATA ---
+// FINAL FIX: Increased max-width and max-height to allow cards to be larger on wide screens.
+// This raises the "ceiling" for the responsive 'vw' units.
 const teamImages = [
   {
     id: 1,
     src: "/static/nexel/about/team-1.png",
     alt: "A woman with dark hair and white glasses, wearing a light-colored jacket.",
-    style: {
-      top: "12%",
-      left: "5%",
-      transform: "rotate(-12deg)",
-      width: "25vw",
-      height: "35vw",
-      maxWidth: "300px",
-      maxHeight: "420px",
-    },
-    color: "white",
+    initialRotate: -30,
+    finalRotate: -14,
+    className: styles.card1,
+    style: { top: "15%", left: "2%" },
   },
   {
     id: 2,
     src: "/static/nexel/about/team-2.png",
-    alt: "A man with glasses and a nose ring, looking down thoughtfully.",
-    style: {
-      top: "55%",
-      left: "8%",
-      transform: "rotate(-80deg)",
-      width: "22vw",
-      height: "30vw",
-      maxWidth: "260px",
-      maxHeight: "360px",
-    },
-    color: "lime",
+    alt: "A man with glasses and a thoughtful expression.",
+    initialRotate: -45,
+    finalRotate: -8,
+    className: styles.card2,
+    style: { top: "60%", left: "8%" },
   },
   {
     id: 3,
     src: "/static/nexel/about/team-3.png",
     alt: "A selfie of a smiling man with sunglasses and a woman with glasses.",
-    style: {
-      top: "25%",
-      left: "30%",
-      transform: "rotate(8deg)",
-      width: "28vw",
-      height: "38vw",
-      maxWidth: "340px",
-      maxHeight: "460px",
-    },
-    color: "white",
+    initialRotate: 40,
+    finalRotate: 12,
+    className: styles.card3,
+    style: { top: "18%", left: "28%" },
   },
   {
     id: 4,
     src: "/static/nexel/about/team-4.png",
-    alt: "A woman with long dark hair smiling, with a coastal scene in the background.",
-    style: {
-      top: "45%",
-      left: "55%",
-      transform: "rotate(-5deg)",
-      width: "20vw",
-      height: "28vw",
-      maxWidth: "240px",
-      maxHeight: "340px",
-    },
-    color: "lime",
+    alt: "Two glasses of matcha latte on a wooden bench.",
+    initialRotate: -35,
+    finalRotate: -5,
+    className: styles.card4,
+    style: { top: "48%", left: "45%" },
   },
   {
     id: 5,
     src: "/static/nexel/about/team-5.png",
-    alt: "A man with curly hair and glasses, in a room with vibrant purple and pink lighting.",
-    style: {
-      top: "5%",
-      right: "8%",
-      transform: "rotate(12deg)",
-      width: "26vw",
-      height: "36vw",
-      maxWidth: "320px",
-      maxHeight: "440px",
-    },
-    color: "lime",
+    alt: "A man with curly hair and glasses, wearing headphones.",
+    initialRotate: 45,
+    finalRotate: 15,
+    className: styles.card5,
+    style: { top: "8%", right: "6%" },
   },
   {
     id: 6,
     src: "/static/nexel/about/team-6.png",
     alt: "A man wearing a light-colored cap, looking to his side.",
-    style: {
-      top: "52%",
-      right: "15%",
-      transform: "rotate(10deg)",
-      width: "24vw",
-      height: "33vw",
-      maxWidth: "280px",
-      maxHeight: "390px",
-    },
-    color: "white",
+    initialRotate: 50,
+    finalRotate: 18,
+    className: styles.card6,
+    style: { top: "55%", right: "12%" },
   },
 ];
+
 const descriptionText =
   "We’re a team of diverse talents, each person valued not just for what they do, but for who they are.";
 
-// 2. Define the variants for the initial text reveal (as you had before)
 const textContainerVariants: Variants = {
   visible: {
     transition: {
@@ -127,10 +93,8 @@ const AboutHero = () => {
 
   const { scrollYProgress } = useScroll({
     target: scrollContainerRef,
-    offset: ["start start", "end end"],
+    offset: ["start start", "end 0.7"],
   });
-
-  // 3. REMOVED the useTransform hooks for contentOpacity and contentY
 
   return (
     <div ref={scrollContainerRef} className={styles.scrollWrapper}>
@@ -147,20 +111,18 @@ const AboutHero = () => {
           ))}
         </div>
 
-        {/* 4. Use standard motion props for a one-time animation on load */}
         <motion.div
           className={styles.contentWrapper}
           variants={textContainerVariants}
           initial="hidden"
           animate="visible"
-          // REMOVED style={{ opacity: contentOpacity, y: contentY }}
         >
           <h1 className={styles.headline}>
             <AnimatedWord variants={wordVariants}>Creative</AnimatedWord>
           </h1>
           <motion.div
             className={styles.descriptionBox}
-            variants={textContainerVariants} // Stagger the children inside
+            variants={textContainerVariants}
           >
             <p>
               {descriptionText.split(" ").map((word, index) => (

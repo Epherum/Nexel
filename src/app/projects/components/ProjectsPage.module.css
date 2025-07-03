@@ -1,0 +1,66 @@
+/* src/app/projects/components/ProjectsPage.module.css */
+
+.projectsPage {
+  background-color: var(--dark-bg);
+  color: var(--primary-text);
+  padding: 6rem 0.5rem 4rem 0.5rem; /* Tighter mobile padding */
+}
+
+.header {
+  text-align: center;
+  margin: 0 auto 5rem auto; /* Less margin on mobile */
+  max-width: 1100px;
+}
+
+.headline {
+  font-weight: 300;
+  padding: 0 0.5rem;
+  font-size: var(--font-size-2lg); /* Mobile font size */
+}
+
+.highlight {
+  color: var(--accent-color);
+  display: inline-block;
+}
+
+.projectsGrid {
+  display: grid;
+  gap: 1.5rem; /* Tighter gap */
+  grid-template-columns: 1fr; /* Mobile: Single column */
+}
+
+.projectCard {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+  cursor: pointer;
+}
+
+/* --- Responsive Styles (Desktop) --- */
+
+/* Medium screens (tablets) get 2 columns */
+@media (min-width: 768px) {
+  .projectsPage {
+    padding: 10rem 3rem 4rem 3rem;
+  }
+
+  .header {
+    margin-bottom: 7rem;
+  }
+
+  .headline {
+    font-size: var(--font-size-3xl); /* Desktop font size */
+  }
+
+  .projectsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Large screens get 3 columns */
+@media (min-width: 1024px) {
+  .projectsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

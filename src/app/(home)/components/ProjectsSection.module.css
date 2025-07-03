@@ -1,0 +1,164 @@
+/* src/app/(home)/components/ProjectsSection.module.css */
+
+.projectsSection {
+  padding: 4rem 0.5rem; /* Mobile padding */
+  background-color: var(--dark-bg);
+}
+
+.mainTitle {
+  font-weight: 300;
+  margin-bottom: 1rem; /* Less margin on mobile */
+  letter-spacing: -1px;
+  font-size: var(--font-size-2xl);
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column; /* Mobile: columns are stacked */
+  gap: 3rem;
+  align-items: stretch;
+}
+
+/* No sticky behavior on mobile */
+.leftColumn {
+  flex: 1 1 auto;
+}
+
+.subHeader {
+  font-weight: 200;
+  letter-spacing: 0.5px;
+  color: var(--secondary-text);
+  margin-bottom: 0.5rem;
+  font-size: var(--font-size-xxs);
+}
+
+.line {
+  width: 100%;
+  height: 1px;
+  background-color: var(--secondary-text);
+  transform-origin: left;
+  margin-bottom: 1rem;
+}
+
+.headline {
+  font-weight: 500;
+  color: var(--primary-text);
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+  font-size: var(--font-size-xl);
+  color: var(--accent-color);
+}
+
+.description {
+  color: var(--primary-text);
+  max-width: 100%; /* Allow full width on mobile */
+  font-weight: 100;
+  margin-bottom: 0; /* Less margin on mobile */
+  font-size: var(--font-size-xs);
+}
+
+.rightColumn {
+  flex: 1 1 auto;
+  display: grid;
+  grid-template-columns: 1fr; /* Single column for mobile */
+  gap: 2rem;
+}
+
+.projectCard {
+  border-radius: 16px;
+  overflow: hidden;
+  background-color: #222;
+  aspect-ratio: 5 / 6;
+  position: relative;
+}
+/* No offset for even cards on mobile */
+.projectCard:nth-child(even) {
+  margin-top: 0;
+}
+.projectCard .projectImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  scale: 1.01; /* Fix for potential pixel gaps */
+  will-change: transform;
+}
+
+/* Styles for the button layout at the bottom */
+.buttonAlignmentWrapper {
+  display: flex;
+  margin-top: 3rem;
+}
+.buttonContainer {
+  flex: 1 1 100%; /* Full width on mobile */
+}
+.buttonSpacer {
+  display: none; /* Hide spacer on mobile */
+}
+
+.viewAllButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem 1.5rem;
+  background-color: var(--accent-color);
+  color: #000;
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  font-size: var(--font-size-xs);
+  width: 100%; /* Make button full width on mobile */
+}
+.viewAllButton:hover {
+  transform: scale(1.05);
+}
+
+/* --- Responsive Styles (Desktop) --- */
+@media (min-width: 1024px) {
+  .projectsSection {
+    padding: 8rem 3rem;
+  }
+  .mainTitle {
+    margin-bottom: 5rem;
+  }
+  .contentWrapper {
+    flex-direction: row;
+    gap: 5rem;
+    align-items: flex-start;
+  }
+  .leftColumn {
+    flex: 1 1 35%;
+    position: sticky;
+    top: 5rem;
+  }
+  .leftColumn {
+    flex: 1 1 35%;
+  }
+
+  .description {
+    max-width: 40ch;
+  }
+  .rightColumn {
+    flex: 1 1 60%;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .projectCard:nth-child(even) {
+    margin-top: 4rem; /* Re-apply offset for desktop grid */
+  }
+
+  /* Adjust button layout for desktop */
+  .buttonAlignmentWrapper {
+    gap: 5rem;
+  }
+  .buttonContainer {
+    flex: 1 1 35%;
+  }
+  .buttonSpacer {
+    display: block;
+    flex: 1 1 60%;
+  }
+  .viewAllButton {
+    width: auto; /* Revert to natural width on desktop */
+  }
+}

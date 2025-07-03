@@ -1,0 +1,173 @@
+/* src/components/layout/Footer.module.css */
+
+.footerWrapper {
+  padding: 0.5rem;
+  background-color: var(--dark-bg);
+  transition: background-color 0.3s ease-in-out;
+}
+.footerWrapper.wrapperThemeWhite {
+  background-color: var(--primary-text);
+}
+
+.footerContainer {
+  background-color: var(--footer-bg);
+  border-radius: 16px;
+  padding: 1rem;
+  padding-bottom: 1.5rem; /* More space at the very bottom */
+  color: var(--primary-text);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem; /* Reduced gap between top and bottom sections */
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+/* --- Top Row --- */
+.topRow {
+  display: flex;
+  /* CHANGED: Stack the CTA and Up Next vertically on mobile */
+  flex-direction: column;
+  align-items: flex-start; /* Align items to the left */
+  gap: 1.5rem;
+}
+.ctaContainer {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.talkButton {
+  letter-spacing: -1px;
+  text-wrap: nowrap; /* Prevent text wrapping */
+  background-color: var(--accent-color);
+  color: #000;
+  border-radius: 12px;
+  padding: 0.5rem 0.5rem;
+  font-weight: 500;
+  transition: transform 0.2s ease;
+  font-size: var(--font-size-2xl);
+}
+.talkButton:hover {
+  transform: scale(1.05);
+}
+.arrowButton {
+  background-color: var(--accent-color);
+  color: #000;
+  border-radius: 12px;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease;
+  font-size: var(--font-size-base);
+}
+.arrowButton:hover {
+  transform: scale(1.05);
+}
+/* CHANGED: No longer needs to be right-aligned on mobile */
+.upNextContainer {
+  text-align: left;
+}
+.upNextContainer a {
+  display: block;
+}
+.upNextLabel {
+  display: block;
+  color: var(--secondary-text);
+  font-size: var(--font-size-xs);
+}
+.upNextLink {
+  font-weight: 300;
+  color: var(--primary-text);
+  font-size: var(--font-size-2xl);
+}
+
+/* --- Bottom Row --- */
+.bottomRow {
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  padding-top: 0.5rem;
+  margin-top: 4rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+.logo {
+  display: inline-block;
+  /* ADDED: Control the order of items */
+  order: 1;
+}
+.copyright {
+  color: var(--secondary-text);
+  font-size: var(--font-size-xxs);
+  /* ADDED: Force the copyright to a new line and control the order */
+  width: 100%;
+  order: 3;
+  text-align: left; /* Align to the left per design */
+}
+.socials {
+  display: flex;
+  gap: 0.5rem;
+  /* ADDED: Control the order of items */
+  order: 2;
+}
+.socials a {
+  width: 35px;
+  height: 35px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--primary-text);
+  transition: all 0.3s ease;
+}
+.socials a:hover {
+  background-color: var(--accent-color);
+  color: #000;
+  border-color: var(--accent-color);
+}
+
+/* --- Responsive Styles (Desktop) --- */
+@media (min-width: 768px) {
+  .footerWrapper {
+    padding: 1rem;
+  }
+  .footerContainer {
+    padding: 2.5rem;
+    gap: 11rem;
+  }
+
+  .talkButton {
+    padding: 1rem 1.5rem;
+    font-size: var(--font-size-3xl);
+  }
+  .bottomRow {
+    margin-top: 0rem;
+  }
+  /* CHANGED: Revert top row to horizontal for desktop */
+  .topRow {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .upNextContainer {
+    text-align: right;
+  }
+  .arrowButton {
+    width: 90px;
+    height: 90px;
+  }
+  /* CHANGED: Revert copyright to its natural width and order */
+  .copyright {
+    width: auto;
+    order: 0; /* Resets order */
+    text-align: center; /* Center it between logo/socials on desktop */
+  }
+  /* Revert logo/socials order to default */
+  .logo,
+  .socials {
+    order: 0;
+  }
+}

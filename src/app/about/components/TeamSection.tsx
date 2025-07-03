@@ -3,17 +3,11 @@
 
 import Image from "next/image";
 import React from "react";
-import styles from "./TeamSection.module.scss";
+import styles from "./TeamSection.module.css";
 import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
 import AnimatedWord from "@/components/animation/AnimatedWord";
 import { easings } from "@/utils/easings";
-
-// Swiper Imports
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/free-mode";
 
 // --- Data (Unchanged) ---
 const teamMembers = [
@@ -31,11 +25,6 @@ const teamMembers = [
     name: "Wassim Fekih",
     role: "Full-Stack Developer",
     image: "/static/nexel/team/wassim.png",
-  },
-  {
-    name: "John Doe",
-    role: "Project Manager",
-    image: "/static/nexel/team/emira2.png",
   },
 ];
 
@@ -63,15 +52,14 @@ const cardVariants: Variants = {
 };
 
 const TeamSection = () => {
-  // --- THE FIX: Create three separate triggers ---
   const headlineRef = useRef(null);
   const isHeadlineInView = useInView(headlineRef, {
     margin: "0px 0px -200px 0px",
     once: true,
   });
 
-  const sliderRef = useRef(null);
-  const isSliderInView = useInView(sliderRef, {
+  const gridRef = useRef(null); // Changed from sliderRef
+  const isGridInView = useInView(gridRef, {
     margin: "0px 0px -200px 0px",
     once: true,
   });
@@ -86,9 +74,7 @@ const TeamSection = () => {
   const ctaText = "Bring your ideas to life and create cool projects with us.";
 
   return (
-    // This is now a regular <section>, not a motion component.
     <section className={styles.teamSection}>
-      {/* 1. Headline animates on its own */}
       <motion.h2
         ref={headlineRef}
         className={styles.headline}
@@ -112,46 +98,38 @@ const TeamSection = () => {
         ))}
       </motion.h2>
 
-      {/* 2. Slider animates on its own */}
+      {/* REPLACED SWIPER WITH A SIMPLE GRID CONTAINER */}
       <motion.div
-        ref={sliderRef}
+        ref={gridRef}
+        className={styles.teamGrid} // New class name
+        variants={wordRevealContainer} // Re-using variants for staggered animation
         initial="hidden"
-        animate={isSliderInView ? "visible" : "hidden"}
+        animate={isGridInView ? "visible" : "hidden"}
       >
-        <Swiper
-          modules={[FreeMode]}
-          slidesPerView={"auto"}
-          spaceBetween={10}
-          freeMode={true}
-          className={styles.teamSlider}
-        >
-          {teamMembers.map((member, index) => (
-            <SwiperSlide key={index} className={styles.slide}>
-              <motion.div
-                className={styles.teamCard}
-                variants={cardVariants}
-                custom={index}
-              >
-                <div className={styles.imageWrapper}>
-                  <Image
-                    src={member.image}
-                    alt={`Portrait of ${member.name}`}
-                    width={400}
-                    height={500}
-                    className={styles.cardImage}
-                  />
-                </div>
-                <div className={styles.cardInfo}>
-                  <h3 className={styles.name}>{member.name}</h3>
-                  <p className={styles.role}>{member.role}</p>
-                </div>
-              </motion.div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        {teamMembers.map((member, index) => (
+          <motion.div
+            key={index}
+            className={styles.teamCard}
+            variants={cardVariants}
+            custom={index}
+          >
+            <div className={styles.imageWrapper}>
+              <Image
+                src={member.image}
+                alt={`Portrait of ${member.name}`}
+                width={400}
+                height={500}
+                className={styles.cardImage}
+              />
+            </div>
+            <div className={styles.cardInfo}>
+              <h3 className={styles.name}>{member.name}</h3>
+              <p className={styles.role}>{member.role}</p>
+            </div>
+          </motion.div>
+        ))}
       </motion.div>
 
-      {/* 3. Footer animates on its own */}
       <motion.footer
         ref={footerRef}
         className={styles.contactCta}

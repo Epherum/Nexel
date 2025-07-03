@@ -1,0 +1,105 @@
+/* src/components/layout/MenuOverlay.module.css */
+
+.menuOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--dark-bg);
+  color: var(--primary-text);
+  z-index: 999;
+  /* Default mobile-first style: allow scrolling */
+  overflow-y: auto;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100%;
+  padding: var(--nav-height) 1.5rem 2rem;
+}
+
+/* --- Mobile-First Layout --- */
+.navGrid {
+  flex-grow: 1;
+  display: grid;
+  gap: 1.5rem;
+  padding: 2rem 0;
+  grid-template-columns: 1fr;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem 0;
+  gap: 2rem;
+  flex-direction: column;
+}
+
+/* --- Responsive Overrides --- */
+
+/* Tablet layout */
+@media (min-width: 768px) {
+  .navGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .footer {
+    flex-direction: row;
+  }
+}
+
+/* Desktop layout */
+@media (min-width: 1024px) {
+  /* --- CHANGE START --- */
+  .menuOverlay {
+    /* On desktop, the layout fits the screen, so we disable scrolling. */
+    overflow-y: hidden;
+  }
+  /* --- CHANGE END --- */
+
+  .wrapper {
+    padding: 120px 3rem 3rem;
+  }
+
+  .navGrid {
+    grid-template-columns: repeat(3, 1fr);
+    padding: 1rem 0 2rem;
+  }
+}
+
+/* --- Item Styles (Unchanged) --- */
+.navItem .navTitle {
+  font-size: var(--font-size-base);
+  margin-bottom: 0.5rem;
+}
+
+.navItem .imageContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.navItem .imageContainer:hover {
+  transform: scale(1.03);
+}
+
+.navItem .previewImage {
+  object-fit: cover;
+}
+
+.footerColumn .footerTitle {
+  color: var(--secondary-text);
+  margin-bottom: 0.5rem;
+  font-size: var(--font-size-xs);
+}
+
+.footerColumn .footerLinks {
+  font-size: var(--font-size-xs);
+  font-weight: 300;
+}
+
+.footerColumn .footerLinks span {
+  display: block;
+}

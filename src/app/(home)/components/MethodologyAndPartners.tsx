@@ -1,17 +1,17 @@
-// src/app/(home)/components/MethodologyAndPartners.tsx
 "use client";
 
 import React from "react";
 import Image from "next/image";
-import styles from "./MethodologyAndPartners.module.scss";
+import styles from "./MethodologyAndPartners.module.css"; // CHANGED
 
-// --- Animation Imports ---
+// --- Animation & Helper Imports ---
 import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
 import AnimatedWord from "@/components/animation/AnimatedWord";
 import { easings } from "@/utils/easings";
+import { useMediaQuery } from "@/utils/useMediaQuery"; // CHANGED: Import the new hook
 
-// --- Swiper Imports ---
+// --- Swiper Imports (for desktop only) ---
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
@@ -46,14 +46,11 @@ const methodologySteps = [
   },
 ];
 
-// NEW: Define the type for the props this component will receive
 interface MethodologyAndPartnersProps {
   logoPaths: string[];
 }
 
-// --- Animation Variants ---
-
-// For word-by-word reveal (titles)
+// --- Animation Variants (Unchanged) ---
 const wordRevealContainer: Variants = {
   visible: { transition: { staggerChildren: 0.05 } },
 };
@@ -61,26 +58,14 @@ const wordVariants: Variants = {
   hidden: { y: "110%" },
   visible: { y: "0%", transition: { duration: 0.8, ease: easings.easeOut } },
 };
-
-// For Swiper slides (left-to-right fade-in)
-const sliderContainerVariants: Variants = {
-  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.2 } },
-};
 const slideVariants: Variants = {
   hidden: { opacity: 0, x: -50 },
   visible: (i: number) => ({
-    // `i` will be the index of the slide
     opacity: 1,
     x: 0,
-    transition: {
-      delay: i * 0.1, // Create a cascading delay
-      duration: 0.8,
-      ease: easings.easeOut,
-    },
+    transition: { delay: i * 0.1, duration: 0.8, ease: easings.easeOut },
   }),
 };
-
-// For Partners logos (cascading opacity)
 const partnersContainerVariants: Variants = {
   visible: { transition: { staggerChildren: 0.05, delayChildren: 0.2 } },
 };
@@ -89,14 +74,34 @@ const logoVariants: Variants = {
   visible: { opacity: 1, transition: { duration: 0.5, ease: "linear" } },
 };
 
+// Reusable card component to keep code DRY
+const MethodologyCard = ({
+  item,
+  index,
+}: {
+  item: (typeof methodologySteps)[0];
+  index: number;
+}) => (
+  <motion.div
+    className={`${styles.card} ${styles[`card--${item.color}`]}`}
+    variants={slideVariants}
+    custom={index}
+  >
+    <p className={styles.cardDescription}>{item.description}</p>
+    <div className={styles.cardStep}>
+      Step {item.step}: <br />
+      {item.title}
+    </div>
+  </motion.div>
+);
+
 const MethodologyAndPartners = ({ logoPaths }: MethodologyAndPartnersProps) => {
-  // --- Refs and Triggers ---
+  const isDesktop = useMediaQuery("(min-width: 1024px)");
   const methodologyRef = useRef(null);
   const isMethodologyInView = useInView(methodologyRef, {
     margin: "0px 0px -200px 0px",
     once: true,
   });
-
   const partnersRef = useRef(null);
   const arePartnersInView = useInView(partnersRef, {
     margin: "0px 0px -200px 0px",
@@ -104,14 +109,8 @@ const MethodologyAndPartners = ({ logoPaths }: MethodologyAndPartnersProps) => {
   });
 
   const getLogoNameFromPath = (path: string) => {
-    try {
-      // Example: "/static/nexel/logos/some-company-logo.svg"
-      const filename = path.split("/").pop() || "logo"; // -> "some-company-logo.svg"
-      const name = filename.split(".")[0]; // -> "some-company-logo"
-      return name.replace(/-/g, " "); // -> "some company logo"
-    } catch {
-      return "Partner logo"; // Fallback
-    }
+    const filename = path.split("/").pop() || "logo";
+    return filename.split(".")[0].replace(/-/g, " ");
   };
 
   return (
@@ -137,36 +136,31 @@ const MethodologyAndPartners = ({ logoPaths }: MethodologyAndPartnersProps) => {
                 </AnimatedWord>
               ))}
           </motion.h2>
-          <div className={styles.sliderWrapper}>
-            {/* The Swiper component is now clean. It does not need motion props. */}
+
+          {isDesktop ? (
             <Swiper
               spaceBetween={20}
               slidesPerView={3.5}
-              className="methodology-swiper"
+              slidesOffsetBefore={48} // Corresponds to 3rem desktop padding
+              slidesOffsetAfter={48} // Corresponds to 3rem desktop padding
+              className={styles.methodologySwiper}
             >
-              {/* We need the index from the map function */}
               {methodologySteps.map((item, index) => (
-                <SwiperSlide key={item.step}>
-                  <motion.div
-                    className={`${styles.card} ${
-                      styles[`card--${item.color}`]
-                    }`}
-                    variants={slideVariants}
-                    // Pass the index as a custom prop to the variants
-                    custom={index}
-                  >
-                    <p className={styles.cardDescription}>{item.description}</p>
-                    <div className={styles.cardStep}>
-                      Step {item.step}: <br />
-                      {item.title}
-                    </div>
-                  </motion.div>
+                <SwiperSlide key={item.step} className={styles.slide}>
+                  <MethodologyCard item={item} index={index} />
                 </SwiperSlide>
               ))}
             </Swiper>
-          </div>
+          ) : (
+            <div className={styles.methodologyGrid}>
+              {methodologySteps.map((item, index) => (
+                <MethodologyCard key={item.step} item={item} index={index} />
+              ))}
+            </div>
+          )}
         </motion.div>
-        {/* --- Partners Section --- */}
+
+        {/* === START OF CORRECTION: RESTORED PARTNERS SECTION === */}
         <motion.div
           ref={partnersRef}
           className={styles.partnersContainer}
@@ -206,6 +200,7 @@ const MethodologyAndPartners = ({ logoPaths }: MethodologyAndPartnersProps) => {
             ))}
           </motion.div>
         </motion.div>
+        {/* === END OF CORRECTION === */}
       </div>
     </section>
   );

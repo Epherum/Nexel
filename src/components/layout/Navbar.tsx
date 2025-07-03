@@ -4,9 +4,10 @@ import { useState } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import styles from "./Navbar.module.scss";
+import styles from "./Navbar.module.css";
 import { easings } from "@/utils/easings";
-import MenuOverlay from "./MenuOverlay"; // Import the new component
+import MenuOverlay from "./MenuOverlay";
+import { usePathname } from "next/navigation";
 
 // --- Animation Variants (Unchanged) ---
 const navbarContainerVariants: Variants = {
@@ -23,15 +24,24 @@ const itemVariants: Variants = {
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  let navThemeClass = "";
+  if (
+    pathname.startsWith("/projects/branding/") ||
+    pathname.startsWith("/projects/social/")
+  ) {
+    navThemeClass = styles.themeLight;
+  }
+
   return (
     <>
       <motion.nav
-        className={styles.navbar}
+        className={`${styles.navbar} ${navThemeClass}`}
         variants={navbarContainerVariants}
         initial="hidden"
         animate="visible"
@@ -49,7 +59,6 @@ const Navbar = () => {
           </Link>
         </motion.div>
 
-        {/* Updated menu icon with onClick handler */}
         <motion.div
           className={`${styles.menuIcon} ${isMenuOpen ? styles.isOpen : ""}`}
           variants={itemVariants}
@@ -59,14 +68,17 @@ const Navbar = () => {
           <div className={styles.line}></div>
         </motion.div>
 
-        <motion.div variants={itemVariants}>
+        {/* CHANGED: Added 'ctaButtonContainer' class to the wrapper div */}
+        <motion.div
+          className={styles.ctaButtonContainer}
+          variants={itemVariants}
+        >
           <Link href="/about">
             <button className={styles.ctaButton}>Get in Touch</button>
           </Link>
         </motion.div>
       </motion.nav>
 
-      {/* AnimatePresence handles the enter and exit animations */}
       <AnimatePresence>
         {isMenuOpen && <MenuOverlay onClose={toggleMenu} />}
       </AnimatePresence>

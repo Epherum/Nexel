@@ -1,0 +1,66 @@
+/* src/components/SocialMediaPost/SocialMediaPost.module.css */
+
+.postContainer {
+  background-color: var(--primary-text);
+  color: var(--dark-bg);
+  border: 1px solid #dbdbdb;
+  border-radius: 16px;
+  width: 100%; /* Keep this */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.postHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid #efefef;
+}
+
+.profileInfo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profileIcon {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profileName {
+  font-weight: 300;
+  font-size: 0.4rem;
+}
+
+.moreOptions {
+  color: var(--dark-bg);
+}
+
+.imageWrapper img {
+  object-fit: cover;
+  display: block;
+}
+
+.postFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 16px 12px;
+}
+
+.actionsLeft {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.actionsLeft svg,
+.actionsRight svg {
+  cursor: pointer;
+}
+
+.actionsLeft svg:hover,
+.actionsRight svg:hover {
+  opacity: 0.7;
+}

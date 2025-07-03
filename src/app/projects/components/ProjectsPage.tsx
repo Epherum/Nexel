@@ -1,74 +1,13 @@
-//src/app/projects/components/ProjectsPage.tsx
-
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
-import styles from "./ProjectsPage.module.scss";
+import styles from "./ProjectsPage.module.css"; // CHANGED: Import .css file
 import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
 import AnimatedWord from "@/components/animation/AnimatedWord";
 import { easings } from "@/utils/easings";
-import { allProjects } from "@/data/allProjects"; // <-- USE THE MASTER LIST
-
-// --- Data (Unchanged) ---
-const projects = [
-  {
-    id: 1,
-    imageUrl: "/static/nexel/test.jpg",
-    alt: "E-commerce website on a laptop",
-  },
-  {
-    id: 2,
-    imageUrl: "/static/nexel/test.jpg",
-    alt: "Matcha drink with custom branding",
-  },
-  {
-    id: 3,
-    imageUrl: "/static/nexel/test.jpg",
-    alt: "Minimalist mobile app interface",
-  },
-  {
-    id: 4,
-    imageUrl: "/static/nexel/test.jpg",
-    alt: "Corporate branding materials",
-  },
-  {
-    id: 5,
-    imageUrl: "/static/nexel/test.jpg",
-    alt: "Educational platform for children",
-  },
-  {
-    id: 6,
-    imageUrl: "/static/nexel/test.jpg",
-    alt: "Modern restaurant menu design",
-  },
-  {
-    id: 7,
-    imageUrl: "/static/nexel/test.jpg",
-    alt: "Modern restaurant menu design",
-  },
-  {
-    id: 8,
-    imageUrl: "/static/nexel/test.jpg",
-    alt: "Modern restaurant menu design",
-  },
-  {
-    id: 9,
-    imageUrl: "/static/nexel/test.jpg",
-    alt: "Modern restaurant menu design",
-  },
-  {
-    id: 10,
-    imageUrl: "/static/nexel/test.jpg",
-    alt: "Modern restaurant menu design",
-  },
-  {
-    id: 11,
-    imageUrl: "/static/nexel/test.jpg",
-    alt: "Modern restaurant menu design",
-  },
-];
+import { allProjects } from "@/data/allProjects";
+import Image from "@/components/animation/ParallaxImage";
 
 // --- Animation Variants (Unchanged) ---
 const wordRevealContainer: Variants = {
@@ -130,30 +69,23 @@ const ProjectsPage = () => {
         initial="hidden"
         animate={isGridInView ? "visible" : "hidden"}
       >
-        {allProjects.map(
-          (
-            project // 3. Map over the dynamic projectsData
-          ) => (
-            <motion.div
-              key={project.slug} // Use unique slug for the key
-              className={styles.projectCard}
-              variants={cardVariants}
-            >
-              {/* 4. Make each card a link to its project page */}
-              <Link href={`/projects/${project.slug}`}>
-                <Image
-                  src={project.thumbnail}
-                  alt={`Thumbnail for ${project.title} project`}
-                  fill
-                  className={styles.projectImage}
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                  data-scroll
-                  data-scroll-speed="-0.1"
-                />
-              </Link>
-            </motion.div>
-          )
-        )}
+        {allProjects.map((project) => (
+          <motion.div
+            key={project.slug}
+            className={styles.projectCard}
+            variants={cardVariants}
+          >
+            <Link href={`/projects/${project.slug}`}>
+              <Image
+                src={project.thumbnail}
+                alt={`Thumbnail for ${project.title} project`}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                parallaxAmount={10}
+              />
+            </Link>
+          </motion.div>
+        ))}
       </motion.div>
     </main>
   );

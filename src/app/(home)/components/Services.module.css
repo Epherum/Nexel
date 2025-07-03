@@ -1,0 +1,102 @@
+/* src/app/(home)/components/Services.module.css */
+
+.servicesSection {
+  padding: 0rem 0.5rem;
+  padding-bottom: 3rem;
+  background-color: var(--dark-bg);
+}
+
+.sectionTitle {
+  margin-bottom: 0.5rem;
+  font-weight: 300;
+  color: var(--primary-text);
+  font-size: var(--font-size-lg); /* Mobile font size */
+}
+
+.serviceItem {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 0.45rem 0;
+}
+
+.letter {
+  color: var(--primary-text);
+  margin-right: 1rem; /* Mobile margin */
+  font-weight: 300;
+  font-size: var(--font-size-xxs); /* Mobile font size */
+}
+
+.content {
+  flex-grow: 1;
+  position: relative;
+}
+
+.serviceTitle {
+  font-weight: 300;
+  line-height: 1.1;
+  text-transform: capitalize;
+  white-space: normal; /* Allow wrapping on mobile */
+  color: var(--services-text);
+  font-size: var(--font-size-lg); /* Mobile font size */
+}
+
+.titleWrapper {
+  display: inline-block;
+}
+
+.pill {
+  position: absolute;
+  padding: 0.5rem 1rem;
+  border-radius: 99px;
+  color: #000;
+  font-weight: 300;
+  white-space: nowrap;
+  z-index: 2;
+  display: none; /* Pills are hidden on mobile by default */
+  font-size: var(--font-size-xs); /* Mobile font size */
+}
+
+/* Modifier classes for pill colors */
+.pill--blue {
+  background-color: var(--pill-color-blue);
+}
+.pill--purple {
+  background-color: var(--pill-color-purple);
+}
+.pill--teal {
+  background-color: var(--pill-color-teal);
+}
+.pill--orange {
+  background-color: var(--pill-color-orange);
+}
+.pill--green {
+  background-color: var(--accent-color);
+}
+
+/* --- Responsive Styles (Desktop) --- */
+@media (min-width: 768px) {
+  .servicesSection {
+    padding: 6rem 3rem;
+  }
+
+  .sectionTitle {
+    font-size: var(--font-size-lg); /* Desktop font size */
+  }
+
+  .letter {
+    margin-right: 4rem; /* Desktop margin */
+    font-size: var(--font-size-lg); /* Desktop font size */
+  }
+
+  .serviceTitle {
+    white-space: nowrap; /* Prevent wrapping on desktop */
+    letter-spacing: -3px; /* Desktop letter spacing */
+    font-size: var(--font-size-4xl); /* Desktop font size */
+  }
+
+  .pill {
+    display: block; /* Show pills on desktop */
+    font-size: var(--font-size-xs); /* Desktop font size */
+  }
+}

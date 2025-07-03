@@ -1,0 +1,53 @@
+/* src/app/about/components/BeliefSection.module.css */
+
+/* --- Mobile-First Styles --- */
+.beliefSection {
+  background-color: var(--dark-bg);
+  color: var(--primary-text);
+  /* Use a more compact layout for mobile */
+  padding: 2rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem; /* Spacing between headline and description */
+}
+
+.headline {
+  /* Use a smaller, more appropriate font size for mobile */
+  font-size: var(--font-size-2xl);
+  line-height: 1.25;
+  font-weight: 300;
+  margin: 0;
+}
+
+.description {
+  /* Mobile styles are the default: no float, full width */
+  font-weight: 100;
+  font-size: var(--font-size-xs);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Desktop Overrides
+   ========================================================================== */
+@media (min-width: 1024px) {
+  /* Restore the original desktop styles */
+  .beliefSection {
+    padding: 6rem 4rem;
+    /* Use flow-root to contain the floated element on desktop */
+    display: flow-root;
+    gap: 0; /* Reset flex gap */
+  }
+
+  .headline {
+    /* Restore the larger desktop font size */
+    font-size: var(--font-size-4xl);
+  }
+
+  .description {
+    /* Restore the floated layout for desktop */
+    float: right;
+    width: 35%;
+    max-width: 35ch;
+    margin-left: 3rem;
+  }
+}

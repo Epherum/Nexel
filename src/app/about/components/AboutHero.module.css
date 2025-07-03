@@ -1,0 +1,173 @@
+/* src/app/about/components/AboutHero.module.css */
+
+.scrollWrapper {
+  height: 350vh;
+  position: relative;
+}
+
+/* Base styles are now your mobile-first styles */
+.heroSection {
+  height: 110vh;
+  background-color: var(--dark-bg);
+  color: var(--primary-text);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  padding: 3rem 2rem 6rem 2rem;
+}
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  text-align: center;
+  position: relative;
+  z-index: 5;
+}
+
+.headline {
+  font-weight: 300;
+  line-height: 1;
+  font-size: var(--font-size-4xl);
+}
+
+.descriptionBox {
+  max-width: 550px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.descriptionBox p {
+  margin: 2rem 1rem 1rem;
+  font-weight: 100;
+  font-size: var(--font-size-xs);
+}
+
+.exploreButton {
+  background-color: var(--accent-color);
+  color: #000;
+  border: none;
+  padding: 0.6rem 1.3rem;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  font-family: inherit;
+  font-size: var(--font-size-xs);
+}
+
+.exploreButton:hover {
+  transform: scale(1.05);
+}
+
+.bottomBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  color: var(--secondary-text);
+  font-size: var(--font-size-xs);
+  z-index: 5;
+}
+
+.bottomBar .tagline {
+  color: var(--primary-text);
+}
+
+.cardsContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.card {
+  position: absolute;
+  width: 45vw;
+  height: 55vw;
+  max-width: 220px;
+  max-height: 270px;
+}
+
+.card1 {
+  top: 15%;
+  left: 2%;
+}
+.card2 {
+  top: 60%;
+  left: 8%;
+}
+.card3 {
+  top: 18%;
+  left: 28%;
+}
+.card4 {
+  top: 48%;
+  left: 45%;
+}
+.card5 {
+  top: 8%;
+  right: 6%;
+}
+.card6 {
+  top: 55%;
+  right: 12%;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+/* ==========================================================================
+   Desktop Overrides
+   ========================================================================== */
+@media (min-width: 768px) {
+  /* Revert hero section padding */
+  .heroSection {
+    padding: 10rem 4rem 8rem 4rem;
+  }
+
+  /* Revert headline font size */
+  .headline {
+    font-size: var(--font-size-6xl);
+  }
+
+  /* Revert description box styles */
+  .descriptionBox p {
+    margin: -1rem 0 1rem 0; /* Revert margins */
+    font-size: var(--font-size-lg); /* Revert font size */
+  }
+
+  /* Revert bottom bar layout and padding */
+  .bottomBar {
+    padding: 1rem 4rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+  }
+
+  /* Revert card sizes back to the original desktop values */
+  .card {
+    width: 25vw;
+    height: 30vw;
+    max-width: 500px;
+    max-height: 600px;
+  }
+}

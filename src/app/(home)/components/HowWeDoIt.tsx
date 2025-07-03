@@ -1,39 +1,24 @@
-// src/app/(home)/components/HowWeDoIt.tsx
 "use client";
 
 import React from "react";
-import styles from "./HowWeDoIt.module.scss";
+import styles from "./HowWeDoIt.module.css"; // CHANGED: Import .css file
 import Link from "next/link";
 import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
 import AnimatedWord from "@/components/animation/AnimatedWord";
 import { easings } from "@/utils/easings";
 
-// --- Animation Variants ---
-
-// 1. The main container for the whole section
+// --- Animation Variants (Unchanged) ---
 const containerVariants: Variants = {
-  visible: {
-    transition: {
-      staggerChildren: 0.3, // Stagger between the title and the content wrapper
-    },
-  },
+  visible: { transition: { staggerChildren: 0.3 } },
 };
-
-// 2. Variants for any element revealed word-by-word
 const wordRevealContainer: Variants = {
   visible: { transition: { staggerChildren: 0.05 } },
 };
-
 const wordVariants: Variants = {
   hidden: { y: "110%" },
-  visible: {
-    y: "0%",
-    transition: { duration: 0.8, ease: easings.easeOut },
-  },
+  visible: { y: "0%", transition: { duration: 0.8, ease: easings.easeOut } },
 };
-
-// 3. Variants for elements revealed as a block (fade and slide up)
 const blockVariants: Variants = {
   hidden: { opacity: 0, y: 25 },
   visible: {
@@ -46,10 +31,9 @@ const blockVariants: Variants = {
 const HowWeDoIt = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, {
-    margin: "0px 0px -200px 0px", // Delayed trigger
+    margin: "0px 0px -200px 0px",
     once: true,
   });
-
   const headlineText = "We turn strategy into art and ideas into impact.";
 
   return (
@@ -61,7 +45,11 @@ const HowWeDoIt = () => {
       animate={isInView ? "visible" : "hidden"}
     >
       {/* --- Section Title --- */}
-      <motion.h2 className={styles.sectionTitle} variants={wordRevealContainer}>
+      {/* CHANGED: Added 'text-lg' utility class */}
+      <motion.h2
+        className={`${styles.sectionTitle} text-lg`}
+        variants={wordRevealContainer}
+      >
         {"How we do it".split(" ").map((word, index) => (
           <AnimatedWord key={index} variants={wordVariants}>
             {word}
@@ -71,11 +59,14 @@ const HowWeDoIt = () => {
       </motion.h2>
 
       {/* --- Content Wrapper --- */}
-      {/* This div is also a motion component to be part of the main stagger sequence */}
       <motion.div className={styles.contentWrapper} variants={{}}>
         {/* --- Left Column --- */}
         <div className={styles.leftColumn}>
-          <motion.h3 className={styles.headline} variants={wordRevealContainer}>
+          {/* CHANGED: Added 'text-3xl' utility class */}
+          <motion.h3
+            className={`${styles.headline} text-3xl`}
+            variants={wordRevealContainer}
+          >
             {headlineText.split(" ").map((word, index) => (
               <AnimatedWord key={index} variants={wordVariants}>
                 {word}
@@ -86,23 +77,30 @@ const HowWeDoIt = () => {
         </div>
 
         {/* --- Right Column --- */}
-        {/* We make this a motion component to stagger its children (paragraphs & button) */}
         <motion.div
           className={styles.rightColumn}
           variants={{ visible: { transition: { staggerChildren: 0.15 } } }}
         >
-          <motion.p className={styles.description} variants={blockVariants}>
+          {/* CHANGED: Added 'text-xs' utility class */}
+          <motion.p
+            className={`${styles.description} text-xs`}
+            variants={blockVariants}
+          >
             We think out of the box when it comes to strategy, design and
             creative. We make the projects that bring inspiration.
           </motion.p>
-          <motion.p className={styles.description} variants={blockVariants}>
+          {/* CHANGED: Added 'text-xs' utility class */}
+          <motion.p
+            className={`${styles.description} text-xs`}
+            variants={blockVariants}
+          >
             Whether your inquiries are big or small, we’re prepared to engage,
             focusing on collaborative problem-solving, even when tackling the
             most complex challenges.
           </motion.p>
-          {/* We wrap the Next.js Link component with motion */}
           <motion.div variants={blockVariants}>
-            <Link href="/about" className={styles.aboutButton}>
+            {/* CHANGED: Added 'text-xs' utility class */}
+            <Link href="/about" className={`${styles.aboutButton} text-xs`}>
               About Us
             </Link>
           </motion.div>

@@ -1,5 +1,5 @@
-import "@/styles/globals.scss";
-import { Gilroy, Mazius, Clovergrotesk } from "@/fonts/font"; // 1. Import Clovergrotesk
+import "@/styles/globals.css";
+import { Clovergrotesk } from "@/fonts/font"; // 1. Import Clovergrotesk
 import Navbar from "@/components/layout/Navbar";
 
 export const metadata = {
@@ -14,10 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${Clovergrotesk.variable} ${Gilroy.variable} ${Mazius.variable}`}
-        id="page-container"
-      >
+      <body className={`${Clovergrotesk.variable} `}>
         <main>
           <Navbar />
           {children}
