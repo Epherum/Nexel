@@ -18,7 +18,7 @@ const textContainerVariants: Variants = {
 };
 
 const wordVariants: Variants = {
-  hidden: { y: "110%" },
+  hidden: { y: "-110%" },
   visible: {
     y: "0%",
     transition: { duration: 1, ease: easings.easeOut },
