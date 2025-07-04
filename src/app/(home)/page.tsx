@@ -5,7 +5,6 @@ import HowWeDoIt from "@/app/(home)/components/HowWeDoIt";
 import ProjectsSection from "@/app/(home)/components/ProjectsSection";
 import MethodologyAndPartners from "@/app/(home)/components/MethodologyAndPartners";
 import Footer from "@/components/layout/Footer";
-import { ReactLenis, useLenis } from "lenis/react";
 
 import fs from "fs";
 import path from "path";
@@ -23,18 +22,13 @@ export default function Home() {
     (filename) => `/static/nexel/logos/${filename}`
   );
   return (
-    <ReactLenis
-      root
-      options={{ smoothWheel: true, lerp: 0.06, wheelMultiplier: 1.3 }}
-    >
-      <main>
-        <Hero />
-        <Services />
-        <HowWeDoIt />
-        <ProjectsSection />
-        <MethodologyAndPartners logoPaths={logoPaths} />
-        <Footer />
-      </main>
-    </ReactLenis>
+    <main>
+      <Hero />
+      <Services />
+      <HowWeDoIt />
+      <ProjectsSection />
+      <MethodologyAndPartners logoPaths={logoPaths} />
+      <Footer />
+    </main>
   );
 }

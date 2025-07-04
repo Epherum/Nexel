@@ -8,7 +8,6 @@ import evense1 from "/public/static/evense/evense-1.webp";
 import evensePhone from "/public/static/evense/evense-phone.webp";
 import evenseFlow from "/public/static/evense/evense-flow.webp";
 import { easings } from "@/utils/easings";
-import { ReactLenis } from "lenis/react";
 
 // --- START: Added for Animated Headline ---
 
@@ -45,10 +44,7 @@ const heroHeadlineHighlight = "lasting experiences.";
 
 export default function Page() {
   return (
-    <ReactLenis
-      root
-      options={{ smoothWheel: true, lerp: 0.06, wheelMultiplier: 1.3 }}
-    >
+    <>
       {/* --- START: New Animated Hero Section --- */}
       <header className={styles.hero}>
         <motion.h1
@@ -303,6 +299,6 @@ export default function Page() {
       </section>
 
       <Footer />
-    </ReactLenis>
+    </>
   );
 }

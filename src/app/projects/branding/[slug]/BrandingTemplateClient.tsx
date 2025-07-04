@@ -10,7 +10,6 @@ import styles from "./branding.module.css"; // UPDATED
 import AnimatedWord from "@/components/animation/AnimatedWord";
 import { easings } from "@/utils/easings";
 import { BrandingProject } from "@/data/allProjects"; // Import the type
-import { ReactLenis } from "lenis/react";
 import Footer from "@/components/layout/Footer";
 
 // --- Animation Variants (Copied from the page) ---
@@ -29,7 +28,7 @@ export default function BrandingTemplateClient({
   project: BrandingProject;
 }) {
   return (
-    <ReactLenis root>
+    <>
       <header className={styles.hero}>
         <motion.h1
           className={styles.heroHeadline}
@@ -107,6 +106,6 @@ export default function BrandingTemplateClient({
         </section>
       </main>
       <Footer />
-    </ReactLenis>
+    </>
   );
 }

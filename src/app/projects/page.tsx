@@ -1,7 +1,6 @@
 import { Metadata } from "next";
 import ProjectsPage from "./components/ProjectsPage";
 import Footer from "@/components/layout/Footer";
-import { ReactLenis } from "lenis/react";
 
 export const metadata: Metadata = {
   title: "Our Work | Nexel",
@@ -13,12 +12,9 @@ export const metadata: Metadata = {
 export default function Page() {
   // This page's only job is to render our main component.
   return (
-    <ReactLenis
-      root
-      options={{ smoothWheel: true, lerp: 0.06, wheelMultiplier: 1.3 }}
-    >
+    <main>
       <ProjectsPage />
       <Footer />
-    </ReactLenis>
+    </main>
   );
 }

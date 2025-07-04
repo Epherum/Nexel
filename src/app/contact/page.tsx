@@ -7,7 +7,6 @@ import styles from "./Contact.module.css";
 import AnimatedWord from "@/components/animation/AnimatedWord";
 import Footer from "@/components/layout/Footer";
 import { easings } from "@/utils/easings";
-import { ReactLenis } from "lenis/react";
 
 // --- Data (Unchanged) ---
 const services = [
@@ -81,189 +80,178 @@ const ContactPage = () => {
   });
 
   return (
-    <ReactLenis
-      root
-      options={{ smoothWheel: true, lerp: 0.06, wheelMultiplier: 1.3 }}
-    >
-      <main className={styles.contactPage}>
-        <section className={styles.headlineSection}>
-          {/* --- FIX IS HERE --- */}
-          <motion.h1
-            className={styles.headline}
-            variants={headlineContainerVariants} // 1. Add container variants
-            initial="hidden" // 2. Set initial state
-            animate="visible" // 3. Trigger animation on page load
+    <main className={styles.contactPage}>
+      <section className={styles.headlineSection}>
+        {/* --- FIX IS HERE --- */}
+        <motion.h1
+          className={styles.headline}
+          variants={headlineContainerVariants} // 1. Add container variants
+          initial="hidden" // 2. Set initial state
+          animate="visible" // 3. Trigger animation on page load
+        >
+          <AnimatedWord variants={headlineWordVariants}>
+            Let's build
+          </AnimatedWord>
+          <AnimatedWord variants={headlineWordVariants}>something</AnimatedWord>
+          <AnimatedWord
+            className={styles.highlight}
+            variants={headlineWordVariants}
           >
-            <AnimatedWord variants={headlineWordVariants}>
-              Let's build
-            </AnimatedWord>
-            <AnimatedWord variants={headlineWordVariants}>
-              something
-            </AnimatedWord>
-            <AnimatedWord
-              className={styles.highlight}
-              variants={headlineWordVariants}
-            >
-              great
-            </AnimatedWord>
-            <AnimatedWord variants={headlineWordVariants}>
-              together
-            </AnimatedWord>
-          </motion.h1>
-        </section>
-        <div className={styles.contentWrapper}>
-          <motion.section
-            ref={achievementsRef}
-            className={styles.achievementsGrid}
-            variants={staggerContainerVariants}
-            initial="hidden"
-            animate={areAchievementsInView ? "visible" : "hidden"}
+            great
+          </AnimatedWord>
+          <AnimatedWord variants={headlineWordVariants}>together</AnimatedWord>
+        </motion.h1>
+      </section>
+      <div className={styles.contentWrapper}>
+        <motion.section
+          ref={achievementsRef}
+          className={styles.achievementsGrid}
+          variants={staggerContainerVariants}
+          initial="hidden"
+          animate={areAchievementsInView ? "visible" : "hidden"}
+        >
+          {/* ...achievement items now wrapped with motion.div... */}
+          <motion.div
+            variants={fadeInUpVariants}
+            className={styles.achievementItem}
           >
-            {/* ...achievement items now wrapped with motion.div... */}
-            <motion.div
-              variants={fadeInUpVariants}
-              className={styles.achievementItem}
-            >
-              <p className={styles.label}>Local time</p>
-              <p className={styles.value}>11:12PM</p>
-            </motion.div>
-            <motion.div
-              variants={fadeInUpVariants}
-              className={styles.achievementItem}
-            >
-              <p className={styles.label}>Money raised by our partners</p>
-              <p className={styles.value}>$300M+</p>
-            </motion.div>
-            <motion.div
-              variants={fadeInUpVariants}
-              className={styles.achievementItem}
-            >
-              <p className={styles.label}>Years experience</p>
-              <p className={styles.value}>15+</p>
-            </motion.div>
-            <motion.div
-              variants={fadeInUpVariants}
-              className={styles.achievementItem}
-            >
-              <p className={styles.label}>Email</p>
-              <a href="mailto:hello@example.com" className={styles.value}>
-                Drop us a line
-              </a>
-            </motion.div>
-          </motion.section>
-
-          <motion.section
-            ref={introRef}
-            className={styles.introSection}
-            initial="hidden"
-            animate={isIntroInView ? "visible" : "hidden"}
+            <p className={styles.label}>Local time</p>
+            <p className={styles.value}>11:12PM</p>
+          </motion.div>
+          <motion.div
+            variants={fadeInUpVariants}
+            className={styles.achievementItem}
           >
-            <motion.p className={styles.introText} variants={fadeInUpVariants}>
-              Our form is a 24/7 gateway to creativity – always awake, just like
-              inspiration. Drop us a line anytime, day or night, and let’s spark
-              a conversation that could redefine your digital journey.
-            </motion.p>
-            <motion.div
-              className={styles.floatingCircle}
-              variants={circleVariants}
-            >
-              Or use
-              <br />
-              the form
-            </motion.div>
-          </motion.section>
-
-          <motion.form
-            ref={formRef}
-            className={styles.contactForm}
-            variants={staggerContainerVariants}
-            initial="hidden"
-            animate={isFormInView ? "visible" : "hidden"}
+            <p className={styles.label}>Money raised by our partners</p>
+            <p className={styles.value}>$300M+</p>
+          </motion.div>
+          <motion.div
+            variants={fadeInUpVariants}
+            className={styles.achievementItem}
           >
-            {/* ...form groups now wrapped with motion.fieldset... */}
-            <motion.fieldset
-              className={styles.formGroup}
-              variants={fadeInUpVariants}
-            >
-              <legend className={styles.legend}>
-                What are you looking for?
-              </legend>
-              <div className={styles.optionsContainer}>
-                {services.map((service) => (
-                  <label key={service} className={styles.checkboxLabel}>
-                    {service}
-                    <input type="checkbox" className={styles.hiddenInput} />
-                    <span className={styles.customCheckbox}></span>
-                  </label>
-                ))}
-              </div>
-            </motion.fieldset>
+            <p className={styles.label}>Years experience</p>
+            <p className={styles.value}>15+</p>
+          </motion.div>
+          <motion.div
+            variants={fadeInUpVariants}
+            className={styles.achievementItem}
+          >
+            <p className={styles.label}>Email</p>
+            <a href="mailto:hello@example.com" className={styles.value}>
+              Drop us a line
+            </a>
+          </motion.div>
+        </motion.section>
 
-            <motion.fieldset
-              className={styles.formGroup}
-              variants={fadeInUpVariants}
-            >
-              <legend className={styles.legend}>Tell us about yourself:</legend>
-              <div className={styles.inputsContainer}>
-                <input
-                  type="text"
-                  placeholder="Your name"
-                  className={styles.textInput}
-                />
-                <input
-                  type="text"
-                  placeholder="Company"
-                  className={styles.textInput}
-                />
-                <input
-                  type="email"
-                  placeholder="E-mail"
-                  className={styles.textInput}
-                />
-                <textarea
-                  placeholder="Project details"
-                  className={styles.textArea}
-                  rows={5}
-                ></textarea>
-              </div>
-            </motion.fieldset>
+        <motion.section
+          ref={introRef}
+          className={styles.introSection}
+          initial="hidden"
+          animate={isIntroInView ? "visible" : "hidden"}
+        >
+          <motion.p className={styles.introText} variants={fadeInUpVariants}>
+            Our form is a 24/7 gateway to creativity – always awake, just like
+            inspiration. Drop us a line anytime, day or night, and let’s spark a
+            conversation that could redefine your digital journey.
+          </motion.p>
+          <motion.div
+            className={styles.floatingCircle}
+            variants={circleVariants}
+          >
+            Or use
+            <br />
+            the form
+          </motion.div>
+        </motion.section>
 
-            <motion.fieldset
-              className={styles.formGroup}
-              variants={fadeInUpVariants}
-            >
-              <legend className={styles.legend}>What's your budget?</legend>
-              <div className={styles.optionsContainer}>
-                {budgets.map((budget) => (
-                  <label key={budget} className={styles.radioLabel}>
-                    {budget}
-                    <input
-                      type="radio"
-                      name="budget"
-                      className={styles.hiddenInput}
-                    />
-                    <span className={styles.customRadio}></span>
-                  </label>
-                ))}
-              </div>
-            </motion.fieldset>
+        <motion.form
+          ref={formRef}
+          className={styles.contactForm}
+          variants={staggerContainerVariants}
+          initial="hidden"
+          animate={isFormInView ? "visible" : "hidden"}
+        >
+          {/* ...form groups now wrapped with motion.fieldset... */}
+          <motion.fieldset
+            className={styles.formGroup}
+            variants={fadeInUpVariants}
+          >
+            <legend className={styles.legend}>What are you looking for?</legend>
+            <div className={styles.optionsContainer}>
+              {services.map((service) => (
+                <label key={service} className={styles.checkboxLabel}>
+                  {service}
+                  <input type="checkbox" className={styles.hiddenInput} />
+                  <span className={styles.customCheckbox}></span>
+                </label>
+              ))}
+            </div>
+          </motion.fieldset>
 
-            <motion.fieldset
-              className={styles.formGroup}
-              variants={fadeInUpVariants}
-            >
-              <legend className={styles.legend}>
-                Ready to become a Rockstar?
-              </legend>
-              <button type="submit" className={styles.submitButton}>
-                Let's do it!
-              </button>
-            </motion.fieldset>
-          </motion.form>
-        </div>
-        <Footer />
-      </main>
-    </ReactLenis>
+          <motion.fieldset
+            className={styles.formGroup}
+            variants={fadeInUpVariants}
+          >
+            <legend className={styles.legend}>Tell us about yourself:</legend>
+            <div className={styles.inputsContainer}>
+              <input
+                type="text"
+                placeholder="Your name"
+                className={styles.textInput}
+              />
+              <input
+                type="text"
+                placeholder="Company"
+                className={styles.textInput}
+              />
+              <input
+                type="email"
+                placeholder="E-mail"
+                className={styles.textInput}
+              />
+              <textarea
+                placeholder="Project details"
+                className={styles.textArea}
+                rows={5}
+              ></textarea>
+            </div>
+          </motion.fieldset>
+
+          <motion.fieldset
+            className={styles.formGroup}
+            variants={fadeInUpVariants}
+          >
+            <legend className={styles.legend}>What's your budget?</legend>
+            <div className={styles.optionsContainer}>
+              {budgets.map((budget) => (
+                <label key={budget} className={styles.radioLabel}>
+                  {budget}
+                  <input
+                    type="radio"
+                    name="budget"
+                    className={styles.hiddenInput}
+                  />
+                  <span className={styles.customRadio}></span>
+                </label>
+              ))}
+            </div>
+          </motion.fieldset>
+
+          <motion.fieldset
+            className={styles.formGroup}
+            variants={fadeInUpVariants}
+          >
+            <legend className={styles.legend}>
+              Ready to become a Rockstar?
+            </legend>
+            <button type="submit" className={styles.submitButton}>
+              Let's do it!
+            </button>
+          </motion.fieldset>
+        </motion.form>
+      </div>
+      <Footer />
+    </main>
   );
 };
 

@@ -6,7 +6,6 @@ import BeliefSection from "./components/BeliefSection";
 import MethodologyAndPartners from "../(home)/components/MethodologyAndPartners";
 import AboutImage from "./components/AboutImage";
 import Footer from "@/components/layout/Footer";
-import { ReactLenis } from "lenis/react";
 
 import fs from "fs";
 import path from "path";
@@ -25,20 +24,15 @@ const AboutPage = () => {
   );
 
   return (
-    <ReactLenis
-      root
-      options={{ smoothWheel: true, lerp: 0.06, wheelMultiplier: 1.3 }}
-    >
-      <main>
-        <AboutHero />
-        <AboutImage />
-        <BeliefSection />
-        <MethodologyAndPartners logoPaths={logoPaths} />
+    <main>
+      <AboutHero />
+      <AboutImage />
+      <BeliefSection />
+      <MethodologyAndPartners logoPaths={logoPaths} />
 
-        <TeamSection />
-        <Footer />
-      </main>
-    </ReactLenis>
+      <TeamSection />
+      <Footer />
+    </main>
   );
 };
 

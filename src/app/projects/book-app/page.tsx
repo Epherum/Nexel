@@ -1,7 +1,7 @@
 //src// src/app/ProjectsTest/book-app/page.tsx
 "use client";
 
-import React, { useRef, useState } from "react"; // Import useState
+import React, { useEffect, useRef, useState } from "react"; // Import useState
 import { motion, useInView, Variants } from "framer-motion";
 import Image from "@/components/animation/ParallaxImage";
 
@@ -9,7 +9,6 @@ import styles from "./book-app.module.css";
 import Footer from "@/components/layout/Footer";
 import AnimatedWord from "@/components/animation/AnimatedWord";
 import { easings } from "@/utils/easings";
-import { ReactLenis, useLenis } from "lenis/react";
 
 // --- Local Image Imports ---
 import img1 from "/public/static/book-app/1.webp";
@@ -102,10 +101,7 @@ export default function BookAppPage() {
   };
 
   return (
-    <ReactLenis
-      root
-      options={{ smoothWheel: true, lerp: 0.06, wheelMultiplier: 1.3 }}
-    >
+    <>
       <header className={styles.hero}>
         <motion.h1
           className={styles.heroHeadline}
@@ -219,6 +215,6 @@ export default function BookAppPage() {
       </main>
 
       <Footer />
-    </ReactLenis>
+    </>
   );
 }

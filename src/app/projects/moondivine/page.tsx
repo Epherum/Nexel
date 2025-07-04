@@ -9,7 +9,6 @@ import styles from "./moondivine.module.css";
 import Footer from "@/components/layout/Footer";
 import AnimatedWord from "@/components/animation/AnimatedWord";
 import { easings } from "@/utils/easings";
-import { ReactLenis } from "lenis/react";
 
 // --- Local Image Imports (Update these paths with your new project images) ---
 import img1 from "/public/static/moondivine/1.webp";
@@ -88,10 +87,7 @@ const AnimatedTextSection = ({
 
 export default function MoonDivinePage() {
   return (
-    <ReactLenis
-      root
-      options={{ smoothWheel: true, lerp: 0.06, wheelMultiplier: 1.3 }}
-    >
+    <>
       <header className={styles.hero}>
         <motion.h1
           className={styles.heroHeadline}
@@ -171,6 +167,6 @@ export default function MoonDivinePage() {
       </main>
 
       <Footer />
-    </ReactLenis>
+    </>
   );
 }

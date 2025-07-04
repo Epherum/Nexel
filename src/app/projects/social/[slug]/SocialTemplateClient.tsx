@@ -9,7 +9,6 @@ import styles from "./project.module.css"; // UPDATED
 import Footer from "@/components/layout/Footer";
 import SocialMediaPost from "@/components/SocialMediaPost/SocialMediaPost";
 import { SocialMediaProject } from "@/data/socialMediaData";
-import { ReactLenis } from "lenis/react";
 
 export default function SocialProjectClient({
   project,
@@ -30,7 +29,7 @@ export default function SocialProjectClient({
   };
 
   return (
-    <ReactLenis root>
+    <>
       {/* Dynamic Hero Section */}
       <section className={styles.projectHero}>
         <div className={styles.heroBackground}>
@@ -107,6 +106,6 @@ export default function SocialProjectClient({
         })}
       </main>
       <Footer />
-    </ReactLenis>
+    </>
   );
 }

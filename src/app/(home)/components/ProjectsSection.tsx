@@ -1,25 +1,80 @@
 "use client";
 
-import React from "react";
-import styles from "./ProjectsSection.module.css";
+import React, { useRef } from "react";
 import Link from "next/link";
 import { motion, useInView, Variants } from "framer-motion";
-import { useRef } from "react";
-import AnimatedWord from "@/components/animation/AnimatedWord";
-import { easings } from "@/utils/easings";
 import { allProjects } from "@/data/allProjects";
-// CHANGED: Import the new ProjectCard component
-import ProjectCard from "@/components/animation/home/ProjectCard";
+import { easings } from "@/utils/easings";
 
-// --- Data & Variants ---
-// We can remove itemFadeInUp if it's no longer used here
+// Component Imports
+import Image from "@/components/animation/ParallaxImage";
+import AnimatedWord from "@/components/animation/AnimatedWord";
+
+// Styles
+import styles from "./ProjectsSection.module.css";
+
+// --- Local ProjectCard Component ---
+// This component is now defined locally within this file instead of being imported.
+
+interface ProjectCardProps {
+  slug: string;
+  src: string;
+  alt: string;
+}
+
+const cardVariants: Variants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 1,
+      ease: easings.easeOut,
+    },
+  },
+};
+
+const ProjectCard = ({ slug, src, alt }: ProjectCardProps) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, {
+    margin: "0px 0px -150px 0px",
+    once: true,
+  });
+
+  return (
+    <motion.div
+      ref={ref}
+      variants={cardVariants}
+      initial="hidden"
+      animate={isInView ? "visible" : "hidden"}
+      className={styles.projectCard}
+    >
+      <Link href={`/projects/${slug}`} scroll={false}>
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(max-width: 1024px) 100vw, 50vw"
+          className={styles.projectImage}
+          data-scroll
+          data-scroll-speed="-0.1"
+        />
+      </Link>
+    </motion.div>
+  );
+};
+
+// --- Main ProjectsSection Component ---
+
 const wordRevealContainer: Variants = {
   visible: { transition: { staggerChildren: 0.05 } },
 };
+
 const wordVariants: Variants = {
   hidden: { y: "110%" },
   visible: { y: "0%", transition: { duration: 0.8, ease: easings.easeOut } },
 };
+
 const lineVariants: Variants = {
   hidden: { scaleX: 0 },
   visible: {
@@ -27,6 +82,7 @@ const lineVariants: Variants = {
     transition: { duration: 1, ease: easings.easeOut, delay: 0.3 },
   },
 };
+
 const itemFadeInUp: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
@@ -37,12 +93,12 @@ const itemFadeInUp: Variants = {
 };
 
 const ProjectsSection = () => {
-  // ... (hooks and constants are unchanged) ...
   const titleRef = useRef(null);
   const isTitleInView = useInView(titleRef, {
     margin: "0px 0px -150px 0px",
     once: true,
   });
+
   const contentRef = useRef(null);
   const isContentInView = useInView(contentRef, {
     margin: "0px 0px -200px 0px",
@@ -56,7 +112,6 @@ const ProjectsSection = () => {
 
   return (
     <section className={styles.projectsSection}>
-      {/* ... (mainTitle and contentWrapper/leftColumn are unchanged) ... */}
       <motion.h2
         ref={titleRef}
         className={styles.mainTitle}
@@ -79,7 +134,6 @@ const ProjectsSection = () => {
             initial="hidden"
             animate={isContentInView ? "visible" : "hidden"}
           >
-            {/* All the h3, p, etc. content remains inside here... */}
             <motion.div variants={wordRevealContainer}>
               <p className={styles.subHeader}>
                 {subHeaderText.split(" ").map((word, index) => (
@@ -122,7 +176,6 @@ const ProjectsSection = () => {
         </div>
 
         <div className={styles.rightColumn} id="projects-grid">
-          {/* CHANGED: Map over projects and render the ProjectCard component */}
           {projectsToShow.map((project) => (
             <ProjectCard
               key={project.slug}
@@ -134,7 +187,6 @@ const ProjectsSection = () => {
         </div>
       </div>
 
-      {/* ... (button wrapper is unchanged) ... */}
       <div className={styles.buttonAlignmentWrapper}>
         <div className={styles.buttonContainer}>
           <motion.div

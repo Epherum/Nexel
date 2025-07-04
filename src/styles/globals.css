@@ -98,17 +98,9 @@ main {
 }
 
 /* Smooth Scroll Library Styles (no changes needed) */
-html.has-scroll-smooth {
-  overflow: hidden;
-}
-
 html.has-scroll-dragging {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-
-.has-scroll-smooth body {
-  overflow: hidden;
 }
