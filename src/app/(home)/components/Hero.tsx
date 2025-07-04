@@ -1,168 +1,143 @@
-// src/components/Hero/Hero.tsx
 "use client";
 
 import Image from "next/image";
 import { motion, Variants } from "framer-motion";
 import styles from "./Hero.module.css";
 import AnimatedWord from "@/components/animation/AnimatedWord";
+import TextScramble from "@/components/animation/TextScramble";
 import { easings } from "@/utils/easings";
 
-// --- Text animation variants (unchanged) ---
+// --- Data ---
+const scrambleWords = ["design", "strategy", "product", "brand"];
+
+// Define the pattern and create a single source of truth for the images
+const imagePattern: ("small" | "large")[] = [
+  "large",
+  "small",
+  "small",
+  "large",
+  "small",
+  "small",
+  "large",
+  "small",
+  "small",
+];
+
+const images = imagePattern.map((type, i) => ({
+  src: `/static/nexel/hero/${i + 1}.png`,
+  type: type,
+}));
+
+// --- Animation Variants (unchanged) ---
 const textContainerVariants: Variants = {
-  visible: {
-    transition: {
-      staggerChildren: 0.02,
-      delayChildren: 0.3,
-    },
-  },
+  visible: { transition: { staggerChildren: 0.05 } },
 };
-
 const wordVariants: Variants = {
-  hidden: { y: "-110%" },
-  visible: {
-    y: "0%",
-    transition: { duration: 1, ease: easings.easeOut },
-  },
+  hidden: { y: "110%" },
+  visible: { y: "0%", transition: { duration: 1, ease: easings.easeOut } },
 };
-
-// --- Image reveal animation variants (unchanged) ---
-const imageRevealVariants: Variants = {
+const gridContainerVariants: Variants = {
   hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
+  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.5 } },
 };
-
-const imageScaleVariants: Variants = {
-  hidden: { scale: 1.15 },
+const gridItemVariants: Variants = {
+  hidden: { opacity: 0, x: -20, scale: 0.95 },
   visible: {
+    opacity: 1,
+    x: 0,
     scale: 1,
-    transition: {
-      duration: 1.2,
-      ease: [0.22, 1, 0.36, 1],
-    },
-  },
-};
-
-const revealOverlayVariants: Variants = {
-  hidden: { y: "0%" },
-  visible: {
-    y: "-100%",
-    transition: {
-      duration: 1,
-      ease: [0.22, 1, 0.36, 1],
-    },
+    transition: { duration: 0.8, ease: easings.easeOut },
   },
 };
 
 const Hero = () => {
   return (
     <section className={styles.hero}>
-      {/* --- STRUCTURAL FIX START --- */}
-      {/* This outer container orchestrates the animation */}
-      <motion.div
-        className={styles.mobileImageContainer}
-        variants={imageRevealVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        {/* This wrapper now handles the SCALE animation and contains BOTH the overlay and the image */}
-        <motion.div
-          className={styles.imageWrapper}
-          variants={imageScaleVariants}
-        >
-          {/* The overlay is now INSIDE the scaling wrapper */}
-          <motion.div
-            className={styles.revealOverlay}
-            variants={revealOverlayVariants}
-          />
-          <Image
-            src="/static/nexel/mobile-hero.png"
-            alt="A collage of design assets including a cartoon planet mascot."
-            fill
-            style={{ objectFit: "cover" }}
-            priority
-          />
-        </motion.div>
-      </motion.div>
-
-      <div className={styles.textContainer}>
+      <div className={styles.headlineContainer}>
         <motion.h1
           className={styles.headline}
           variants={textContainerVariants}
           initial="hidden"
           animate="visible"
         >
-          {/* ... all other AnimatedWord components remain the same ... */}
-          <AnimatedWord
-            className={`${styles.word} ${styles.white}`}
-            variants={wordVariants}
-          >
-            A
-          </AnimatedWord>
-          <AnimatedWord
-            className={`${styles.word} ${styles.grey}`}
-            variants={wordVariants}
-          >
-            viral
-          </AnimatedWord>
-          <AnimatedWord
-            className={`${styles.word} ${styles.white}`}
-            variants={wordVariants}
-          >
-            business
-          </AnimatedWord>
-          <br className={styles.desktopBreak} />
-          <AnimatedWord
-            className={`${styles.word} ${styles.grey}`}
-            variants={wordVariants}
-          >
-            is
-          </AnimatedWord>
-          <AnimatedWord
-            className={`${styles.word} ${styles.white}`}
-            variants={wordVariants}
-          >
-            the
-          </AnimatedWord>
-          <span className={styles.inlineImageContainer}>
-            <AnimatedWord className={styles.word} variants={wordVariants}>
-              <div className={styles.imagePlaceholder}>
-                <Image
-                  src="/static/nexel/test.jpg"
-                  alt="Design snippet"
-                  fill
-                  className={styles.snippetImage}
-                />
-              </div>
-            </AnimatedWord>
-          </span>
-          <AnimatedWord
-            className={`${styles.word} ${styles.white}`}
-            variants={wordVariants}
-          >
-            result
-          </AnimatedWord>
-          <AnimatedWord
-            className={`${styles.word} ${styles.grey}`}
-            variants={wordVariants}
-          >
-            of a
-          </AnimatedWord>
-          <br className={styles.desktopBreak} />
-          <AnimatedWord
-            className={`${styles.word} ${styles.white}`}
-            variants={wordVariants}
-          >
-            great
-          </AnimatedWord>
-          <AnimatedWord className={styles.highlight} variants={wordVariants}>
-            design
+          <AnimatedWord variants={wordVariants}>A</AnimatedWord>
+          <AnimatedWord variants={wordVariants}>viral</AnimatedWord>
+          <AnimatedWord variants={wordVariants}>business</AnimatedWord>
+          <AnimatedWord variants={wordVariants}>is</AnimatedWord>
+          <AnimatedWord variants={wordVariants}>the</AnimatedWord>
+          <br />
+          <AnimatedWord variants={wordVariants}>result</AnimatedWord>
+          <AnimatedWord variants={wordVariants}>of</AnimatedWord>
+          <AnimatedWord variants={wordVariants}>a</AnimatedWord>
+          <AnimatedWord variants={wordVariants}>great</AnimatedWord>
+          <AnimatedWord variants={wordVariants}>
+            <TextScramble words={scrambleWords} className={styles.highlight} />
           </AnimatedWord>
         </motion.h1>
+      </div>
+
+      {/* --- RENDER TWO VERSIONS: DESKTOP GRID AND MOBILE MARQUEE --- */}
+
+      {/* 1. Desktop Grid (Hidden on mobile) */}
+      <motion.div
+        className={styles.desktopGrid}
+        variants={gridContainerVariants}
+        initial="hidden"
+        animate="visible"
+      >
+        {images.map((item, index) => (
+          <motion.div
+            key={`desktop-${index}`}
+            className={`${styles.imageContainer} ${
+              item.type === "small" ? styles.smallImage : styles.largeImage
+            }`}
+            variants={gridItemVariants}
+          >
+            <motion.div
+              className={styles.imageWrapper}
+              whileHover={{ scale: 1.1 }}
+              transition={{ duration: 0.4, ease: easings.easeOut }}
+            >
+              <Image
+                src={item.src}
+                alt={`Hero portfolio item ${index + 1}`}
+                fill
+                priority={index < 4}
+                className={styles.gridImage}
+                quality={90}
+              />
+            </motion.div>
+          </motion.div>
+        ))}
+      </motion.div>
+
+      {/* 2. Mobile Marquee (Hidden on desktop) */}
+      <div className={styles.mobileMarquee}>
+        <motion.div
+          className={styles.marqueeTrack}
+          animate={{ x: "-50%" }}
+          transition={{
+            duration: 40, // Controls speed, higher is slower
+            repeat: Infinity,
+            ease: "linear",
+          }}
+        >
+          {/* Render the image list twice for a seamless loop */}
+          {[...images, ...images].map((item, index) => (
+            <div
+              key={`marquee-${index}`}
+              className={styles.marqueeImageContainer}
+            >
+              <Image
+                src={item.src}
+                alt=""
+                fill
+                className={styles.gridImage}
+                quality={90}
+              />
+            </div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

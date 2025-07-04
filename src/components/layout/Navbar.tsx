@@ -73,7 +73,7 @@ const Navbar = () => {
           className={styles.ctaButtonContainer}
           variants={itemVariants}
         >
-          <Link href="/contact">
+          <Link href="/old-hero">
             <button className={styles.ctaButton}>Get in Touch</button>
           </Link>
         </motion.div>

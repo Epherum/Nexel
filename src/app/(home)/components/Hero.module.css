@@ -1,129 +1,150 @@
 /* src/components/Hero/Hero.module.css */
 
-/* --- Mobile First Layout (Default) --- */
 .hero {
-  padding-bottom: 2rem;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  justify-content: center;
+  gap: 4rem;
+  min-height: calc(100vh - var(--nav-height));
+  padding: 4rem 0; /* Vertical padding only, marquee will be full-width */
   background-color: var(--dark-bg);
-}
-
-.mobileImageContainer {
-  height: 65vh;
-  position: relative;
-  margin: 5rem 1rem;
-  margin-bottom: 0.5rem;
-  overflow: hidden; /* This is still crucial */
-  border-radius: 10px;
-}
-
-/* This wrapper scales, containing the image and overlay */
-.imageWrapper {
-  position: absolute;
-  inset: 0;
   width: 100%;
-  height: 100%;
+  overflow: hidden; /* Important for containing the hero section */
 }
 
-/* This overlay is now positioned relative to its parent, the .imageWrapper */
-.revealOverlay {
-  position: absolute;
-  inset: 0;
+.headlineContainer {
   width: 100%;
-  height: 100%;
-  background-color: var(--dark-bg);
-  z-index: 2; /* Still needs to be on top of the Image component */
-}
-
-.textContainer {
-  flex-grow: 1;
-  display: flex;
-  align-items: center;
-  padding: 2rem 1rem;
+  padding: 0 2rem; /* Add horizontal padding here instead */
 }
 
 .headline {
-  font-size: var(--font-size-xl);
+  font-size: var(--font-size-2xl);
   font-weight: 300;
+  letter-spacing: -1.5px;
+  line-height: 1.2;
+  color: var(--primary-text);
+  max-width: 1200px;
+  margin: 0;
+  text-align: left;
+  text-wrap: balance; /* Improves text wrapping for multi-line headlines */
+}
+
+.headline > span {
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 0.15em;
+  overflow: hidden; /* Keeps the text reveal animation masked */
+}
+
+.highlight {
+  background-color: var(--accent-color);
+  color: var(--dark-bg);
+  padding: 0.1em 0.3em;
+  border-radius: 12px;
+  font-weight: 500;
+  display: inline-block;
   text-align: center;
 }
 
-/* Applies consistent spacing between all words and the inline image */
-.word {
-  margin-right: 0.25em; /* Using 'em' makes the space scale with the font size */
-}
-
-.headline .white {
-  color: var(--primary-text);
-}
-.headline .grey {
-  color: var(--secondary-text);
-}
-.headline .highlight {
-  background-color: var(--accent-color);
-  color: var(--dark-bg);
-  padding: 0.05em 0.25em;
-  border-radius: 8px;
-  font-weight: 500;
-}
-
-/* Hide desktop-only elements on mobile by default */
-.desktopBreak,
-.inlineImageContainer {
+/* --- HIDE DESKTOP GRID BY DEFAULT (MOBILE FIRST) --- */
+.desktopGrid {
   display: none;
 }
 
-.imagePlaceholder {
-  display: inline-block;
+/* --- MOBILE MARQUEE STYLES --- */
+.mobileMarquee {
+  width: 100%;
+  overflow: hidden;
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+.marqueeTrack {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  width: max-content; /* Allows the track to be as wide as its content */
+}
+
+.marqueeImageContainer {
   position: relative;
-  width: 1em;
-  height: 0.7em;
-  top: -0.02em;
-  vertical-align: middle;
-  border-radius: 12px;
+  height: 120px;
+  aspect-ratio: 4 / 3;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0; /* Prevents images from squishing */
 }
 
-.imagePlaceholder .snippetImage {
-  border-radius: inherit;
+/* --- SHARED IMAGE STYLES --- */
+.imageWrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.gridImage {
   object-fit: cover;
+  width: 100%;
+  height: 100%;
 }
 
-/* --- Desktop Overrides (md breakpoint and up) --- */
+/* --- DESKTOP OVERRIDES --- */
 @media (min-width: 768px) {
   .hero {
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: var(--container-padding);
-    min-height: calc(100vh - var(--nav-height));
+    gap: 5rem;
+    padding: 7rem 2rem 0rem; /* Restore horizontal padding */
   }
 
-  .mobileImageContainer {
-    display: none;
-  }
-
-  .textContainer {
-    flex-grow: 0;
-    padding: 0;
+  .headlineContainer {
+    padding: 0; /* Remove padding as parent has it now */
   }
 
   .headline {
-    font-size: var(--font-size-5xl);
-    text-align: center;
-    letter-spacing: -3px;
-    max-width: 1400px;
+    font-size: var(--font-size-3xl);
+    line-height: 1.2;
+    letter-spacing: 1px;
+    text-wrap: nowrap;
   }
 
-  .headline .highlight {
-    border-radius: 40px;
-    padding: 0em 0.2em;
+  .highlight {
+    padding: 0.05em 0.25em;
+    border-radius: 16px;
   }
 
-  .desktopBreak {
-    display: initial;
+  /* --- SWITCH VISIBILITY: HIDE MARQUEE, SHOW GRID --- */
+  .mobileMarquee {
+    display: none;
   }
-  .inlineImageContainer {
-    display: inline-block;
+
+  .desktopGrid {
+    display: grid;
+    padding: 0 0rem; /* Match hero padding */
+    width: 100%;
+    /* Create a 24-column grid for our 2:3 ratio */
+    grid-template-columns: repeat(24, 1fr);
+    gap: 0.25rem;
+    /* THIS IS THE KEY: Set a fixed height for the entire grid */
+    height: 6rem;
+  }
+
+  .imageContainer {
+    position: relative;
+    height: 100%; /* Make each container fill the parent's fixed height */
+    aspect-ratio: auto; /* Unset aspect ratio to allow stretching */
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .smallImage {
+    grid-column: span 2;
+  }
+
+  .largeImage {
+    grid-column: span 4;
   }
 }
