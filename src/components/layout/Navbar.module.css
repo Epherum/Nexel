@@ -1,6 +1,7 @@
 /* src/components/layout/Navbar.module.css */
 
-.navbar {
+/* NEW: This outer wrapper handles positioning and sizing */
+.navbarWrapper {
   position: fixed;
   top: -10px;
   left: 0;
@@ -8,16 +9,22 @@
   height: var(--nav-height);
   z-index: 1000;
   padding: 0 0.8rem;
+}
+
+/* MODIFIED: This inner container now just handles layout (flexbox) */
+.navbarContent {
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-/* --- THEME MODIFIER --- */
-.navbar.themeLight .logo img {
+/* --- THEME MODIFIER (targets the wrapper) --- */
+.navbarWrapper.themeLight .logo img {
   filter: invert(1);
 }
-.navbar.themeLight .menuIcon .line {
+.navbarWrapper.themeLight .menuIcon .line {
   background-color: var(--dark-bg);
 }
 
@@ -74,7 +81,8 @@
 
 /* Media query for medium screens and up */
 @media (min-width: 768px) {
-  .navbar {
+  /* MODIFIED: Target the new wrapper */
+  .navbarWrapper {
     padding: var(--container-padding);
     top: 10px;
   }
