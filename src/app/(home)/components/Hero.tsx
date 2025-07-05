@@ -8,7 +8,7 @@ import TextScramble from "@/components/animation/TextScramble";
 import { easings } from "@/utils/easings";
 
 // --- Data ---
-const scrambleWords = ["design", "strategy", "product", "brand"];
+const scrambleWords = ["design", "development", "branding", "collaboration"];
 
 // Define the pattern and create a single source of truth for the images
 const imagePattern: ("small" | "large")[] = [
@@ -71,7 +71,7 @@ const Hero = () => {
           <AnimatedWord variants={wordVariants}>a</AnimatedWord>
           <AnimatedWord variants={wordVariants}>great</AnimatedWord>
           <AnimatedWord variants={wordVariants}>
-            <TextScramble words={scrambleWords} className={styles.highlight} />
+            <TextScramble words={scrambleWords} />
           </AnimatedWord>
         </motion.h1>
       </div>
