@@ -1,0 +1,20 @@
+.cursor {
+  /* Sizing and Shape */
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+
+  /* Color */
+  background-color: var(--accent-color); /* Using your project's accent color */
+  mix-blend-mode: difference; /* Cool effect that inverts color on backgrounds */
+
+  /* Positioning */
+  position: fixed; /* Fixed to the viewport */
+  z-index: 9999; /* Ensures it's on top of everything */
+
+  /* Center the dot on the actual cursor position */
+  transform: translate(-50%, -50%);
+
+  /* IMPORTANT: This allows clicks to pass through the cursor element */
+  pointer-events: none;
+}

@@ -1,4 +1,3 @@
-//src/app/about/components/ScrollAnimatedCard.tsx
 "use client";
 
 import { motion, useTransform, MotionValue, cubicBezier } from "framer-motion";
@@ -11,15 +10,19 @@ interface ScrollAnimatedCardProps {
     id: number;
     src: string;
     alt: string;
-    style: React.CSSProperties;
+    // UPDATED: Define the positions object shape
+    positions: {
+      mobile: React.CSSProperties;
+      desktop: React.CSSProperties;
+    };
     initialRotate: number;
-    className: string; // <-- Add className to the type definition
-
     finalRotate: number;
+    zIndex: number;
   };
   index: number;
   totalCards: number;
   scrollYProgress: MotionValue<number>;
+  isDesktop: boolean; // <-- ADD THE NEW PROP
 }
 
 const ScrollAnimatedCard: React.FC<ScrollAnimatedCardProps> = ({
@@ -27,23 +30,18 @@ const ScrollAnimatedCard: React.FC<ScrollAnimatedCardProps> = ({
   index,
   totalCards,
   scrollYProgress,
+  isDesktop, // <-- RECEIVE THE PROP
 }) => {
-  // FIX: This is the new, robust timeline logic.
-  // 1. We dedicate the first 80% of the scroll progress to animations.
-  const animationTimelineEnd = 0.9;
-  // 2. We define how long each card's animation should last on the timeline (e.g., 50% of the timeline).
-  const animationDuration = 0.5;
-  // 3. We calculate the range in which the animations can START.
-  // This ensures the last animation can finish by our 'animationTimelineEnd' mark.
-  const staggerRange = animationTimelineEnd - animationDuration;
+  // Select the correct position styles based on the isDesktop prop
+  const currentPosition = isDesktop
+    ? card.positions.desktop
+    : card.positions.mobile;
 
-  // 4. We map each card's start and end time to this new, compressed timeline.
+  const animationTimelineEnd = 0.9;
+  const animationDuration = 0.5;
+  const staggerRange = animationTimelineEnd - animationDuration;
   const animationStart = (index / (totalCards - 1)) * staggerRange;
   const animationEnd = animationStart + animationDuration;
-
-  // The result: The last card's animation will finish when scrollYProgress hits 0.8.
-  // The scroll from 0.8 to 1.0 will be the "pause" where the user scrolls but nothing moves.
-
   const customEase = cubicBezier(...easings.gentleEaseOut);
 
   const y = useTransform(
@@ -75,7 +73,14 @@ const ScrollAnimatedCard: React.FC<ScrollAnimatedCardProps> = ({
 
   return (
     <motion.div
-      style={{ ...card.style, y, scale, rotate }}
+      // UPDATED: Spread the selected currentPosition object
+      style={{
+        ...currentPosition,
+        y,
+        scale,
+        rotate,
+        zIndex: card.zIndex,
+      }}
       className={styles.card}
     >
       <div className={styles.imageContainer}>
@@ -83,7 +88,7 @@ const ScrollAnimatedCard: React.FC<ScrollAnimatedCardProps> = ({
           src={card.src}
           alt={card.alt}
           fill
-          sizes="(max-width: 768px) 50vw, 25vw" // Update sizes attribute for better performance
+          sizes="(max-width: 768px) 50vw, 25vw"
           style={{ objectFit: "contain" }}
           priority={index < 3}
         />

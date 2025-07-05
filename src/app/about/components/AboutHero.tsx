@@ -7,64 +7,81 @@ import { motion, useScroll, Variants } from "framer-motion";
 import ScrollAnimatedCard from "./ScrollAnimatedCard";
 import AnimatedWord from "@/components/animation/AnimatedWord";
 import { easings } from "@/utils/easings";
+import { useMediaQuery } from "@/utils/useMediaQuery"; // <-- Import the custom hook
 
 // --- DATA ---
-// FINAL FIX: Increased max-width and max-height to allow cards to be larger on wide screens.
-// This raises the "ceiling" for the responsive 'vw' units.
 const teamImages = [
   {
     id: 1,
     src: "/static/nexel/about/team-1.png",
     alt: "A woman with dark hair and white glasses, wearing a light-colored jacket.",
     initialRotate: -30,
-    finalRotate: -14,
-    className: styles.card1,
-    style: { top: "15%", left: "2%" },
+    finalRotate: -16,
+    zIndex: 5,
+    positions: {
+      mobile: { top: "15%", left: "2%" },
+      desktop: { top: "10%", left: "5%" }, // Your desktop values here
+    },
   },
   {
     id: 2,
     src: "/static/nexel/about/team-2.png",
     alt: "A man with glasses and a thoughtful expression.",
     initialRotate: -45,
-    finalRotate: -8,
-    className: styles.card2,
-    style: { top: "60%", left: "8%" },
+    finalRotate: -29,
+    zIndex: 4,
+    positions: {
+      mobile: { top: "40%", left: "4%" },
+      desktop: { top: "45%", left: "8%" }, // Your desktop values here
+    },
   },
   {
     id: 3,
     src: "/static/nexel/about/team-3.png",
     alt: "A selfie of a smiling man with sunglasses and a woman with glasses.",
     initialRotate: 40,
-    finalRotate: 12,
-    className: styles.card3,
-    style: { top: "18%", left: "28%" },
+    finalRotate: 15,
+    zIndex: 3,
+    positions: {
+      mobile: { top: "22%", left: "23%" },
+      desktop: { top: "20%", left: "28%" }, // Your desktop values here
+    },
   },
   {
     id: 4,
     src: "/static/nexel/about/team-4.png",
     alt: "Two glasses of matcha latte on a wooden bench.",
     initialRotate: -35,
-    finalRotate: -5,
-    className: styles.card4,
-    style: { top: "48%", left: "45%" },
+    finalRotate: -12,
+    zIndex: 2,
+    positions: {
+      mobile: { top: "42%", left: "50%" },
+      desktop: { top: "45%", left: "42%" }, // Your desktop values here
+    },
   },
   {
     id: 5,
-    src: "/static/nexel/about/team-5.png",
+    src: "/static/nexel/about/team-6.png",
     alt: "A man with curly hair and glasses, wearing headphones.",
     initialRotate: 45,
-    finalRotate: 15,
-    className: styles.card5,
-    style: { top: "8%", right: "6%" },
+    finalRotate: 20,
+    zIndex: 1,
+    positions: {
+      mobile: { top: "15%", right: "3%" },
+      desktop: { top: "3%", right: "4%" }, // Your desktop values here
+    },
   },
   {
     id: 6,
-    src: "/static/nexel/about/team-6.png",
+    src: "/static/nexel/about/team-5.png",
     alt: "A man wearing a light-colored cap, looking to his side.",
     initialRotate: 50,
-    finalRotate: 18,
-    className: styles.card6,
-    style: { top: "55%", right: "12%" },
+    finalRotate: -28,
+    zIndex: 6,
+    positions: {
+      mobile: { top: "55%", right: "27%" },
+      desktop: { top: "50%", right: "10%" }, // Your desktop values here
+    },
   },
 ];
 
@@ -90,6 +107,7 @@ const wordVariants: Variants = {
 
 const AboutHero = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const isDesktop = useMediaQuery("(min-width: 768px)"); // <-- USE THE HOOK
 
   const { scrollYProgress } = useScroll({
     target: scrollContainerRef,
@@ -107,10 +125,10 @@ const AboutHero = () => {
               index={index}
               totalCards={teamImages.length}
               scrollYProgress={scrollYProgress}
+              isDesktop={isDesktop} // <-- PASS THE VALUE AS A PROP
             />
           ))}
         </div>
-
         <motion.div
           className={styles.contentWrapper}
           variants={textContainerVariants}

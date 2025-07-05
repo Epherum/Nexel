@@ -12,6 +12,7 @@ import bilargoThumbnail from "/public/static/thumbnails/bilargo-thumbnail.png";
 import spacefoodThumbnail from "/public/static/thumbnails/spacefood-thumbnail.png";
 import matukyThumbnail from "/public/static/thumbnails/matuky-thumbnail.png";
 import wagThumbnail from "/public/static/thumbnails/wag-thumbnail.png";
+import moondivineThumbnail from "/public/static/thumbnails/moondivine-thumbnail.png";
 
 // =================================================================
 // --- 2. NEW: Branding Project Data (The detailed content for the template) ---
@@ -202,6 +203,13 @@ const hardcodedProjects: ProjectListing[] = [
     title: "Evense",
     category: "Branding & Web",
     thumbnail: evenseThumbnail,
+    type: "hardcoded",
+  },
+  {
+    slug: "moondivine",
+    title: "Moondivine",
+    category: "Branding & Web",
+    thumbnail: moondivineThumbnail,
     type: "hardcoded",
   },
 ];
