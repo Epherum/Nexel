@@ -60,6 +60,9 @@
 .card--blue {
   background-color: var(--card-color-blue);
 }
+.card--orange {
+  background-color: var(--card-color-orange);
+}
 
 .cardDescription {
   font-size: var(--font-size-lg);

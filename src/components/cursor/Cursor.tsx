@@ -1,18 +1,18 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { motion } from "framer-motion";
 import styles from "./Cursor.module.css";
+import { CursorContext } from "@/components/cursor/CursorContext"; // Corrected path assuming context is in the same folder
 import { easings } from "@/utils/easings";
 
 // Define the size of the cursor circle for centering
 const CURSOR_SIZE = 20;
 
 const Cursor = () => {
-  // 1. Use React's useState to store the mouse position.
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const { isHoveringLink } = useContext(CursorContext);
 
-  // 2. useEffect to update the state on "mousemove".
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
       setMousePosition({
@@ -20,31 +20,61 @@ const Cursor = () => {
         y: event.clientY,
       });
     };
-
     window.addEventListener("mousemove", handleMouseMove);
-
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
   }, []);
 
+  const cursorVariants = {
+    default: {
+      height: CURSOR_SIZE,
+      width: CURSOR_SIZE,
+      backgroundColor: "var(--accent-color)",
+      mixBlendMode: "difference",
+    },
+    linkHover: {
+      height: 80,
+      width: 80,
+      backgroundColor: "#fff",
+      mixBlendMode: "normal",
+    },
+  };
+
   return (
     <motion.div
       className={styles.cursor}
-      // 3. Use the `animate` prop. Framer Motion will animate to these new values
-      // whenever the state changes.
+      // 1. Use variants to control the hover state (size, color, etc.)
+      variants={cursorVariants}
+      // 2. Animate between variants AND also animate the x/y position here.
       animate={{
-        // We subtract half the cursor's size to center it perfectly on the pointer
-        x: mousePosition.x - CURSOR_SIZE / 2,
-        y: mousePosition.y - CURSOR_SIZE / 2,
+        ...(isHoveringLink ? cursorVariants.linkHover : cursorVariants.default),
+        x: mousePosition.x - (isHoveringLink ? 80 : CURSOR_SIZE) / 2, // Center based on current size
+        y: mousePosition.y - (isHoveringLink ? 80 : CURSOR_SIZE) / 2, // Center based on current size
       }}
-      // 4. Define the animation type and easing using the `transition` prop.
+      // 3. This transition now applies to x, y, width, height, and backgroundColor
       transition={{
-        type: "tween", // A "tween" is a duration-based animation
-        ease: easings.gentleEaseOut, // This applies a cubic-bezier ease-out curve
-        duration: 0.5, // Adjust this duration for a faster or slower follow
+        type: "tween",
+        ease: easings.gentleEaseOut, // Your custom easing
+        duration: 0.5,
       }}
-    />
+    >
+      <motion.span
+        className={styles.cursorText}
+        animate={{
+          opacity: isHoveringLink ? 1 : 0,
+          scale: isHoveringLink ? 1 : 0,
+        }}
+        // Give the text its own, faster transition
+        transition={{
+          type: "tween",
+          ease: "easeOut",
+          duration: 0.2,
+        }}
+      >
+        Visit
+      </motion.span>
+    </motion.div>
   );
 };
 

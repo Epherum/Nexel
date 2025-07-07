@@ -5,16 +5,24 @@
   border-radius: 50%;
 
   /* Color */
-  background-color: var(--accent-color); /* Using your project's accent color */
-  mix-blend-mode: difference; /* Cool effect that inverts color on backgrounds */
+  background-color: var(--accent-color);
 
   /* Positioning */
-  position: fixed; /* Fixed to the viewport */
-  z-index: 9999; /* Ensures it's on top of everything */
-
-  /* Center the dot on the actual cursor position */
-  transform: translate(-50%, -50%);
+  position: fixed;
+  z-index: 9999;
 
   /* IMPORTANT: This allows clicks to pass through the cursor element */
   pointer-events: none;
+
+  /* New styles for centering the text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cursorText {
+  font-size: 14px;
+  font-weight: 500;
+  color: #000; /* Black text */
+  opacity: 0; /* Hidden by default */
 }

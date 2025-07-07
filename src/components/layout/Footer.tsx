@@ -2,7 +2,7 @@
 "use client";
 
 import React from "react";
-import Link from "next/link";
+import Link from "@/components/HoverableLink";
 import Image from "next/image";
 import styles from "./Footer.module.css";
 import { FaArrowRight } from "react-icons/fa";
@@ -87,19 +87,6 @@ const Footer = () => {
             >
               <Image
                 src="/static/nexel/instagram.svg"
-                alt=""
-                width={30}
-                height={30}
-              />
-            </a>
-            <a
-              href="https://whatsapp.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="WhatsApp"
-            >
-              <Image
-                src="/static/nexel/whatsapp.svg"
                 alt=""
                 width={30}
                 height={30}

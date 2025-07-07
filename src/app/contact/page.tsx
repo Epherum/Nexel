@@ -118,20 +118,7 @@ const ContactPage = () => {
             <p className={styles.label}>Local time</p>
             <p className={styles.value}>11:12PM</p>
           </motion.div>
-          <motion.div
-            variants={fadeInUpVariants}
-            className={styles.achievementItem}
-          >
-            <p className={styles.label}>Money raised by our partners</p>
-            <p className={styles.value}>$300M+</p>
-          </motion.div>
-          <motion.div
-            variants={fadeInUpVariants}
-            className={styles.achievementItem}
-          >
-            <p className={styles.label}>Years experience</p>
-            <p className={styles.value}>15+</p>
-          </motion.div>
+
           <motion.div
             variants={fadeInUpVariants}
             className={styles.achievementItem}
@@ -214,26 +201,6 @@ const ContactPage = () => {
                 className={styles.textArea}
                 rows={5}
               ></textarea>
-            </div>
-          </motion.fieldset>
-
-          <motion.fieldset
-            className={styles.formGroup}
-            variants={fadeInUpVariants}
-          >
-            <legend className={styles.legend}>What's your budget?</legend>
-            <div className={styles.optionsContainer}>
-              {budgets.map((budget) => (
-                <label key={budget} className={styles.radioLabel}>
-                  {budget}
-                  <input
-                    type="radio"
-                    name="budget"
-                    className={styles.hiddenInput}
-                  />
-                  <span className={styles.customRadio}></span>
-                </label>
-              ))}
             </div>
           </motion.fieldset>
 

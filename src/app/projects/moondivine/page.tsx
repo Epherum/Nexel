@@ -18,14 +18,15 @@ import img4 from "/public/static/moondivine/4.webp";
 import img5 from "/public/static/moondivine/5.webp";
 
 // --- Local Text Data for MoonDivine ---
-const heroHeadlineLine1 = "Where design";
-const heroHeadlineLine2Start = "meets the";
-const heroHeadlineHighlight = "divine.";
+const heroHeadlineLine1 = "Trendy picks, effortless looks.";
+const heroHeadlineLine2Start = "and a seamless shopping";
+const heroHeadlineHighlight = "experience.";
 const textSection1 = {
   title: "A celestial brand experience crafted for the modern mystic.",
   subtitle:
     "We embarked on a journey to create an identity that felt both ethereal and grounded, capturing the essence of spiritual wellness with a touch of cosmic elegance.",
 };
+
 const textSection2 = {
   title: "Intuitive, immersive, and inspiring.",
   subtitle:

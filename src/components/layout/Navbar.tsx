@@ -14,6 +14,7 @@ import styles from "./Navbar.module.css";
 import { easings } from "@/utils/easings";
 import MenuOverlay from "./MenuOverlay";
 import { usePathname } from "next/navigation";
+// Import the new component
 
 // --- Animation Variants ---
 

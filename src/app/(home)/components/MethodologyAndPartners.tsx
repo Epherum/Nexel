@@ -44,6 +44,13 @@ const methodologySteps = [
       "Developing digital assets, from websites to interactive content, aligning them with the brand strategy and visual guidelines.",
     color: "blue",
   },
+  {
+    step: 5,
+    title: "Launch & Optimization",
+    description:
+      "Delivering final assets, launching the project, and ensuring all platforms are aligned. We also provide support, performance insights, and room for iteration.",
+    color: "blue",
+  },
 ];
 
 interface MethodologyAndPartnersProps {

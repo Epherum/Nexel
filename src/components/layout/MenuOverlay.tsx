@@ -3,7 +3,7 @@
 
 import React from "react";
 import { motion, Variants } from "framer-motion";
-import Link from "next/link";
+import Link from "@/components/HoverableLink";
 import Image from "next/image";
 import { easings } from "@/utils/easings";
 import styles from "./MenuOverlay.module.css";

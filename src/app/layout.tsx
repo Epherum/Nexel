@@ -2,6 +2,10 @@ import "@/styles/globals.css";
 import { Clovergrotesk } from "@/fonts/font";
 import Navbar from "@/components/layout/Navbar";
 import SmoothScrollWrapper from "@/utils/SmoothScrollWrapper";
+import {
+  CursorContext,
+  CursorProvider,
+} from "@/components/cursor/CursorContext";
 
 // --- START: Import the new Cursor component ---
 import Cursor from "@/components/cursor/Cursor";
@@ -19,15 +23,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${Clovergrotesk.variable} `}>
-        {/* --- START: Add the Cursor component here --- */}
-        <Cursor />
-        {/* --- END: Add the Cursor component here --- */}
-        <main>
-          <Navbar />
-          <SmoothScrollWrapper>{children}</SmoothScrollWrapper>
-        </main>
-      </body>
+      <CursorProvider>
+        <body
+          suppressHydrationWarning
+          className={`${Clovergrotesk.variable} antialiased `}
+        >
+          {/* --- START: Add the Cursor component here --- */}
+          <Cursor />
+          {/* --- END: Add the Cursor component here --- */}
+          <main>
+            <Navbar />
+            <SmoothScrollWrapper>{children}</SmoothScrollWrapper>
+          </main>
+        </body>
+      </CursorProvider>
     </html>
   );
 }

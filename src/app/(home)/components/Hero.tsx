@@ -8,7 +8,12 @@ import TextScramble from "@/components/animation/TextScramble";
 import { easings } from "@/utils/easings";
 
 // --- Data ---
-const scrambleWords = ["design", "development", "branding", "collaboration"];
+const scrambleWords = [
+  "design.",
+  "development.",
+  "branding.",
+  "collaboration.",
+];
 
 // Define the pattern and create a single source of truth for the images
 const imagePattern: ("small" | "large")[] = [
@@ -65,12 +70,22 @@ const Hero = () => {
           <AnimatedWord variants={wordVariants}>business</AnimatedWord>
           <AnimatedWord variants={wordVariants}>is</AnimatedWord>
           <AnimatedWord variants={wordVariants}>the</AnimatedWord>
-          <br />
+
+          {/* CHANGE 1: Wrap the <br> in a span to control its visibility with CSS */}
+          <span className={styles.desktopOnlyBreak}>
+            <br />
+          </span>
+
           <AnimatedWord variants={wordVariants}>result</AnimatedWord>
           <AnimatedWord variants={wordVariants}>of</AnimatedWord>
           <AnimatedWord variants={wordVariants}>a</AnimatedWord>
           <AnimatedWord variants={wordVariants}>great</AnimatedWord>
-          <AnimatedWord variants={wordVariants}>
+
+          {/* CHANGE 2: Add a wrapper class to stabilize the scramble animation */}
+          <AnimatedWord
+            variants={wordVariants}
+            className={styles.scrambleWrapper}
+          >
             <TextScramble words={scrambleWords} />
           </AnimatedWord>
         </motion.h1>
