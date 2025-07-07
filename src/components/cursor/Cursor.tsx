@@ -37,7 +37,7 @@ const Cursor = () => {
       height: 80,
       width: 80,
       backgroundColor: "#fff",
-      mixBlendMode: "normal",
+      mixBlendMode: "difference",
     },
   };
 

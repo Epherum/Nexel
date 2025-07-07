@@ -71,23 +71,25 @@ const Hero = () => {
           <AnimatedWord variants={wordVariants}>is</AnimatedWord>
           <AnimatedWord variants={wordVariants}>the</AnimatedWord>
 
-          {/* CHANGE 1: Wrap the <br> in a span to control its visibility with CSS */}
-          <span className={styles.desktopOnlyBreak}>
-            <br />
-          </span>
+          {/* Use a simple span for the desktop line break. We'll fix it in CSS. */}
+          <span className={styles.desktopOnlyBreak}></span>
 
           <AnimatedWord variants={wordVariants}>result</AnimatedWord>
           <AnimatedWord variants={wordVariants}>of</AnimatedWord>
           <AnimatedWord variants={wordVariants}>a</AnimatedWord>
           <AnimatedWord variants={wordVariants}>great</AnimatedWord>
 
-          {/* CHANGE 2: Add a wrapper class to stabilize the scramble animation */}
-          <AnimatedWord
-            variants={wordVariants}
-            className={styles.scrambleWrapper}
-          >
-            <TextScramble words={scrambleWords} />
-          </AnimatedWord>
+          {/* --- NEW ELEGANT SOLUTION FOR THE SCRAMBLE --- */}
+          <div className={styles.scrambleContainer}>
+            {/* 1. The visible, animating text */}
+            <div className={styles.scrambleAbsolute}>
+              <AnimatedWord variants={wordVariants}>
+                <TextScramble words={scrambleWords} />
+              </AnimatedWord>
+            </div>
+            {/* 2. The invisible placeholder that reserves space */}
+            <span className={styles.scramblePlaceholder}>collaboration.</span>
+          </div>
         </motion.h1>
       </div>
 

@@ -122,14 +122,20 @@ export default function MoonDivinePage() {
         {/* 1. Image (Padded) */}
         <section className={styles.paddedImageSection}>
           <div className={styles.imageContainer}>
-            <Image src={img1} alt="MoonDivine UI detail" />
+            <Image src={img1} alt="MoonDivine UI detail" fill />{" "}
+            {/* <-- ADD fill */}
           </div>
         </section>
 
         {/* 2. Full-width Image */}
         <section className={styles.fullWidthImageSection}>
           <div className={styles.imageContainer}>
-            <Image src={img2} alt="Widescreen showcase of MoonDivine project" />
+            <Image
+              src={img2}
+              alt="Widescreen showcase of MoonDivine project"
+              fill
+            />{" "}
+            {/* <-- ADD fill */}
           </div>
         </section>
 
@@ -142,14 +148,20 @@ export default function MoonDivinePage() {
         {/* 4. Full-width Image */}
         <section className={styles.fullWidthImageSection}>
           <div className={styles.imageContainer}>
-            <Image src={img3} alt="Multiple screens of the MoonDivine app" />
+            <Image
+              src={img3}
+              alt="Multiple screens of the MoonDivine app"
+              fill
+            />{" "}
+            {/* <-- ADD fill */}
           </div>
         </section>
 
-        {/* 5. Image (Padded) - This is a simple image now */}
+        {/* 5. Image (Padded) */}
         <section className={styles.paddedImageSection}>
           <div className={styles.imageContainer}>
-            <Image src={img4} alt="MoonDivine UI detail" />
+            <Image src={img4} alt="MoonDivine UI detail" fill />{" "}
+            {/* <-- ADD fill */}
           </div>
         </section>
 
@@ -162,7 +174,8 @@ export default function MoonDivinePage() {
         {/* 7. Full-width Image */}
         <section className={styles.fullWidthImageSection}>
           <div className={styles.imageContainer}>
-            <Image src={img5} alt="Close up of MoonDivine UI elements" />
+            <Image src={img5} alt="Close up of MoonDivine UI elements" fill />{" "}
+            {/* <-- ADD fill */}
           </div>
         </section>
       </main>

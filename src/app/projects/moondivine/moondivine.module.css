@@ -135,7 +135,7 @@
   }
 
   .fullWidthImageSection .imageContainer {
-    aspect-ratio: 16 / 11; /* Revert aspect-ratio */
+    aspect-ratio: 17 / 9; /* Revert aspect-ratio */
   }
 
   .textSection {

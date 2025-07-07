@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 4rem;
+  gap: 2rem;
   min-height: calc(100vh - var(--nav-height));
   padding: 4rem 0; /* Vertical padding only, marquee will be full-width */
   background-color: var(--dark-bg);
@@ -24,37 +24,53 @@
   line-height: 1.2;
   padding-right: 0.2rem;
   color: var(--primary-text);
-  padding-top: 5rem;
+  padding-top: 3.5rem;
 
   margin: 0;
   text-align: left;
   text-wrap: balance; /* Improves text wrapping for multi-line headlines */
+  text-wrap: balance;
 }
 
-.headline > span {
+/* Make sure all direct children of the h1 line up properly */
+.headline > * {
   display: inline-block;
   vertical-align: top;
   margin: 0 0.15em;
-  overflow: hidden; /* Keeps the text reveal animation masked */
+  overflow: hidden;
 }
 
+/* Remove the margin from our new container */
+.scrambleContainer {
+  margin: 0 0.15em;
+}
+
+/* --- THE ELEGANT SCRAMBLE FIX --- */
+
+.scrambleContainer {
+  position: relative; /* This is the positioning context */
+  display: inline-block; /* Allows it to sit in the line of text */
+  vertical-align: top; /* Aligns with the other words */
+}
+
+.scrambleAbsolute {
+  position: absolute; /* Takes the element out of the layout flow */
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* This is the key: an invisible placeholder that sets the width */
+.scramblePlaceholder {
+  visibility: hidden; /* It takes up space but isn't visible */
+  /* Ensure it uses the same font styles to have the correct width */
+  font-weight: 300; /* Match your h1 font-weight */
+}
+
+/* --- THE RELIABLE LINE BREAK FIX --- */
 .desktopOnlyBreak {
-  display: none;
-}
-
-/* 2. Stabilize the scramble animation on mobile */
-/* We set a min-width based on the longest word ("collaboration.") */
-/* The 'ch' unit is great for this, representing character width. */
-.scrambleWrapper {
-  min-width: 13.5ch;
-  /* This reserves enough space to prevent layout jumps. */
-  /* We also ensure the text inside aligns left, matching the rest. */
-  text-align: left;
-}
-
-/* --- HIDE DESKTOP GRID BY DEFAULT (MOBILE FIRST) --- */
-.desktopGrid {
-  display: none;
+  display: none; /* Hidden on mobile */
 }
 
 /* --- MOBILE MARQUEE STYLES --- */
@@ -113,17 +129,21 @@
     font-size: var(--font-size-3xl);
     line-height: 1.2;
     letter-spacing: 1px;
-    text-wrap: nowrap;
   }
 
-  /* --- NEW DESKTOP OVERRIDE --- */
-  /* 3. Re-enable the line break for desktop layouts */
+  /*
+    FIX 2: Force the line break on desktop.
+    Instead of relying on the <br> tag, we make its container a block-level element.
+    This creates a hard line break that `text-wrap: nowrap` cannot ignore.
+    We give it `content: ''` to ensure it renders consistently across browsers.
+  */
   .desktopOnlyBreak {
-    display: block; /* 'initial' resets it to the browser default for the element */
+    display: block;
+    content: ""; /* Necessary for block display to take effect reliably */
+    height: 0; /* Ensures it adds no extra vertical space */
+    margin: 0;
   }
 
-  /* We can also reset the min-width for the scramble wrapper on desktop, */
-  /* as `text-wrap: nowrap` already solves the layout problem here. */
   .scrambleWrapper {
     min-width: auto;
   }

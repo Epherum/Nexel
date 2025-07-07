@@ -6,9 +6,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import styles from "./ParallaxImage.module.css";
 
 // --- Internal Component for Parallax Logic ---
-// This component contains the hooks and is only rendered when needed.
-// It assumes it will ALWAYS be used in 'fill' mode.
-const ParallaxImage = ({ parallaxAmount, ...rest }: any) => {
+const ParallaxImage = ({ parallaxAmount, imageScale, ...rest }: any) => {
   const containerRef = useRef(null);
 
   const { scrollYProgress } = useScroll({
@@ -21,12 +19,23 @@ const ParallaxImage = ({ parallaxAmount, ...rest }: any) => {
     [0, 1],
     [`-${parallaxAmount}%`, `${parallaxAmount}%`]
   );
-  const scale = 1 + (parallaxAmount / 100) * 2;
+
+  // 1. Calculate the MINIMUM scale required to prevent white space.
+  const minScaleRequired = 1 + (parallaxAmount / 100) * 2;
+
+  // 2. Determine the final scale. Use the user's 'imageScale' if it's provided
+  // and large enough, otherwise fall back to the minimum required scale.
+  const finalScale = imageScale
+    ? Math.max(imageScale, minScaleRequired)
+    : minScaleRequired;
 
   return (
     <div ref={containerRef} className={styles.imageContainer}>
-      <motion.div className={styles.imageWrapper} style={{ y, scale }}>
-        {/* We hard-code 'fill' here because this component is only for that purpose */}
+      <motion.div
+        className={styles.imageWrapper}
+        // 3. Apply the final calculated scale and the y-transform.
+        style={{ y, scale: finalScale }}
+      >
         <NextImage {...rest} fill className={styles.image} />
       </motion.div>
     </div>
@@ -34,37 +43,30 @@ const ParallaxImage = ({ parallaxAmount, ...rest }: any) => {
 };
 
 // --- Main Exported Component ---
-type ImageProps = NextImageProps & {
+// Renamed to be more descriptive
+type ParallaxImageWrapperProps = NextImageProps & {
   parallaxAmount?: number;
+  imageScale?: number; // The new prop for controlling zoom (e.g., 1.1 for 10% zoom)
 };
 
-const Image = (props: ImageProps) => {
-  // Destructure all relevant props. We check for 'fill' specifically.
-  const { parallaxAmount = 10, fill, className, ...rest } = props;
+const ParallaxImageWrapper = (props: ParallaxImageWrapperProps) => {
+  // Destructure all relevant props, including the new 'imageScale'
+  const { parallaxAmount = 10, imageScale, fill, className, ...rest } = props;
 
-  // --- This is the new conditional logic ---
   // If 'fill' is true AND parallax isn't disabled, render the parallax component.
   if (fill && parallaxAmount !== 0) {
     return (
       <ParallaxImage
         parallaxAmount={parallaxAmount}
+        imageScale={imageScale}
         className={className}
         {...rest}
       />
     );
   }
 
-  // --- Fallback Renderer ---
-  // Otherwise, render a standard NextImage. This handles two cases:
-  // 1. Images with `width` and `height` (like the logo).
-  // 2. `fill` images where parallax has been disabled (`parallaxAmount={0}`).
-  return (
-    <NextImage
-      fill={fill} // Pass the fill prop along (it will be true or undefined)
-      className={className}
-      {...rest}
-    />
-  );
+  // Fallback Renderer for non-parallax images
+  return <NextImage fill={fill} className={className} {...rest} />;
 };
 
-export default Image;
+export default ParallaxImageWrapper;

@@ -4,7 +4,7 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
 // import Image from "@/components/animation/ParallaxImage";
-import Image from "next/image";
+import Image from "@/components/animation/ParallaxImage";
 
 import styles from "./branding.module.css"; // UPDATED
 import AnimatedWord from "@/components/animation/AnimatedWord";

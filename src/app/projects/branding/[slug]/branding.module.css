@@ -165,7 +165,7 @@
 
   .imageSection .imageContainer {
     border-radius: 40px;
-    aspect-ratio: 5 / 3;
+    aspect-ratio: 16 / 10;
   }
 
   .introText {
