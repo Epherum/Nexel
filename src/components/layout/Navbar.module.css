@@ -46,10 +46,6 @@
 }
 
 /* THIS IS THE KEY: The container for the menu icon */
-.menuIconContainer {
-  /* REMOVED: All absolute positioning is removed from the default (mobile) state. */
-  /* It now behaves as a standard flex item. */
-}
 
 .menuIcon {
   display: flex;
@@ -113,7 +109,7 @@
   .menuIconContainer {
     position: absolute;
     top: 50%;
-    left: 50%; /* Using 50% for perfect centering */
+    left: 45%; /* Using 50% for perfect centering */
     transform: translate(-50%, -50%);
   }
 

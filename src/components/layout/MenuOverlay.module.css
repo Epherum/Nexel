@@ -1,31 +1,40 @@
 /* src/components/layout/MenuOverlay.module.css */
 
-/* ... .backdrop and .menuPanel styles are unchanged ... */
 .backdrop {
   position: fixed;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 998;
 }
+
 .menuPanel {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 80vh;
   background-color: var(--dark-bg);
   color: var(--primary-text);
   z-index: 999;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+
+  /* --- FIX 1: Make height dynamic --- */
+  /* REMOVED: height: 80vh; */
+  height: auto; /* Let content determine the height */
+  min-height: 60vh; /* A sensible minimum height */
+  max-height: 85vh; /* A sensible maximum to prevent it taking the whole screen */
+  overflow-y: auto; /* Add a scrollbar if content exceeds max-height */
 }
 
 .wrapper {
-  height: 100%;
   display: flex;
   flex-direction: column;
-  /* This is our base padding for the footer */
-  padding: calc(var(--nav-height) + 1.5rem) 0.5rem 1rem;
+  /* Base padding for the whole container */
+  padding: calc(var(--nav-height) + 1.5rem) 0 1rem;
+
+  /* --- FIX 2: Allow wrapper to size to its content --- */
+  /* REMOVED: height: 100%; */
+  /* This was forcing the wrapper to conform to the panel's old fixed height. */
 }
 
 /* --- Horizontal Scroller Styles --- */
@@ -33,19 +42,18 @@
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   overscroll-behavior-x: contain;
-  flex-grow: 1;
 
-  /* --- THE FIX --- */
-  /* 1. Make the scroller container full-width */
+  /* --- FIX 3: Stop the scroller from being squished --- */
+  /* REMOVED: flex-grow: 1; */
+  /* This was the main culprit for the squishing effect. */
+
+  /* These styles create the correct padding for the scrollable area */
   margin-inline: 0.5rem;
-  /* 2. Add padding INSIDE the full-width container */
-  /* This creates the space on the left and right for the scrollable items */
   padding-inline: 0.5rem;
-  /* This ensures padding is included in the element's total width/height */
   box-sizing: border-box;
 }
 
-/* ... scrollbar styles are unchanged ... */
+/* --- Scrollbar Styles (Unchanged) --- */
 .navScroller::-webkit-scrollbar {
   height: 6px;
 }
@@ -66,19 +74,19 @@
   display: flex;
   gap: 1rem;
   width: max-content;
-  /* --- THE FIX --- */
-  /* 3. Remove the padding from here. The parent scroller now handles it. */
+  /* Ensure no extra padding here */
   padding-inline: 0;
 }
 
 .navItem {
-  width: 70vw; /* Your preferred width */
+  width: 70vw; /* Your preferred width on mobile */
   flex-shrink: 0;
   scroll-snap-align: start;
   cursor: pointer;
+  /* The height of this item is now naturally determined by its content below */
 }
 
-/* ... .navItem styles are unchanged ... */
+/* --- Nav Item Content (Unchanged, now dictates height) --- */
 .navItem .navTitle {
   font-size: var(--font-size-lg);
   margin-bottom: 0.5rem;
@@ -87,7 +95,7 @@
 .navItem .imageContainer {
   position: relative;
   width: 100%;
-  aspect-ratio: 16/9;
+  aspect-ratio: 16/9; /* This is key for responsive height */
   border-radius: 12px;
   overflow: hidden;
   transition: transform 0.4s ease;
@@ -105,9 +113,10 @@
   flex-direction: column;
   flex-wrap: wrap;
   gap: 2rem;
-  padding: 1.5rem 0 0;
+  /* Add horizontal padding to match the scroller */
+  padding: 1.5rem 1rem 0;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  flex-shrink: 0;
+  flex-shrink: 0; /* Prevent footer from shrinking */
 }
 .footerColumn .footerTitle {
   color: var(--secondary-text);
@@ -116,7 +125,7 @@
 }
 .footerColumn .footerLinks {
   font-size: var(--font-size-xs);
-  font-weight: 100;
+  font-weight: 200;
   line-height: 1.5;
 }
 .footerColumn .footerLinks span {
@@ -129,23 +138,26 @@
     padding: calc(var(--nav-height) + 2rem) 3rem 1.5rem;
   }
   .menuPanel {
-    height: 75vh;
+    /* --- FIX 4: Remove fixed height on desktop too --- */
+    /* REMOVED: height: 75vh; */
+    /* We can adjust min/max for desktop if needed, but auto is fine */
+    min-height: 70vh;
   }
   .navScroller {
     /* Reset the mobile-only styles */
     margin-inline: 0;
     padding-inline: 0;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+    -ms-overflow-style: none; /* Hide scrollbar on IE/Edge */
+    scrollbar-width: none; /* Hide scrollbar on Firefox */
   }
   .navScroller::-webkit-scrollbar {
-    display: none;
+    display: none; /* Hide scrollbar on Chrome/Safari */
   }
   .navList {
     gap: 2rem;
   }
   .footer {
-    padding: 1.5rem 0 1rem;
+    padding: 1.5rem 0 1rem; /* Reset padding for desktop */
     flex-direction: row;
     justify-content: space-between;
   }

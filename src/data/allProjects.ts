@@ -52,14 +52,14 @@ export const brandingProjectsData: BrandingProject[] = [
     },
     thumbnail: bilargoThumbnail,
     heroHeadline: "Where Quality Meets Creativity.",
-    heroImage: "/static/bilargo/hero.png", // Assuming the billboard image is the hero
+    heroImage: "/static/bilargo/hero.webp", // Assuming the billboard image is the hero
     introText:
       "Bilargo is a fashion and design house that embodies quiet luxury and coastal sophistication. Our task was to create a brand identity that felt both timeless and contemporary, reflecting the brand's commitment to quality materials, thoughtful design, and a serene aesthetic.",
     challengeText:
       "The primary challenge was to launch Bilargo into the competitive luxury fashion market. We needed to develop a brand identity that could communicate premium quality and a unique point of view without feeling ostentatious. The brand had to appeal to a discerning audience that values craftsmanship, comfort, and a connection to natural beauty.",
     approachText:
       "Our approach centered on the concept of 'serene heritage.' We designed a distinctive logo featuring two stylized elephants, symbolizing wisdom, strength, and a touch of the exotic. The color palette combines deep blues, earthy neutrals, and sun-bleached whites, inspired by Mediterranean landscapes. The art direction for photography emphasizes natural light and relaxed elegance, creating a visual narrative that is both aspirational and approachable.",
-    fullWidthImage: "/static/bilargo/full-width.png", // Assuming the embroidered logo is the full-width image
+    fullWidthImage: "/static/bilargo/full-width.webp", // Assuming the embroidered logo is the full-width image
     services: {
       title: "Brand Strategy & Visual Identity",
       subtitle: "From Concept to Cohesion",
@@ -67,10 +67,10 @@ export const brandingProjectsData: BrandingProject[] = [
     },
     showcase: {
       images: [
-        "/static/bilargo/1.png",
-        "/static/bilargo/2.png",
-        "/static/bilargo/3.png",
-        "/static/bilargo/4.png",
+        "/static/bilargo/1.webp",
+        "/static/bilargo/2.webp",
+        "/static/bilargo/3.webp",
+        "/static/bilargo/4.webp",
       ],
       text: "The final brand identity extends seamlessly across all touchpoints, from digital storefronts and social media to physical tags and packaging. Each element is designed to reinforce Bilargo's core message: luxury is not just what you wear, but how it makes you feel.",
     },
@@ -84,14 +84,14 @@ export const brandingProjectsData: BrandingProject[] = [
     },
     thumbnail: spacefoodThumbnail,
     heroHeadline: "A Taste of the Cosmos.",
-    heroImage: "/static/spacefood/hero.png",
+    heroImage: "/static/spacefood/hero.webp",
     introText:
       "SPACE FOOD is a London-based fast food concept that delivers cosmic-level flavor with a playful, futuristic identity. We were tasked with creating a brand from the ground up that would feel like an adventure in every bite, capturing the imagination of a young, urban audience.",
     challengeText:
       "Create a bold, futuristic brand for a fast food restaurant in London that wants to break away from traditional fast food aesthetics. The concept needed to attract younger audiences, stand out in urban settings, and feel like an adventure in every bite.",
     approachText:
       "We designed a striking astronaut mascot as the face of the brand, symbolizing exploration and fun. The logotype features strong, geometric lettering with contrast in weight and color — especially emphasizing 'FOOD' with a clever 'O' as a planet or burger. The red and black palette creates energy and urgency, fitting for a fast-paced eatery, while also adding a sci-fi edge.",
-    fullWidthImage: "/static/spacefood/full-width.png",
+    fullWidthImage: "/static/spacefood/full-width.webp",
     services: {
       title: "Packaging & Environmental Design",
       subtitle: "Bringing the Cosmos to the Counter",
@@ -99,10 +99,10 @@ export const brandingProjectsData: BrandingProject[] = [
     },
     showcase: {
       images: [
-        "/static/spacefood/1.png",
-        "/static/spacefood/2.png",
-        "/static/spacefood/3.png",
-        "/static/spacefood/4.png",
+        "/static/spacefood/1.webp",
+        "/static/spacefood/2.webp",
+        "/static/spacefood/3.webp",
+        "/static/spacefood/4.webp",
       ],
       text: "From the food wrappers to the storefront, the SpaceFood brand is designed to transport customers. The consistent use of the mascot, bold typography, and energetic color scheme creates a cohesive and exciting world that makes fast food fun again.",
     },
@@ -116,14 +116,14 @@ export const brandingProjectsData: BrandingProject[] = [
     },
     thumbnail: matukyThumbnail,
     heroHeadline: "Your Daily Moment of Matcha.",
-    heroImage: "/static/matuky/hero.png",
+    heroImage: "/static/matuky/hero.webp",
     introText:
       "MATSUKY is a modern matcha café concept that brings the traditional taste of Japanese matcha to a trendy, design-conscious audience. Our goal was to build a brand that blends tradition and fun, appealing to both matcha connoisseurs and newcomers alike.",
     challengeText:
       "Creating a unique and playful identity for a new matcha café that stands out in a saturated market of coffee and tea shops. The goal was to build a visual brand that reflects the Japanese heritage of matcha while feeling modern, warm, and fun — especially for a young audience.",
     approachText:
       "We developed the name “MATSUKY” by merging “matcha” and a playful suffix, giving it a friendly and memorable ring. The logo combines soft, bubbly typography with a panda mascot holding a traditional matcha whisk — evoking authenticity and cuteness. A mix of Japanese and English typography was used to give an international flair. Earthy green tones paired with creamy whites convey freshness, nature, and relaxation — ideal for a cozy café vibe.",
-    fullWidthImage: "/static/matuky/full-width.png",
+    fullWidthImage: "/static/matuky/full-width.webp",
     services: {
       title: "Identity & Brand Application",
       subtitle: "Crafting a Cohesive Café Experience",
@@ -131,10 +131,10 @@ export const brandingProjectsData: BrandingProject[] = [
     },
     showcase: {
       images: [
-        "/static/matuky/1.png",
-        "/static/matuky/2.png",
-        "/static/matuky/3.png",
-        "/static/matuky/4.png",
+        "/static/matuky/1.webp",
+        "/static/matuky/2.webp",
+        "/static/matuky/3.webp",
+        "/static/matuky/4.webp",
       ],
       text: "The Matsuky brand is built on a foundation of charm and authenticity. The friendly panda mascot and soft, natural color palette create an inviting atmosphere that encourages customers to relax, enjoy their matcha, and share their experience.",
     },
@@ -148,14 +148,14 @@ export const brandingProjectsData: BrandingProject[] = [
     },
     thumbnail: wagThumbnail,
     heroHeadline: "For the Love of a Wagging Tail.",
-    heroImage: "/static/wag/hero.png",
+    heroImage: "/static/wag/hero.webp",
     introText:
       "WAG is a U.S.-based pet shop that offers quality pet food, accessories, and grooming services. It positions itself as more than just a store — it's a community for pet lovers. We set out to create an energetic, lovable, and approachable identity that captures the pure joy pets bring to our lives.",
     challengeText:
       "WAG needed a brand identity that speaks to modern pet owners — fun, trustworthy, and full of personality. The challenge was to create a visual identity that reflects love and care for pets, while being eye-catching and flexible across packaging, signage, and digital platforms.",
     approachText:
       "We crafted a logo where the word “WAG” itself becomes a character — integrating a happy dog face within the wordmark. The rounded, chunky typography combined with the warm yellow/orange palette radiates joy and friendliness. We also gave the brand a slight retro twist with playful shapes and soft curves to appeal emotionally to pet lovers.",
-    fullWidthImage: "/static/wag/full-width.png",
+    fullWidthImage: "/static/wag/full-width.webp",
     services: {
       title: "Brand Identity & Packaging Design",
       subtitle: "Making Pet Products Pop",
@@ -163,10 +163,10 @@ export const brandingProjectsData: BrandingProject[] = [
     },
     showcase: {
       images: [
-        "/static/wag/1.png",
-        "/static/wag/2.png",
-        "/static/wag/3.png",
-        "/static/wag/4.png",
+        "/static/wag/1.webp",
+        "/static/wag/2.webp",
+        "/static/wag/3.webp",
+        "/static/wag/4.webp",
       ],
       text: "The entire brand system is designed to feel as happy and dependable as a loyal companion. The clever logo, warm colors, and friendly typography work together to build trust and create an emotional connection with pet owners from the moment they see the brand.",
     },

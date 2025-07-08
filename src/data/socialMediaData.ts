@@ -46,35 +46,35 @@ import tresorsThumbnail from "/public/static/thumbnails/tresors-thumbnail.webp";
 import mestiriThumbnail from "/public/static/thumbnails/mestiri-thumbnail.webp";
 import virginiaThumbnail from "/public/static/thumbnails/virginia-thumbnail.webp";
 
-// --- Laboratoire Tresors Naturels (Labo) Assets ---
-import laboHero from "/public/static/labo/hero.webp";
-import laboImg1 from "/public/static/labo/1.webp";
-import laboImg2 from "/public/static/labo/2.webp";
-import laboImg3 from "/public/static/labo/3.webp";
-import laboImg4 from "/public/static/labo/4.webp";
-import laboImg5 from "/public/static/labo/5.webp";
-import laboImg6 from "/public/static/labo/6.webp";
-import laboImg7 from "/public/static/labo/7.webp";
-import laboImg8 from "/public/static/labo/8.webp";
-import laboImg9 from "/public/static/labo/9.webp";
-import laboImg10 from "/public/static/labo/10.webp";
-import laboImg11 from "/public/static/labo/11.webp";
-import laboImg12 from "/public/static/labo/12.webp";
-import laboImg13 from "/public/static/labo/13.webp";
-import laboImg14 from "/public/static/labo/14.webp";
-import laboImg15 from "/public/static/labo/15.webp";
-import laboImg16 from "/public/static/labo/16.webp";
-import laboImg17 from "/public/static/labo/17.webp";
-import laboImg18 from "/public/static/labo/18.webp";
-import laboImg19 from "/public/static/labo/19.webp";
-import laboImg20 from "/public/static/labo/20.webp";
-import laboImg21 from "/public/static/labo/21.webp";
-import laboImg22 from "/public/static/labo/22.webp";
-import laboImg24 from "/public/static/labo/24.webp";
-import laboImg25 from "/public/static/labo/25.webp";
-import laboImg26 from "/public/static/labo/26.webp";
-import laboImg27 from "/public/static/labo/27.webp";
-import laboImg28 from "/public/static/labo/28.webp";
+// ---  Tresors Naturels  Assets ---
+import tresorsHero from "/public/static/tresors/hero.webp";
+import tresorsImg1 from "/public/static/tresors/1.webp";
+import tresorsImg2 from "/public/static/tresors/2.webp";
+import tresorsImg3 from "/public/static/tresors/3.webp";
+import tresorsImg4 from "/public/static/tresors/4.webp";
+import tresorsImg5 from "/public/static/tresors/5.webp";
+import tresorsImg6 from "/public/static/tresors/6.webp";
+import tresorsImg7 from "/public/static/tresors/7.webp";
+import tresorsImg8 from "/public/static/tresors/8.webp";
+import tresorsImg9 from "/public/static/tresors/9.webp";
+import tresorsImg10 from "/public/static/tresors/10.webp";
+import tresorsImg11 from "/public/static/tresors/11.webp";
+import tresorsImg12 from "/public/static/tresors/12.webp";
+import tresorsImg13 from "/public/static/tresors/13.webp";
+import tresorsImg14 from "/public/static/tresors/14.webp";
+import tresorsImg15 from "/public/static/tresors/15.webp";
+import tresorsImg16 from "/public/static/tresors/16.webp";
+import tresorsImg17 from "/public/static/tresors/17.webp";
+import tresorsImg18 from "/public/static/tresors/18.webp";
+import tresorsImg19 from "/public/static/tresors/19.webp";
+import tresorsImg20 from "/public/static/tresors/20.webp";
+import tresorsImg21 from "/public/static/tresors/21.webp";
+import tresorsImg22 from "/public/static/tresors/22.webp";
+import tresorsImg24 from "/public/static/tresors/24.webp";
+import tresorsImg25 from "/public/static/tresors/25.webp";
+import tresorsImg26 from "/public/static/tresors/26.webp";
+import tresorsImg27 from "/public/static/tresors/27.webp";
+import tresorsImg28 from "/public/static/tresors/28.webp";
 
 // --- Virginia Project Assets ---
 import virginiaHero from "/public/static/virginia/hero.webp";
@@ -156,21 +156,19 @@ import amazoneImg15 from "/public/static/amazone/15.webp";
 import amazoneImg17 from "/public/static/amazone/17.webp";
 import amazoneImg18 from "/public/static/amazone/18.webp";
 import amazoneImg19 from "/public/static/amazone/19.webp";
-import amazoneImg20 from "/public/static/amazone/20.webp";
-import amazoneImg21 from "/public/static/amazone/21.webp";
 
 // ============================================================================
 // PROJECTS DATABASE
 // ============================================================================
 
 export const socialMediaProjectsData: SocialMediaProject[] = [
-  // --- LABORATOIRE TRESORS NATURELS (CORRECTED) ---
+  // --- TRESORS NATURELS (CORRECTED) ---
   {
     slug: "tresors-naturels",
     thumbnail: tresorsThumbnail, // <-- ADDED
 
     hero: {
-      image: laboHero,
+      image: tresorsHero,
       titleLine1: "Social Media For:",
       titleLine2: "Tresors naturels",
       year: "2021",
@@ -180,153 +178,153 @@ export const socialMediaProjectsData: SocialMediaProject[] = [
         type: "social_media_grid",
         posts: [
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg1,
+            image: tresorsImg1,
             altText: "Social media post 1",
           },
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg2,
+            image: tresorsImg2,
             altText: "Social media post 2",
           },
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg3,
+            image: tresorsImg3,
             altText: "Social media post 3",
           },
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg4,
+            image: tresorsImg4,
             altText: "Social media post 4",
           },
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg5,
+            image: tresorsImg5,
             altText: "Social media post 5",
           },
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg6,
+            image: tresorsImg6,
             altText: "Social media post 6",
           },
         ],
       },
-      { type: "large_image_pair", images: [laboImg7, laboImg8] },
+      { type: "large_image_pair", images: [tresorsImg7, tresorsImg8] },
       {
         type: "social_media_grid",
         posts: [
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg9,
+            image: tresorsImg9,
             altText: "Social media post 9",
           },
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg10,
+            image: tresorsImg10,
             altText: "Social media post 10",
           },
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg11,
+            image: tresorsImg11,
             altText: "Social media post 11",
           },
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg12,
+            image: tresorsImg12,
             altText: "Social media post 12",
           },
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg13,
+            image: tresorsImg13,
             altText: "Social media post 13",
           },
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg14,
+            image: tresorsImg14,
             altText: "Social media post 14",
           },
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg15,
+            image: tresorsImg15,
             altText: "Social media post 15",
           },
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg16,
+            image: tresorsImg16,
             altText: "Social media post 16",
           },
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg17,
+            image: tresorsImg17,
             altText: "Social media post 17",
           },
         ],
       },
-      { type: "large_image_pair", images: [laboImg18, laboImg19] },
+      { type: "large_image_pair", images: [tresorsImg18, tresorsImg19] },
       {
         type: "social_media_grid",
         posts: [
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg20,
+            image: tresorsImg20,
             altText: "Social media post 20",
           },
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg21,
+            image: tresorsImg21,
             altText: "Social media post 21",
           },
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg22,
+            image: tresorsImg22,
             altText: "Social media post 22",
           },
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg24,
+            image: tresorsImg24,
             altText: "Social media post 24",
           },
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg25,
+            image: tresorsImg25,
             altText: "Social media post 25",
           },
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg26,
+            image: tresorsImg26,
             altText: "Social media post 26",
           },
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg27,
+            image: tresorsImg27,
             altText: "Social media post 27",
           },
           {
-            profileIcon: laboImg1,
+            profileIcon: tresorsImg1,
             name: "Tresors_naturels_officiel",
-            image: laboImg28,
+            image: tresorsImg28,
             altText: "Social media post 28",
           },
         ],
@@ -784,12 +782,6 @@ export const socialMediaProjectsData: SocialMediaProject[] = [
           {
             profileIcon: amazoneImg1,
             name: "Amazone_officiel",
-            image: amazoneImg21,
-            altText: "Amazone social media post 21",
-          },
-          {
-            profileIcon: amazoneImg1,
-            name: "Amazone_officiel",
             image: amazoneImg17,
             altText: "Amazone social media post 17",
           },
@@ -804,12 +796,6 @@ export const socialMediaProjectsData: SocialMediaProject[] = [
             name: "Amazone_officiel",
             image: amazoneImg19,
             altText: "Amazone social media post 19",
-          },
-          {
-            profileIcon: amazoneImg1,
-            name: "Amazone_officiel",
-            image: amazoneImg20,
-            altText: "Amazone social media post 20",
           },
         ],
         skewed: true,

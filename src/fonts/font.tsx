@@ -2,26 +2,6 @@
 
 import localfont from "next/font/local";
 
-// --- Keep the existing font definitions ---
-export const Gilroy = localfont({
-  src: [
-    {
-      path: "./gilroy-medium.woff2",
-      weight: "400",
-      style: "normal",
-    },
-    // ... other Gilroy styles
-  ],
-  display: "swap",
-  variable: "--font-gilroy",
-});
-
-export const Mazius = localfont({
-  src: "./MAZIUS_REVIEW_20.09_Extra_italic_400.otf",
-  display: "swap",
-  variable: "--font-mazius",
-});
-
 // --- ADD THE NEW CLOVERGROTESK FONT DEFINITION ---
 export const Clovergrotesk = localfont({
   src: [

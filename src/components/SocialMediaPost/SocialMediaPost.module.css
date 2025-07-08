@@ -13,14 +13,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 16px;
+  padding: 1rem 0.8rem;
   border-bottom: 1px solid #efefef;
 }
 
 .profileInfo {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 0.5rem;
 }
 
 .profileIcon {
@@ -30,7 +30,7 @@
 
 .profileName {
   font-weight: 300;
-  font-size: 0.4rem;
+  font-size: var(--font-size-xs);
 }
 
 .moreOptions {
@@ -46,13 +46,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 16px 12px;
+  padding: 0.5rem 0.8rem;
 }
 
 .actionsLeft {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 0.8rem;
 }
 
 .actionsLeft svg,

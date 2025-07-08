@@ -3,7 +3,8 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import Image from "next/image";
+// import Image from "next/image";
+import Image from "@/components/animation/ParallaxImage"; // UPDATED
 
 import styles from "./project.module.css"; // UPDATED
 import Footer from "@/components/layout/Footer";

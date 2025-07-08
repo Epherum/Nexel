@@ -8,7 +8,7 @@ const AboutImage = () => {
   return (
     <section className={styles.fullscreenSection}>
       <Image
-        src={"/static/nexel/grape.png"}
+        src={"/static/nexel/grape.jpeg"}
         alt={"image"}
         fill
         sizes="100vw"

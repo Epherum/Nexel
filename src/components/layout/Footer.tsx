@@ -106,7 +106,7 @@ const Footer = () => {
               aria-label="LinkedIn"
             >
               <Image
-                src="/static/nexel/linkedin.svg"
+                src="/static/icons/linkedin.svg"
                 alt=""
                 width={30}
                 height={30}
@@ -119,7 +119,7 @@ const Footer = () => {
               aria-label="Instagram"
             >
               <Image
-                src="/static/nexel/instagram.svg"
+                src="/static/icons/instagram.svg"
                 alt=""
                 width={30}
                 height={30}
