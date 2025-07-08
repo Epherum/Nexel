@@ -1,10 +1,9 @@
 /* src/components/Hero/Hero.module.css */
 
-/* ... .hero, .headlineContainer, .headline styles are unchanged ... */
+/* --- Main Layout & Typography (Unchanged) --- */
 .hero {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; <-- We will change this behavior */
   gap: 2rem;
   min-height: calc(100vh - var(--nav-height));
   padding: 4rem 0;
@@ -16,11 +15,10 @@
 .headlineContainer {
   width: 100%;
   padding: 0 0.5rem;
-  /* Add this to make the text container grow and push everything else down */
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Center the text within its own growing container */
+  justify-content: center;
 }
 .headline {
   font-size: var(--font-size-2xl);
@@ -48,14 +46,11 @@
   vertical-align: top;
 }
 
-/* --- THE FINAL HYDRATION-SAFE FIX --- */
-/* Use a pseudo-element to create the placeholder. This is pure CSS and
-   cannot cause a React hydration mismatch. */
 .scrambleContainer::before {
-  content: "collaboration."; /* The longest word in your list */
-  font-weight: 300; /* Must match the headline's font-weight */
+  content: "collaboration.";
+  font-weight: 300;
   visibility: hidden;
-  display: inline-block; /* Ensure it takes up space */
+  display: inline-block;
 }
 
 .scrambleAbsolute {
@@ -66,16 +61,16 @@
   height: 100%;
 }
 
-/* ... rest of the file is unchanged ... */
 .desktopOnlyBreak {
   display: none;
 }
-.desktopGrid {
-  display: none;
-}
-.mobileMarquee {
+
+/* --- NEW: Universal Image Marquee Styles --- */
+/* Renamed from .mobileMarquee for clarity */
+.imageMarquee {
   width: 100%;
   overflow: hidden;
+  /* Fades the edges of the marquee */
   mask-image: linear-gradient(
     to right,
     transparent,
@@ -84,20 +79,24 @@
     transparent
   );
 }
+
 .marqueeTrack {
   display: flex;
   flex-wrap: nowrap;
-  gap: 0.5rem;
+  gap: 0.5rem; /* Default mobile gap */
   width: max-content;
 }
+
 .marqueeImageContainer {
   position: relative;
-  height: 120px;
+  height: 120px; /* Default mobile height */
   aspect-ratio: 4 / 3;
   border-radius: 10px;
   overflow: hidden;
   flex-shrink: 0;
 }
+
+/* These styles are common and can be kept */
 .imageWrapper {
   width: 100%;
   height: 100%;
@@ -109,6 +108,7 @@
   height: 100%;
 }
 
+/* --- Media Query for Desktop --- */
 @media (min-width: 768px) {
   .hero {
     gap: 5rem;
@@ -128,28 +128,19 @@
     height: 0;
     margin: 0;
   }
-  .mobileMarquee {
-    display: none;
+
+  /* --- NEW: Desktop-specific Marquee Adjustments --- */
+  .marqueeTrack {
+    gap: 0.5rem; /* A larger gap between images on desktop */
   }
-  .desktopGrid {
-    display: grid;
-    padding: 0 0rem;
-    width: 100%;
-    grid-template-columns: repeat(24, 1fr);
-    gap: 0.25rem;
-    height: 6rem;
-  }
-  .imageContainer {
-    position: relative;
-    height: 100%;
-    aspect-ratio: auto;
+
+  .marqueeImageContainer {
+    height: 140px; /* Taller images on desktop */
     border-radius: 16px;
-    overflow: hidden;
   }
-  .smallImage {
-    grid-column: span 2;
-  }
-  .largeImage {
-    grid-column: span 4;
-  }
+
+  /*
+    NOTE: All styles for .desktopGrid, .imageContainer, .smallImage,
+    and .largeImage have been removed as they are no longer used.
+  */
 }

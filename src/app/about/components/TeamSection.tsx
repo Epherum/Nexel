@@ -14,17 +14,17 @@ const teamMembers = [
   {
     name: "Mira Tlili",
     role: "Lead UX/UI Designer",
-    image: "/static/nexel/team/emira2.png",
+    image: "/static/nexel/team/emira.webp",
   },
   {
     name: "Haroun Dardour",
     role: "Art Director",
-    image: "/static/nexel/team/haroun.png",
+    image: "/static/nexel/team/haroun.webp",
   },
   {
     name: "Wassim Fekih",
     role: "Full-Stack Developer",
-    image: "/static/nexel/team/wassim.png",
+    image: "/static/nexel/team/wassim.webp",
   },
 ];
 

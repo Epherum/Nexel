@@ -7,7 +7,6 @@ import styles from "./Hero.module.css";
 import AnimatedWord from "@/components/animation/AnimatedWord";
 import TextScramble from "@/components/animation/TextScramble";
 import { easings } from "@/utils/easings";
-import { useMediaQuery } from "@/utils/useMediaQuery";
 
 // --- Data & Constants ---
 const scrambleWords = [
@@ -31,28 +30,14 @@ const images = imagePattern.map((type, i) => ({
   src: `/static/nexel/hero/${i + 1}.webp`,
   type: type,
 }));
-const MOBILE_BREAKPOINT = 768;
 
-// --- Animation Variants (unchanged) ---
+// --- Animation Variants ---
 const textContainerVariants: Variants = {
   visible: { transition: { staggerChildren: 0.05 } },
 };
 const wordVariants: Variants = {
   hidden: { y: "110%" },
   visible: { y: "0%", transition: { duration: 1, ease: easings.easeOut } },
-};
-const gridContainerVariants: Variants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.08, delayChildren: 0.5 } },
-};
-const gridItemVariants: Variants = {
-  hidden: { opacity: 0, x: -20, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    scale: 1,
-    transition: { duration: 0.8, ease: easings.easeOut },
-  },
 };
 const marqueeContainerVariants: Variants = {
   hidden: { opacity: 0, y: 40 },
@@ -64,8 +49,6 @@ const marqueeContainerVariants: Variants = {
 };
 
 const Hero = () => {
-  const isMobile = useMediaQuery(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
-
   return (
     <section className={styles.hero}>
       <div className={styles.headlineContainer}>
@@ -95,70 +78,40 @@ const Hero = () => {
         </motion.h1>
       </div>
 
-      {/* --- HYDRATION-SAFE CONDITIONAL RENDERING --- */}
-      {isMobile === null ? null : isMobile ? (
-        // Render Marquee only when isMobile is definitively true
+      {/* --- Marquee (Now on Desktop & Mobile) --- */}
+      <motion.div
+        // Using the existing class. You may want to rename or adjust its styles
+        // in Hero.module.css to better suit desktop view.
+        className={styles.imageMarquee}
+        variants={marqueeContainerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         <motion.div
-          className={styles.mobileMarquee}
-          variants={marqueeContainerVariants}
-          initial="hidden"
-          animate="visible"
+          className={styles.marqueeTrack}
+          // --- FLIPPED ANIMATION ---
+          // We start at -50% and animate to 0% to scroll from left-to-right
+          initial={{ x: "-50%" }}
+          animate={{ x: "0%" }}
+          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
         >
-          <motion.div
-            className={styles.marqueeTrack}
-            animate={{ x: "-50%" }}
-            transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-          >
-            {[...images, ...images].map((item, index) => (
-              <div
-                key={`marquee-${index}`}
-                className={styles.marqueeImageContainer}
-              >
-                <Image
-                  src={item.src}
-                  alt=""
-                  fill
-                  className={styles.gridImage}
-                  quality={90}
-                />
-              </div>
-            ))}
-          </motion.div>
-        </motion.div>
-      ) : (
-        // Render Grid only when isMobile is definitively false
-        <motion.div
-          className={styles.desktopGrid}
-          variants={gridContainerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {images.map((item, index) => (
-            <motion.div
-              key={`desktop-${index}`}
-              className={`${styles.imageContainer} ${
-                item.type === "small" ? styles.smallImage : styles.largeImage
-              }`}
-              variants={gridItemVariants}
+          {/* We still duplicate the images for a seamless loop */}
+          {[...images, ...images].map((item, index) => (
+            <div
+              key={`marquee-${index}`}
+              className={styles.marqueeImageContainer}
             >
-              <motion.div
-                className={styles.imageWrapper}
-                whileHover={{ scale: 1.1 }}
-                transition={{ duration: 0.4, ease: easings.easeOut }}
-              >
-                <Image
-                  src={item.src}
-                  alt={`Hero portfolio item ${index + 1}`}
-                  fill
-                  priority={index < 4}
-                  className={styles.gridImage}
-                  quality={90}
-                />
-              </motion.div>
-            </motion.div>
+              <Image
+                src={item.src}
+                alt={`Hero portfolio item ${index + 1}`}
+                fill
+                className={styles.gridImage}
+                quality={90}
+              />
+            </div>
           ))}
         </motion.div>
-      )}
+      </motion.div>
     </section>
   );
 };

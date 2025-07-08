@@ -29,7 +29,7 @@ interface CardData {
 const teamImages: CardData[] = [
   {
     id: 1,
-    src: "/static/nexel/about/team-1.png",
+    src: "/static/nexel/about/team-1.webp",
     alt: "A woman with dark hair and white glasses, wearing a light-colored jacket.",
     initialRotate: { mobile: -30, desktop: -15 },
     finalRotate: { mobile: 16, desktop: -8 },
@@ -42,7 +42,7 @@ const teamImages: CardData[] = [
   },
   {
     id: 2,
-    src: "/static/nexel/about/team-2.png",
+    src: "/static/nexel/about/team-2.webp",
     alt: "A man with glasses and a thoughtful expression.",
     initialRotate: { mobile: -45, desktop: -20 },
     finalRotate: { mobile: -11, desktop: -12 },
@@ -54,7 +54,7 @@ const teamImages: CardData[] = [
   },
   {
     id: 3,
-    src: "/static/nexel/about/team-3.png",
+    src: "/static/nexel/about/team-3.webp",
     alt: "A selfie of a smiling man with sunglasses and a woman with glasses.",
     initialRotate: { mobile: 40, desktop: 18 },
     finalRotate: { mobile: -15, desktop: 9 },
@@ -66,7 +66,7 @@ const teamImages: CardData[] = [
   },
   {
     id: 4,
-    src: "/static/nexel/about/team-4.png",
+    src: "/static/nexel/about/team-4.webp",
     alt: "Two glasses of matcha latte on a wooden bench.",
     initialRotate: { mobile: -35, desktop: -12 },
     finalRotate: { mobile: -20, desktop: -4 },
@@ -78,7 +78,7 @@ const teamImages: CardData[] = [
   },
   {
     id: 5,
-    src: "/static/nexel/about/team-6.png",
+    src: "/static/nexel/about/team-6.webp",
     alt: "A man with curly hair and glasses, wearing headphones.",
     initialRotate: { mobile: 45, desktop: 22 },
     finalRotate: { mobile: -30, desktop: 11 },
@@ -90,7 +90,7 @@ const teamImages: CardData[] = [
   },
   {
     id: 6,
-    src: "/static/nexel/about/team-5.png",
+    src: "/static/nexel/about/team-5.webp",
     alt: "A man wearing a light-colored cap, looking to his side.",
     initialRotate: { mobile: 50, desktop: 30 },
     finalRotate: { mobile: 20, desktop: -15 },
