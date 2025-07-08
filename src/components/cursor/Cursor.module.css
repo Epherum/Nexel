@@ -38,3 +38,9 @@
   color: #000; /* Black text */
   opacity: 0; /* Hidden by default */
 }
+
+@media (pointer: coarse) {
+  .cursor {
+    display: none !important;
+  }
+}

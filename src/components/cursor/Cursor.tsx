@@ -10,12 +10,12 @@ import { FiArrowUpRight, FiArrowLeft, FiArrowRight } from "react-icons/fi";
 const CURSOR_SIZE = 20;
 
 const Cursor = () => {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 }); // Start off-screen
   const {
     isHoveringLink,
     isHoveringDraggable,
     isCursorVisible,
-    mouseDetected,
+    // --- REMOVED --- mouseDetected,
   } = useContext(CursorContext);
 
   useEffect(() => {
@@ -26,9 +26,11 @@ const Cursor = () => {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  if (!mouseDetected) {
-    return null;
-  }
+  // --- REMOVED --- The check for mouseDetected is gone. The component will always render,
+  // but CSS will hide it on coarse-pointer devices.
+  // if (!mouseDetected) {
+  //   return null;
+  // }
 
   const cursorVariants = {
     default: {
@@ -59,7 +61,6 @@ const Cursor = () => {
 
   const currentSize = cursorVariants[currentState].height;
 
-  // Combine variant properties with positioning
   const animateProps = {
     ...cursorVariants[currentState],
     x: mousePosition.x - currentSize / 2,
@@ -70,24 +71,18 @@ const Cursor = () => {
   return (
     <motion.div
       className={styles.cursor}
-      // Animate all properties, including x and y
       animate={animateProps}
-      // --- START: Corrected Transition Logic ---
       transition={{
-        // Default transition for all properties (x, y, width, height, etc.)
         type: "tween",
         ease: easings.gentleEaseOut,
         duration: 0.5,
-
-        // Override for the 'scale' property to make it faster
         scale: {
           type: "spring",
           stiffness: 400,
           damping: 30,
-          duration: 0.2, // Spring duration is approximate
+          duration: 0.2,
         },
       }}
-      // --- END: Corrected Transition Logic ---
     >
       <motion.div
         animate={{ opacity: currentState !== "default" ? 1 : 0 }}

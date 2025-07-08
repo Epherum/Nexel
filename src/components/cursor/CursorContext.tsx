@@ -1,9 +1,7 @@
 "use client";
 
 import React, { createContext, useState, ReactNode, useEffect } from "react";
-// --- START: Add navigation detection ---
 import { usePathname } from "next/navigation";
-// --- END: Add navigation detection ---
 
 interface CursorContextType {
   isHoveringLink: boolean;
@@ -12,7 +10,7 @@ interface CursorContextType {
   setCursorVisible: (isVisible: boolean) => void;
   isHoveringDraggable: boolean;
   setHoveringDraggable: (isHovering: boolean) => void;
-  mouseDetected: boolean;
+  // --- REMOVED --- mouseDetected: boolean;
 }
 
 export const CursorContext = createContext<CursorContextType>({
@@ -22,37 +20,23 @@ export const CursorContext = createContext<CursorContextType>({
   setCursorVisible: () => {},
   isHoveringDraggable: false,
   setHoveringDraggable: () => {},
-  mouseDetected: false,
+  // --- REMOVED --- mouseDetected: false,
 });
 
 export const CursorProvider = ({ children }: { children: ReactNode }) => {
   const [isHoveringLink, setHoveringLink] = useState(false);
   const [isCursorVisible, setCursorVisible] = useState(true);
   const [isHoveringDraggable, setHoveringDraggable] = useState(false);
-  const [mouseDetected, setMouseDetected] = useState(false);
+  // --- REMOVED --- const [mouseDetected, setMouseDetected] = useState(false);
 
-  // --- START: Add navigation detection ---
   const pathname = usePathname();
 
   useEffect(() => {
-    // Reset cursor state on route change
     setHoveringLink(false);
     setHoveringDraggable(false);
-  }, [pathname]); // This effect runs every time the pathname changes
-  // --- END: Add navigation detection ---
+  }, [pathname]);
 
-  useEffect(() => {
-    const handleMouseMove = () => {
-      setMouseDetected(true);
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
+  // --- REMOVED --- The entire useEffect for detecting mousemove is no longer necessary.
 
   return (
     <CursorContext.Provider
@@ -63,7 +47,7 @@ export const CursorProvider = ({ children }: { children: ReactNode }) => {
         setCursorVisible,
         isHoveringDraggable,
         setHoveringDraggable,
-        mouseDetected,
+        // --- REMOVED --- mouseDetected,
       }}
     >
       {children}
