@@ -1,22 +1,27 @@
 /* src/components/Hero/Hero.module.css */
 
+/* ... .hero, .headlineContainer, .headline styles are unchanged ... */
 .hero {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; <-- We will change this behavior */
   gap: 2rem;
   min-height: calc(100vh - var(--nav-height));
-  padding: 4rem 0; /* Vertical padding only, marquee will be full-width */
+  padding: 4rem 0;
   background-color: var(--dark-bg);
   width: 100%;
-  overflow: hidden; /* Important for containing the hero section */
+  overflow: hidden;
 }
 
 .headlineContainer {
   width: 100%;
-  padding: 0 0.5rem; /* Add horizontal padding here instead */
+  padding: 0 0.5rem;
+  /* Add this to make the text container grow and push everything else down */
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the text within its own growing container */
 }
-
 .headline {
   font-size: var(--font-size-2xl);
   font-weight: 300;
@@ -25,14 +30,10 @@
   padding-right: 0.2rem;
   color: var(--primary-text);
   padding-top: 3.5rem;
-
   margin: 0;
   text-align: left;
-  text-wrap: balance; /* Improves text wrapping for multi-line headlines */
   text-wrap: balance;
 }
-
-/* Make sure all direct children of the h1 line up properly */
 .headline > * {
   display: inline-block;
   vertical-align: top;
@@ -40,40 +41,38 @@
   overflow: hidden;
 }
 
-/* Remove the margin from our new container */
 .scrambleContainer {
   margin: 0 0.15em;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
 }
 
-/* --- THE ELEGANT SCRAMBLE FIX --- */
-
-.scrambleContainer {
-  position: relative; /* This is the positioning context */
-  display: inline-block; /* Allows it to sit in the line of text */
-  vertical-align: top; /* Aligns with the other words */
+/* --- THE FINAL HYDRATION-SAFE FIX --- */
+/* Use a pseudo-element to create the placeholder. This is pure CSS and
+   cannot cause a React hydration mismatch. */
+.scrambleContainer::before {
+  content: "collaboration."; /* The longest word in your list */
+  font-weight: 300; /* Must match the headline's font-weight */
+  visibility: hidden;
+  display: inline-block; /* Ensure it takes up space */
 }
 
 .scrambleAbsolute {
-  position: absolute; /* Takes the element out of the layout flow */
+  position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
 }
 
-/* This is the key: an invisible placeholder that sets the width */
-.scramblePlaceholder {
-  visibility: hidden; /* It takes up space but isn't visible */
-  /* Ensure it uses the same font styles to have the correct width */
-  font-weight: 300; /* Match your h1 font-weight */
-}
-
-/* --- THE RELIABLE LINE BREAK FIX --- */
+/* ... rest of the file is unchanged ... */
 .desktopOnlyBreak {
-  display: none; /* Hidden on mobile */
+  display: none;
 }
-
-/* --- MOBILE MARQUEE STYLES --- */
+.desktopGrid {
+  display: none;
+}
 .mobileMarquee {
   width: 100%;
   overflow: hidden;
@@ -85,96 +84,71 @@
     transparent
   );
 }
-
 .marqueeTrack {
   display: flex;
   flex-wrap: nowrap;
-  gap: 1rem;
-  width: max-content; /* Allows the track to be as wide as its content */
+  gap: 0.5rem;
+  width: max-content;
 }
-
 .marqueeImageContainer {
   position: relative;
   height: 120px;
   aspect-ratio: 4 / 3;
   border-radius: 10px;
   overflow: hidden;
-  flex-shrink: 0; /* Prevents images from squishing */
+  flex-shrink: 0;
 }
-
-/* --- SHARED IMAGE STYLES --- */
 .imageWrapper {
   width: 100%;
   height: 100%;
   position: relative;
 }
-
 .gridImage {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
 
-/* --- DESKTOP OVERRIDES --- */
 @media (min-width: 768px) {
   .hero {
     gap: 5rem;
-    padding: 7rem 2rem 0rem; /* Restore horizontal padding */
+    padding: 7rem 2rem 0rem;
   }
-
   .headlineContainer {
-    padding: 0; /* Remove padding as parent has it now */
+    padding: 0;
   }
   .headline {
     font-size: var(--font-size-3xl);
     line-height: 1.2;
     letter-spacing: 1px;
   }
-
-  /*
-    FIX 2: Force the line break on desktop.
-    Instead of relying on the <br> tag, we make its container a block-level element.
-    This creates a hard line break that `text-wrap: nowrap` cannot ignore.
-    We give it `content: ''` to ensure it renders consistently across browsers.
-  */
   .desktopOnlyBreak {
     display: block;
-    content: ""; /* Necessary for block display to take effect reliably */
-    height: 0; /* Ensures it adds no extra vertical space */
+    content: "";
+    height: 0;
     margin: 0;
   }
-
-  .scrambleWrapper {
-    min-width: auto;
-  }
-
-  /* --- (Existing desktop styles are unchanged) --- */
   .mobileMarquee {
     display: none;
   }
   .desktopGrid {
     display: grid;
-    padding: 0 0rem; /* Match hero padding */
+    padding: 0 0rem;
     width: 100%;
-    /* Create a 24-column grid for our 2:3 ratio */
     grid-template-columns: repeat(24, 1fr);
     gap: 0.25rem;
-    /* THIS IS THE KEY: Set a fixed height for the entire grid */
     height: 6rem;
   }
-
   .imageContainer {
     position: relative;
-    height: 100%; /* Make each container fill the parent's fixed height */
-    aspect-ratio: auto; /* Unset aspect ratio to allow stretching */
+    height: 100%;
+    aspect-ratio: auto;
     border-radius: 16px;
     overflow: hidden;
   }
-
   .smallImage {
     grid-column: span 2;
   }
-
   .largeImage {
     grid-column: span 4;
   }

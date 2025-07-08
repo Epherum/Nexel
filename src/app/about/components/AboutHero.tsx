@@ -135,16 +135,18 @@ const AboutHero = () => {
     <div ref={scrollContainerRef} className={styles.scrollWrapper}>
       <section className={styles.heroSection}>
         <div className={styles.cardsContainer}>
-          {teamImages.map((card, index) => (
-            <ScrollAnimatedCard
-              key={card.id}
-              card={card}
-              index={index}
-              totalCards={teamImages.length}
-              scrollYProgress={scrollYProgress}
-              isDesktop={isDesktop}
-            />
-          ))}
+          {isDesktop !== null &&
+            teamImages.map((card, index) => (
+              <ScrollAnimatedCard
+                key={card.id}
+                card={card}
+                index={index}
+                totalCards={teamImages.length}
+                scrollYProgress={scrollYProgress}
+                // Now, inside this block, TypeScript knows `isDesktop` is a boolean.
+                isDesktop={isDesktop}
+              />
+            ))}
         </div>
         <motion.div
           className={styles.contentWrapper}
