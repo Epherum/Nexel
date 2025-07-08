@@ -38,8 +38,6 @@ const heroHeadlineLine1 = "Not just an organizer";
 const heroHeadlineLine2Start = "a creator of";
 const heroHeadlineHighlight = "lasting experiences.";
 
-// --- START: Added data for the new sections ---
-// This object provides the content for the sections imported from the branding project.
 const projectData = {
   services: {
     title: "Services Page",
@@ -53,12 +51,11 @@ const projectData = {
       "/static/evense/2.png",
       "/static/evense/3.png",
       "/static/evense/4.png",
-    ], // Using existing image paths as placeholders
+    ],
     text: "Our design approach extended to practical applications, including merchandise and stationery, to ensure the brand's versatility and consistency across all mediums.",
   },
-  fullWidthImage: "/static/evense/full-width.png", // Using an existing image path as a placeholder
+  fullWidthImage: "/static/evense/full-width.png",
 };
-// --- END: Added data for the new sections ---
 
 export default function Page() {
   return (
@@ -92,22 +89,28 @@ export default function Page() {
       </header>
 
       <main>
-        <section className={styles.first}>
-          <div>
-            <div className={styles.image}>
-              <Image src={evense1} alt="Evense platform screenshot" priority />
-              <div className={styles.logo}>
-                <Image
-                  src="/static/evense/evense-logo.svg"
-                  alt="Evense Logo"
-                  width={120}
-                  height={35}
-                />
-              </div>
+        {/* FIX: Renamed className from .first to .heroImageSection for clarity */}
+        <section className={styles.heroImageSection}>
+          <div className={styles.imageContainer}>
+            <Image
+              src={evense1}
+              alt="Evense platform screenshot"
+              fill
+              style={{ objectFit: "cover" }}
+              priority
+            />
+            <div className={styles.logo}>
+              <Image
+                src="/static/evense/evense-logo.svg"
+                alt="Evense Logo"
+                width={120}
+                height={35}
+              />
             </div>
           </div>
-          <div className={styles.firstColor} />
+          <div className={styles.heroImageSectionColorBg} />
         </section>
+
         <section className={styles.introduction}>
           <div className={styles.container}>
             <div className={styles.imageLeft}>
@@ -135,11 +138,11 @@ export default function Page() {
             </div>
             <div className={styles.contentRight}>
               <p>
-                The logo design was crafted with a deliberate focus on achieving
-                a balance between minimalism and professionalism, while infusing
-                a modern sensibility. Emphasizing simplicity and sophistication,
-                each element was carefully selected and refined to convey the
-                brand's identity succinctly.
+                The goal was to highlight their wide range of services while
+                providing a seamless user experience. To attract attention, we
+                incorporated a dynamic, high-quality video on the homepage that
+                showcases their services in action, helping visitors immediately
+                connect with the brand.
               </p>
               <div className={styles.image}>
                 <Image src={evensePhone} alt="Evense app on a phone" />
@@ -147,6 +150,9 @@ export default function Page() {
             </div>
           </div>
         </section>
+
+        {/* ... The rest of the page remains the same ... */}
+
         <section className={styles.designProcess}>
           <div className={styles.container}>
             <div className={styles.textLeft}>
@@ -288,22 +294,22 @@ export default function Page() {
             className={styles.pink}
             src="/static/evense/evense-pink.svg"
             alt="Decorative pink shape"
-            width={150}
-            height={150}
+            width={70}
+            height={70}
           />
           <Image
             className={styles.yellow}
             src="/static/evense/evense-yellow.svg"
             alt="Decorative yellow shape"
-            width={150}
-            height={150}
+            width={70}
+            height={70}
           />
           <Image
             className={styles.blue}
             src="/static/evense/evense-blue.svg"
             alt="Decorative blue shape"
-            width={150}
-            height={150}
+            width={70}
+            height={70}
           />
         </section>
         <section className={styles.userFlow}>
@@ -315,7 +321,6 @@ export default function Page() {
           </div>
         </section>
 
-        {/* --- START: Added sections from Branding project --- */}
         <div className={styles.newSectionsWrapper}>
           <section className={styles.underImageTextGridSection}>
             <div>
@@ -356,7 +361,6 @@ export default function Page() {
             style={{ objectFit: "cover" }}
           />
         </section>
-        {/* --- END: Added sections from Branding project --- */}
       </main>
 
       <Footer />

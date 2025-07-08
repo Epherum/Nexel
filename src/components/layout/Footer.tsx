@@ -13,19 +13,13 @@ const Footer = () => {
 
   let wrapperThemeClass = "";
 
-  // Check if the current URL path is for a branding or social project
-  if (
-    pathname.startsWith("/projects/branding/") ||
-    pathname.startsWith("/projects/social/")
-  ) {
-    // If it is, we'll use the class that makes the wrapper white.
-    // Based on your old CSS, let's create a clear new class or reuse an old one.
-    // Let's call it wrapperThemeWhite for clarity.
-    wrapperThemeClass = styles.wrapperThemeWhite;
+  if (pathname.startsWith("/projects/branding")) {
+    // When on a branding page, use the white background theme.
+    wrapperThemeClass = styles.wrapperThemeBranding;
+  } else if (pathname.startsWith("/projects/social")) {
+    // When on a social page, use the social media background theme.
+    wrapperThemeClass = styles.wrapperThemeSocials;
   }
-
-  // NOTE: Your old logic for '.containerThemeLight' on the /projects page
-  // can be added back here if needed, but this solves the current request.
 
   return (
     <footer className={`${styles.footerWrapper} ${wrapperThemeClass}`}>

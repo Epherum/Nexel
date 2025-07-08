@@ -29,7 +29,7 @@ const imagePattern: ("small" | "large")[] = [
 ];
 
 const images = imagePattern.map((type, i) => ({
-  src: `/static/nexel/hero/${i + 1}.png`,
+  src: `/static/nexel/hero/${i + 1}.webp`,
   type: type,
 }));
 

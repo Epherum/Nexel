@@ -172,7 +172,7 @@ export const socialMediaProjectsData: SocialMediaProject[] = [
     hero: {
       image: laboHero,
       titleLine1: "Social Media For:",
-      titleLine2: "Laboratoire tresors naturels",
+      titleLine2: "Tresors naturels",
       year: "2021",
     },
     showcases: [
@@ -342,7 +342,7 @@ export const socialMediaProjectsData: SocialMediaProject[] = [
     hero: {
       image: mestiriHero,
       titleLine1: "Social Media For:",
-      titleLine2: "Mestiri",
+      titleLine2: "Mestiri Home",
       year: "2022",
     },
     showcases: [
@@ -574,7 +574,7 @@ export const socialMediaProjectsData: SocialMediaProject[] = [
     hero: {
       image: digitalHero,
       titleLine1: "Social Media For:",
-      titleLine2: "Digital",
+      titleLine2: "Digital Lifestyle",
       year: "2023",
     },
     showcases: [
@@ -690,7 +690,7 @@ export const socialMediaProjectsData: SocialMediaProject[] = [
     hero: {
       image: amazoneHero,
       titleLine1: "Social Media For:",
-      titleLine2: "Amazone",
+      titleLine2: "Amazone Colours",
       year: "2022",
     },
     showcases: [

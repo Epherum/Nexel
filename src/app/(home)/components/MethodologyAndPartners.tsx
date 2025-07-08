@@ -3,6 +3,7 @@
 import React from "react";
 import Image from "next/image";
 import styles from "./MethodologyAndPartners.module.css"; // CHANGED
+import HoverableDraggable from "@/components/HoverableDraggable"; // CHANGED
 
 // --- Animation & Helper Imports ---
 import { motion, useInView, Variants } from "framer-motion";
@@ -49,7 +50,7 @@ const methodologySteps = [
     title: "Launch & Optimization",
     description:
       "Delivering final assets, launching the project, and ensuring all platforms are aligned. We also provide support, performance insights, and room for iteration.",
-    color: "blue",
+    color: "orange",
   },
 ];
 
@@ -145,19 +146,21 @@ const MethodologyAndPartners = ({ logoPaths }: MethodologyAndPartnersProps) => {
           </motion.h2>
 
           {isDesktop ? (
-            <Swiper
-              spaceBetween={20}
-              slidesPerView={3.5}
-              slidesOffsetBefore={48} // Corresponds to 3rem desktop padding
-              slidesOffsetAfter={48} // Corresponds to 3rem desktop padding
-              className={styles.methodologySwiper}
-            >
-              {methodologySteps.map((item, index) => (
-                <SwiperSlide key={item.step} className={styles.slide}>
-                  <MethodologyCard item={item} index={index} />
-                </SwiperSlide>
-              ))}
-            </Swiper>
+            <HoverableDraggable>
+              <Swiper
+                spaceBetween={20}
+                slidesPerView={3.5}
+                slidesOffsetBefore={48} // Corresponds to 3rem desktop padding
+                slidesOffsetAfter={48} // Corresponds to 3rem desktop padding
+                className={styles.methodologySwiper}
+              >
+                {methodologySteps.map((item, index) => (
+                  <SwiperSlide key={item.step} className={styles.slide}>
+                    <MethodologyCard item={item} index={index} />
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </HoverableDraggable>
           ) : (
             <div className={styles.methodologyGrid}>
               {methodologySteps.map((item, index) => (
@@ -174,8 +177,9 @@ const MethodologyAndPartners = ({ logoPaths }: MethodologyAndPartnersProps) => {
           initial="hidden"
           animate={arePartnersInView ? "visible" : "hidden"}
         >
+          {/* 1. Add the new class directly to the h2 */}
           <motion.h2
-            className={`${styles.sectionTitle} ${styles.borderBottom}`}
+            className={`${styles.sectionTitle} ${styles.titleWithSeparator}`}
             variants={wordRevealContainer}
           >
             {"Partners and friends".split(" ").map((word, index) => (
@@ -185,6 +189,7 @@ const MethodologyAndPartners = ({ logoPaths }: MethodologyAndPartnersProps) => {
               </AnimatedWord>
             ))}
           </motion.h2>
+
           <motion.div
             className={styles.partnersGrid}
             variants={partnersContainerVariants}
@@ -207,7 +212,6 @@ const MethodologyAndPartners = ({ logoPaths }: MethodologyAndPartnersProps) => {
             ))}
           </motion.div>
         </motion.div>
-        {/* === END OF CORRECTION === */}
       </div>
     </section>
   );

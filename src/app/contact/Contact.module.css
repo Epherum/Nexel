@@ -1,30 +1,41 @@
 /* src/app/contact/Contact.module.css */
 
 /* --- Mobile styles --- */
+/* --- Mobile styles --- */
 .headlineSection {
   text-align: center;
   padding: 6rem 0.5rem 4rem;
 }
 .headline {
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-3xl);
   font-weight: 300;
   letter-spacing: -2px;
-  line-height: 1.1;
+  line-height: 1.3; /* Added a bit more line height for wrapped text */
   color: var(--primary-text);
 }
 
-/* --- FIX START --- */
-/* This targets the wrapper of each AnimatedWord */
-.headline > span {
-  display: block; /* Keeps words on separate lines for mobile */
-  overflow: hidden; /* ADDED: This is the key to hiding the animation */
+/* 
+  HERE IS THE FIX:
+  Changed display from 'block' to 'inline-block'.
+  This allows the words to flow next to each other and wrap naturally.
+*/
+.wordWrapper {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  margin-right: 0.2em; /* Adds a small, consistent space between words */
+  margin-bottom: 0.2em; /* Adds vertical space when lines wrap */
 }
-/* --- FIX END --- */
 
+.word {
+  display: inline-block;
+}
+
+/* The highlight is now on the inner .word element, so it animates in */
 .headline .highlight {
   background-color: var(--accent-color);
   color: var(--dark-bg);
-  padding: 0em 0.2em;
+  padding: 0.1em 0.3em; /* Adjusted padding for a better look */
   border-radius: 12px;
   font-weight: 500;
 }
@@ -37,9 +48,9 @@
 }
 .achievementsGrid {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  gap: 1.5rem 1.5rem;
-  padding-bottom: 1rem;
+  grid-template-columns: 1fr; /* Stays as a stack on mobile */
+  gap: 1.5rem;
+  padding-bottom: 2rem;
   border-bottom: 1px solid var(--social-media-bg2);
 }
 .label {
@@ -54,16 +65,19 @@
 }
 .introSection {
   position: relative;
-  padding: 2rem 0;
+  padding: 1rem 0;
 }
+
+/* FIX: Hide the intro text on mobile devices */
 .introText {
-  font-size: var(--font-size-lg);
-  line-height: 1.4;
-  padding-right: 7rem;
+  display: none;
 }
+
 .floatingCircle {
   display: none;
 }
+
+/* ...rest of the mobile styles for the form are unchanged... */
 .contactForm {
   display: flex;
   flex-direction: column;
@@ -165,29 +179,50 @@
 /* --- Desktop Overrides --- */
 /* ======================================= */
 @media (min-width: 1024px) {
+  .headlineSection {
+    padding-top: 8rem; /* More space on top */
+  }
+
   .headline {
     font-size: var(--font-size-5xl);
     font-weight: 300;
-    width: 90%;
     margin: 2rem auto;
+    text-align: center; /* Ensures it's centered */
   }
 
-  /* --- FIX START --- */
-  .headline > span {
-    display: inline-block; /* CHANGED: from 'inline' to allow vertical overflow to be hidden */
-    vertical-align: top; /* ADDED: ensures words align correctly on the same line */
-    padding: 0 0.2em;
-    /* overflow: hidden is inherited from the mobile style */
+  /* On desktop, words are inline */
+  .wordWrapper {
+    display: inline-block;
+    margin-right: 0.25em;
   }
-  /* --- FIX END --- */
 
   .contentWrapper {
     padding: 4rem;
     margin: 0 1rem;
   }
+
+  /* FIX: Changed from grid to flexbox to space items apart */
   .achievementsGrid {
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
+
+  .achievementItem:last-child {
+    text-align: right; /* Aligns the "Drop us a line" text to the right */
+  }
+
+  .introSection {
+    padding: 2rem 0;
+  }
+  /* FIX: Show the intro text again on desktop */
+  .introText {
+    display: block;
+    font-size: var(--font-size-lg);
+    line-height: 1.4;
+    padding-right: 180px; /* Make space for the circle */
+  }
+
   .floatingCircle {
     position: absolute;
     display: flex;
@@ -205,27 +240,24 @@
     font-size: var(--font-size-xs);
   }
 
+  /* ...rest of the desktop form styles are unchanged... */
   .contactForm {
     gap: 5rem;
   }
-
   .formGroup {
     display: grid;
     grid-template-columns: 250px 1fr;
     gap: 0 13rem;
     align-items: start;
   }
-
   .legend {
     margin-bottom: 0;
   }
-
   .optionsContainer,
   .inputsContainer,
   .submitButton {
     grid-column: 2 / 3;
   }
-
   .submitButton {
     justify-self: end;
     width: auto;

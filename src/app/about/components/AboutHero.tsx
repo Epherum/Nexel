@@ -1,86 +1,103 @@
-//src/app/about/components/AboutHero.tsx
 "use client";
 
 import React, { useRef } from "react";
 import styles from "./AboutHero.module.css";
 import { motion, useScroll, Variants } from "framer-motion";
+// FIXED: Removed the { CardData } named import
 import ScrollAnimatedCard from "./ScrollAnimatedCard";
 import AnimatedWord from "@/components/animation/AnimatedWord";
 import { easings } from "@/utils/easings";
-import { useMediaQuery } from "@/utils/useMediaQuery"; // <-- Import the custom hook
+import { useMediaQuery } from "@/utils/useMediaQuery";
 
-// --- DATA ---
-const teamImages = [
+// ADDED: Define the type for our card data here
+interface CardData {
+  id: number;
+  src: string;
+  alt: string;
+  zIndex: { mobile: number; desktop: number }; // <-- This is now an object
+
+  initialRotate: { mobile: number; desktop: number };
+  finalRotate: { mobile: number; desktop: number };
+  positions: {
+    mobile: React.CSSProperties;
+    desktop: React.CSSProperties;
+  };
+}
+
+// --- UPDATED DATA STRUCTURE ---
+// This array now correctly matches the CardData type we just defined
+const teamImages: CardData[] = [
   {
     id: 1,
     src: "/static/nexel/about/team-1.png",
     alt: "A woman with dark hair and white glasses, wearing a light-colored jacket.",
-    initialRotate: -30,
-    finalRotate: -16,
-    zIndex: 5,
+    initialRotate: { mobile: -30, desktop: -15 },
+    finalRotate: { mobile: 16, desktop: -8 },
+    zIndex: { mobile: 5, desktop: 5 }, // <-- Updated
+
     positions: {
-      mobile: { top: "15%", left: "2%" },
-      desktop: { top: "10%", left: "5%" }, // Your desktop values here
+      mobile: { top: "15%", left: "-12%" },
+      desktop: { top: "10%", left: "5%" },
     },
   },
   {
     id: 2,
     src: "/static/nexel/about/team-2.png",
     alt: "A man with glasses and a thoughtful expression.",
-    initialRotate: -45,
-    finalRotate: -29,
-    zIndex: 4,
+    initialRotate: { mobile: -45, desktop: -20 },
+    finalRotate: { mobile: -11, desktop: -12 },
+    zIndex: { mobile: 1, desktop: 4 }, // <-- Updated
     positions: {
-      mobile: { top: "40%", left: "4%" },
-      desktop: { top: "45%", left: "8%" }, // Your desktop values here
+      mobile: { top: "10%", left: "30%" },
+      desktop: { top: "45%", left: "8%" },
     },
   },
   {
     id: 3,
     src: "/static/nexel/about/team-3.png",
     alt: "A selfie of a smiling man with sunglasses and a woman with glasses.",
-    initialRotate: 40,
-    finalRotate: 15,
-    zIndex: 3,
+    initialRotate: { mobile: 40, desktop: 18 },
+    finalRotate: { mobile: -15, desktop: 9 },
+    zIndex: { mobile: 4, desktop: 3 }, // <-- Updated
     positions: {
-      mobile: { top: "22%", left: "23%" },
-      desktop: { top: "20%", left: "28%" }, // Your desktop values here
+      mobile: { top: "18%", right: "-5%" },
+      desktop: { top: "20%", left: "28%" },
     },
   },
   {
     id: 4,
     src: "/static/nexel/about/team-4.png",
     alt: "Two glasses of matcha latte on a wooden bench.",
-    initialRotate: -35,
-    finalRotate: -12,
-    zIndex: 2,
+    initialRotate: { mobile: -35, desktop: -12 },
+    finalRotate: { mobile: -20, desktop: -4 },
+    zIndex: { mobile: 6, desktop: 2 }, // <-- Updated
     positions: {
-      mobile: { top: "42%", left: "50%" },
-      desktop: { top: "45%", left: "42%" }, // Your desktop values here
+      mobile: { top: "40%", left: "-10%" },
+      desktop: { top: "45%", left: "42%" },
     },
   },
   {
     id: 5,
     src: "/static/nexel/about/team-6.png",
     alt: "A man with curly hair and glasses, wearing headphones.",
-    initialRotate: 45,
-    finalRotate: 20,
-    zIndex: 1,
+    initialRotate: { mobile: 45, desktop: 22 },
+    finalRotate: { mobile: -30, desktop: 11 },
+    zIndex: { mobile: 3, desktop: 1 }, // <-- Updated
     positions: {
-      mobile: { top: "15%", right: "3%" },
-      desktop: { top: "3%", right: "4%" }, // Your desktop values here
+      mobile: { top: "40%", right: "-5%" },
+      desktop: { top: "3%", right: "4%" },
     },
   },
   {
     id: 6,
     src: "/static/nexel/about/team-5.png",
     alt: "A man wearing a light-colored cap, looking to his side.",
-    initialRotate: 50,
-    finalRotate: -28,
-    zIndex: 6,
+    initialRotate: { mobile: 50, desktop: 30 },
+    finalRotate: { mobile: 20, desktop: -15 },
+    zIndex: { mobile: 2, desktop: 6 }, // <-- Updated
     positions: {
-      mobile: { top: "55%", right: "27%" },
-      desktop: { top: "50%", right: "10%" }, // Your desktop values here
+      mobile: { top: "30%", right: "25%" },
+      desktop: { top: "50%", right: "10%" },
     },
   },
 ];
@@ -107,7 +124,7 @@ const wordVariants: Variants = {
 
 const AboutHero = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
-  const isDesktop = useMediaQuery("(min-width: 768px)"); // <-- USE THE HOOK
+  const isDesktop = useMediaQuery("(min-width: 768px)");
 
   const { scrollYProgress } = useScroll({
     target: scrollContainerRef,
@@ -125,7 +142,7 @@ const AboutHero = () => {
               index={index}
               totalCards={teamImages.length}
               scrollYProgress={scrollYProgress}
-              isDesktop={isDesktop} // <-- PASS THE VALUE AS A PROP
+              isDesktop={isDesktop}
             />
           ))}
         </div>
@@ -159,6 +176,15 @@ const AboutHero = () => {
           <h1 className={styles.headline}>
             <AnimatedWord variants={wordVariants}>Inspiring</AnimatedWord>
           </h1>
+        </motion.div>
+
+        <motion.div
+          className={styles.scrollIndicator}
+          variants={textContainerVariants}
+          initial="hidden"
+          animate="visible"
+        >
+          <AnimatedWord variants={wordVariants}>Scroll down</AnimatedWord>
         </motion.div>
 
         <motion.div

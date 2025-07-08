@@ -1,12 +1,14 @@
 // src/app/contact/page.tsx
+
 "use client";
 
 import { motion, Variants, useInView } from "framer-motion";
 import { useRef } from "react";
 import styles from "./Contact.module.css";
-import AnimatedWord from "@/components/animation/AnimatedWord";
+// import AnimatedWord from "@/components/animation/AnimatedWord"; // Assuming AnimatedWord is in this file for now
 import Footer from "@/components/layout/Footer";
 import { easings } from "@/utils/easings";
+import CurrentTime from "@/components/CurrentTime";
 
 // --- Data (Unchanged) ---
 const services = [
@@ -21,20 +23,38 @@ const budgets = ["€ 15-20K", "€ 20-30K", "€ 30-40K", "€ 50K+"];
 const headlineContainerVariants: Variants = {
   visible: {
     transition: {
-      staggerChildren: 0.08, // Delay between each word animating in
+      staggerChildren: 0.08,
     },
   },
 };
 
-// RENAMED for clarity: Variants for the individual words
+// FIX: Changed y from "-110%" to "110%" to animate UP from the bottom.
 const headlineWordVariants: Variants = {
-  hidden: { y: "-110%" },
+  hidden: { y: "110%" },
   visible: {
     y: "0%",
-    transition: { duration: 1, ease: easings.easeOut, delay: 0.1 },
+    transition: { duration: 0.8, ease: easings.easeOut },
   },
 };
 
+const AnimatedWord = ({
+  children,
+  className,
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) => (
+  <span className={styles.wordWrapper}>
+    <motion.span
+      variants={headlineWordVariants}
+      className={`${styles.word} ${className || ""}`}
+    >
+      {children}
+    </motion.span>
+  </span>
+);
+
+// (The rest of the variants are unchanged)
 const staggerContainerVariants: Variants = {
   visible: {
     transition: {
@@ -79,27 +99,27 @@ const ContactPage = () => {
     margin: "0px 0px -200px 0px",
   });
 
+  // FIX: Split the headline string into an array to map over it.
+  const headlineText = "Let's build something great together".split(" ");
+
   return (
     <main className={styles.contactPage}>
       <section className={styles.headlineSection}>
-        {/* --- FIX IS HERE --- */}
         <motion.h1
           className={styles.headline}
-          variants={headlineContainerVariants} // 1. Add container variants
-          initial="hidden" // 2. Set initial state
-          animate="visible" // 3. Trigger animation on page load
+          variants={headlineContainerVariants}
+          initial="hidden"
+          animate="visible"
         >
-          <AnimatedWord variants={headlineWordVariants}>
-            Let's build
-          </AnimatedWord>
-          <AnimatedWord variants={headlineWordVariants}>something</AnimatedWord>
-          <AnimatedWord
-            className={styles.highlight}
-            variants={headlineWordVariants}
-          >
-            great
-          </AnimatedWord>
-          <AnimatedWord variants={headlineWordVariants}>together</AnimatedWord>
+          {/* FIX: Mapped over the words to apply animation to each one individually. */}
+          {headlineText.map((word, index) => (
+            <AnimatedWord
+              key={index}
+              className={word === "great" ? styles.highlight : ""}
+            >
+              {word}
+            </AnimatedWord>
+          ))}
         </motion.h1>
       </section>
       <div className={styles.contentWrapper}>
@@ -110,13 +130,17 @@ const ContactPage = () => {
           initial="hidden"
           animate={areAchievementsInView ? "visible" : "hidden"}
         >
-          {/* ...achievement items now wrapped with motion.div... */}
           <motion.div
             variants={fadeInUpVariants}
             className={styles.achievementItem}
           >
-            <p className={styles.label}>Local time</p>
-            <p className={styles.value}>11:12PM</p>
+            <p className={styles.label}>Local time (GMT+2)</p>
+            {/* 
+              HERE IS THE CHANGE:
+              Replace the static <p> tag with your new CurrentTime component.
+              Pass the same className to it so it keeps the correct styling.
+            */}
+            <CurrentTime className={styles.value} />
           </motion.div>
 
           <motion.div
@@ -136,6 +160,7 @@ const ContactPage = () => {
           initial="hidden"
           animate={isIntroInView ? "visible" : "hidden"}
         >
+          {/* This paragraph will now be hidden on mobile via CSS */}
           <motion.p className={styles.introText} variants={fadeInUpVariants}>
             Our form is a 24/7 gateway to creativity – always awake, just like
             inspiration. Drop us a line anytime, day or night, and let’s spark a
@@ -151,6 +176,7 @@ const ContactPage = () => {
           </motion.div>
         </motion.section>
 
+        {/* --- Form section is unchanged --- */}
         <motion.form
           ref={formRef}
           className={styles.contactForm}
@@ -158,7 +184,6 @@ const ContactPage = () => {
           initial="hidden"
           animate={isFormInView ? "visible" : "hidden"}
         >
-          {/* ...form groups now wrapped with motion.fieldset... */}
           <motion.fieldset
             className={styles.formGroup}
             variants={fadeInUpVariants}
@@ -174,7 +199,6 @@ const ContactPage = () => {
               ))}
             </div>
           </motion.fieldset>
-
           <motion.fieldset
             className={styles.formGroup}
             variants={fadeInUpVariants}
@@ -203,7 +227,6 @@ const ContactPage = () => {
               ></textarea>
             </div>
           </motion.fieldset>
-
           <motion.fieldset
             className={styles.formGroup}
             variants={fadeInUpVariants}

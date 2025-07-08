@@ -10,19 +10,18 @@ interface ScrollAnimatedCardProps {
     id: number;
     src: string;
     alt: string;
-    // UPDATED: Define the positions object shape
     positions: {
       mobile: React.CSSProperties;
       desktop: React.CSSProperties;
     };
-    initialRotate: number;
-    finalRotate: number;
-    zIndex: number;
+    initialRotate: { mobile: number; desktop: number };
+    finalRotate: { mobile: number; desktop: number };
+    zIndex: { mobile: number; desktop: number }; // <-- UPDATED PROP TYPE
   };
   index: number;
   totalCards: number;
   scrollYProgress: MotionValue<number>;
-  isDesktop: boolean; // <-- ADD THE NEW PROP
+  isDesktop: boolean;
 }
 
 const ScrollAnimatedCard: React.FC<ScrollAnimatedCardProps> = ({
@@ -30,13 +29,21 @@ const ScrollAnimatedCard: React.FC<ScrollAnimatedCardProps> = ({
   index,
   totalCards,
   scrollYProgress,
-  isDesktop, // <-- RECEIVE THE PROP
+  isDesktop,
 }) => {
-  // Select the correct position styles based on the isDesktop prop
+  // Select the correct values based on the isDesktop prop
   const currentPosition = isDesktop
     ? card.positions.desktop
     : card.positions.mobile;
+  const currentInitialRotate = isDesktop
+    ? card.initialRotate.desktop
+    : card.initialRotate.mobile;
+  const currentFinalRotate = isDesktop
+    ? card.finalRotate.desktop
+    : card.finalRotate.mobile;
+  const currentZIndex = isDesktop ? card.zIndex.desktop : card.zIndex.mobile; // <-- ADDED for zIndex
 
+  // Staggered animation timeline logic (remains the same)
   const animationTimelineEnd = 0.9;
   const animationDuration = 0.5;
   const staggerRange = animationTimelineEnd - animationDuration;
@@ -67,19 +74,18 @@ const ScrollAnimatedCard: React.FC<ScrollAnimatedCardProps> = ({
   const rotate = useTransform(
     scrollYProgress,
     [animationStart, animationEnd],
-    [card.initialRotate, card.finalRotate],
+    [currentInitialRotate, currentFinalRotate],
     { clamp: true, ease: customEase }
   );
 
   return (
     <motion.div
-      // UPDATED: Spread the selected currentPosition object
       style={{
         ...currentPosition,
         y,
         scale,
         rotate,
-        zIndex: card.zIndex,
+        zIndex: currentZIndex, // <-- USE THE DYNAMIC zIndex
       }}
       className={styles.card}
     >

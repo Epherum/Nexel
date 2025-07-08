@@ -2,11 +2,25 @@
 
 .footerWrapper {
   padding: 0.5rem;
-  background-color: var(--dark-bg);
+  background-color: var(--dark-bg); /* This is the default background */
   transition: background-color 0.3s ease-in-out;
 }
-.footerWrapper.wrapperThemeWhite {
-  background-color: var(--primary-text);
+
+/* 
+  NEW THEME CLASSES 
+  These override the default background-color of the wrapper.
+*/
+
+/* 1. Theme for /projects/branding pages */
+.wrapperThemeBranding {
+  background-color: var(--primary-text); /* This is your white color */
+  margin-top: -0.1rem;
+}
+
+/* 2. Theme for /projects/social pages */
+.wrapperThemeSocials {
+  background-color: var(--social-media-bg1); /* The social media color */
+  margin-top: -0.1rem;
 }
 
 .footerContainer {

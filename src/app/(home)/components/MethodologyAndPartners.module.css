@@ -82,20 +82,50 @@
   display: none;
 }
 
-/* --- Partners Section --- */
-.borderBottom {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  padding-bottom: 0.5rem;
+.titleWithSeparator {
+  position: relative;
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
 }
+
+/* 
+  THIS IS THE FIX:
+  We explicitly set 'left' and 'right' to match the padding of .sectionTitle
+*/
+.titleWithSeparator::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+
+  /* For mobile, match the 1rem padding from .sectionTitle */
+  left: 1rem;
+  right: 1rem;
+
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.sectionTitle {
+  font-weight: 500;
+  /* margin-bottom: 1.5rem;  <-- This line should be commented or removed */
+  color: var(--dark-bg);
+  letter-spacing: -1px;
+  line-height: 1.2;
+  padding: 0rem 1rem 1rem; /* THIS is the padding we are matching */
+  font-size: var(--font-size-2xl);
+}
+
+.methodologyContainer .sectionTitle {
+  margin-bottom: 1.5rem;
+}
+
 .partnersGrid {
   display: grid;
-  grid-template-columns: repeat(
-    auto-fill,
-    minmax(100px, 1fr)
-  ); /* Smaller min for mobile */
-  gap: 3rem 1.5rem; /* Tighter gap */
-  padding: 0.5rem 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 3rem 1.5rem;
+  padding: 0 1rem;
 }
+
 .logoWrapper {
   display: flex;
   justify-content: center;
@@ -143,10 +173,28 @@
     min-height: 450px; /* Restore original desktop min-height */
     flex-grow: 1; /* This makes the card stretch to fill its parent slide */
   }
+  .sectionTitle {
+    /* On desktop, the padding changes to 3rem */
+    padding: 0 3rem;
+    font-size: var(--font-size-3xl);
+  }
+
+  .titleWithSeparator {
+    padding-bottom: 1.2rem;
+    margin-bottom: 2rem;
+  }
+
+  /*
+    AND WE MUST UPDATE THE PSEUDO-ELEMENT TO MATCH THE NEW PADDING
+  */
+  .titleWithSeparator::after {
+    left: 3rem;
+    right: 3rem;
+  }
 
   .partnersGrid {
     grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
     gap: 3rem 2rem;
-    padding: 2rem 3rem;
+    padding: 0 3rem;
   }
 }

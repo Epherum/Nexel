@@ -1,5 +1,3 @@
-/* src/app/about/components/AboutHero.module.css */
-
 .scrollWrapper {
   height: 350vh;
   position: relative;
@@ -16,7 +14,7 @@
   align-items: center;
   position: sticky;
   top: 0;
-  padding: 3rem 2rem 6rem 2rem;
+  padding: 0rem 2rem 6rem 2rem;
   overflow: hidden; /* ADDED: This prevents horizontal scrollbars */
 }
 
@@ -65,23 +63,36 @@
   transform: scale(1.05);
 }
 
+.scrollIndicator {
+  position: absolute;
+  bottom: 20vh; /* Positioned relative to the viewport height */
+  right: 0.5rem;
+  color: var(--secondary-text);
+  font-size: var(--font-size-xs);
+  z-index: 5;
+  font-weight: 300;
+}
+
 .bottomBar {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 1rem 2rem;
+  padding: 1rem 0.5rem;
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+  justify-content: space-between;
   align-items: flex-start;
+  gap: 2rem;
   color: var(--secondary-text);
   font-size: var(--font-size-xs);
+  font-weight: 300;
   z-index: 5;
 }
 
 .bottomBar .tagline {
   color: var(--primary-text);
+  text-align: right; /* Ensures wrapped text aligns to the right */
+  font-weight: 300;
 }
 
 .cardsContainer {
@@ -141,7 +152,12 @@
 @media (min-width: 768px) {
   /* Revert hero section padding */
   .heroSection {
-    padding: 10rem 4rem 8rem 4rem;
+    height: 135vh;
+    padding: 10rem 4rem 15rem 4rem; /* Changed 8rem to 15rem. Adjust as needed. */
+  }
+
+  .scrollIndicator {
+    right: 4rem; /* Match desktop padding */
   }
 
   /* Revert headline font size */
@@ -155,13 +171,16 @@
     font-size: var(--font-size-lg); /* Revert font size */
   }
 
+  .scrollIndicator {
+    bottom: 40vh; /* Positioned relative to the viewport height */
+  }
+
   /* Revert bottom bar layout and padding */
   .bottomBar {
-    padding: 1rem 4rem;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    align-items: center; /* Vertically center items on desktop */
     gap: 0;
+    bottom: -1rem;
+    padding: 1rem 4rem;
   }
 
   /* Revert card sizes back to the original desktop values */

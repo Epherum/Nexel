@@ -3,28 +3,32 @@
 import React, { useState, useEffect, useContext } from "react";
 import { motion } from "framer-motion";
 import styles from "./Cursor.module.css";
-import { CursorContext } from "@/components/cursor/CursorContext"; // Corrected path assuming context is in the same folder
+import { CursorContext } from "@/components/cursor/CursorContext";
 import { easings } from "@/utils/easings";
+import { FiArrowUpRight, FiArrowLeft, FiArrowRight } from "react-icons/fi";
 
-// Define the size of the cursor circle for centering
 const CURSOR_SIZE = 20;
 
 const Cursor = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const { isHoveringLink } = useContext(CursorContext);
+  const {
+    isHoveringLink,
+    isHoveringDraggable,
+    isCursorVisible,
+    mouseDetected,
+  } = useContext(CursorContext);
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
-      setMousePosition({
-        x: event.clientX,
-        y: event.clientY,
-      });
+      setMousePosition({ x: event.clientX, y: event.clientY });
     };
     window.addEventListener("mousemove", handleMouseMove);
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
+    return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
+
+  if (!mouseDetected) {
+    return null;
+  }
 
   const cursorVariants = {
     default: {
@@ -37,43 +41,69 @@ const Cursor = () => {
       height: 80,
       width: 80,
       backgroundColor: "#fff",
-      mixBlendMode: "difference",
+      mixBlendMode: "normal",
     },
+    dragHover: {
+      height: 90,
+      width: 90,
+      backgroundColor: "#fff",
+      mixBlendMode: "normal",
+    },
+  };
+
+  const currentState = isHoveringDraggable
+    ? "dragHover"
+    : isHoveringLink
+    ? "linkHover"
+    : "default";
+
+  const currentSize = cursorVariants[currentState].height;
+
+  // Combine variant properties with positioning
+  const animateProps = {
+    ...cursorVariants[currentState],
+    x: mousePosition.x - currentSize / 2,
+    y: mousePosition.y - currentSize / 2,
+    scale: isCursorVisible ? 1 : 0,
   };
 
   return (
     <motion.div
       className={styles.cursor}
-      // 1. Use variants to control the hover state (size, color, etc.)
-      variants={cursorVariants}
-      // 2. Animate between variants AND also animate the x/y position here.
-      animate={{
-        ...(isHoveringLink ? cursorVariants.linkHover : cursorVariants.default),
-        x: mousePosition.x - (isHoveringLink ? 80 : CURSOR_SIZE) / 2, // Center based on current size
-        y: mousePosition.y - (isHoveringLink ? 80 : CURSOR_SIZE) / 2, // Center based on current size
-      }}
-      // 3. This transition now applies to x, y, width, height, and backgroundColor
+      // Animate all properties, including x and y
+      animate={animateProps}
+      // --- START: Corrected Transition Logic ---
       transition={{
+        // Default transition for all properties (x, y, width, height, etc.)
         type: "tween",
-        ease: easings.gentleEaseOut, // Your custom easing
+        ease: easings.gentleEaseOut,
         duration: 0.5,
+
+        // Override for the 'scale' property to make it faster
+        scale: {
+          type: "spring",
+          stiffness: 400,
+          damping: 30,
+          duration: 0.2, // Spring duration is approximate
+        },
       }}
+      // --- END: Corrected Transition Logic ---
     >
-      <motion.span
-        className={styles.cursorText}
-        animate={{
-          opacity: isHoveringLink ? 1 : 0,
-          scale: isHoveringLink ? 1 : 0,
-        }}
-        // Give the text its own, faster transition
-        transition={{
-          type: "tween",
-          ease: "easeOut",
-          duration: 0.2,
-        }}
+      <motion.div
+        animate={{ opacity: currentState !== "default" ? 1 : 0 }}
+        transition={{ duration: 0.2 }}
       >
-        Visit
-      </motion.span>
+        {currentState === "linkHover" && (
+          <span className={styles.cursorContent}>
+            Visit <FiArrowUpRight />
+          </span>
+        )}
+        {currentState === "dragHover" && (
+          <span className={styles.cursorContent}>
+            <FiArrowLeft /> Drag <FiArrowRight />
+          </span>
+        )}
+      </motion.div>
     </motion.div>
   );
 };

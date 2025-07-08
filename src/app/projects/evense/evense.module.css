@@ -5,15 +5,15 @@
 
 .hero {
   background-color: var(--dark-bg);
-  padding: 6rem 1.5rem 4rem; /* Mobile padding */
+  padding: 6rem 1rem 2rem;
   text-align: center;
 }
 
 .heroHeadline {
-  font-size: var(--font-size-4xl); /* Responsive clamp() value */
+  font-size: var(--font-size-lg);
   color: var(--primary-text);
   margin: 0 auto;
-  max-width: 25ch; /* Use ch unit for better text wrapping */
+  max-width: 25ch;
   line-height: 1.3;
   font-weight: 300;
 }
@@ -22,35 +22,32 @@
   color: var(--accent-color);
 }
 
-/* --- First Section (Mobile-First) --- */
-.first {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem 1.5rem 0; /* Mobile padding */
+/* --- Hero Image Section (Mobile-First) --- */
+.heroImageSection {
   position: relative;
-  z-index: 2;
+  z-index: 1;
+  padding: 0;
 }
 
-.first .image {
+.heroImageSection .imageContainer {
+  display: block; /* ADD THIS */
   position: relative;
-  width: 100%; /* Full width on mobile */
+  padding: 0 0.5rem;
+  aspect-ratio: 4/4; /* ADD THIS - Taller ratio for mobile */
+  overflow: hidden; /* ADD THIS - Crucial for parallax! */
 }
 
-.first .logo {
+.heroImageSection .logo {
   position: absolute;
-  top: 1.5rem;
+  top: 0.5rem;
   right: 1.5rem;
-  width: 80px; /* Smaller logo for mobile */
+  width: 80px;
+  z-index: 3;
 }
 
-.first .firstColor {
-  background-color: var(--dark-bg);
-  width: 100%;
-  position: absolute;
-  top: 70%;
-  height: 40%;
-  z-index: -1;
+/* FIX: Renamed from .firstColor and hidden on mobile */
+.heroImageSectionColorBg {
+  display: none;
 }
 
 /* --- Introduction Section (Mobile-First) --- */
@@ -58,67 +55,73 @@
   background-color: var(--dark-bg);
   position: relative;
   z-index: 2;
-  padding: 0 1rem 3rem; /* Mobile padding */
+  margin-top: -1rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 2rem 0.5rem 0rem;
 }
 
 .introduction .container {
-  padding: 2rem;
+  padding: 1.5rem 0.5rem;
   background-color: var(--primary-text);
-  border-radius: 20px;
+  border-radius: 10px;
   display: grid;
-  grid-template-columns: 1fr; /* Stacked by default */
-  gap: 2rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  align-items: center;
 }
 
 .introduction .imageLeft {
   justify-self: center;
+  border-bottom: 1px solid var(--dark-bg);
+  padding-bottom: 0.5rem;
 }
 
 .introduction .imageLeft img {
-  width: 30vw;
+  width: 100%;
+  max-width: 300px;
+  height: auto;
 }
 
 .introduction .textRight {
   color: var(--dark-bg);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-xs);
   line-height: 1.6;
 }
 
 .introduction .videoLeft video {
-  border-radius: 20px;
+  border-radius: 7px;
   width: 100%;
 }
 
 .introduction .contentRight {
-  padding: 1.5rem;
+  padding: 1.5rem 1.5rem 0;
   display: flex;
-  flex-direction: column; /* Stacked for mobile */
-  gap: 2rem;
-  border-radius: 20px;
-  background-color: #0e0e0e; /* Kept specific dark color for contrast */
+  flex-direction: column;
+  gap: 1.5rem;
+  border-radius: 10px;
+  background-color: #0e0e0e;
 }
 
 .introduction .contentRight p {
   color: var(--secondary-text);
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-xs);
   line-height: 1.6;
   width: 100%;
   text-align: left;
 }
 
 .introduction .contentRight .image {
-  position: relative; /* Changed from absolute for mobile flow */
+  position: relative;
   width: 100%;
   margin-top: 1rem;
 }
 
-/* --- Design Process Section (Mobile-First) --- */
 .designProcess {
-  padding: 4rem 1.5rem;
+  padding: 4rem 0.5rem;
   background-color: var(--dark-bg);
 }
 
-/* --- ADDED: Container for Design Process to enable flex layout --- */
 .designProcess .container {
   display: flex;
   flex-direction: column;
@@ -127,7 +130,7 @@
 
 .designProcess .textLeft h2 {
   font-weight: 500;
-  font-size: var(--font-size-4xl);
+  font-size: var(--font-size-2lg);
   color: var(--secondary-text);
 }
 
@@ -172,26 +175,24 @@
   font-weight: 300;
 }
 
-/* --- Typography Section (Mobile-First) --- */
 .typography {
-  /* --- FIX: Changed background to white and text to black --- */
   background-color: #f4f0f0;
   color: var(--dark-bg);
-  border-top-right-radius: 40px;
-  border-top-left-radius: 40px;
-  padding: 4rem 1.5rem;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  padding: 2rem 0.5rem;
   position: relative;
 }
 
 .typography .topText {
   display: flex;
-  flex-direction: column; /* Stacked for mobile */
-  gap: 2rem;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
 .typography .topText h2 {
   font-weight: 500;
-  font-size: var(--font-size-4xl);
+  font-size: var(--font-size-xl);
 }
 
 .typography .topText p {
@@ -200,19 +201,18 @@
   line-height: 1.6;
 }
 
-/* Re-imagined for mobile: a simple grid */
 .typography .colors {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  margin-top: 4rem;
+  margin-top: 3rem;
 }
 
 .typography .color div {
   width: 100%;
-  height: 150px;
-  margin-bottom: 1rem;
-  border-radius: 16px;
+  height: 120px;
+  margin-bottom: 0.5rem;
+  border-radius: 12px;
 }
 
 .typography .color p {
@@ -220,7 +220,6 @@
   font-size: var(--font-size-xs);
 }
 
-/* Hardcoded colors from original design */
 .typography .color:nth-child(1) div {
   background-color: #101010;
 }
@@ -232,7 +231,7 @@
 }
 .typography .color:nth-child(4) div {
   background-color: #ffffff;
-  border: 1px solid #e0e0e0; /* Added a border to make the white box visible */
+  border: 1px solid #e0e0e0;
 }
 .typography .color:nth-child(5) div {
   background-color: #50e8be;
@@ -243,9 +242,15 @@
 
 .typography .fontSection {
   display: flex;
-  flex-direction: column; /* Stacked for mobile */
-  gap: 3rem;
+  flex-direction: column;
+  gap: 2.5rem;
   margin-top: 4rem;
+}
+
+.typography .leftSection {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
 .typography .font .headline {
@@ -254,7 +259,7 @@
 }
 
 .typography .font .title {
-  font-size: var(--font-size-4xl);
+  font-size: var(--font-size-2lg);
   margin-bottom: 1rem;
 }
 
@@ -262,26 +267,28 @@
   font-size: var(--font-size-xs);
   line-height: 1.6;
   font-weight: 300;
-  width: 80%;
+  max-width: 90%;
 }
 
 .typography .weights {
   display: flex;
-  flex-direction: column; /* Stacked for mobile */
-  gap: 2rem;
-  margin-top: 3rem;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .typography .weights .semibold,
 .typography .weights .regular {
-  background-color: #50e8be;
   border-radius: 20px;
   padding: 1rem 1.5rem;
-  /* --- FIX: Ensure text inside these cards is white for readability --- */
+}
+
+.typography .weights .semibold {
+  background-color: #50e8be;
   color: var(--dark-bg);
 }
 .typography .weights .regular {
-  background-color: #ffffff; /* Different color for regular weight */
+  background-color: #ffffff;
+  color: var(--dark-bg);
 }
 
 .typography .weights p {
@@ -291,7 +298,7 @@
 }
 
 .typography .weights h3 {
-  font-size: var(--font-size-2xl);
+  font-size: var(--font-size-lg);
 }
 
 .typography .rightText {
@@ -300,94 +307,71 @@
   font-weight: 300;
 }
 
-/* Hide decorative elements on mobile */
 .typography .pink,
 .typography .blue,
 .typography .yellow {
   display: none;
 }
 
-/* --- User Flow Section --- */
 .userFlow {
-  padding: 4rem 1.5rem;
+  padding: 4rem 0.5rem;
   background-color: var(--dark-bg);
 }
 
 .userFlow .text {
   font-weight: 500;
-  font-size: var(--font-size-4xl);
+  font-size: var(--font-size-2lg);
   color: var(--secondary-text);
   margin-bottom: 3rem;
 }
 
 .userFlow .flow img {
   width: 100%;
-  scale: 1; /* Reset scale for mobile */
 }
 
-/* --- START: Added styles for new sections from Branding project --- */
-
-/* This wrapper keeps the new sections aligned with the rest of the content */
 .newSectionsWrapper {
-  padding: 4rem 1.5rem;
+  padding: 4rem 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  /* Use the same background as the typography section for a seamless transition */
   background-color: #f4f0f0;
+  color: var(--dark-bg);
 }
 
-/* --- Under Image Text Grid --- */
 .underImageTextGridSection {
   padding-bottom: 1.5rem;
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
-  color: var(--dark-bg);
 }
 
 .underImageTextGridSection .gridTitle {
-  font-size: var(--font-size-2lg);
-  color: var(--dark-bg);
+  font-size: var(--font-size-xl);
   font-weight: 400;
-  letter-spacing: -2px;
+  letter-spacing: -1px;
 }
 
 .underImageTextGridSection .gridSubtitle {
   font-size: var(--font-size-xs);
-  color: var(--dark-bg);
   font-weight: 300;
   margin-top: 0.5rem;
 }
 
-/* This is a shared class name, so we scope it */
-.underImageTextGridSection .gridBody,
-.imageShowcaseGrid .gridBody {
+.underImageTextGridSection .gridBody {
   font-size: var(--font-size-xs);
-  color: var(--dark-bg);
   font-weight: 300;
 }
 
-/* --- Image Showcase Grid --- */
 .imageShowcaseGrid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .gridItem {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
-}
-
-.gridItem:nth-child(2),
-.gridItem:nth-child(4) {
-  margin-top: 0;
-}
-
-.gridItem:nth-child(3) {
-  justify-content: flex-start;
+  gap: 1.5rem;
 }
 
 .showcaseImageContainer {
@@ -400,27 +384,18 @@
 
 .showcaseText {
   font-size: var(--font-size-xs);
-  color: var(--dark-bg);
   font-weight: 300;
-  max-width: 100%;
-  padding: 0;
-  margin-top: 0;
 }
 
-/* --- Full Width Image --- */
 .fullWidthImageSection {
-  /* This section breaks out of the main container */
   width: 100vw;
   max-width: 100vw !important;
   margin-left: calc(50% - 50vw);
   overflow: hidden;
   position: relative;
   aspect-ratio: 16 / 10;
-  /* Add background color to match the section above it */
   background-color: #f4f0f0;
 }
-
-/* --- END: Added styles for new sections --- */
 
 /* ==========================================================================
    Desktop Overrides
@@ -429,17 +404,39 @@
   .hero {
     padding: 10rem 0rem 2rem;
   }
-
-  .first {
-    padding: 4rem 1.5rem 0 1.5rem;
+  .heroHeadline {
+    font-size: var(--font-size-4xl);
   }
-  .first .logo {
+
+  /* FIX: Renamed selectors for desktop view */
+  .heroImageSection {
+    height: auto;
+    padding: 4rem 1.5rem 0 1.5rem;
+    z-index: 2;
+  }
+
+  .heroImageSection .imageContainer {
+    aspect-ratio: 13 / 9; /* ADD THIS - Taller ratio for mobile */
+  }
+  .heroImageSectionColorBg {
+    display: block;
+    background-color: var(--dark-bg);
+    width: 100%;
+    position: absolute;
+    top: 70%;
+    height: 40%;
+    z-index: -1;
+  }
+
+  .heroImageSection .logo {
     width: 120px;
     top: 50px;
     right: 50px;
   }
 
   .introduction {
+    margin-top: 0;
+    border-radius: 0;
     padding: 0 3rem 5rem 3rem;
   }
   .introduction .container {
@@ -466,32 +463,27 @@
     left: 55%;
   }
 
-  /* --- FIX: Styles for the Design Process section on desktop --- */
+  /* ... The rest of the desktop overrides remain the same ... */
   .designProcess {
     padding: 100px;
   }
-
   .designProcess .container {
-    flex-direction: row; /* Change to a row layout */
+    flex-direction: row;
     justify-content: space-between;
-    gap: 12rem; /* Add space between columns */
-    align-items: flex-start; /* Align columns to the top */
+    gap: 7rem;
+    align-items: flex-start;
   }
-
   .designProcess .textLeft {
-    flex: 0 0 30%; /* Assign a fixed width to the left column */
+    flex: 0 0 30%;
   }
-
+  .designProcess .textLeft h2 {
+    font-size: var(--font-size-4xl);
+  }
   .designProcess .textRight {
-    flex: 1; /* Allow the right column to take the remaining space */
+    flex: 1;
   }
-
   .designProcess .row {
-    gap: 2rem;
-  }
-
-  .designProcess .content .title {
-    width: auto; /* Reset width from old styles */
+    gap: 10rem;
   }
 
   .typography {
@@ -499,7 +491,11 @@
   }
   .typography .topText {
     flex-direction: row;
-    gap: 3rem;
+    gap: 0rem;
+    margin-left: 4rem;
+  }
+  .typography .topText h2 {
+    font-size: var(--font-size-3xl);
   }
   .typography .topText p {
     width: 80%;
@@ -517,7 +513,6 @@
     width: 13.77vw;
     height: 26.65vw;
   }
-  /* Restore staggered margins */
   .typography .color:nth-child(2) {
     margin-top: 40px;
   }
@@ -536,17 +531,25 @@
 
   .typography .fontSection {
     flex-direction: row;
-    margin-left: 5rem;
+    margin-left: 3rem;
+  }
+  .typography .font .title {
+    font-size: var(--font-size-4xl);
+  }
+  .typography .leftSection {
+    gap: 0;
   }
   .typography .weights {
     flex-direction: row;
+  }
+  .typography .weights h3 {
+    font-size: var(--font-size-2xl);
   }
   .typography .rightText {
     margin-top: 12rem;
     margin-left: 2rem;
     margin-right: 2rem;
   }
-  /* Restore decorative elements */
   .typography .pink,
   .typography .blue,
   .typography .yellow {
@@ -554,16 +557,22 @@
     position: absolute;
   }
   .typography .pink {
-    top: 5rem;
-    right: 30rem;
+    top: 2rem;
+    right: 15rem;
   }
   .typography .blue {
-    top: 18rem;
-    left: 2rem;
+    top: 7rem;
+    left: 1rem;
   }
   .typography .yellow {
-    bottom: 33rem;
-    left: 25rem;
+    bottom: 25rem;
+    left: 12rem;
+  }
+  .typography .weights .semibold {
+    transform: rotate(12deg);
+  }
+  .typography .weights .regular {
+    transform: rotate(-8deg);
   }
 
   .userFlow {
@@ -574,6 +583,7 @@
   }
   .userFlow .text {
     margin-bottom: 2em;
+    font-size: var(--font-size-4xl);
   }
   .userFlow .flow img {
     scale: 1;
@@ -581,52 +591,35 @@
     object-fit: cover;
   }
 
-  /* --- START: Desktop overrides for new sections --- */
-
   .newSectionsWrapper {
     padding: 6rem 3rem;
-    gap: 6rem; /* Increase gap for desktop */
   }
-
   .underImageTextGridSection {
     padding-bottom: 3rem;
     grid-template-columns: 1fr 1fr;
     gap: 0rem 2rem;
   }
-
   .underImageTextGridSection .gridTitle {
     font-size: var(--font-size-3xl);
   }
-
-  .underImageTextGridSection .gridSubtitle {
-    font-size: var(--font-size-lg);
-    margin-top: 1rem;
-  }
-
-  /* Shared class, scoped for safety */
+  .underImageTextGridSection .gridSubtitle,
   .underImageTextGridSection .gridBody {
     font-size: var(--font-size-lg);
+  }
+  .underImageTextGridSection .gridBody {
     margin-top: 8rem;
   }
-
   .imageShowcaseGrid {
     grid-template-columns: 1fr 1fr;
     gap: 2rem;
   }
-
-  .gridItem {
-    gap: 2rem;
-  }
-
   .gridItem:nth-child(2),
   .gridItem:nth-child(4) {
-    margin-top: 9rem; /* Restore staggered margin */
+    margin-top: 9rem;
   }
-
   .gridItem:nth-child(3) {
     justify-content: space-between;
   }
-
   .showcaseText {
     font-size: var(--font-size-lg);
     max-width: 50ch;
@@ -634,6 +627,4 @@
     padding-left: 0.5rem;
     margin-top: 1.5rem;
   }
-
-  /* --- END: Desktop overrides for new sections --- */
 }

@@ -1,7 +1,7 @@
 /* src/components/layout/Navbar.module.css */
 
-/* NEW: This outer wrapper handles positioning and sizing */
-.navbarWrapper {
+/* CONTAINER 1: For Logo & Menu (has blend mode) */
+.navbarBlendWrapper {
   position: fixed;
   top: -10px;
   left: 0;
@@ -9,29 +9,51 @@
   height: var(--nav-height);
   z-index: 1000;
   padding: 0 0.8rem;
+  mix-blend-mode: difference;
 }
 
-/* MODIFIED: This inner container now just handles layout (flexbox) */
+/* CONTAINER 2: For CTA Button (no blend mode) */
+.navbarCtaWrapper {
+  position: fixed;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  z-index: 1001; /* Sits on top of the blend wrapper */
+  padding: 0 0.8rem;
+  display: flex;
+  justify-content: flex-end; /* Pushes CTA to the right */
+  align-items: center;
+  pointer-events: none; /* Make wrapper transparent to clicks */
+}
+
+/* This is the content area inside the blend wrapper */
 .navbarContent {
+  position: relative; /* Anchor for the absolute positioned menu */
   width: 100%;
   height: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
-/* --- THEME MODIFIER (targets the wrapper) --- */
-.navbarWrapper.themeLight .logo img {
+/* --- THEME MODIFIER --- */
+.navbarBlendWrapper.themeLight .logo img,
+.navbarBlendWrapper.themeLight .menuIcon .line {
   filter: invert(1);
-}
-.navbarWrapper.themeLight .menuIcon .line {
-  background-color: var(--dark-bg);
 }
 
 .logo {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* THIS IS THE KEY: The container for the menu icon */
+.menuIconContainer {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%, -50%); /* Centers it perfectly */
 }
 
 .menuIcon {
@@ -52,14 +74,14 @@
 .menuIcon.isOpen .line:first-child {
   transform: translateY(4px) rotate(45deg);
 }
-
 .menuIcon.isOpen .line:last-child {
   transform: translateY(-4px) rotate(-46deg);
 }
 
-/* ADDED: Hide the CTA container by default on mobile */
+/* This is the container for the CTA inside the normal wrapper */
 .ctaButtonContainer {
-  display: none;
+  display: none; /* Hidden on mobile by default */
+  pointer-events: auto; /* Re-enable clicks for the button */
 }
 
 .ctaButton {
@@ -72,7 +94,6 @@
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
   font-family: inherit;
-  /* Font size is now only needed for desktop since it's hidden on mobile */
 }
 
 .ctaButton:hover {
@@ -81,13 +102,14 @@
 
 /* Media query for medium screens and up */
 @media (min-width: 768px) {
-  /* MODIFIED: Target the new wrapper */
-  .navbarWrapper {
+  /* Apply padding and top to BOTH wrappers */
+  .navbarBlendWrapper,
+  .navbarCtaWrapper {
     padding: var(--container-padding);
     top: 10px;
   }
 
-  /* ADDED: Show the CTA container on larger screens */
+  /* Show the CTA container on larger screens */
   .ctaButtonContainer {
     display: block;
   }

@@ -1,6 +1,8 @@
+// src/components/layout/Navbar.tsx
+
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   motion,
   AnimatePresence,
@@ -14,35 +16,28 @@ import styles from "./Navbar.module.css";
 import { easings } from "@/utils/easings";
 import MenuOverlay from "./MenuOverlay";
 import { usePathname } from "next/navigation";
-// Import the new component
 
 // --- Animation Variants ---
 
-// 1. Variants for the OUTER wrapper: Handles showing and hiding on scroll.
+// FIX: The scrollVariants object is now simplified. The transition logic is moved to the component props.
 const scrollVariants: Variants = {
-  visible: {
-    y: "0%",
-    transition: {
-      duration: 0.35,
-      ease: easings.easeOut,
-    },
-  },
-  hidden: {
-    y: "-110%", // Pushes it completely off-screen
-    transition: {
-      duration: 0.35,
-      ease: easings.easeOut,
-    },
-  },
+  visible: { y: "0%" },
+  hidden: { y: "-110%" },
 };
 
-// 2. Variants for the INNER nav: Handles the one-time initial stagger animation.
-const revealVariants: Variants = {
+// For the LEFT & CENTER items (Logo, Menu)
+const revealVariantsBlend: Variants = {
   visible: { transition: { staggerChildren: 0.1, delayChildren: 0.5 } },
-  hidden: {}, // No initial state needed for the container itself
+  hidden: {},
 };
 
-// 3. Variants for the individual items: The fade-in-from-left effect.
+// For the RIGHT item (CTA) with a longer delay
+const revealVariantsCTA: Variants = {
+  visible: { transition: { delayChildren: 0.7 } }, // Starts after the first two
+  hidden: {},
+};
+
+// For individual items
 const itemVariants: Variants = {
   hidden: { opacity: 0, x: -20 },
   visible: {
@@ -58,24 +53,15 @@ const Navbar = () => {
   const { scrollY } = useScroll();
   const pathname = usePathname();
 
-  // Hide/Show Navbar on Scroll Logic (Unchanged)
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
-
     if (typeof previous === "number") {
-      if (latest > previous && latest > 150) {
-        setIsHidden(true);
-      } else if (latest < previous) {
-        setIsHidden(false);
-      }
+      if (latest > previous && latest > 150) setIsHidden(true);
+      else if (latest < previous) setIsHidden(false);
     }
   });
 
-  // Lock Body Scroll When Menu is Open (Unchanged)
-
-  const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   let navThemeClass = "";
   if (
@@ -85,28 +71,28 @@ const Navbar = () => {
     navThemeClass = styles.themeLight;
   }
 
+  // FIX: Define the transition object once to be reused.
+  const scrollTransition = { duration: 0.35, ease: easings.easeOut };
+
   return (
     <>
       {/* 
-        This is the outer wrapper. It is responsible ONLY for the show/hide animation on scroll.
-        It has the fixed positioning and will move up and down.
+        CONTAINER 1: For BLEND-MODE elements (Logo & Menu)
       */}
       <motion.div
-        className={`${styles.navbarWrapper} ${navThemeClass}`}
+        className={`${styles.navbarBlendWrapper} ${navThemeClass}`}
         variants={scrollVariants}
         animate={isHidden && !isMenuOpen ? "hidden" : "visible"}
-        initial="visible" // Start visible, don't animate on initial load
+        initial="visible"
+        transition={scrollTransition} // FIX: Apply the transition here
       >
-        {/* 
-          This is the inner nav. It is responsible ONLY for the one-time reveal
-          animation of its children when the page first loads.
-        */}
         <motion.nav
           className={styles.navbarContent}
-          variants={revealVariants}
+          variants={revealVariantsBlend}
           initial="hidden"
           animate="visible"
         >
+          {/* Logo (Left) */}
           <motion.div variants={itemVariants}>
             <Link href="/" className={styles.logo}>
               <Image
@@ -119,24 +105,46 @@ const Navbar = () => {
             </Link>
           </motion.div>
 
+          {/* Menu Icon (Center) */}
           <motion.div
-            className={`${styles.menuIcon} ${isMenuOpen ? styles.isOpen : ""}`}
+            className={styles.menuIconContainer}
             variants={itemVariants}
-            onClick={toggleMenu}
           >
-            <div className={styles.line}></div>
-            <div className={styles.line}></div>
+            <div
+              className={`${styles.menuIcon} ${
+                isMenuOpen ? styles.isOpen : ""
+              }`}
+              onClick={toggleMenu}
+            >
+              <div className={styles.line}></div>
+              <div className={styles.line}></div>
+            </div>
           </motion.div>
+        </motion.nav>
+      </motion.div>
 
-          <motion.div
-            className={styles.ctaButtonContainer}
-            variants={itemVariants}
-          >
-            <Link href="/old-hero">
+      {/* 
+        CONTAINER 2: For NORMAL elements (CTA Button)
+      */}
+      <motion.div
+        className={styles.navbarCtaWrapper}
+        variants={scrollVariants}
+        animate={isHidden && !isMenuOpen ? "hidden" : "visible"}
+        initial="visible"
+        transition={scrollTransition} // FIX: Apply the transition here
+      >
+        <motion.div
+          className={styles.ctaButtonContainer}
+          variants={revealVariantsCTA}
+          initial="hidden"
+          animate="visible"
+        >
+          <motion.div variants={itemVariants}>
+            <Link href="/contact">
               <button className={styles.ctaButton}>Get in Touch</button>
             </Link>
           </motion.div>
-        </motion.nav>
+        </motion.div>
       </motion.div>
 
       <AnimatePresence>

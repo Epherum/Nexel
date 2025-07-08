@@ -18,6 +18,18 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  color: #000; /* Set a default color for icons and text */
+}
+
+/* New generic content container class */
+.cursorContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem; /* Space between text and icons */
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap; /* Prevent "Drag" from wrapping */
 }
 
 .cursorText {
