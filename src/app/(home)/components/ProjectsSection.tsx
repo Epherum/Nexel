@@ -3,7 +3,7 @@
 import React, { useRef } from "react";
 import Link from "@/components/HoverableLink";
 import { motion, useInView, Variants } from "framer-motion";
-import { allProjects } from "@/data/allProjects";
+import { allProjects, ProjectListing } from "@/data/allProjects"; // Import ProjectListing type
 import { easings } from "@/utils/easings";
 
 // Component Imports
@@ -14,7 +14,6 @@ import AnimatedWord from "@/components/animation/AnimatedWord";
 import styles from "./ProjectsSection.module.css";
 
 // --- Local ProjectCard Component ---
-// This component is now defined locally within this file instead of being imported.
 
 interface ProjectCardProps {
   slug: string;
@@ -105,10 +104,32 @@ const ProjectsSection = () => {
     once: true,
   });
 
+  // --- NEW: LOGIC FOR FIXED PROJECT ORDER ---
+  // The random selection logic has been replaced with a fixed list of slugs
+  // to ensure the projects always appear in the desired order.
+
+  // 1. Define the exact order of project slugs.
+  // Note: Slugs must match exactly how they are defined in `allProjects.ts`.
+  const orderedSlugs = [
+    "branding/wag",
+    "branding/matuky",
+    "book-app",
+    "moondivine",
+    "social/tresors-naturels", // Assuming this is the correct slug for the social project
+    "branding/bilargo",
+  ];
+
+  // 2. Create a Map for efficient lookup from the main `allProjects` array.
+  const projectsBySlug = new Map(allProjects.map((p) => [p.slug, p]));
+
+  // 3. Build the `projectsToShow` array by retrieving projects in the specified order.
+  const projectsToShow = orderedSlugs
+    .map((slug) => projectsBySlug.get(slug))
+    .filter((p): p is ProjectListing => !!p); // Filter out any undefined results to prevent errors
+
   const subHeaderText = "SUCCESS STORIES";
   const descriptionText =
     "Every case study represents a challenge met, a standard raised, and a client empowered. See how we turn vision into results that speak for themselves.";
-  const projectsToShow = allProjects.slice(0, 6);
 
   return (
     <section className={styles.projectsSection}>

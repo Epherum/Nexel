@@ -1,17 +1,18 @@
 "use client";
 
 import React, { createContext, useState, ReactNode, useEffect } from "react";
+// --- START: Add navigation detection ---
+import { usePathname } from "next/navigation";
+// --- END: Add navigation detection ---
 
 interface CursorContextType {
   isHoveringLink: boolean;
   setHoveringLink: (isHovering: boolean) => void;
   isCursorVisible: boolean;
   setCursorVisible: (isVisible: boolean) => void;
-  // --- START: Add new state for "drag" and mouse detection ---
   isHoveringDraggable: boolean;
   setHoveringDraggable: (isHovering: boolean) => void;
   mouseDetected: boolean;
-  // --- END: Add new state ---
 }
 
 export const CursorContext = createContext<CursorContextType>({
@@ -19,26 +20,30 @@ export const CursorContext = createContext<CursorContextType>({
   setHoveringLink: () => {},
   isCursorVisible: true,
   setCursorVisible: () => {},
-  // --- START: Add new defaults ---
   isHoveringDraggable: false,
   setHoveringDraggable: () => {},
   mouseDetected: false,
-  // --- END: Add new defaults ---
 });
 
 export const CursorProvider = ({ children }: { children: ReactNode }) => {
   const [isHoveringLink, setHoveringLink] = useState(false);
   const [isCursorVisible, setCursorVisible] = useState(true);
-  // --- START: Manage new state ---
   const [isHoveringDraggable, setHoveringDraggable] = useState(false);
   const [mouseDetected, setMouseDetected] = useState(false);
-  // --- END: Manage new state ---
 
-  // --- START: Add effect to detect first mouse move ---
+  // --- START: Add navigation detection ---
+  const pathname = usePathname();
+
+  useEffect(() => {
+    // Reset cursor state on route change
+    setHoveringLink(false);
+    setHoveringDraggable(false);
+  }, [pathname]); // This effect runs every time the pathname changes
+  // --- END: Add navigation detection ---
+
   useEffect(() => {
     const handleMouseMove = () => {
       setMouseDetected(true);
-      // We only need to detect it once, so we can remove the listener.
       window.removeEventListener("mousemove", handleMouseMove);
     };
 
@@ -47,8 +52,7 @@ export const CursorProvider = ({ children }: { children: ReactNode }) => {
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, []); // Empty dependency array ensures this runs only once on mount
-  // --- END: Add effect ---
+  }, []);
 
   return (
     <CursorContext.Provider

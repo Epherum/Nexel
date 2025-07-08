@@ -15,7 +15,6 @@ import Image from "next/image";
 import styles from "./Navbar.module.css";
 import { easings } from "@/utils/easings";
 import MenuOverlay from "./MenuOverlay";
-import { usePathname } from "next/navigation";
 
 // --- Animation Variants ---
 
@@ -51,7 +50,6 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const { scrollY } = useScroll();
-  const pathname = usePathname();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
@@ -63,14 +61,6 @@ const Navbar = () => {
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  let navThemeClass = "";
-  if (
-    pathname.startsWith("/projects/branding/") ||
-    pathname.startsWith("/projects/social/")
-  ) {
-    navThemeClass = styles.themeLight;
-  }
-
   // FIX: Define the transition object once to be reused.
   const scrollTransition = { duration: 0.35, ease: easings.easeOut };
 
@@ -80,7 +70,7 @@ const Navbar = () => {
         CONTAINER 1: For BLEND-MODE elements (Logo & Menu)
       */}
       <motion.div
-        className={`${styles.navbarBlendWrapper} ${navThemeClass}`}
+        className={`${styles.navbarBlendWrapper}`}
         variants={scrollVariants}
         animate={isHidden && !isMenuOpen ? "hidden" : "visible"}
         initial="visible"

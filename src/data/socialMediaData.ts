@@ -44,7 +44,7 @@ import amazoneThumbnail from "/public/static/thumbnails/amazone-thumbnail.png";
 import digitalThumbnail from "/public/static/thumbnails/digital-thumbnail.webp";
 import tresorsThumbnail from "/public/static/thumbnails/tresors-thumbnail.png";
 import mestiriThumbnail from "/public/static/thumbnails/mestiri-thumbnail.png";
-import virginiaThumbnail from "/public/static/thumbnails/virginia-thumbnail.webp";
+import virginiaThumbnail from "/public/static/thumbnails/virginia-thumbnail.png";
 
 // --- Laboratoire Tresors Naturels (Labo) Assets ---
 import laboHero from "/public/static/labo/hero.webp";
@@ -166,7 +166,7 @@ import amazoneImg21 from "/public/static/amazone/21.webp";
 export const socialMediaProjectsData: SocialMediaProject[] = [
   // --- LABORATOIRE TRESORS NATURELS (CORRECTED) ---
   {
-    slug: "labo-tresors-naturels",
+    slug: "tresors-naturels",
     thumbnail: tresorsThumbnail, // <-- ADDED
 
     hero: {

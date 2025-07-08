@@ -1,105 +1,155 @@
 /* src/components/layout/MenuOverlay.module.css */
 
-.menuOverlay {
+/* ... .backdrop and .menuPanel styles are unchanged ... */
+.backdrop {
   position: fixed;
   inset: 0;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 998;
+}
+.menuPanel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80vh;
   background-color: var(--dark-bg);
   color: var(--primary-text);
   z-index: 999;
-  /* Default mobile-first style: allow scrolling */
-  overflow-y: auto;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .wrapper {
+  height: 100%;
   display: flex;
   flex-direction: column;
-  width: 100%;
-  min-height: 100%;
-  padding: var(--nav-height) 1.5rem 2rem;
+  /* This is our base padding for the footer */
+  padding: calc(var(--nav-height) + 1.5rem) 0.5rem 1rem;
 }
 
-/* --- Mobile-First Layout --- */
-.navGrid {
+/* --- Horizontal Scroller Styles --- */
+.navScroller {
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  overscroll-behavior-x: contain;
   flex-grow: 1;
-  display: grid;
-  gap: 1.5rem;
-  padding: 2rem 0;
-  grid-template-columns: 1fr;
+
+  /* --- THE FIX --- */
+  /* 1. Make the scroller container full-width */
+  margin-inline: 0.5rem;
+  /* 2. Add padding INSIDE the full-width container */
+  /* This creates the space on the left and right for the scrollable items */
+  padding-inline: 0.5rem;
+  /* This ensures padding is included in the element's total width/height */
+  box-sizing: border-box;
 }
 
-.footer {
+/* ... scrollbar styles are unchanged ... */
+.navScroller::-webkit-scrollbar {
+  height: 6px;
+}
+.navScroller::-webkit-scrollbar-track {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+.navScroller::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.25);
+  border-radius: 6px;
+  transition: background-color 0.2s ease;
+}
+.navScroller::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.navList {
   display: flex;
-  justify-content: space-between;
-  padding: 2rem 0;
-  gap: 2rem;
-  flex-direction: column;
+  gap: 1rem;
+  width: max-content;
+  /* --- THE FIX --- */
+  /* 3. Remove the padding from here. The parent scroller now handles it. */
+  padding-inline: 0;
 }
 
-/* --- Responsive Overrides --- */
-
-/* Tablet layout */
-@media (min-width: 768px) {
-  .navGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .footer {
-    flex-direction: row;
-  }
+.navItem {
+  width: 70vw; /* Your preferred width */
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  cursor: pointer;
 }
 
-/* Desktop layout */
-@media (min-width: 1024px) {
-  /* --- CHANGE START --- */
-  .menuOverlay {
-    /* On desktop, the layout fits the screen, so we disable scrolling. */
-    overflow-y: hidden;
-  }
-  /* --- CHANGE END --- */
-
-  .wrapper {
-    padding: 120px 3rem 3rem;
-  }
-
-  .navGrid {
-    grid-template-columns: repeat(3, 1fr);
-    padding: 1rem 0 2rem;
-  }
-}
-
-/* --- Item Styles (Unchanged) --- */
+/* ... .navItem styles are unchanged ... */
 .navItem .navTitle {
-  font-size: var(--font-size-base);
+  font-size: var(--font-size-lg);
   margin-bottom: 0.5rem;
+  font-weight: 300;
 }
-
 .navItem .imageContainer {
   position: relative;
   width: 100%;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16/9;
   border-radius: 12px;
   overflow: hidden;
-  transition: transform 0.3s ease;
+  transition: transform 0.4s ease;
 }
-
-.navItem .imageContainer:hover {
+.navItem:hover .imageContainer {
   transform: scale(1.03);
 }
-
 .navItem .previewImage {
   object-fit: cover;
 }
 
+/* --- Footer Styles (Unchanged) --- */
+.footer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 2rem;
+  padding: 1.5rem 0 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  flex-shrink: 0;
+}
 .footerColumn .footerTitle {
   color: var(--secondary-text);
   margin-bottom: 0.5rem;
   font-size: var(--font-size-xs);
 }
-
 .footerColumn .footerLinks {
   font-size: var(--font-size-xs);
-  font-weight: 300;
+  font-weight: 100;
+  line-height: 1.5;
 }
-
 .footerColumn .footerLinks span {
   display: block;
+}
+
+/* --- Responsive Overrides for Desktop --- */
+@media (min-width: 1024px) {
+  .wrapper {
+    padding: calc(var(--nav-height) + 2rem) 3rem 1.5rem;
+  }
+  .menuPanel {
+    height: 75vh;
+  }
+  .navScroller {
+    /* Reset the mobile-only styles */
+    margin-inline: 0;
+    padding-inline: 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .navScroller::-webkit-scrollbar {
+    display: none;
+  }
+  .navList {
+    gap: 2rem;
+  }
+  .footer {
+    padding: 1.5rem 0 1rem;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .navItem {
+    width: 28vw;
+  }
 }

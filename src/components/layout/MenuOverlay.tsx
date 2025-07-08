@@ -1,4 +1,3 @@
-//src/components/layout/MenuOverlay.tsx
 "use client";
 
 import React from "react";
@@ -13,29 +12,27 @@ interface MenuOverlayProps {
   onClose: () => void;
 }
 
-// --- Data for the menu items ---
+// --- Data (Unchanged) ---
 const navLinks = [
   {
     title: "Work",
     href: "/projects",
-    imgSrc: "/static/thumbnails/virginia-thumbnail.webp",
+    imgSrc: "/static/nexel/menu/work.webp",
     alt: "Preview of work projects",
   },
-
   {
     title: "About Us",
     href: "/about",
-    imgSrc: "/static/book-app/3.webp",
-    alt: "Preview of journal entries",
+    imgSrc: "/static/nexel/menu/about.webp",
+    alt: "Preview of our agency and team",
   },
   {
     title: "Contact",
     href: "/contact",
-    imgSrc: "/static/book-app/4.webp",
+    imgSrc: "/static/nexel/menu/contact.webp",
     alt: "Preview of the contact page",
   },
 ];
-
 const servicesLinks = [
   "Product Design",
   "Website Design",
@@ -44,18 +41,26 @@ const servicesLinks = [
 const moreServicesLinks = ["Digital Strategy", "Support + Growth"];
 const industriesLinks = ["Fintech", "AI", "SaaS"];
 
-// --- Animation Variants ---
-const menuVariants: Variants = {
+// --- NEW Animation Variants ---
+const backdropVariants: Variants = {
+  hidden: { opacity: 0, transition: { duration: 0.3 } },
+  visible: { opacity: 1, transition: { duration: 0.4 } },
+};
+
+const menuPanelVariants: Variants = {
   hidden: {
     y: "-100%",
-    transition: { duration: 0.8, ease: [0.87, 0, 0.13, 1] },
+    transition: { duration: 0.6, ease: easings.gentleEaseOut },
   },
-  visible: { y: "0%", transition: { duration: 1.1, ease: [0.22, 1, 0.36, 1] } },
+  visible: {
+    y: "0%",
+    transition: { duration: 0.7, ease: easings.easeOut, delay: 0.1 },
+  },
 };
 
 const contentContainerVariants: Variants = {
   visible: {
-    transition: { staggerChildren: 0.08, delayChildren: 0.3 },
+    transition: { staggerChildren: 0.08, delayChildren: 0.4 },
   },
 };
 
@@ -64,69 +69,82 @@ const itemVariants: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.6, ease: easings.easeOut },
+    transition: { duration: 0.5, ease: easings.easeOut },
   },
 };
 
 const MenuOverlay: React.FC<MenuOverlayProps> = ({ onClose }) => {
   return (
-    <motion.div
-      className={styles.menuOverlay}
-      variants={menuVariants}
-      initial="hidden"
-      animate="visible"
-      exit="hidden"
-    >
-      <div className={styles.wrapper}>
-        <motion.nav
-          className={styles.navGrid}
-          variants={contentContainerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          {navLinks.map((link) => (
-            <motion.div
-              key={link.title}
-              className={styles.navItem}
-              variants={itemVariants}
-            >
-              <Link href={link.href} onClick={onClose}>
-                <p className={styles.navTitle}>{link.title}</p>
-                <div className={styles.imageContainer}>
-                  <Image
-                    src={link.imgSrc}
-                    alt={link.alt}
-                    fill
-                    className={styles.previewImage}
-                  />
-                </div>
-              </Link>
-            </motion.div>
-          ))}
-        </motion.nav>
+    <>
+      {/* 1. The Backdrop to darken the page */}
+      <motion.div
+        className={styles.backdrop}
+        onClick={onClose}
+        variants={backdropVariants}
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+      />
 
-        <motion.footer
-          className={styles.footer}
+      {/* 2. The Menu Panel itself (60vh) */}
+      <motion.div
+        className={styles.menuPanel}
+        variants={menuPanelVariants}
+        initial="hidden"
+        animate="visible"
+        exit="hidden"
+      >
+        <motion.div
+          className={styles.wrapper}
           variants={contentContainerVariants}
           initial="hidden"
           animate="visible"
         >
-          <motion.div className={styles.footerColumn} variants={itemVariants}>
-            <p className={styles.footerTitle}>Services</p>
-            <div className={styles.footerLinks}>
-              <span>{servicesLinks.join(" / ")} /</span>
-              <span>{moreServicesLinks.join(" / ")}</span>
+          {/* 3. The Horizontally Scrolling Nav Links */}
+          <div className={styles.navScroller}>
+            <div className={styles.navList}>
+              {navLinks.map((link) => (
+                <motion.div
+                  key={link.title}
+                  className={styles.navItem}
+                  variants={itemVariants}
+                >
+                  <Link href={link.href} onClick={onClose}>
+                    <p className={styles.navTitle}>{link.title}</p>
+                    <div className={styles.imageContainer}>
+                      <Image
+                        src={link.imgSrc}
+                        alt={link.alt}
+                        fill
+                        className={styles.previewImage}
+                        sizes="(max-width: 768px) 70vw, 30vw"
+                      />
+                    </div>
+                  </Link>
+                </motion.div>
+              ))}
             </div>
-          </motion.div>
-          <motion.div className={styles.footerColumn} variants={itemVariants}>
-            <p className={styles.footerTitle}>Industries</p>
-            <div className={styles.footerLinks}>
-              <span>{industriesLinks.join(" / ")}</span>
-            </div>
-          </motion.div>
-        </motion.footer>
-      </div>
-    </motion.div>
+          </div>
+
+          {/* 4. The Footer Section */}
+          <footer className={styles.footer}>
+            <motion.div className={styles.footerColumn} variants={itemVariants}>
+              <p className={styles.footerTitle}>Services</p>
+              <div className={styles.footerLinks}>
+                <span>{servicesLinks.join(" / ")} /</span>
+                <span>{moreServicesLinks.join(" / ")}</span>
+              </div>
+            </motion.div>
+            <motion.div className={styles.footerColumn} variants={itemVariants}>
+              <p className={styles.footerTitle}>Industries</p>
+              <div className={styles.footerLinks}>
+                <span>{industriesLinks.join(" / ")}</span>
+              </div>
+            </motion.div>
+          </footer>
+        </motion.div>
+      </motion.div>
+    </>
   );
 };
 

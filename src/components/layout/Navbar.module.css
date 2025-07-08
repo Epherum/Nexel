@@ -29,17 +29,14 @@
 
 /* This is the content area inside the blend wrapper */
 .navbarContent {
-  position: relative; /* Anchor for the absolute positioned menu */
+  position: relative; /* Anchor for the absolute positioned menu on desktop */
   width: 100%;
   height: 100%;
   display: flex;
   align-items: center;
-}
-
-/* --- THEME MODIFIER --- */
-.navbarBlendWrapper.themeLight .logo img,
-.navbarBlendWrapper.themeLight .menuIcon .line {
-  filter: invert(1);
+  /* CHANGED: This is the key for mobile layout. */
+  /* It pushes the logo to the start and the menu icon to the end. */
+  justify-content: space-between;
 }
 
 .logo {
@@ -50,10 +47,8 @@
 
 /* THIS IS THE KEY: The container for the menu icon */
 .menuIconContainer {
-  position: absolute;
-  top: 50%;
-  left: 45%;
-  transform: translate(-50%, -50%); /* Centers it perfectly */
+  /* REMOVED: All absolute positioning is removed from the default (mobile) state. */
+  /* It now behaves as a standard flex item. */
 }
 
 .menuIcon {
@@ -100,13 +95,26 @@
   transform: scale(1.05);
 }
 
-/* Media query for medium screens and up */
+/* --- Media query for medium screens and up --- */
 @media (min-width: 768px) {
   /* Apply padding and top to BOTH wrappers */
   .navbarBlendWrapper,
   .navbarCtaWrapper {
     padding: var(--container-padding);
     top: 10px;
+  }
+
+  /* ADDED: On desktop, we want the logo at the start, not pushed by space-between */
+  .navbarContent {
+    justify-content: flex-start;
+  }
+
+  /* ADDED: Here we re-apply the absolute positioning for the desktop-only layout */
+  .menuIconContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%; /* Using 50% for perfect centering */
+    transform: translate(-50%, -50%);
   }
 
   /* Show the CTA container on larger screens */

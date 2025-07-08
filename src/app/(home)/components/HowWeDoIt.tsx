@@ -2,7 +2,7 @@
 
 import React from "react";
 import styles from "./HowWeDoIt.module.css"; // CHANGED: Import .css file
-import Link from "@/components/HoverableLink";
+import Link from "next/link";
 import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
 import AnimatedWord from "@/components/animation/AnimatedWord";

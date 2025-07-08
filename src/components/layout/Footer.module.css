@@ -8,9 +8,19 @@
 
 /* 
   NEW THEME CLASSES 
-  These override the default background-color of the wrapper.
+  These override the default  of the wrapper.
 */
+.contactLayout {
+  padding-top: 1.5rem; /* Keep some top padding, but less than before */
+  gap: 0; /* Remove the gap since the top row is gone */
+}
 
+/* Target the .bottomRow ONLY when it's inside our new .contactLayout */
+.contactLayout .bottomRow {
+  border-top: none; /* Remove the separator line */
+  padding-top: 0; /* Remove the space above the content */
+  margin-top: 0; /* Remove the large margin */
+}
 /* 1. Theme for /projects/branding pages */
 .wrapperThemeBranding {
   background-color: var(--primary-text); /* This is your white color */
