@@ -40,11 +40,11 @@ export interface SocialMediaProject {
 // ============================================================================
 
 // --- Project Thumbnails ---
-import amazoneThumbnail from "/public/static/thumbnails/amazone-thumbnail.png";
+import amazoneThumbnail from "/public/static/thumbnails/amazone-thumbnail.webp";
 import digitalThumbnail from "/public/static/thumbnails/digital-thumbnail.webp";
-import tresorsThumbnail from "/public/static/thumbnails/tresors-thumbnail.png";
-import mestiriThumbnail from "/public/static/thumbnails/mestiri-thumbnail.png";
-import virginiaThumbnail from "/public/static/thumbnails/virginia-thumbnail.png";
+import tresorsThumbnail from "/public/static/thumbnails/tresors-thumbnail.webp";
+import mestiriThumbnail from "/public/static/thumbnails/mestiri-thumbnail.webp";
+import virginiaThumbnail from "/public/static/thumbnails/virginia-thumbnail.webp";
 
 // --- Laboratoire Tresors Naturels (Labo) Assets ---
 import laboHero from "/public/static/labo/hero.webp";

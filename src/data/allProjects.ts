@@ -2,17 +2,17 @@
 import { StaticImageData } from "next/image";
 
 // --- EXISTING IMPORTS ---
-import bookAppThumbnail from "/public/static/thumbnails/bookApp-thumbnail.png";
-import evenseThumbnail from "/public/static/thumbnails/evense-thumbnail.png";
+import bookAppThumbnail from "/public/static/thumbnails/bookApp-thumbnail.webp";
+import evenseThumbnail from "/public/static/thumbnails/evense-thumbnail.webp";
 import { socialMediaProjectsData } from "./socialMediaData";
 
 // --- 1. NEW IMPORT for your first branding project's thumbnail ---
 // You will need to create and add this thumbnail image
-import bilargoThumbnail from "/public/static/thumbnails/bilargo-thumbnail.png";
-import spacefoodThumbnail from "/public/static/thumbnails/spacefood-thumbnail.png";
-import matukyThumbnail from "/public/static/thumbnails/matuky-thumbnail.png";
-import wagThumbnail from "/public/static/thumbnails/wag-thumbnail.png";
-import moondivineThumbnail from "/public/static/thumbnails/moondivine-thumbnail.png";
+import bilargoThumbnail from "/public/static/thumbnails/bilargo-thumbnail.webp";
+import spacefoodThumbnail from "/public/static/thumbnails/spacefood-thumbnail.webp";
+import matukyThumbnail from "/public/static/thumbnails/matuky-thumbnail.webp";
+import wagThumbnail from "/public/static/thumbnails/wag-thumbnail.webp";
+import moondivineThumbnail from "/public/static/thumbnails/moondivine-thumbnail.webp";
 
 // =================================================================
 // --- 2. NEW: Branding Project Data (The detailed content for the template) ---
