@@ -90,7 +90,7 @@
 .marqueeImageContainer {
   position: relative;
   height: 120px; /* Default mobile height */
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 5 / 3;
   border-radius: 10px;
   overflow: hidden;
   flex-shrink: 0;
@@ -135,7 +135,7 @@
   }
 
   .marqueeImageContainer {
-    height: 140px; /* Taller images on desktop */
+    height: 120px; /* Taller images on desktop */
     border-radius: 16px;
   }
 

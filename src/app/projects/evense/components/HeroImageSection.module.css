@@ -1,0 +1,60 @@
+/* src/app/projects/evense/components/HeroImageSection.module.css */
+.heroImageSection {
+  position: relative;
+  z-index: 1;
+  padding: 0;
+}
+
+.imageContainer {
+  display: block;
+  position: relative;
+  padding: 0 0.5rem;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+}
+
+/* FIX: Define the logo size for mobile here */
+.logo {
+  position: absolute;
+  top: -0.5rem; /* Adjusted for better spacing */
+  right: 1.5rem;
+  z-index: 3;
+
+  /* --- Define mobile size --- */
+  width: 80px;
+  height: 80px; /* Or use aspect-ratio: 1 / 1; */
+}
+
+.heroImageSectionColorBg {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .heroImageSection {
+    height: auto;
+    padding: 4rem 1.5rem 0 1.5rem;
+    z-index: 2;
+  }
+  .imageContainer {
+    aspect-ratio: 13 / 9;
+  }
+  .heroImageSectionColorBg {
+    display: block;
+    background-color: var(--dark-bg);
+    width: 100%;
+    position: absolute;
+    top: 70%;
+    height: 40%;
+    z-index: -1;
+  }
+
+  /* FIX: Override the logo size for desktop here */
+  .logo {
+    top: 20px;
+    right: 50px;
+
+    /* --- Define desktop size --- */
+    width: 170px;
+    height: 120px;
+  }
+}

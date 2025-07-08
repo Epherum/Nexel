@@ -1,0 +1,142 @@
+/* src/app/projects/evense/components/IntroductionSection.module.css */
+
+/* Main section wrapper with dark background */
+.introduction {
+  background-color: var(--dark-bg);
+  position: relative;
+  z-index: 2;
+  margin-top: -1rem;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 2rem 0.5rem 0rem;
+}
+
+/* The main white container card.
+   Mobile-first: We use flexbox to stack items vertically. */
+.container {
+  padding: 1.5rem 0.5rem;
+  background-color: var(--primary-text);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* --- Cell Styles (Mobile) --- */
+
+/* Cell 1: Logo */
+.logoCell {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logoImage {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+/* Cell 2: Description */
+.descriptionCell {
+  color: var(--dark-bg);
+  font-size: var(--font-size-xs);
+  line-height: 1.6;
+  padding: 1rem;
+}
+
+/* Cell 3: Video */
+.videoCell video {
+  border-radius: 10px;
+  width: 100%;
+  display: block;
+}
+
+/* Cell 4: Showcase (dark card with text and phone) */
+.showcaseCell {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  border-radius: 10px;
+  background-color: #0e0e0e;
+}
+.showcaseCell p {
+  color: var(--secondary-text);
+  font-size: var(--font-size-xs);
+  line-height: 1.6;
+}
+.phoneImageWrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 180 / 300;
+  margin-bottom: -1rem;
+}
+
+/* ==========================================================================
+   Desktop Overrides (2x2 Grid)
+   ========================================================================== */
+@media (min-width: 1024px) {
+  .introduction {
+    margin-top: 0;
+    border-radius: 0;
+    padding: 0 3rem 5rem 3rem;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    gap: 1rem;
+    padding: 1.5rem;
+    align-items: stretch;
+  }
+
+  /* --- Cell Styles (Desktop) --- */
+
+  .logoCell {
+    border-bottom: none;
+    padding-bottom: 1rem;
+    /* FIX: Center the larger logo within its cell */
+    display: flex;
+    align-items: center;
+  }
+
+  /* FIX: Allow the logo image to grow to fill its container */
+  .logoImage {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .descriptionCell {
+    font-size: 1.1vw;
+    display: flex;
+    align-items: center;
+  }
+
+  .videoCell video {
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* FIX: Change the showcase cell to a horizontal flex layout */
+  .showcaseCell {
+    display: flex;
+    flex-direction: row; /* Arrange items side-by-side */
+    align-items: center; /* Vertically align them */
+    gap: 1.5rem; /* Space between text and phone */
+    padding: 1.5rem; /* Add some internal padding */
+  }
+
+  /* FIX: Make the paragraph flexible so it takes available space */
+  .showcaseCell p {
+    font-size: 1.1vw;
+    flex: 1; /* This makes the text container grow */
+  }
+
+  /* FIX: Define the size and position of the phone image */
+  .phoneImageWrapper {
+    flex: 0 0 35%; /* Don't grow, don't shrink, basis of 35% width */
+    margin-top: 0; /* Remove the mobile margin */
+    margin-bottom: -1.5rem;
+  }
+}

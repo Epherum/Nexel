@@ -1,0 +1,97 @@
+/* src/app/projects/evense/components/ServicesAndShowcaseSection.module.css */
+.newSectionsWrapper {
+  padding: 4rem 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  background-color: #f4f0f0;
+  color: var(--dark-bg);
+}
+
+.underImageTextGridSection {
+  padding-bottom: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.gridTitle {
+  font-size: var(--font-size-xl);
+  font-weight: 400;
+  letter-spacing: -1px;
+}
+
+.gridSubtitle {
+  font-size: var(--font-size-xs);
+  font-weight: 300;
+  margin-top: 0.5rem;
+}
+
+.gridBody {
+  font-size: var(--font-size-xs);
+  font-weight: 300;
+}
+
+.imageShowcaseGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.gridItem {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.showcaseImageContainer {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1.25;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.showcaseText {
+  font-size: var(--font-size-xs);
+  font-weight: 300;
+}
+
+@media (min-width: 1024px) {
+  .newSectionsWrapper {
+    padding: 6rem 3rem;
+  }
+  .underImageTextGridSection {
+    padding-bottom: 3rem;
+    grid-template-columns: 1fr 1fr;
+    gap: 0rem 2rem;
+  }
+  .gridTitle {
+    font-size: var(--font-size-3xl);
+  }
+  .gridSubtitle,
+  .gridBody {
+    font-size: var(--font-size-lg);
+  }
+  .gridBody {
+    margin-top: 8rem;
+  }
+  .imageShowcaseGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .gridItem:nth-child(2),
+  .gridItem:nth-child(4) {
+    margin-top: 9rem;
+  }
+  .gridItem:nth-child(3) {
+    justify-content: space-between;
+  }
+  .showcaseText {
+    font-size: var(--font-size-lg);
+    max-width: 50ch;
+    padding-bottom: 0.5rem;
+    padding-left: 0.5rem;
+    margin-top: 1.5rem;
+  }
+}

@@ -1,0 +1,67 @@
+/* src/app/projects/evense/components/UserFlowSection.module.css */
+
+/* The main section wrapper.
+   We use vertical padding here but NO horizontal padding. */
+.userFlow {
+  padding: 2rem 0;
+  background-color: #151515;
+  display: flex; /* Use flexbox to easily manage children */
+  flex-direction: column;
+  gap: 1rem; /* Space between the heading and the image */
+}
+
+/* This container constrains the heading to the main content width. */
+.headingContainer {
+  width: 100%;
+  max-width: var(--container-width, 1200px); /* A standard max-width */
+  padding: 0 0.5rem; /* Mobile padding */
+}
+
+/* Styles for the "User Flow" h2 tag */
+.headingText {
+  font-weight: 500;
+  font-size: var(--font-size-2lg);
+  color: var(--secondary-text);
+}
+
+/* --- THE FIX for the full-width image --- */
+
+/* 1. This wrapper breaks out of the page constraints. */
+.imageWrapper {
+  width: 100vw; /* Span the full viewport width */
+  margin-left: calc(50% - 50vw); /* Center the full-width element */
+
+  /* 2. Apply the desired padding INSIDE the full-width wrapper */
+  padding: 0.5rem;
+
+  /* 3. Important for correct width calculation with padding */
+  box-sizing: border-box;
+}
+
+/* Style the image itself to fill its padded container */
+.imageWrapper img {
+  width: 100%;
+  height: auto;
+  display: block; /* Removes any extra space below the image */
+  border-radius: 12px; /* Optional: adds a nice touch */
+}
+
+/* --- Responsive Overrides --- */
+@media (min-width: 1024px) {
+  .userFlow {
+    padding: 3rem 0 3rem 0;
+    gap: 0rem;
+  }
+
+  .imageWrapper {
+    padding: 4rem;
+  }
+
+  .headingContainer {
+    padding: 0 4rem; /* Desktop padding */
+  }
+
+  .headingText {
+    font-size: var(--font-size-4xl);
+  }
+}

@@ -194,13 +194,13 @@ const hardcodedProjects: ProjectListing[] = [
     thumbnail: bookAppThumbnail,
     type: "hardcoded",
   },
-  // {
-  //   slug: "evense",
-  //   title: "Evense",
-  //   category: "Branding & Web",
-  //   thumbnail: evenseThumbnail,
-  //   type: "hardcoded",
-  // },
+  {
+    slug: "evense",
+    title: "Evense",
+    category: "Branding & Web",
+    thumbnail: evenseThumbnail,
+    type: "hardcoded",
+  },
   {
     slug: "moondivine",
     title: "Moondivine",

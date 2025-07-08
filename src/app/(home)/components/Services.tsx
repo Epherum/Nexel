@@ -51,7 +51,7 @@ const servicesData = [
     letter: "D",
     title: "Social Media & Marketing",
     pills: [
-      { text: "Content Strategy", color: "orange", top: "-20%", left: "20%" },
+      { text: "Content Strategy", color: "orange", top: "-30%", left: "21%" },
     ],
   },
 ];
