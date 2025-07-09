@@ -50,8 +50,6 @@ const ProjectCard = ({ slug, src, alt }: ProjectCardProps) => {
           fill
           sizes="(max-width: 1024px) 100vw, 50vw"
           className={styles.projectImage}
-          data-scroll
-          data-scroll-speed="-0.1"
         />
       </Link>
     </motion.div>

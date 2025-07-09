@@ -40,8 +40,6 @@ export default function SocialProjectClient({
             fill
             style={{ objectFit: "cover" }}
             priority
-            data-scroll
-            data-scroll-speed="-0.1"
           />
         </div>
         <div className={styles.heroContent}>
@@ -92,8 +90,6 @@ export default function SocialProjectClient({
                         <Image
                           src={src}
                           alt={`${project.slug} showcase image ${imgIndex + 1}`}
-                          data-scroll
-                          data-scroll-speed="-0.1"
                         />
                       </motion.div>
                     </div>

@@ -134,22 +134,12 @@ export default function BookAppPage() {
       <main className={styles.showcaseWrapper}>
         <section className={styles.paddedImageSection}>
           <div className={styles.imageContainer}>
-            <Image
-              src={img1}
-              alt="Book app UI detail"
-              data-scroll
-              data-scroll-speed="-0.1"
-            />
+            <Image src={img1} alt="Book app UI detail" priority />
           </div>
         </section>
         <section className={styles.paddedImageSection}>
           <div className={styles.imageContainer}>
-            <Image
-              src={img2}
-              alt="Book app UI detail"
-              data-scroll
-              data-scroll-speed="-0.1"
-            />
+            <Image src={img2} alt="Book app UI detail" />
           </div>
         </section>
 
@@ -160,12 +150,7 @@ export default function BookAppPage() {
 
         <section className={styles.fullWidthImageSection}>
           <div className={styles.imageContainer}>
-            <Image
-              src={img3}
-              alt="Multiple screens of the book app"
-              data-scroll
-              data-scroll-speed="-0.1"
-            />
+            <Image src={img3} alt="Multiple screens of the book app" />
           </div>
         </section>
 
@@ -178,15 +163,11 @@ export default function BookAppPage() {
             <Image
               src={img4}
               alt="Book app UI detail - default view"
-              data-scroll
-              data-scroll-speed="-0.1"
               className={!isImg4Toggled ? styles.visible : styles.hidden}
             />
             <Image
               src={img5} // The alternate image
               alt="Book app UI detail - alternate view"
-              data-scroll
-              data-scroll-speed="-0.1"
               className={isImg4Toggled ? styles.visible : styles.hidden}
             />
           </div>
@@ -199,12 +180,7 @@ export default function BookAppPage() {
 
         <section className={styles.fullWidthImageSection}>
           <div className={styles.imageContainer}>
-            <Image
-              src={img6}
-              alt="Close up of app UI elements"
-              data-scroll
-              data-scroll-speed="-0.1"
-            />
+            <Image src={img6} alt="Close up of app UI elements" />
           </div>
         </section>
 
