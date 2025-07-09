@@ -2,6 +2,7 @@ import "@/styles/globals.css";
 import { Clovergrotesk } from "@/fonts/font";
 import Navbar from "@/components/layout/Navbar";
 import SmoothScrollWrapper from "@/utils/SmoothScrollWrapper";
+import { Analytics } from "@vercel/analytics/next";
 import {
   CursorContext,
   CursorProvider,
@@ -35,6 +36,7 @@ export default function RootLayout({
             <Navbar />
             <SmoothScrollWrapper>{children}</SmoothScrollWrapper>
           </main>
+          <Analytics />
         </body>
       </CursorProvider>
     </html>
