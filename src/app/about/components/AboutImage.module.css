@@ -1,10 +1,8 @@
 /* --- Mobile-First Styles --- */
 .fullscreenSection {
-  /* Use a smaller height for mobile to prevent taking up the whole screen */
-  height: 60vh;
+  /* height property is now controlled by an inline style in the component */
   width: 100%;
   overflow: hidden;
-  /* Reduce the top margin for a tighter layout on mobile */
   margin-top: 2rem;
   position: relative;
 }
@@ -18,9 +16,8 @@
    Desktop Overrides
    ========================================================================== */
 @media (min-width: 768px) {
-  /* Restore the original desktop styles */
   .fullscreenSection {
-    height: 100vh;
+    /* height property is now controlled by an inline style in the component */
     margin-top: 4rem;
   }
 }

@@ -1,11 +1,11 @@
 .scrollWrapper {
-  height: 350lvh;
+  /* height property is now controlled by an inline style in the component */
   position: relative;
 }
 
 /* Base styles are now your mobile-first styles */
 .heroSection {
-  height: 110lvh;
+  /* height property is now controlled by an inline style in the component */
   background-color: var(--dark-bg);
   color: var(--primary-text);
   display: flex;
@@ -15,7 +15,7 @@
   position: sticky;
   top: 0;
   padding: 0rem 2rem 6rem 2rem;
-  overflow: hidden; /* ADDED: This prevents horizontal scrollbars */
+  overflow: hidden; /* This prevents horizontal scrollbars */
 }
 
 .contentWrapper {
@@ -96,31 +96,6 @@
   max-height: 270px;
 }
 
-.card1 {
-  top: 15%;
-  left: 2%;
-}
-.card2 {
-  top: 60%;
-  left: 8%;
-}
-.card3 {
-  top: 18%;
-  left: 28%;
-}
-.card4 {
-  top: 48%;
-  left: 45%;
-}
-.card5 {
-  top: 8%;
-  right: 6%;
-}
-.card6 {
-  top: 55%;
-  right: 12%;
-}
-
 .imageContainer {
   position: relative;
   width: 100%;
@@ -133,9 +108,8 @@
    Desktop Overrides
    ========================================================================== */
 @media (min-width: 768px) {
-  /* Revert hero section padding */
   .heroSection {
-    height: 135vh;
+    /* height property is now controlled by an inline style in the component */
     padding: 10rem 4rem 15rem 4rem;
   }
 
@@ -143,30 +117,26 @@
     right: 4rem; /* Match desktop padding */
   }
 
-  /* Revert headline font size */
   .headline {
     font-size: var(--font-size-6xl);
   }
 
-  /* Revert description box styles */
   .descriptionBox p {
-    margin: 1rem 0 0rem 0; /* Revert margins */
-    font-size: var(--font-size-lg); /* Revert font size */
+    margin: 1rem 0 0rem 0;
+    font-size: var(--font-size-lg);
   }
 
   .scrollIndicator {
-    bottom: 40vh; /* Positioned relative to the viewport height */
+    bottom: 40vh;
   }
 
-  /* Revert bottom bar layout and padding */
   .bottomBar {
-    align-items: center; /* Vertically center items on desktop */
+    align-items: center;
     gap: 0;
     bottom: -1rem;
     padding: 1rem 4rem;
   }
 
-  /* Revert card sizes back to the original desktop values */
   .card {
     width: 25vw;
     height: 30vw;

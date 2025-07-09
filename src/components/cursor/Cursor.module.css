@@ -44,3 +44,9 @@
 .dragContent svg {
   color: var(--accent-color); /* A nice, vibrant green for the arrows */
 }
+
+@media (pointer: coarse) {
+  .cursor {
+    display: none !important;
+  }
+}
