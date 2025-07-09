@@ -1,11 +1,11 @@
 .scrollWrapper {
-  height: 350vh;
+  height: 350lvh;
   position: relative;
 }
 
 /* Base styles are now your mobile-first styles */
 .heroSection {
-  height: 110vh;
+  height: 110lvh;
   background-color: var(--dark-bg);
   color: var(--primary-text);
   display: flex;
