@@ -1,10 +1,10 @@
-/* src/app/projects/evense/components/TypographyAndColorSection.module.css */
 .typography {
+  margin-top: -3rem;
   background-color: #f4f0f0;
   color: var(--dark-bg);
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-  padding: 2rem 0.5rem;
+  padding: 1.5rem 0.5rem;
   position: relative;
 }
 
@@ -25,11 +25,24 @@
   line-height: 1.6;
 }
 
+/* Hide the color squares on mobile */
 .colors {
-  display: grid;
+  display: none;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
   margin-top: 3rem;
+}
+
+/* Show and style the full-width image on mobile */
+.mobileColorImageContainer {
+  margin-top: 2rem;
+}
+
+.mobileColorImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px; /* Match styling of other elements */
 }
 
 .color div {
@@ -48,7 +61,7 @@
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
-  margin-top: 4rem;
+  margin-top: 2rem;
 }
 
 .leftSection {
@@ -83,7 +96,13 @@
 .weights .semibold,
 .weights .regular {
   border-radius: 20px;
-  padding: 1rem 1.5rem;
+  padding: 0.5rem 1rem;
+}
+.weights .regular {
+  rotate: -8deg;
+}
+.weights .semibold {
+  rotate: 12deg;
 }
 
 .weights .semibold {
@@ -102,7 +121,7 @@
 }
 
 .weights h3 {
-  font-size: var(--font-size-lg);
+  font-size: var(--font-size-2lg);
 }
 
 .rightText {
@@ -133,11 +152,19 @@
     width: 80%;
     margin-top: 150px;
   }
+
+  /* Show the original color squares on desktop */
   .colors {
     display: flex;
     justify-content: center;
     gap: 0;
   }
+
+  /* Hide the mobile-only image on desktop */
+  .mobileColorImageContainer {
+    display: none;
+  }
+
   .color {
     margin-left: 1rem;
   }

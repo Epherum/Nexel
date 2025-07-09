@@ -1,4 +1,3 @@
-// src/app/projects/evense/components/TypographyAndColorSection.tsx
 "use client";
 import React from "react";
 import Image from "@/components/animation/ParallaxImage";
@@ -43,6 +42,7 @@ const TypographyAndColorSection = () => {
           identity.
         </p>
       </div>
+      {/* This container with squares will now only show on desktop */}
       <div className={styles.colors}>
         {colors.map((color) => (
           <div key={color} className={styles.color}>
@@ -55,6 +55,16 @@ const TypographyAndColorSection = () => {
             <p>{color}</p>
           </div>
         ))}
+      </div>
+      {/* This image will only show on mobile */}
+      <div className={styles.mobileColorImageContainer}>
+        <Image
+          src="/static/evense/colors.webp"
+          alt="Evensē color palette"
+          width={1200}
+          height={250}
+          className={styles.mobileColorImage}
+        />
       </div>
       <div className={styles.fontSection}>
         <div className={styles.leftSection}>

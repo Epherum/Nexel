@@ -48,6 +48,7 @@ import virginiaThumbnail from "/public/static/thumbnails/virginia-thumbnail.webp
 
 // ---  Tresors Naturels  Assets ---
 import tresorsHero from "/public/static/tresors/hero.webp";
+import tresorsProfile from "/public/static/tresors/profile.webp"; // Assuming you have a profile icon
 import tresorsImg1 from "/public/static/tresors/1.webp";
 import tresorsImg2 from "/public/static/tresors/2.webp";
 import tresorsImg3 from "/public/static/tresors/3.webp";
@@ -78,6 +79,7 @@ import tresorsImg28 from "/public/static/tresors/28.webp";
 
 // --- Virginia Project Assets ---
 import virginiaHero from "/public/static/virginia/hero.webp";
+import virginiaProfile from "/public/static/virginia/profile.webp"; // Assuming you have a profile icon
 import virginiaImg1 from "/public/static/virginia/1.webp";
 import virginiaImg2 from "/public/static/virginia/2.webp";
 import virginiaImg3 from "/public/static/virginia/3.webp";
@@ -98,6 +100,7 @@ import virginiaImg17 from "/public/static/virginia/17.webp";
 
 // --- Digital Project Assets ---
 import digitalHero from "/public/static/digital/hero.webp";
+import digitalProfile from "/public/static/digital/profile.webp"; // Assuming you have a profile icon
 import digitalImg1 from "/public/static/digital/1.webp";
 import digitalImg2 from "/public/static/digital/2.webp";
 import digitalImg3 from "/public/static/digital/3.webp";
@@ -118,6 +121,7 @@ import digitalImg17 from "/public/static/digital/17.webp";
 
 // --- Mestiri Project Assets ---
 import mestiriHero from "/public/static/mestiri/hero.webp";
+import mestiriProfile from "/public/static/mestiri/profile.webp"; // Assuming you have a profile icon
 import mestiriImg1 from "/public/static/mestiri/1.webp";
 import mestiriImg2 from "/public/static/mestiri/2.webp";
 import mestiriImg3 from "/public/static/mestiri/3.webp";
@@ -138,6 +142,7 @@ import mestiriImg17 from "/public/static/mestiri/17.webp";
 
 // --- Amazone Project Assets ---
 import amazoneHero from "/public/static/amazone/hero.webp";
+import amazoneProfile from "/public/static/amazone/profile.webp"; // Assuming you have a profile icon
 import amazoneImg1 from "/public/static/amazone/1.webp";
 import amazoneImg2 from "/public/static/amazone/2.webp";
 import amazoneImg3 from "/public/static/amazone/3.webp";
@@ -178,37 +183,37 @@ export const socialMediaProjectsData: SocialMediaProject[] = [
         type: "social_media_grid",
         posts: [
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg1,
             altText: "Social media post 1",
           },
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg2,
             altText: "Social media post 2",
           },
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg3,
             altText: "Social media post 3",
           },
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg4,
             altText: "Social media post 4",
           },
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg5,
             altText: "Social media post 5",
           },
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg6,
             altText: "Social media post 6",
@@ -220,55 +225,55 @@ export const socialMediaProjectsData: SocialMediaProject[] = [
         type: "social_media_grid",
         posts: [
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg9,
             altText: "Social media post 9",
           },
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg10,
             altText: "Social media post 10",
           },
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg11,
             altText: "Social media post 11",
           },
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg12,
             altText: "Social media post 12",
           },
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg13,
             altText: "Social media post 13",
           },
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg14,
             altText: "Social media post 14",
           },
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg15,
             altText: "Social media post 15",
           },
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg16,
             altText: "Social media post 16",
           },
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg17,
             altText: "Social media post 17",
@@ -280,49 +285,49 @@ export const socialMediaProjectsData: SocialMediaProject[] = [
         type: "social_media_grid",
         posts: [
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg20,
             altText: "Social media post 20",
           },
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg21,
             altText: "Social media post 21",
           },
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg22,
             altText: "Social media post 22",
           },
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg24,
             altText: "Social media post 24",
           },
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg25,
             altText: "Social media post 25",
           },
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg26,
             altText: "Social media post 26",
           },
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg27,
             altText: "Social media post 27",
           },
           {
-            profileIcon: tresorsImg1,
+            profileIcon: tresorsProfile,
             name: "Tresors_naturels_officiel",
             image: tresorsImg28,
             altText: "Social media post 28",
@@ -348,37 +353,37 @@ export const socialMediaProjectsData: SocialMediaProject[] = [
         type: "social_media_grid",
         posts: [
           {
-            profileIcon: mestiriImg1,
+            profileIcon: mestiriProfile,
             name: "Mestiri_officiel",
             image: mestiriImg1,
             altText: "Mestiri social media post 1",
           },
           {
-            profileIcon: mestiriImg1,
+            profileIcon: mestiriProfile,
             name: "Mestiri_officiel",
             image: mestiriImg2,
             altText: "Mestiri social media post 2",
           },
           {
-            profileIcon: mestiriImg1,
+            profileIcon: mestiriProfile,
             name: "Mestiri_officiel",
             image: mestiriImg3,
             altText: "Mestiri social media post 3",
           },
           {
-            profileIcon: mestiriImg1,
+            profileIcon: mestiriProfile,
             name: "Mestiri_officiel",
             image: mestiriImg4,
             altText: "Mestiri social media post 4",
           },
           {
-            profileIcon: mestiriImg1,
+            profileIcon: mestiriProfile,
             name: "Mestiri_officiel",
             image: mestiriImg5,
             altText: "Mestiri social media post 5",
           },
           {
-            profileIcon: mestiriImg1,
+            profileIcon: mestiriProfile,
             name: "Mestiri_officiel",
             image: mestiriImg6,
             altText: "Mestiri social media post 6",
@@ -390,55 +395,55 @@ export const socialMediaProjectsData: SocialMediaProject[] = [
         type: "social_media_grid",
         posts: [
           {
-            profileIcon: mestiriImg1,
+            profileIcon: mestiriProfile,
             name: "Mestiri_officiel",
             image: mestiriImg9,
             altText: "Mestiri social media post 9",
           },
           {
-            profileIcon: mestiriImg1,
+            profileIcon: mestiriProfile,
             name: "Mestiri_officiel",
             image: mestiriImg10,
             altText: "Mestiri social media post 10",
           },
           {
-            profileIcon: mestiriImg1,
+            profileIcon: mestiriProfile,
             name: "Mestiri_officiel",
             image: mestiriImg11,
             altText: "Mestiri social media post 11",
           },
           {
-            profileIcon: mestiriImg1,
+            profileIcon: mestiriProfile,
             name: "Mestiri_officiel",
             image: mestiriImg12,
             altText: "Mestiri social media post 12",
           },
           {
-            profileIcon: mestiriImg1,
+            profileIcon: mestiriProfile,
             name: "Mestiri_officiel",
             image: mestiriImg13,
             altText: "Mestiri social media post 13",
           },
           {
-            profileIcon: mestiriImg1,
+            profileIcon: mestiriProfile,
             name: "Mestiri_officiel",
             image: mestiriImg14,
             altText: "Mestiri social media post 14",
           },
           {
-            profileIcon: mestiriImg1,
+            profileIcon: mestiriProfile,
             name: "Mestiri_officiel",
             image: mestiriImg15,
             altText: "Mestiri social media post 15",
           },
           {
-            profileIcon: mestiriImg1,
+            profileIcon: mestiriProfile,
             name: "Mestiri_officiel",
             image: mestiriImg16,
             altText: "Mestiri social media post 16",
           },
           {
-            profileIcon: mestiriImg1,
+            profileIcon: mestiriProfile,
             name: "Mestiri_officiel",
             image: mestiriImg17,
             altText: "Mestiri social media post 17",
@@ -464,37 +469,37 @@ export const socialMediaProjectsData: SocialMediaProject[] = [
         type: "social_media_grid",
         posts: [
           {
-            profileIcon: virginiaImg1,
+            profileIcon: virginiaProfile,
             name: "Virginia_officiel",
             image: virginiaImg1,
             altText: "Virginia social media post 1",
           },
           {
-            profileIcon: virginiaImg1,
+            profileIcon: virginiaProfile,
             name: "Virginia_officiel",
             image: virginiaImg2,
             altText: "Virginia social media post 2",
           },
           {
-            profileIcon: virginiaImg1,
+            profileIcon: virginiaProfile,
             name: "Virginia_officiel",
             image: virginiaImg3,
             altText: "Virginia social media post 3",
           },
           {
-            profileIcon: virginiaImg1,
+            profileIcon: virginiaProfile,
             name: "Virginia_officiel",
             image: virginiaImg4,
             altText: "Virginia social media post 4",
           },
           {
-            profileIcon: virginiaImg1,
+            profileIcon: virginiaProfile,
             name: "Virginia_officiel",
             image: virginiaImg5,
             altText: "Virginia social media post 5",
           },
           {
-            profileIcon: virginiaImg1,
+            profileIcon: virginiaProfile,
             name: "Virginia_officiel",
             image: virginiaImg6,
             altText: "Virginia social media post 6",
@@ -506,55 +511,55 @@ export const socialMediaProjectsData: SocialMediaProject[] = [
         type: "social_media_grid",
         posts: [
           {
-            profileIcon: virginiaImg1,
+            profileIcon: virginiaProfile,
             name: "Virginia_officiel",
             image: virginiaImg9,
             altText: "Virginia social media post 9",
           },
           {
-            profileIcon: virginiaImg1,
+            profileIcon: virginiaProfile,
             name: "Virginia_officiel",
             image: virginiaImg10,
             altText: "Virginia social media post 10",
           },
           {
-            profileIcon: virginiaImg1,
+            profileIcon: virginiaProfile,
             name: "Virginia_officiel",
             image: virginiaImg11,
             altText: "Virginia social media post 11",
           },
           {
-            profileIcon: virginiaImg1,
+            profileIcon: virginiaProfile,
             name: "Virginia_officiel",
             image: virginiaImg12,
             altText: "Virginia social media post 12",
           },
           {
-            profileIcon: virginiaImg1,
+            profileIcon: virginiaProfile,
             name: "Virginia_officiel",
             image: virginiaImg13,
             altText: "Virginia social media post 13",
           },
           {
-            profileIcon: virginiaImg1,
+            profileIcon: virginiaProfile,
             name: "Virginia_officiel",
             image: virginiaImg14,
             altText: "Virginia social media post 14",
           },
           {
-            profileIcon: virginiaImg1,
+            profileIcon: virginiaProfile,
             name: "Virginia_officiel",
             image: virginiaImg15,
             altText: "Virginia social media post 15",
           },
           {
-            profileIcon: virginiaImg1,
+            profileIcon: virginiaProfile,
             name: "Virginia_officiel",
             image: virginiaImg16,
             altText: "Virginia social media post 16",
           },
           {
-            profileIcon: virginiaImg1,
+            profileIcon: virginiaProfile,
             name: "Virginia_officiel",
             image: virginiaImg17,
             altText: "Virginia social media post 17",
@@ -580,37 +585,37 @@ export const socialMediaProjectsData: SocialMediaProject[] = [
         type: "social_media_grid",
         posts: [
           {
-            profileIcon: digitalImg1,
+            profileIcon: digitalProfile,
             name: "Digital_officiel",
             image: digitalImg1,
             altText: "Digital social media post 1",
           },
           {
-            profileIcon: digitalImg1,
+            profileIcon: digitalProfile,
             name: "Digital_officiel",
             image: digitalImg2,
             altText: "Digital social media post 2",
           },
           {
-            profileIcon: digitalImg1,
+            profileIcon: digitalProfile,
             name: "Digital_officiel",
             image: digitalImg3,
             altText: "Digital social media post 3",
           },
           {
-            profileIcon: digitalImg1,
+            profileIcon: digitalProfile,
             name: "Digital_officiel",
             image: digitalImg4,
             altText: "Digital social media post 4",
           },
           {
-            profileIcon: digitalImg1,
+            profileIcon: digitalProfile,
             name: "Digital_officiel",
             image: digitalImg5,
             altText: "Digital social media post 5",
           },
           {
-            profileIcon: digitalImg1,
+            profileIcon: digitalProfile,
             name: "Digital_officiel",
             image: digitalImg6,
             altText: "Digital social media post 6",
@@ -622,55 +627,55 @@ export const socialMediaProjectsData: SocialMediaProject[] = [
         type: "social_media_grid",
         posts: [
           {
-            profileIcon: digitalImg1,
+            profileIcon: digitalProfile,
             name: "Digital_officiel",
             image: digitalImg9,
             altText: "Digital social media post 9",
           },
           {
-            profileIcon: digitalImg1,
+            profileIcon: digitalProfile,
             name: "Digital_officiel",
             image: digitalImg10,
             altText: "Digital social media post 10",
           },
           {
-            profileIcon: digitalImg1,
+            profileIcon: digitalProfile,
             name: "Digital_officiel",
             image: digitalImg11,
             altText: "Digital social media post 11",
           },
           {
-            profileIcon: digitalImg1,
+            profileIcon: digitalProfile,
             name: "Digital_officiel",
             image: digitalImg12,
             altText: "Digital social media post 12",
           },
           {
-            profileIcon: digitalImg1,
+            profileIcon: digitalProfile,
             name: "Digital_officiel",
             image: digitalImg13,
             altText: "Digital social media post 13",
           },
           {
-            profileIcon: digitalImg1,
+            profileIcon: digitalProfile,
             name: "Digital_officiel",
             image: digitalImg14,
             altText: "Digital social media post 14",
           },
           {
-            profileIcon: digitalImg1,
+            profileIcon: digitalProfile,
             name: "Digital_officiel",
             image: digitalImg15,
             altText: "Digital social media post 15",
           },
           {
-            profileIcon: digitalImg1,
+            profileIcon: digitalProfile,
             name: "Digital_officiel",
             image: digitalImg16,
             altText: "Digital social media post 16",
           },
           {
-            profileIcon: digitalImg1,
+            profileIcon: digitalProfile,
             name: "Digital_officiel",
             image: digitalImg17,
             altText: "Digital social media post 17",
@@ -696,37 +701,37 @@ export const socialMediaProjectsData: SocialMediaProject[] = [
         type: "social_media_grid",
         posts: [
           {
-            profileIcon: amazoneImg1,
+            profileIcon: amazoneProfile,
             name: "Amazone_officiel",
             image: amazoneImg1,
             altText: "Amazone social media post 1",
           },
           {
-            profileIcon: amazoneImg1,
+            profileIcon: amazoneProfile,
             name: "Amazone_officiel",
             image: amazoneImg2,
             altText: "Amazone social media post 2",
           },
           {
-            profileIcon: amazoneImg1,
+            profileIcon: amazoneProfile,
             name: "Amazone_officiel",
             image: amazoneImg3,
             altText: "Amazone social media post 3",
           },
           {
-            profileIcon: amazoneImg1,
+            profileIcon: amazoneProfile,
             name: "Amazone_officiel",
             image: amazoneImg4,
             altText: "Amazone social media post 4",
           },
           {
-            profileIcon: amazoneImg1,
+            profileIcon: amazoneProfile,
             name: "Amazone_officiel",
             image: amazoneImg5,
             altText: "Amazone social media post 5",
           },
           {
-            profileIcon: amazoneImg1,
+            profileIcon: amazoneProfile,
             name: "Amazone_officiel",
             image: amazoneImg6,
             altText: "Amazone social media post 6",
@@ -738,61 +743,61 @@ export const socialMediaProjectsData: SocialMediaProject[] = [
         type: "social_media_grid",
         posts: [
           {
-            profileIcon: amazoneImg1,
+            profileIcon: amazoneProfile,
             name: "Amazone_officiel",
             image: amazoneImg9,
             altText: "Amazone social media post 9",
           },
           {
-            profileIcon: amazoneImg1,
+            profileIcon: amazoneProfile,
             name: "Amazone_officiel",
             image: amazoneImg10,
             altText: "Amazone social media post 10",
           },
           {
-            profileIcon: amazoneImg1,
+            profileIcon: amazoneProfile,
             name: "Amazone_officiel",
             image: amazoneImg11,
             altText: "Amazone social media post 11",
           },
           {
-            profileIcon: amazoneImg1,
+            profileIcon: amazoneProfile,
             name: "Amazone_officiel",
             image: amazoneImg12,
             altText: "Amazone social media post 12",
           },
           {
-            profileIcon: amazoneImg1,
+            profileIcon: amazoneProfile,
             name: "Amazone_officiel",
             image: amazoneImg13,
             altText: "Amazone social media post 13",
           },
           {
-            profileIcon: amazoneImg1,
+            profileIcon: amazoneProfile,
             name: "Amazone_officiel",
             image: amazoneImg14,
             altText: "Amazone social media post 14",
           },
           {
-            profileIcon: amazoneImg1,
+            profileIcon: amazoneProfile,
             name: "Amazone_officiel",
             image: amazoneImg15,
             altText: "Amazone social media post 15",
           },
           {
-            profileIcon: amazoneImg1,
+            profileIcon: amazoneProfile,
             name: "Amazone_officiel",
             image: amazoneImg17,
             altText: "Amazone social media post 17",
           },
           {
-            profileIcon: amazoneImg1,
+            profileIcon: amazoneProfile,
             name: "Amazone_officiel",
             image: amazoneImg18,
             altText: "Amazone social media post 18",
           },
           {
-            profileIcon: amazoneImg1,
+            profileIcon: amazoneProfile,
             name: "Amazone_officiel",
             image: amazoneImg19,
             altText: "Amazone social media post 19",

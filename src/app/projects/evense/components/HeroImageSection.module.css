@@ -32,7 +32,7 @@
 @media (min-width: 1024px) {
   .heroImageSection {
     height: auto;
-    padding: 4rem 1.5rem 0 1.5rem;
+    padding: 4rem 2.5rem 0 2.5rem;
     z-index: 2;
   }
   .imageContainer {

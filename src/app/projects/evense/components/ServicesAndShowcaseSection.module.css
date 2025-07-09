@@ -1,9 +1,9 @@
 /* src/app/projects/evense/components/ServicesAndShowcaseSection.module.css */
 .newSectionsWrapper {
-  padding: 4rem 0.5rem;
+  padding: 2rem 0.5rem;
   display: flex;
   flex-direction: column;
-  gap: 3rem;
+  gap: 1rem;
   background-color: #f4f0f0;
   color: var(--dark-bg);
 }
@@ -59,7 +59,7 @@
 
 @media (min-width: 1024px) {
   .newSectionsWrapper {
-    padding: 6rem 3rem;
+    padding: 3rem 3rem;
   }
   .underImageTextGridSection {
     padding-bottom: 3rem;

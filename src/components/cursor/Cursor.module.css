@@ -1,7 +1,7 @@
 .cursor {
   /* Sizing and Shape */
-  width: 20px;
-  height: 20px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
 
   /* Color */
@@ -21,7 +21,7 @@
   color: #000; /* Set a default color for icons and text */
 }
 
-/* New generic content container class */
+/* Generic content container class */
 .cursorContent {
   display: flex;
   align-items: center;
@@ -32,15 +32,15 @@
   white-space: nowrap; /* Prevent "Drag" from wrapping */
 }
 
-.cursorText {
-  font-size: 14px;
-  font-weight: 500;
-  color: #000; /* Black text */
-  opacity: 0; /* Hidden by default */
+/* --- 💡 NEW STYLES BELOW --- */
+
+/* This new class targets the "Drag" content specifically */
+.dragContent {
+  color: #fff; /* Makes the "Drag" text white */
+  font-size: 24px; /* Makes the "Drag" text slightly bigger */
 }
 
-@media (pointer: coarse) {
-  .cursor {
-    display: none !important;
-  }
+/* This targets the react-icons (which are SVGs) inside the drag cursor */
+.dragContent svg {
+  color: var(--accent-color); /* A nice, vibrant green for the arrows */
 }

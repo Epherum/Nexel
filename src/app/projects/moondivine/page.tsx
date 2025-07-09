@@ -160,7 +160,7 @@ export default function MoonDivinePage() {
         {/* 5. Image (Padded) */}
         <section className={styles.paddedImageSection}>
           <div className={styles.imageContainer}>
-            <Image src={img4} alt="MoonDivine UI detail" fill />{" "}
+            <Image src={img4} alt="MoonDivine UI detail" layout="responsive" />{" "}
             {/* <-- ADD fill */}
           </div>
         </section>

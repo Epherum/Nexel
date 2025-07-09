@@ -22,7 +22,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 2.5rem;
   text-align: center;
   position: relative;
   z-index: 5;
@@ -44,23 +44,6 @@
   margin: 2rem 1rem 1rem;
   font-weight: 100;
   font-size: var(--font-size-xs);
-}
-
-.exploreButton {
-  background-color: var(--accent-color);
-  color: #000;
-  border: none;
-  padding: 0.6rem 1.3rem;
-  border-radius: 8px;
-  font-weight: 500;
-  cursor: pointer;
-  transition: transform 0.2s ease-in-out;
-  font-family: inherit;
-  font-size: var(--font-size-xs);
-}
-
-.exploreButton:hover {
-  transform: scale(1.05);
 }
 
 .scrollIndicator {
@@ -153,7 +136,7 @@
   /* Revert hero section padding */
   .heroSection {
     height: 135vh;
-    padding: 10rem 4rem 15rem 4rem; /* Changed 8rem to 15rem. Adjust as needed. */
+    padding: 10rem 4rem 15rem 4rem;
   }
 
   .scrollIndicator {
@@ -167,7 +150,7 @@
 
   /* Revert description box styles */
   .descriptionBox p {
-    margin: -1rem 0 1rem 0; /* Revert margins */
+    margin: 1rem 0 0rem 0; /* Revert margins */
     font-size: var(--font-size-lg); /* Revert font size */
   }
 

@@ -225,6 +225,11 @@ const ContactPage = () => {
                 className={styles.textArea}
                 rows={5}
               ></textarea>
+              <input
+                type="text"
+                placeholder="Your Budget"
+                className={styles.textInput}
+              />
             </div>
           </motion.fieldset>
           <motion.fieldset

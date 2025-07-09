@@ -10,13 +10,9 @@ import { FiArrowUpRight, FiArrowLeft, FiArrowRight } from "react-icons/fi";
 const CURSOR_SIZE = 20;
 
 const Cursor = () => {
-  const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 }); // Start off-screen
-  const {
-    isHoveringLink,
-    isHoveringDraggable,
-    isCursorVisible,
-    // --- REMOVED --- mouseDetected,
-  } = useContext(CursorContext);
+  const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 });
+  const { isHoveringLink, isHoveringDraggable, isCursorVisible } =
+    useContext(CursorContext);
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -26,12 +22,6 @@ const Cursor = () => {
     return () => window.removeEventListener("mousemove", handleMouseMove);
   }, []);
 
-  // --- REMOVED --- The check for mouseDetected is gone. The component will always render,
-  // but CSS will hide it on coarse-pointer devices.
-  // if (!mouseDetected) {
-  //   return null;
-  // }
-
   const cursorVariants = {
     default: {
       height: CURSOR_SIZE,
@@ -40,16 +30,17 @@ const Cursor = () => {
       mixBlendMode: "difference",
     },
     linkHover: {
-      height: 80,
-      width: 80,
+      height: 100,
+      width: 100,
       backgroundColor: "#fff",
-      mixBlendMode: "normal",
+      mixBlendMode: "difference",
     },
+    // 💡 1. UPDATED THE DRAG CURSOR VARIANT
     dragHover: {
-      height: 90,
-      width: 90,
-      backgroundColor: "#fff",
-      mixBlendMode: "normal",
+      height: 150, // Slightly bigger
+      width: 150, // Slightly bigger
+      backgroundColor: "#000", // Black background
+      mixBlendMode: "normal", // Keep as normal so it doesn't invert
     },
   };
 
@@ -94,7 +85,8 @@ const Cursor = () => {
           </span>
         )}
         {currentState === "dragHover" && (
-          <span className={styles.cursorContent}>
+          // 💡 2. ADDED A NEW DEDICATED CLASS FOR DRAG STYLING
+          <span className={`${styles.cursorContent} ${styles.dragContent}`}>
             <FiArrowLeft /> Drag <FiArrowRight />
           </span>
         )}

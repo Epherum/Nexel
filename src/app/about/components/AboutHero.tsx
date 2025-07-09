@@ -171,9 +171,6 @@ const AboutHero = () => {
                 </AnimatedWord>
               ))}
             </p>
-            <AnimatedWord variants={wordVariants}>
-              <button className={styles.exploreButton}>Explore</button>
-            </AnimatedWord>
           </motion.div>
           <h1 className={styles.headline}>
             <AnimatedWord variants={wordVariants}>Inspiring</AnimatedWord>

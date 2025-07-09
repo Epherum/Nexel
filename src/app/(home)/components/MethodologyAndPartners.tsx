@@ -2,21 +2,29 @@
 
 import React from "react";
 import Image from "next/image";
-import styles from "./MethodologyAndPartners.module.css"; // CHANGED
-import HoverableDraggable from "@/components/HoverableDraggable"; // CHANGED
+import styles from "./MethodologyAndPartners.module.css";
+import HoverableDraggable from "@/components/HoverableDraggable";
 
 // --- Animation & Helper Imports ---
 import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";
 import AnimatedWord from "@/components/animation/AnimatedWord";
 import { easings } from "@/utils/easings";
-import { useMediaQuery } from "@/utils/useMediaQuery"; // CHANGED: Import the new hook
+import { useMediaQuery } from "@/utils/useMediaQuery";
 
 // --- Swiper Imports (for desktop only) ---
 import { Swiper, SwiperSlide } from "swiper/react";
+// 💡 1. IMPORT THE NEW MODULES
+import { FreeMode, Scrollbar, Mousewheel } from "swiper/modules";
+
+// Import Swiper styles
 import "swiper/css";
+// 💡 2. IMPORT CSS FOR THE NEW MODULES
+import "swiper/css/free-mode";
+import "swiper/css/scrollbar";
 
 const methodologySteps = [
+  // ... (your methodologySteps array is unchanged)
   {
     step: 1,
     title: "Discovery & Alignment",
@@ -147,12 +155,18 @@ const MethodologyAndPartners = ({ logoPaths }: MethodologyAndPartnersProps) => {
 
           {isDesktop ? (
             <HoverableDraggable>
+              {/* 💡 3. CONFIGURE THE SWIPER WITH NEW PROPS */}
               <Swiper
+                modules={[FreeMode, Scrollbar, Mousewheel]} // Add the modules here
                 spaceBetween={20}
                 slidesPerView={3.5}
-                slidesOffsetBefore={48} // Corresponds to 3rem desktop padding
-                slidesOffsetAfter={48} // Corresponds to 3rem desktop padding
+                slidesOffsetBefore={48}
+                slidesOffsetAfter={48}
                 className={styles.methodologySwiper}
+                freeMode={{
+                  enabled: true,
+                  sticky: false, // Set to false for a smoother, non-snapping stop
+                }}
               >
                 {methodologySteps.map((item, index) => (
                   <SwiperSlide key={item.step} className={styles.slide}>
@@ -170,14 +184,13 @@ const MethodologyAndPartners = ({ logoPaths }: MethodologyAndPartnersProps) => {
           )}
         </motion.div>
 
-        {/* === START OF CORRECTION: RESTORED PARTNERS SECTION === */}
+        {/* --- Partners Section (Unchanged) --- */}
         <motion.div
           ref={partnersRef}
           className={styles.partnersContainer}
           initial="hidden"
           animate={arePartnersInView ? "visible" : "hidden"}
         >
-          {/* 1. Add the new class directly to the h2 */}
           <motion.h2
             className={`${styles.sectionTitle} ${styles.titleWithSeparator}`}
             variants={wordRevealContainer}

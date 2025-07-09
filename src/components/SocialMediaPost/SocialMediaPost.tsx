@@ -29,8 +29,8 @@ const SocialMediaPost: React.FC<SocialMediaPostProps> = ({
             src={profileIcon}
             alt={`${name} profile icon`}
             className={styles.profileIcon}
-            width={30}
-            height={30}
+            width={40}
+            height={40}
           />
           <span className={styles.profileName}>{name}</span>
         </div>
