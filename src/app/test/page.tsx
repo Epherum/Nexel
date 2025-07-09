@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const TestPage = () => {
   // Use one of the images you know is slow
-  const testImageSrc = "/static/bilargo/hero.webp";
+  const testImageSrc = "/static/book-app/2.webp";
 
   return (
     <div
