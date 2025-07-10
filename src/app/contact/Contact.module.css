@@ -3,7 +3,7 @@
 /* --- Mobile styles --- */
 .headlineSection {
   text-align: center;
-  padding: 6rem 4rem 4rem;
+  padding: 6rem 0.5rem 4rem;
 }
 .headline {
   font-size: var(--font-size-3xl);
@@ -32,42 +32,35 @@
 .contentWrapper {
   background-color: var(--primary-text);
   color: var(--dark-bg);
-  border-radius: 20px 20px 20px 20px;
-  padding: 2rem 2rem;
+  border-radius: 20px; /* Simplified border-radius */
+  padding: 2rem 0.5rem; /* Changed side padding from 2rem to 0.5rem */
   margin: 0 0.5rem;
 }
 
 /* ===================================================================== */
-/* === MODIFICATION START: Here is the fix for the background bar === */
+/* === MODIFICATION 2: Adjust grid to match new mobile padding === */
 /* ===================================================================== */
 .achievementsGrid {
-  /* 1. Set the desired background color */
   background-color: #e5e8e8;
   border-radius: 20px 20px 0 0;
+  color: var(--dark-bg);
 
-  /* 2. Set a dark text color for readability on the new light background */
-  color: var(--primary-text);
+  /* Negative margins now match the PARENT'S new side padding (0.5rem) */
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+  margin-top: -2rem; /* Vertical margin remains the same */
 
-  /* 3. Use negative margins to "break out" of the parent's padding */
-  margin-left: -2rem;
-  margin-right: -2rem;
-  margin-top: -2rem;
-
-  /* 4. Add padding back internally so content doesn't touch the edges */
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-top: 2rem;
+  /* Internal padding now matches the new negative margin */
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 2rem; /* Vertical padding remains the same */
 
   /* --- Original styles below --- */
   display: grid;
   grid-template-columns: 1fr;
   gap: 1.5rem;
   padding-bottom: 2rem;
-  color: var(--dark-bg);
 }
-/* ===================================================================== */
-/* === MODIFICATION END === */
-/* ===================================================================== */
 
 .label {
   color: var(--services-text);
@@ -202,7 +195,7 @@
 /* ======================================= */
 @media (min-width: 1024px) {
   .headlineSection {
-    padding-top: 8rem;
+    padding: 8rem 4rem 0rem;
   }
   .headline {
     font-size: var(--font-size-5xl);
@@ -216,9 +209,16 @@
   }
   .contentWrapper {
     margin: 3rem 1rem 0rem;
+    padding: 2rem 2rem; /* MODIFICATION 3.1: Restore desktop side padding */
   }
   .achievementsGrid {
-    /* The negative margins and padding from the mobile styles work perfectly here too! */
+    /* MODIFICATION 3.2: Restore desktop negative margins and internal padding */
+    margin-left: -2rem;
+    margin-right: -2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    /* --- Original desktop styles below --- */
     display: flex;
     justify-content: space-between;
     align-items: center;

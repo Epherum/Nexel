@@ -171,10 +171,11 @@ const HeroMarquee = ({ isPreloading }: HeroMarqueeProps) => {
           >
             <Image
               src={item.src}
-              alt=""
+              alt={`Showcase of a hero project ${index + 1}`} // Descriptive alt text is good practice
               fill
+              priority
+              sizes="(max-width: 768px) 50vw, 10vw"
               className={styles.image}
-              quality={90}
             />
           </div>
         ))}

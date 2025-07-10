@@ -12,53 +12,20 @@ import Preloader from "@/components/animation/preloader/Preloader";
 import { usePreloader } from "@/context/PreloaderContext"; // ✅ Import the hook
 
 export default function HomePageClient({ logoPaths }: { logoPaths: string[] }) {
-  // ✅ USE THE CONTEXT as the single source of truth.
   const { isAppLoading, setIsAppLoading } = usePreloader();
-
-  // This useEffect decides if the preloader should run. It now directly controls the global state.
-  useEffect(() => {
-    // Check if we are on the client side
-    if (typeof window !== "undefined") {
-      const navEntries = performance.getEntriesByType(
-        "navigation"
-      ) as PerformanceNavigationTiming[];
-      const preloaderHasRun =
-        sessionStorage.getItem("hasPreloaderRun") === "true";
-
-      let shouldShowPreloader = true;
-
-      if (navEntries.length > 0) {
-        const navType = navEntries[0].type;
-
-        if (navType === "reload") {
-          // Rule 2: On refresh, force preloader. Reset the session flag.
-          sessionStorage.removeItem("hasPreloaderRun");
-          shouldShowPreloader = true;
-        } else if (preloaderHasRun) {
-          // Rule 3: On navigation back, preloader has run, so skip it.
-          shouldShowPreloader = false;
-        }
-        // Rule 1: On first visit, preloaderHasRun is false, so it will show.
-      } else {
-        // Fallback for browsers that might not support PerformanceNavigationTiming well.
-        if (preloaderHasRun) {
-          shouldShowPreloader = false;
-        }
-      }
-
-      // If the decision is to skip the preloader, update the global state immediately.
-      if (!shouldShowPreloader) {
-        setIsAppLoading(false);
-      }
-    }
-  }, [setIsAppLoading]); // Only depends on setIsAppLoading
 
   // This handler runs when the preloader animation is finished
   const handlePreloadComplete = useCallback(() => {
+    // --- START DEBUG LOGGING ---
+    console.log(
+      "%c[HomePageClient] Preloader animation complete! Setting 'hasPreloaderRun' to true.",
+      "color: green; font-weight: bold;"
+    );
+    // --- END DEBUG LOGGING ---
+
     sessionStorage.setItem("hasPreloaderRun", "true");
     setIsAppLoading(false); // Signal the global app is ready.
   }, [setIsAppLoading]);
-
   return (
     <main>
       {/* 

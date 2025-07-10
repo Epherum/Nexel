@@ -6,8 +6,8 @@ import SmoothScrollWrapper from "@/utils/SmoothScrollWrapper";
 import { Analytics } from "@vercel/analytics/next";
 import Cursor from "@/components/cursor/Cursor";
 import { CursorProvider } from "@/components/cursor/CursorContext";
-import { PreloaderProvider } from "@/context/PreloaderContext"; // ✅ Import the new provider
 import { ViewTransitions } from "next-view-transitions";
+import { PreloaderController } from "@/context/PreloaderController"; // ✅ Import the new controller
 
 export const metadata = {
   title: "Nexel | Digital Design Agency",
@@ -31,10 +31,10 @@ export default function RootLayout({
 
             <main>
               {/* ✅ Wrap the layout with the provider */}
-              <PreloaderProvider>
+              <PreloaderController>
                 <Navbar /> {/* Now Navbar can access the context */}
                 <SmoothScrollWrapper>{children}</SmoothScrollWrapper>
-              </PreloaderProvider>
+              </PreloaderController>
             </main>
             <Analytics />
           </body>
