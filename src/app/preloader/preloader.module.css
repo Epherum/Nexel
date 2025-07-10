@@ -1,0 +1,98 @@
+/* preloader.module.css */
+
+/* --- NEW: The True Preloader for waiting on image assets --- */
+/* --- MODIFIED: The container for the FancyLoader --- */
+.truePreloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  transition: opacity 0.5s ease-out;
+  transform: scale(1.2);
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  background-color: #000;
+  overflow: hidden;
+  color: white;
+}
+
+.heroBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #1a1a1a;
+  transform-origin: bottom;
+  transform: scaleY(0);
+  z-index: 1;
+}
+
+.counter {
+  position: fixed;
+  left: 3rem;
+  bottom: 2rem;
+  display: flex;
+  height: 120px;
+  font-size: 120px;
+  line-height: 150px;
+  clip-path: polygon(0 0, 100% 0, 100% 120px, 0 120px);
+  z-index: 10;
+  opacity: 0;
+}
+
+.digit {
+  /* This is just a helper class, you can style if needed */
+}
+
+.num {
+  /* Style for individual numbers in the counter */
+}
+
+/* Offsets for specific numbers to align them better */
+.num1offset1 {
+  transform: translateY(-10px);
+}
+.num1offset2 {
+  transform: translateY(-10px);
+}
+
+.imagesContainer {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+}
+
+.img {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  overflow: hidden;
+  transform-origin: center center;
+  border-radius: 16px;
+  opacity: 0;
+  scale: 0;
+  width: 330px;
+  height: 200px;
+  outline: 2px solid #1a1a1a;
+}
+
+.animateOut {
+  top: unset;
+  left: unset;
+  bottom: 2rem;
+  left: 3rem;
+  height: 130px;
+  width: 220px;
+}
