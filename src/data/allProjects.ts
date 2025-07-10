@@ -108,21 +108,24 @@ export const brandingProjectsData: BrandingProject[] = [
     },
   },
   {
-    slug: "matuky",
+    slug: "matuki", // ✨ Corrected
     meta: {
-      title: "Matsuky Branding | Nexel",
+      // ✨ Corrected
+      title: "Matuki Branding | Nexel",
       description:
-        "Designing a warm, playful, and modern brand identity for Matsuky, a Japanese-inspired matcha café.",
+        "Designing a warm, playful, and modern brand identity for Matuki, a Japanese-inspired matcha café.",
     },
     thumbnail: matukyThumbnail,
     heroHeadline: "Your Daily Moment of Matcha.",
     heroImage: "/static/matuky/hero.webp",
     introText:
-      "MATSUKY is a modern matcha café concept that brings the traditional taste of Japanese matcha to a trendy, design-conscious audience. Our goal was to build a brand that blends tradition and fun, appealing to both matcha connoisseurs and newcomers alike.",
+      // ✨ Corrected
+      "MATUKI is a modern matcha café concept that brings the traditional taste of Japanese matcha to a trendy, design-conscious audience. Our goal was to build a brand that blends tradition and fun, appealing to both matcha connoisseurs and newcomers alike.",
     challengeText:
       "Creating a unique and playful identity for a new matcha café that stands out in a saturated market of coffee and tea shops. The goal was to build a visual brand that reflects the Japanese heritage of matcha while feeling modern, warm, and fun — especially for a young audience.",
     approachText:
-      "We developed the name “MATSUKY” by merging “matcha” and a playful suffix, giving it a friendly and memorable ring. The logo combines soft, bubbly typography with a panda mascot holding a traditional matcha whisk — evoking authenticity and cuteness. A mix of Japanese and English typography was used to give an international flair. Earthy green tones paired with creamy whites convey freshness, nature, and relaxation — ideal for a cozy café vibe.",
+      // ✨ Corrected name and mascot explanation
+      "We developed the name “MATUKI” by merging “matcha” and “tanuki” (the Japanese raccoon dog), giving it a friendly and memorable ring. The logo combines soft, bubbly typography with a tanuki mascot holding a traditional matcha whisk — evoking authenticity and cuteness. A mix of Japanese and English typography was used to give an international flair. Earthy green tones paired with creamy whites convey freshness, nature, and relaxation — ideal for a cozy café vibe.",
     fullWidthImage: "/static/matuky/full-width.webp",
     services: {
       title: "Identity & Brand Application",
@@ -136,7 +139,8 @@ export const brandingProjectsData: BrandingProject[] = [
         "/static/matuky/3.webp",
         "/static/matuky/4.webp",
       ],
-      text: "The Matsuky brand is built on a foundation of charm and authenticity. The friendly panda mascot and soft, natural color palette create an inviting atmosphere that encourages customers to relax, enjoy their matcha, and share their experience.",
+      // ✨ Corrected name and mascot
+      text: "The Matuki brand is built on a foundation of charm and authenticity. The friendly tanuki mascot and soft, natural color palette create an inviting atmosphere that encourages customers to relax, enjoy their matcha, and share their experience.",
     },
   },
   {

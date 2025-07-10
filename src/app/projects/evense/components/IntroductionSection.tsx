@@ -28,11 +28,10 @@ const IntroductionSection: React.FC<IntroductionProps> = ({ phoneImage }) => {
         {/* Cell 2: Description Text */}
         <div className={styles.descriptionCell}>
           <p>
-            The logo design was crafted with a deliberate focus on achieving a
-            balance between minimalism and professionalism, while infusing a
-            modern sensibility. Emphasizing simplicity and sophistication, each
-            element was carefully selected and refined to convey the brand's
-            identity succinctly.
+            The logo for Evense was crafted to balance minimalism and
+            professionalism with a modern sensibility. With an emphasis on
+            simplicity and sophistication, each element was carefully selected
+            to succinctly convey the brand's identity.
           </p>
         </div>
 

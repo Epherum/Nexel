@@ -6,11 +6,13 @@ import styles from "./DesignProcessSection.module.css";
 const DesignProcessSection = () => {
   const processSteps = [
     {
-      title: "Research and Infomation Gathering",
+      // ✨ Corrected spelling
+      title: "Research and Information Gathering",
       text: "Comprehensive research and data collection, providing a solid informational foundation for the project.",
     },
     {
-      title: "Brainstorming an Ideation",
+      // ✨ Corrected grammar
+      title: "Brainstorming and Ideation",
       text: "Producing a diverse array of ideas through brainstorming, sketching, and conceptualizing.",
     },
     {
@@ -19,11 +21,13 @@ const DesignProcessSection = () => {
     },
     {
       title: "Testing and Feedback",
-      text: "Testing of the design and collection of valuable feedback for future enhancements.",
+      // ✨ Reworded for clarity
+      text: "Testing the design and collecting valuable feedback for future enhancements.",
     },
     {
       title: "Refinement and Production",
-      text: "Our design was finalized and refined, successfully transitioning into the production stage.",
+      // ✨ Reworded for clarity
+      text: "The design was finalized, refined, and successfully transitioned into the production stage.",
     },
   ];
 

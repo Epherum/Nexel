@@ -21,17 +21,21 @@ import FullWidthImageSection from "./components/FullWidthImageSection";
 
 // Data
 const heroHeadline = {
-  line1: "Not just an organizer",
-  line2Start: "a creator of",
-  highlight: "lasting experiences.",
+  // ✨ Reworded for a stronger, more positive tone
+  line1: "More than an organizer,",
+  line2Start: "we create",
+  // ✨ "Unforgettable" is more evocative than "lasting"
+  highlight: "unforgettable experiences.",
 };
 
 const projectData = {
   services: {
-    title: "Services Page",
-    subtitle:
-      "Careful attention was paid to font sizes and spacing to ensure optimal readability and usability, adhering to established web design principles and preferences.",
-    body: "We delivered a comprehensive branding package that included logo design, color palette definition, and typography guidelines. This was complemented by a full UI/UX design for their new platform and the subsequent web development to bring the vision to life, ensuring a cohesive and impactful digital presence.",
+    // ✨ Title is more descriptive of the work done
+    title: "Brand Identity & Digital Platform",
+    // ✨ Subtitle focuses on the outcome, not just the technical details
+    subtitle: "Designing an intuitive platform for a seamless user experience.",
+    // ✨ Body text is more concise and uses stronger, active language
+    body: "We delivered a comprehensive branding package—including logo, color palette, and typography—and a full UI/UX design for their new platform. Our team then handled the web development, bringing the vision to life with a cohesive and impactful digital presence.",
   },
   showcase: {
     images: [
@@ -40,11 +44,11 @@ const projectData = {
       "/static/evense/3.webp",
       "/static/evense/4.webp",
     ],
-    text: "Our design approach extended to practical applications, including merchandise and stationery, to ensure the brand's versatility and consistency across all mediums.",
+    // ✨ Reworded to be more direct and benefit-focused
+    text: "The new brand identity was designed for versatility. We applied the system to key physical touchpoints, including merchandise and stationery, to ensure a consistent and recognizable presence across all mediums.",
   },
   fullWidthImage: "/static/evense/full-width.webp",
 };
-
 export default function Page() {
   return (
     <main className={styles.contentWrapper}>

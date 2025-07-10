@@ -51,12 +51,21 @@
   opacity: 0;
 }
 
+/* --- ADD THIS NEW RULE --- */
+/* This pulls the second digit closer to the first one. */
+.counter1 {
+  margin-right: -0rem; /* Adjust this value as needed */
+}
+
+/* --- MODIFY THESE RULES --- */
 /* Offsets for specific numbers to align them better */
 .num1offset1 {
-  transform: translateY(-10px);
+  /* Was -10px. A small positive value brings it down to align optically. */
+  transform: translateY(-2px);
 }
 .num1offset2 {
-  transform: translateY(-10px);
+  /* Was -10px. Changed to match for consistency during the scroll. */
+  transform: translateY(-2px);
 }
 
 .imagesContainer {
