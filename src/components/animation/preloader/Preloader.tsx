@@ -36,6 +36,16 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const isMinTimePassed = useRef(false);
   const timelineRef = useRef<gsap.core.Timeline | null>(null); // A single ref for the active timeline
 
+  useEffect(() => {
+    // On mount, when the preloader is visible, disable scrolling.
+    document.body.style.overflow = "hidden";
+
+    // On unmount (when the preloader is gone), restore scrolling.
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, []);
+
   // ✨ 3. Renamed the original animation logic to be specific to desktop
   const runDesktopAnimation = useCallback(() => {
     if (!imagesContainerRef.current) return;

@@ -1,4 +1,5 @@
 // src/components/layout/Navbar.tsx
+
 "use client";
 
 import { useEffect, useState } from "react";
@@ -8,7 +9,7 @@ import {
   Variants,
   useScroll,
   useMotionValueEvent,
-  useAnimationControls, // The key to solving this
+  useAnimationControls,
 } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -17,19 +18,12 @@ import { easings } from "@/utils/easings";
 import MenuOverlay from "./MenuOverlay";
 import { usePreloader } from "@/context/PreloaderContext";
 
-// --- Animation Variants ---
-
-// ✅ 1. A SINGLE variant object that BOTH top-level containers will use.
+// --- Animation Variants (Unchanged) ---
 const wrapperVariants: Variants = {
-  // This is the state when the Navbar is visible on screen.
   visible: { y: "0%" },
-  // This is the initial state, completely hidden before the preloader finishes.
   hiddenInitial: { y: "-110%" },
-  // This is the state for when the user scrolls down.
   hiddenOnScroll: { y: "-110%" },
 };
-
-// Your original variants for staggering the items INSIDE the containers are PERFECT. Do not change them.
 const revealVariantsBlend: Variants = {
   visible: { transition: { staggerChildren: 0.1, delayChildren: 0.5 } },
   hidden: {},
@@ -52,23 +46,38 @@ const Navbar = () => {
   const [isHiddenOnScroll, setIsHiddenOnScroll] = useState(false);
   const { scrollY } = useScroll();
   const { isAppLoading } = usePreloader();
-
-  // ✅ 2. Create ONE animation controller to command both containers.
   const navControls = useAnimationControls();
 
-  // ✅ 3. This one useEffect is now the "brain" for the entire Navbar's state.
+  // ✨ --- THIS IS THE NEW HOOK --- ✨
+  // This effect handles the case where there is NO preloader (e.g., refreshing a non-home page).
   useEffect(() => {
-    // If the app is still loading (preloader is active), do nothing.
-    // The initial state will be 'hiddenInitial'.
+    // If the app is NOT loading when the component first mounts...
     if (!isAppLoading) {
-      // If the user scrolls down, animate to the 'hiddenOnScroll' state.
+      // ...it means there's no preloader to wait for.
+      // So, we trigger the animation manually after a short delay.
+      const timer = setTimeout(() => {
+        navControls.start("visible", {
+          duration: 1.2,
+          ease: easings.easeOut,
+          delay: 0.2, // This delay can be adjusted
+        });
+      }, 1000); // 1-second delay before the animation starts
+
+      // Cleanup the timer if the component unmounts
+      return () => clearTimeout(timer);
+    }
+  }, []); // The empty array [] ensures this effect runs ONLY ONCE when the component mounts.
+
+  // This is your existing "brain" useEffect. It continues to work perfectly.
+  // When the preloader finishes, isAppLoading becomes false, and this effect will take over.
+  useEffect(() => {
+    if (!isAppLoading) {
       if (isHiddenOnScroll && !isMenuOpen) {
         navControls.start("hiddenOnScroll", {
           duration: 0.35,
           ease: easings.easeOut,
         });
       } else {
-        // Otherwise, animate to the 'visible' state (initial reveal or scrolling back up).
         navControls.start("visible", {
           duration: 1.2,
           ease: easings.easeOut,
@@ -91,23 +100,18 @@ const Navbar = () => {
 
   return (
     <>
-      {/* 
-        ✅ 4. This is YOUR original two-container structure. It is unchanged.
-        We just link both containers to the SAME controller and variants.
-      */}
-
       {/* CONTAINER 1: For BLEND-MODE elements (Logo & Menu) */}
       <motion.div
         className={styles.navbarBlendWrapper}
         variants={wrapperVariants}
         initial="hiddenInitial"
-        animate={navControls} // <-- Linked to the controller
+        animate={navControls}
       >
         <motion.nav
           className={styles.navbarContent}
           variants={revealVariantsBlend}
           initial="hidden"
-          animate="visible" // This will fire once the parent is 'visible'
+          animate="visible"
         >
           {/* Logo (Left) */}
           <motion.div variants={itemVariants}>
@@ -145,13 +149,13 @@ const Navbar = () => {
         className={styles.navbarCtaWrapper}
         variants={wrapperVariants}
         initial="hiddenInitial"
-        animate={navControls} // <-- Also linked to the SAME controller
+        animate={navControls}
       >
         <motion.div
           className={styles.ctaButtonContainer}
           variants={revealVariantsCTA}
           initial="hidden"
-          animate="visible" // This will also fire once the parent is 'visible'
+          animate="visible"
         >
           <motion.div variants={itemVariants}>
             <Link href="/contact">

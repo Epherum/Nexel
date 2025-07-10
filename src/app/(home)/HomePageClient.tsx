@@ -8,7 +8,7 @@ import HowWeDoIt from "@/app/(home)/components/HowWeDoIt";
 import ProjectsSection from "@/app/(home)/components/ProjectsSection";
 import MethodologyAndPartners from "@/app/(home)/components/MethodologyAndPartners";
 import Footer from "@/components/layout/Footer";
-import Preloader from "@/components/animation/Preloader/Preloader";
+import Preloader from "@/components/animation/preloader/Preloader";
 import { usePreloader } from "@/context/PreloaderContext"; // ✅ Import the hook
 
 export default function HomePageClient({ logoPaths }: { logoPaths: string[] }) {
