@@ -11,18 +11,31 @@ const CURSOR_SIZE = 20;
 
 const Cursor = () => {
   const [mousePosition, setMousePosition] = useState({ x: -100, y: -100 });
+  const [isMounted, setIsMounted] = useState(false); // ✨ 1. Add state to track initial mount
   const { isHoveringLink, isHoveringDraggable, isCursorVisible } =
     useContext(CursorContext);
 
   useEffect(() => {
+    // ✨ 2. Use a timer to set the cursor to visible after 1 second
+    const timer = setTimeout(() => {
+      setIsMounted(true);
+    }, 1000); // 1000ms = 1s
+
     const handleMouseMove = (event: MouseEvent) => {
       setMousePosition({ x: event.clientX, y: event.clientY });
     };
+
     window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
+
+    // ✨ 3. Add cleanup for both the timer and the event listener
+    return () => {
+      clearTimeout(timer);
+      window.removeEventListener("mousemove", handleMouseMove);
+    };
+  }, []); // ✨ Empty dependency array ensures this runs only once
 
   const cursorVariants = {
+    // ... (no changes in this object)
     default: {
       height: CURSOR_SIZE,
       width: CURSOR_SIZE,
@@ -35,12 +48,11 @@ const Cursor = () => {
       backgroundColor: "#fff",
       mixBlendMode: "difference",
     },
-    // 💡 1. UPDATED THE DRAG CURSOR VARIANT
     dragHover: {
-      height: 150, // Slightly bigger
-      width: 150, // Slightly bigger
-      backgroundColor: "#000", // Black background
-      mixBlendMode: "normal", // Keep as normal so it doesn't invert
+      height: 150,
+      width: 150,
+      backgroundColor: "#000",
+      mixBlendMode: "normal",
     },
   };
 
@@ -57,16 +69,20 @@ const Cursor = () => {
     x: mousePosition.x - currentSize / 2,
     y: mousePosition.y - currentSize / 2,
     scale: isCursorVisible ? 1 : 0,
+    // ✨ 4. Control opacity based on the new 'isMounted' state
+    opacity: isMounted ? 1 : 0,
   };
 
   return (
     <motion.div
       className={styles.cursor}
+      initial={{ opacity: 0 }}
       animate={animateProps}
       transition={{
         type: "tween",
         ease: easings.gentleEaseOut,
         duration: 0.5,
+        opacity: { duration: 0.4, ease: "linear" },
         scale: {
           type: "spring",
           stiffness: 400,
@@ -75,6 +91,7 @@ const Cursor = () => {
         },
       }}
     >
+      {/* ... (no changes to the children) */}
       <motion.div
         animate={{ opacity: currentState !== "default" ? 1 : 0 }}
         transition={{ duration: 0.2 }}
@@ -85,7 +102,6 @@ const Cursor = () => {
           </span>
         )}
         {currentState === "dragHover" && (
-          // 💡 2. ADDED A NEW DEDICATED CLASS FOR DRAG STYLING
           <span className={`${styles.cursorContent} ${styles.dragContent}`}>
             <FiArrowLeft /> Drag <FiArrowRight />
           </span>

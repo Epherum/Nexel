@@ -4,6 +4,9 @@
   width: 100%;
   overflow: hidden;
   position: relative;
+
+  opacity: 0;
+
   -webkit-mask-image: linear-gradient(
     to right,
     transparent,
@@ -26,9 +29,10 @@
   width: max-content;
   position: relative;
   will-change: transform;
-  margin-left: 50px; /* Adjust this value to move more or less to the right */
+  margin-left: 30px;
 }
 
+/* ... rest of the CSS is unchanged ... */
 .imageContainer {
   position: relative;
   height: 120px;

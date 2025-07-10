@@ -10,7 +10,7 @@ import Loader from "@/components/animation/Loader";
 
 gsap.registerPlugin(Flip);
 
-const imageData = [...Array(2)].flatMap(() => [8, 7, 6, 5, 4, 3, 2, 1]);
+const imageData = [...Array(2)].flatMap(() => [1, 2, 3, 4, 5, 6, 7]);
 const totalImages = imageData.length;
 
 const Preloader = ({ onComplete }) => {

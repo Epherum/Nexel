@@ -1,16 +1,12 @@
+// src/app/layout.tsx (or your RootLayout file)
 import "@/styles/globals.css";
 import { Clovergrotesk } from "@/fonts/font";
 import Navbar from "@/components/layout/Navbar";
 import SmoothScrollWrapper from "@/utils/SmoothScrollWrapper";
 import { Analytics } from "@vercel/analytics/next";
-import {
-  CursorContext,
-  CursorProvider,
-} from "@/components/cursor/CursorContext";
-
-// --- START: Import the new Cursor component ---
 import Cursor from "@/components/cursor/Cursor";
-// --- END: Import the new Cursor component ---
+import { CursorProvider } from "@/components/cursor/CursorContext";
+import { PreloaderProvider } from "@/context/PreloaderContext"; // ✅ Import the new provider
 
 export const metadata = {
   title: "Nexel | Digital Design Agency",
@@ -29,12 +25,13 @@ export default function RootLayout({
           suppressHydrationWarning
           className={`${Clovergrotesk.variable} antialiased `}
         >
-          {/* --- START: Add the Cursor component here --- */}
           <Cursor />
-          {/* --- END: Add the Cursor component here --- */}
           <main>
-            {/* <Navbar /> */}
-            <SmoothScrollWrapper>{children}</SmoothScrollWrapper>
+            {/* ✅ Wrap the layout with the provider */}
+            <PreloaderProvider>
+              <Navbar /> {/* Now Navbar can access the context */}
+              <SmoothScrollWrapper>{children}</SmoothScrollWrapper>
+            </PreloaderProvider>
           </main>
           <Analytics />
         </body>

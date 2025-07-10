@@ -1,110 +1,146 @@
-// src/app/(home)/components/HeroMarquee.js
 "use client";
 
 import React, { useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
 import { gsap } from "gsap";
-import styles from "./HeroMarquee.module.css"; // We will create this file next
+import styles from "./HeroMarquee.module.css";
 
-const images = [1, 2, 3, 4, 5, 6, 7].map((num) => ({
+const images = [7, 6, 5, 4, 3, 2, 1].map((num) => ({
   src: `/static/nexel/hero/${num}.webp`,
 }));
 
-// The component now accepts the `isPreloading` prop
-const HeroMarquee = ({ isPreloading }) => {
-  const imageRowRef = useRef(null);
+interface HeroMarqueeProps {
+  isPreloading: boolean;
+}
+
+const HeroMarquee = ({ isPreloading }: HeroMarqueeProps) => {
+  const wrapperRef = useRef<HTMLDivElement | null>(null);
+  const imageRowRef = useRef<HTMLDivElement | null>(null);
+  const marqueeTimeline = useRef<gsap.core.Timeline | null>(null);
   const hasAnimated = useRef(false);
-  const finalPositions = useRef([]);
-  const marqueeTimeline = useRef(null);
+  const prevIsPreloading = useRef(isPreloading);
 
-  // This is the animation logic, now named to be clearer
-  const runEntranceAnimation = useCallback(() => {
-    // Exit if the animation has already run or if the ref isn't ready
-    if (hasAnimated.current || !imageRowRef.current) return;
-    hasAnimated.current = true;
+  const startInfiniteScroll = useCallback((row: HTMLDivElement) => {
+    const tl = gsap.timeline();
+    const singleSetWidth = row.offsetWidth / 2;
+    if (singleSetWidth === 0) return;
 
-    const imageContainers = gsap.utils.toArray(imageRowRef.current.children);
+    tl.to(row, {
+      x: `-=${singleSetWidth}`,
+      duration: 30,
+      ease: "none",
+      repeat: -1,
+    });
+  }, []);
+
+  const runSimpleEntranceAnimation = useCallback(() => {
+    if (!wrapperRef.current || !imageRowRef.current) return;
     const row = imageRowRef.current;
+    const yOffset = "30px";
+    gsap.set(row, { paddingBottom: yOffset });
 
     marqueeTimeline.current = gsap.timeline();
 
-    // Step 1: Spread ALL images out into the double-wide row.
-    marqueeTimeline.current.to(imageContainers, {
-      left: (index) => finalPositions.current[index].left,
-      opacity: 1,
-      duration: 1.2,
-      ease: "power4.out",
-      stagger: {
-        amount: 0.2,
-        from: "start",
-      },
-    });
+    marqueeTimeline.current
+      .to(wrapperRef.current, { opacity: 1, duration: 0.8, ease: "power3.out" })
+      .from(
+        row.children,
+        {
+          y: yOffset,
+          opacity: 0,
+          duration: 1,
+          ease: "power3.out",
+          stagger: 0.08,
+        },
+        "-=0.6"
+      );
 
-    // Step 2: Calculate the correct width of ONLY the FIRST set of images.
-    const singleSetWidth = finalPositions.current[images.length].left;
+    startInfiniteScroll(row);
+  }, [startInfiniteScroll]);
 
-    // Step 3: Animate the marquee.
-    marqueeTimeline.current.to(
-      row,
-      {
-        x: -singleSetWidth,
-        duration: 30,
-        ease: "none",
-        repeat: -1,
-      },
-      "-=0.3"
-    );
-  }, []);
-
-  // First useEffect: Sets up the initial state ONCE on mount
-  useEffect(() => {
+  const runComplexEntranceAnimation = useCallback(() => {
+    if (!wrapperRef.current || !imageRowRef.current) return;
     const row = imageRowRef.current;
-    if (!row) return;
+    const imageContainers = Array.from(row.children) as HTMLDivElement[];
 
-    const imageContainers = gsap.utils.toArray(row.children);
+    const finalPositions = imageContainers.map((img) => img.offsetLeft);
 
-    // Measure the final layout
-    finalPositions.current = imageContainers.map((img) => ({
-      left: img.offsetLeft,
-      top: img.offsetTop,
-    }));
-
-    // Set the initial stacked state
     gsap.set(row, { height: row.getBoundingClientRect().height });
     gsap.set(imageContainers, {
       position: "absolute",
       top: 0,
       left: 0,
       opacity: 0,
+      zIndex: (index: number) => images.length - 1 - index,
     });
+
+    gsap.set(wrapperRef.current, { opacity: 1 });
+
+    marqueeTimeline.current = gsap.timeline({
+      onComplete: () => {
+        gsap.set(imageContainers, { clearProps: "position,left,top,zIndex" });
+        gsap.set(row, { clearProps: "height" });
+        startInfiniteScroll(row);
+      },
+    });
+
+    marqueeTimeline.current.to(imageContainers, {
+      left: (index: number) => finalPositions[index],
+      duration: 0.8,
+      ease: "power3.out",
+      stagger: { amount: 0.15 },
+    });
+
+    marqueeTimeline.current.to(
+      imageContainers,
+      {
+        opacity: 1,
+        duration: 0,
+        stagger: { amount: 0.15 },
+      },
+      "<"
+    );
+  }, [startInfiniteScroll]);
+
+  useEffect(() => {
+    if (isPreloading || hasAnimated.current) {
+      prevIsPreloading.current = isPreloading;
+      return;
+    }
+
+    hasAnimated.current = true;
+    const wasPreloading = prevIsPreloading.current;
+
+    if (wasPreloading) {
+      runComplexEntranceAnimation();
+    } else {
+      const timer = setTimeout(() => runSimpleEntranceAnimation(), 50);
+      return () => clearTimeout(timer);
+    }
+  }, [isPreloading, runComplexEntranceAnimation, runSimpleEntranceAnimation]);
+
+  // ✅ FIXED THE TS ERROR HERE
+  useEffect(() => {
+    // The cleanup function for the component unmount
+    return () => {
+      marqueeTimeline.current?.kill();
+    };
   }, []);
 
-  // Second useEffect: The NEW TRIGGER.
-  // This watches the isPreloading prop.
-  useEffect(() => {
-    // When isPreloading becomes false, run the animation.
-    if (!isPreloading) {
-      runEntranceAnimation();
-    }
-  }, [isPreloading, runEntranceAnimation]);
-
   return (
-    // The button is now GONE.
-    <div className={styles.marqueeWrapper}>
+    <div ref={wrapperRef} className={styles.marqueeWrapper}>
       <div ref={imageRowRef} className={styles.imageRow}>
-        {/* First set of images */}
         {images.map((item, index) => (
           <div key={`marquee-img-${index}`} className={styles.imageContainer}>
             <Image
               src={item.src}
-              alt={`Marquee item ${index + 1}`}
+              alt={`Marquee item ${7 - index}`}
               fill
               className={styles.image}
               quality={90}
             />
           </div>
         ))}
-        {/* Duplicate set for seamless loop */}
         {images.map((item, index) => (
           <div
             key={`duplicate-img-${index}`}

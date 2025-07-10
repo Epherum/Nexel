@@ -1,42 +1,43 @@
 // src/components/layout/Navbar.tsx
-
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   motion,
   AnimatePresence,
   Variants,
   useScroll,
   useMotionValueEvent,
+  useAnimationControls, // The key to solving this
 } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./Navbar.module.css";
 import { easings } from "@/utils/easings";
 import MenuOverlay from "./MenuOverlay";
+import { usePreloader } from "@/context/PreloaderContext";
 
 // --- Animation Variants ---
 
-// FIX: The scrollVariants object is now simplified. The transition logic is moved to the component props.
-const scrollVariants: Variants = {
+// ✅ 1. A SINGLE variant object that BOTH top-level containers will use.
+const wrapperVariants: Variants = {
+  // This is the state when the Navbar is visible on screen.
   visible: { y: "0%" },
-  hidden: { y: "-110%" },
+  // This is the initial state, completely hidden before the preloader finishes.
+  hiddenInitial: { y: "-110%" },
+  // This is the state for when the user scrolls down.
+  hiddenOnScroll: { y: "-110%" },
 };
 
-// For the LEFT & CENTER items (Logo, Menu)
+// Your original variants for staggering the items INSIDE the containers are PERFECT. Do not change them.
 const revealVariantsBlend: Variants = {
   visible: { transition: { staggerChildren: 0.1, delayChildren: 0.5 } },
   hidden: {},
 };
-
-// For the RIGHT item (CTA) with a longer delay
 const revealVariantsCTA: Variants = {
-  visible: { transition: { delayChildren: 0.7 } }, // Starts after the first two
+  visible: { transition: { delayChildren: 0.7 } },
   hidden: {},
 };
-
-// For individual items
 const itemVariants: Variants = {
   hidden: { opacity: 0, x: -20 },
   visible: {
@@ -48,39 +49,65 @@ const itemVariants: Variants = {
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
+  const [isHiddenOnScroll, setIsHiddenOnScroll] = useState(false);
   const { scrollY } = useScroll();
+  const { isAppLoading } = usePreloader();
+
+  // ✅ 2. Create ONE animation controller to command both containers.
+  const navControls = useAnimationControls();
+
+  // ✅ 3. This one useEffect is now the "brain" for the entire Navbar's state.
+  useEffect(() => {
+    // If the app is still loading (preloader is active), do nothing.
+    // The initial state will be 'hiddenInitial'.
+    if (!isAppLoading) {
+      // If the user scrolls down, animate to the 'hiddenOnScroll' state.
+      if (isHiddenOnScroll && !isMenuOpen) {
+        navControls.start("hiddenOnScroll", {
+          duration: 0.35,
+          ease: easings.easeOut,
+        });
+      } else {
+        // Otherwise, animate to the 'visible' state (initial reveal or scrolling back up).
+        navControls.start("visible", {
+          duration: 1.2,
+          ease: easings.easeOut,
+          delay: 0.2,
+        });
+      }
+    }
+  }, [isAppLoading, isHiddenOnScroll, isMenuOpen, navControls]);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const previous = scrollY.getPrevious();
-    if (typeof previous === "number") {
-      if (latest > previous && latest > 150) setIsHidden(true);
-      else if (latest < previous) setIsHidden(false);
+    if (typeof previous === "number" && latest > 150) {
+      setIsHiddenOnScroll(latest > previous);
+    } else {
+      setIsHiddenOnScroll(false);
     }
   });
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  // FIX: Define the transition object once to be reused.
-  const scrollTransition = { duration: 0.35, ease: easings.easeOut };
-
   return (
     <>
       {/* 
-        CONTAINER 1: For BLEND-MODE elements (Logo & Menu)
+        ✅ 4. This is YOUR original two-container structure. It is unchanged.
+        We just link both containers to the SAME controller and variants.
       */}
+
+      {/* CONTAINER 1: For BLEND-MODE elements (Logo & Menu) */}
       <motion.div
-        className={`${styles.navbarBlendWrapper}`}
-        variants={scrollVariants}
-        animate={isHidden && !isMenuOpen ? "hidden" : "visible"}
-        initial="visible"
-        transition={scrollTransition} // FIX: Apply the transition here
+        className={styles.navbarBlendWrapper}
+        variants={wrapperVariants}
+        initial="hiddenInitial"
+        animate={navControls} // <-- Linked to the controller
       >
         <motion.nav
           className={styles.navbarContent}
           variants={revealVariantsBlend}
           initial="hidden"
-          animate="visible"
+          animate="visible" // This will fire once the parent is 'visible'
         >
           {/* Logo (Left) */}
           <motion.div variants={itemVariants}>
@@ -113,21 +140,18 @@ const Navbar = () => {
         </motion.nav>
       </motion.div>
 
-      {/* 
-        CONTAINER 2: For NORMAL elements (CTA Button)
-      */}
+      {/* CONTAINER 2: For NORMAL elements (CTA Button) */}
       <motion.div
         className={styles.navbarCtaWrapper}
-        variants={scrollVariants}
-        animate={isHidden && !isMenuOpen ? "hidden" : "visible"}
-        initial="visible"
-        transition={scrollTransition} // FIX: Apply the transition here
+        variants={wrapperVariants}
+        initial="hiddenInitial"
+        animate={navControls} // <-- Also linked to the SAME controller
       >
         <motion.div
           className={styles.ctaButtonContainer}
           variants={revealVariantsCTA}
           initial="hidden"
-          animate="visible"
+          animate="visible" // This will also fire once the parent is 'visible'
         >
           <motion.div variants={itemVariants}>
             <Link href="/contact">

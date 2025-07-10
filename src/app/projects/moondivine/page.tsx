@@ -46,9 +46,11 @@ const wordVariants: Variants = {
 const AnimatedTextSection = ({
   title,
   subtitle,
+  className, // ✨ 1. Add className to the props
 }: {
   title: string;
   subtitle: string;
+  className?: string; // ✨ And to the type definition
 }) => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, {
@@ -58,7 +60,8 @@ const AnimatedTextSection = ({
   return (
     <motion.section
       ref={sectionRef}
-      className={styles.textSection}
+      // ✨ 2. Combine the base class with the optional new one
+      className={`${styles.textSection} ${className || ""}`}
       variants={{ visible: { transition: { staggerChildren: 0.2 } } }}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
@@ -169,6 +172,7 @@ export default function MoonDivinePage() {
         <AnimatedTextSection
           title={textSection2.title}
           subtitle={textSection2.subtitle}
+          className={styles.lastTextSection}
         />
 
         {/* 7. Full-width Image */}

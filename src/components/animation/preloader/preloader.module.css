@@ -51,14 +51,6 @@
   opacity: 0;
 }
 
-.digit {
-  /* This is just a helper class, you can style if needed */
-}
-
-.num {
-  /* Style for individual numbers in the counter */
-}
-
 /* Offsets for specific numbers to align them better */
 .num1offset1 {
   transform: translateY(-10px);
@@ -90,8 +82,8 @@
 .animateOut {
   top: unset;
   left: unset;
-  bottom: 2rem;
-  left: 3rem;
+  bottom: 7rem;
+  left: 1.25rem;
 
   /* --- KEY CHANGE: Synced with Hero.module.css --- */
   /* This ensures a seamless visual transition */
@@ -104,13 +96,7 @@
 @media (min-width: 768px) {
   .animateOut {
     border-radius: 16px; /* Match hero's desktop border-radius */
+    bottom: 3.25rem;
+    left: 3rem;
   }
 }
-/* .animateOut {
-  top: unset;
-  left: unset;
-  bottom: 2rem;
-  left: 3rem;
-  height: 130px;
-  width: 220px;
-} */
