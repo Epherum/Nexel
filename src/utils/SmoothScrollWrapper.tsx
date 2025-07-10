@@ -1,28 +1,44 @@
+// src/components/layout/SmoothScrollWrapper.tsx
 "use client";
 
 import { ReactLenis, useLenis } from "lenis/react";
 import { usePathname } from "next/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo } from "react";
+import { LenisProvider } from "@/context/LenisContext"; // ✨ 1. Import the provider
 
-// This internal component is the key to the solution.
-// It uses the `useLenis` hook to get the Lenis instance and
-// the `usePathname` hook to detect route changes.
+// Internal component for scroll-to-top logic (unchanged)
 function ScrollToTop() {
   const lenis = useLenis();
   const pathname = usePathname();
 
   useEffect(() => {
-    // On path change, scroll to top
-    // `immediate: true` is important to prevent a smooth scroll animation
     if (lenis) {
       lenis.scrollTo(0, { immediate: true });
     }
-  }, [pathname, lenis]); // Effect runs when pathname or lenis instance changes
+  }, [pathname, lenis]);
 
-  return null; // This component does not render anything
+  return null;
 }
 
-// This is the main wrapper component that you'll use in your layout.
+// ✨ 2. New internal component to provide the context value
+// This MUST be a child of ReactLenis to use the useLenis hook.
+function LenisContextProvider({ children }: { children: React.ReactNode }) {
+  const lenis = useLenis();
+
+  // useMemo ensures the context value object is stable
+  const value = useMemo(
+    () => ({
+      // Provide dummy functions if lenis is not yet available
+      start: () => lenis?.start(),
+      stop: () => lenis?.stop(),
+    }),
+    [lenis]
+  );
+
+  return <LenisProvider value={value}>{children}</LenisProvider>;
+}
+
+// ✨ 3. The main wrapper now includes the new provider component
 export default function SmoothScrollWrapper({
   children,
 }: {
@@ -33,12 +49,9 @@ export default function SmoothScrollWrapper({
       root
       options={{ smoothWheel: true, lerp: 0.06, wheelMultiplier: 1.3 }}
     >
-      {/* 
-        The ScrollToTop component MUST be a child of ReactLenis
-        so that it can access the Lenis instance via the useLenis hook.
-      */}
       <ScrollToTop />
-      {children}
+      {/* This component will get the lenis instance and provide it to its children */}
+      <LenisContextProvider>{children}</LenisContextProvider>
     </ReactLenis>
   );
 }

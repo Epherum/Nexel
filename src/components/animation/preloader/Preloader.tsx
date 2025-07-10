@@ -7,6 +7,7 @@ import Image from "next/image";
 import styles from "./preloader.module.css";
 import Loader from "@/components/animation/Loader";
 import { useMediaQuery } from "@/utils/useMediaQuery"; // ✨ 1. Import your hook
+import { useLenisControls } from "@/context/LenisContext"; // ✨ 1. Import our new hook
 
 gsap.registerPlugin(Flip);
 
@@ -36,15 +37,22 @@ const Preloader: React.FC<PreloaderProps> = ({ onComplete }) => {
   const isMinTimePassed = useRef(false);
   const timelineRef = useRef<gsap.core.Timeline | null>(null); // A single ref for the active timeline
 
-  useEffect(() => {
-    // On mount, when the preloader is visible, disable scrolling.
-    document.body.style.overflow = "hidden";
+  const { start, stop } = useLenisControls(); // ✨ 2. Get the control functions
 
-    // On unmount (when the preloader is gone), restore scrolling.
+  // ✨ 3. Update the scroll-locking useEffect hook
+  useEffect(() => {
+    // On mount, when the preloader is visible, stop Lenis scroll.
+    if (stop) {
+      stop();
+    }
+
+    // On unmount (when preloader is gone), start Lenis scroll again.
     return () => {
-      document.body.style.overflow = "";
+      if (start) {
+        start();
+      }
     };
-  }, []);
+  }, [start, stop]); // Depend on start and stop functions
 
   // ✨ 3. Renamed the original animation logic to be specific to desktop
   const runDesktopAnimation = useCallback(() => {
