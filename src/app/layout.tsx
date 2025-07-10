@@ -33,7 +33,7 @@ export default function RootLayout({
           <Cursor />
           {/* --- END: Add the Cursor component here --- */}
           <main>
-            <Navbar />
+            {/* <Navbar /> */}
             <SmoothScrollWrapper>{children}</SmoothScrollWrapper>
           </main>
           <Analytics />

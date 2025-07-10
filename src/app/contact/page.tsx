@@ -148,7 +148,10 @@ const ContactPage = () => {
             className={styles.achievementItem}
           >
             <p className={styles.label}>Email</p>
-            <a href="mailto:hello@example.com" className={styles.value}>
+            <a
+              href="mailto:contact@nexeldigitalstudio.com"
+              className={styles.value}
+            >
               Drop us a line
             </a>
           </motion.div>

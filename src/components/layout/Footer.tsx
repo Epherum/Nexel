@@ -100,7 +100,7 @@ const Footer = () => {
           </p>
           <div className={styles.socials}>
             <a
-              href="https://linkedin.com"
+              href="https://www.linkedin.com/company/nexel-digital-studio/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"
@@ -113,7 +113,7 @@ const Footer = () => {
               />
             </a>
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/nexeldigitalstudio/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Instagram"
