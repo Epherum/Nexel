@@ -87,12 +87,30 @@
   height: 200px;
   outline: 2px solid #1a1a1a;
 }
-
 .animateOut {
+  top: unset;
+  left: unset;
+  bottom: 2rem;
+  left: 3rem;
+
+  /* --- KEY CHANGE: Synced with Hero.module.css --- */
+  /* This ensures a seamless visual transition */
+  height: 120px;
+  /* Maintain the 5/3 aspect ratio from the hero marquee */
+  width: calc(120px * 5 / 3);
+  border-radius: 10px; /* Match hero's mobile border-radius */
+}
+
+@media (min-width: 768px) {
+  .animateOut {
+    border-radius: 16px; /* Match hero's desktop border-radius */
+  }
+}
+/* .animateOut {
   top: unset;
   left: unset;
   bottom: 2rem;
   left: 3rem;
   height: 130px;
   width: 220px;
-}
+} */

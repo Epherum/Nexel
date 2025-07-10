@@ -1,53 +1,47 @@
 // src/components/Hero/Hero.js
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
-import { motion, Variants } from "framer-motion";
+import { motion, useAnimationControls } from "framer-motion";
+import { gsap } from "gsap";
 import styles from "./Hero.module.css";
 import AnimatedWord from "@/components/animation/AnimatedWord";
 import TextScramble from "@/components/animation/TextScramble";
 import { easings } from "@/utils/easings";
+import HeroMarquee from "./HeroMarquee";
 
-// --- Data & Constants ---
+// Only need 7 images now, no marquee duplication
+const images = [1, 2, 3, 4, 5, 6, 7].map((num) => ({
+  src: `/static/nexel/hero/${num}.webp`,
+}));
+
 const scrambleWords = [
   "design.",
   "development.",
   "branding.",
   "collaboration.",
 ];
-const imagePattern: ("small" | "large")[] = [
-  "large",
-  "small",
-  "small",
-  "large",
-  "small",
-  "small",
-  "large",
-  "small",
-];
-const images = imagePattern.map((type, i) => ({
-  src: `/static/nexel/hero/${i + 1}.webp`,
-  type: type,
-}));
-
-// --- Animation Variants ---
-const textContainerVariants: Variants = {
+const textContainerVariants = {
   visible: { transition: { staggerChildren: 0.05 } },
 };
-const wordVariants: Variants = {
+const wordVariants = {
   hidden: { y: "110%" },
   visible: { y: "0%", transition: { duration: 1, ease: easings.easeOut } },
 };
-const marqueeContainerVariants: Variants = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 1.2, ease: easings.easeOut, delay: 0.4 },
-  },
-};
 
-const Hero = () => {
+const Hero = ({ isPreloading }: any) => {
+  const imageRowRef = useRef(null);
+  const textAnimationControls = useAnimationControls();
+
+  // It only controls the headline text animation.
+  useEffect(() => {
+    // When the preloader finishes, start the text animation.
+    if (!isPreloading) {
+      textAnimationControls.start("visible");
+    }
+  }, [isPreloading, textAnimationControls]);
+
   return (
     <section className={styles.hero}>
       <div className={styles.headlineContainer}>
@@ -55,8 +49,9 @@ const Hero = () => {
           className={styles.headline}
           variants={textContainerVariants}
           initial="hidden"
-          animate="visible"
+          animate={textAnimationControls}
         >
+          {/* ... All your AnimatedWord and TextScramble components are fine ... */}
           <AnimatedWord variants={wordVariants}>A</AnimatedWord>
           <AnimatedWord variants={wordVariants}>viral</AnimatedWord>
           <AnimatedWord variants={wordVariants}>business</AnimatedWord>
@@ -77,40 +72,7 @@ const Hero = () => {
         </motion.h1>
       </div>
 
-      {/* --- Marquee (Now on Desktop & Mobile) --- */}
-      <motion.div
-        // Using the existing class. You may want to rename or adjust its styles
-        // in Hero.module.css to better suit desktop view.
-        className={styles.imageMarquee}
-        variants={marqueeContainerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.div
-          className={styles.marqueeTrack}
-          // --- FLIPPED ANIMATION ---
-          // We start at -50% and animate to 0% to scroll from left-to-right
-          initial={{ x: "-50%" }}
-          animate={{ x: "0%" }}
-          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
-        >
-          {/* We still duplicate the images for a seamless loop */}
-          {[...images, ...images].map((item, index) => (
-            <div
-              key={`marquee-${index}`}
-              className={styles.marqueeImageContainer}
-            >
-              <Image
-                src={item.src}
-                alt={`Hero portfolio item ${index + 1}`}
-                fill
-                className={styles.gridImage}
-                quality={90}
-              />
-            </div>
-          ))}
-        </motion.div>
-      </motion.div>
+      <HeroMarquee isPreloading={isPreloading} />
     </section>
   );
 };

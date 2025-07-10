@@ -1,0 +1,51 @@
+/* src/app/(home)/components/HeroMarquee.module.css */
+
+.marqueeWrapper {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+.imageRow {
+  display: flex;
+  gap: 0.5rem;
+  width: max-content;
+  position: relative;
+  will-change: transform;
+  margin-left: 50px; /* Adjust this value to move more or less to the right */
+}
+
+.imageContainer {
+  position: relative;
+  height: 120px;
+  aspect-ratio: 5 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.imageContainer:hover {
+  transform: scale(1.05) translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.image {
+  object-fit: cover;
+}
