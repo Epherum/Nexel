@@ -1,7 +1,6 @@
 /* src/app/contact/Contact.module.css */
 
 /* --- Mobile styles --- */
-/* --- Mobile styles --- */
 .headlineSection {
   text-align: center;
   padding: 6rem 0.5rem 4rem;
@@ -10,49 +9,66 @@
   font-size: var(--font-size-3xl);
   font-weight: 300;
   letter-spacing: -2px;
-  line-height: 1.3; /* Added a bit more line height for wrapped text */
+  line-height: 1.3;
   color: var(--primary-text);
 }
-
-/* 
-  HERE IS THE FIX:
-  Changed display from 'block' to 'inline-block'.
-  This allows the words to flow next to each other and wrap naturally.
-*/
 .wordWrapper {
   display: inline-block;
   overflow: hidden;
   vertical-align: top;
-  margin-right: 0.2em; /* Adds a small, consistent space between words */
-  margin-bottom: 0.2em; /* Adds vertical space when lines wrap */
+  margin-right: 0.2em;
+  margin-bottom: 0.2em;
 }
-
 .word {
   display: inline-block;
 }
-
-/* The highlight is now on the inner .word element, so it animates in */
 .headline .highlight {
   background-color: var(--accent-color);
   color: var(--dark-bg);
-  padding: 0.1em 0.3em; /* Adjusted padding for a better look */
+  padding: 0.1em 0.3em;
   border-radius: 12px;
   font-weight: 500;
 }
 .contentWrapper {
   background-color: var(--primary-text);
   color: var(--dark-bg);
-  border-radius: 20px 20px 0 0;
+  border-radius: 20px 20px 20px 20px;
   padding: 2rem 2rem;
   margin: 0 0.5rem;
 }
+
+/* ===================================================================== */
+/* === MODIFICATION START: Here is the fix for the background bar === */
+/* ===================================================================== */
 .achievementsGrid {
+  /* 1. Set the desired background color */
+  background-color: #e5e8e8;
+  border-radius: 20px 20px 0 0;
+
+  /* 2. Set a dark text color for readability on the new light background */
+  color: var(--primary-text);
+
+  /* 3. Use negative margins to "break out" of the parent's padding */
+  margin-left: -2rem;
+  margin-right: -2rem;
+  margin-top: -2rem;
+
+  /* 4. Add padding back internally so content doesn't touch the edges */
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 2rem;
+
+  /* --- Original styles below --- */
   display: grid;
-  grid-template-columns: 1fr; /* Stays as a stack on mobile */
+  grid-template-columns: 1fr;
   gap: 1.5rem;
   padding-bottom: 2rem;
-  border-bottom: 1px solid var(--social-media-bg2);
+  color: var(--dark-bg);
 }
+/* ===================================================================== */
+/* === MODIFICATION END === */
+/* ===================================================================== */
+
 .label {
   color: var(--services-text);
   font-size: var(--font-size-xs);
@@ -67,17 +83,12 @@
   position: relative;
   padding: 1rem 0;
 }
-
-/* FIX: Hide the intro text on mobile devices */
 .introText {
   display: none;
 }
-
 .floatingCircle {
   display: none;
 }
-
-/* ...rest of the mobile styles for the form are unchanged... */
 .contactForm {
   display: flex;
   flex-direction: column;
@@ -174,15 +185,12 @@
 .submitButton:hover {
   transform: scale(1.02);
 }
-
 .errorMessage {
-  color: #ff4d4d; /* A reddish color for errors */
+  color: #ff4d4d;
   text-align: center;
   margin-top: 1rem;
   font-size: 0.9rem;
 }
-
-/* Optional: Style for disabled button */
 .submitButton:disabled {
   background-color: #555;
   cursor: not-allowed;
@@ -194,48 +202,40 @@
 /* ======================================= */
 @media (min-width: 1024px) {
   .headlineSection {
-    padding-top: 8rem; /* More space on top */
+    padding-top: 8rem;
   }
-
   .headline {
     font-size: var(--font-size-5xl);
     font-weight: 300;
     margin: 2rem auto;
-    text-align: center; /* Ensures it's centered */
+    text-align: center;
   }
-
-  /* On desktop, words are inline */
   .wordWrapper {
     display: inline-block;
     margin-right: 0.25em;
   }
-
   .contentWrapper {
     margin: 3rem 1rem 0rem;
   }
-
-  /* FIX: Changed from grid to flexbox to space items apart */
   .achievementsGrid {
+    /* The negative margins and padding from the mobile styles work perfectly here too! */
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding-bottom: 4rem;
   }
-
   .achievementItem:last-child {
-    text-align: right; /* Aligns the "Drop us a line" text to the right */
+    text-align: right;
   }
-
   .introSection {
     padding: 2rem 0;
   }
-  /* FIX: Show the intro text again on desktop */
   .introText {
     display: block;
     font-size: var(--font-size-lg);
     line-height: 1.4;
+    margin-right: 5rem;
   }
-
   .floatingCircle {
     position: absolute;
     display: flex;
@@ -243,8 +243,8 @@
     justify-content: center;
     text-align: center;
     line-height: 1.2;
-    width: 150px;
-    height: 150px;
+    width: 170px;
+    height: 170px;
     border-radius: 50%;
     background-color: var(--accent-color);
     top: -3rem;
@@ -252,8 +252,6 @@
     rotate: 15deg;
     font-size: var(--font-size-xs);
   }
-
-  /* ...rest of the desktop form styles are unchanged... */
   .contactForm {
     gap: 5rem;
   }

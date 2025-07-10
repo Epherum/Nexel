@@ -110,7 +110,7 @@ const ProjectsSection = () => {
   // Note: Slugs must match exactly how they are defined in `allProjects.ts`.
   const orderedSlugs = [
     "branding/wag",
-    "branding/matuki",
+    "branding/matuky",
     "book-app",
     "moondivine",
     "social/tresors-naturels", // Assuming this is the correct slug for the social project

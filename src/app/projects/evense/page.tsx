@@ -35,7 +35,7 @@ const projectData = {
     // ✨ Subtitle focuses on the outcome, not just the technical details
     subtitle: "Designing an intuitive platform for a seamless user experience.",
     // ✨ Body text is more concise and uses stronger, active language
-    body: "We delivered a comprehensive branding package—including logo, color palette, and typography—and a full UI/UX design for their new platform. Our team then handled the web development, bringing the vision to life with a cohesive and impactful digital presence.",
+    body: "We delivered a comprehensive branding package, including logo, color palette, and typography, and a full UI/UX design for their new platform. Our team then handled the web development, bringing the vision to life with a cohesive and impactful digital presence.",
   },
   showcase: {
     images: [

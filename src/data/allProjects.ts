@@ -90,7 +90,7 @@ export const brandingProjectsData: BrandingProject[] = [
     challengeText:
       "Create a bold, futuristic brand for a fast food restaurant in London that wants to break away from traditional fast food aesthetics. The concept needed to attract younger audiences, stand out in urban settings, and feel like an adventure in every bite.",
     approachText:
-      "We designed a striking astronaut mascot as the face of the brand, symbolizing exploration and fun. The logotype features strong, geometric lettering with contrast in weight and color — especially emphasizing 'FOOD' with a clever 'O' as a planet or burger. The red and black palette creates energy and urgency, fitting for a fast-paced eatery, while also adding a sci-fi edge.",
+      "We designed a striking astronaut mascot as the face of the brand, symbolizing exploration and fun. The logotype features strong, geometric lettering with contrast in weight and color, especially emphasizing 'FOOD' with a clever 'O' as a planet or burger. The red and black palette creates energy and urgency, fitting for a fast-paced eatery, while also adding a sci-fi edge.",
     fullWidthImage: "/static/spacefood/full-width.webp",
     services: {
       title: "Packaging & Environmental Design",
@@ -108,24 +108,24 @@ export const brandingProjectsData: BrandingProject[] = [
     },
   },
   {
-    slug: "matuki", // ✨ Corrected
+    slug: "matuky", // ✨ Corrected
     meta: {
       // ✨ Corrected
-      title: "Matuki Branding | Nexel",
+      title: "Matuky Branding | Nexel",
       description:
-        "Designing a warm, playful, and modern brand identity for Matuki, a Japanese-inspired matcha café.",
+        "Designing a warm, playful, and modern brand identity for Matuky, a Japanese-inspired matcha café.",
     },
     thumbnail: matukyThumbnail,
     heroHeadline: "Your Daily Moment of Matcha.",
     heroImage: "/static/matuky/hero.webp",
     introText:
       // ✨ Corrected
-      "MATUKI is a modern matcha café concept that brings the traditional taste of Japanese matcha to a trendy, design-conscious audience. Our goal was to build a brand that blends tradition and fun, appealing to both matcha connoisseurs and newcomers alike.",
+      "MATUKy is a modern matcha café concept that brings the traditional taste of Japanese matcha to a trendy, design-conscious audience. Our goal was to build a brand that blends tradition and fun, appealing to both matcha connoisseurs and newcomers alike.",
     challengeText:
-      "Creating a unique and playful identity for a new matcha café that stands out in a saturated market of coffee and tea shops. The goal was to build a visual brand that reflects the Japanese heritage of matcha while feeling modern, warm, and fun — especially for a young audience.",
+      "Creating a unique and playful identity for a new matcha café that stands out in a saturated market of coffee and tea shops. The goal was to build a visual brand that reflects the Japanese heritage of matcha while feeling modern, warm, and fun, especially for a young audience.",
     approachText:
       // ✨ Corrected name and mascot explanation
-      "We developed the name “MATUKI” by merging “matcha” and “tanuki” (the Japanese raccoon dog), giving it a friendly and memorable ring. The logo combines soft, bubbly typography with a tanuki mascot holding a traditional matcha whisk — evoking authenticity and cuteness. A mix of Japanese and English typography was used to give an international flair. Earthy green tones paired with creamy whites convey freshness, nature, and relaxation — ideal for a cozy café vibe.",
+      "We developed the name “MATUKy” by merging “matcha” and “tanuki” (the Japanese raccoon dog), giving it a friendly and memorable ring. The logo combines soft, bubbly typography with a tanuki mascot holding a traditional matcha whisk,evoking authenticity and cuteness. A mix of Japanese and English typography was used to give an international flair. Earthy green tones paired with creamy whites convey freshness, nature, and relaxation. ideal for a cozy café vibe.",
     fullWidthImage: "/static/matuky/full-width.webp",
     services: {
       title: "Identity & Brand Application",
@@ -140,7 +140,7 @@ export const brandingProjectsData: BrandingProject[] = [
         "/static/matuky/4.webp",
       ],
       // ✨ Corrected name and mascot
-      text: "The Matuki brand is built on a foundation of charm and authenticity. The friendly tanuki mascot and soft, natural color palette create an inviting atmosphere that encourages customers to relax, enjoy their matcha, and share their experience.",
+      text: "The Matuky brand is built on a foundation of charm and authenticity. The friendly tanuki mascot and soft, natural color palette create an inviting atmosphere that encourages customers to relax, enjoy their matcha, and share their experience.",
     },
   },
   {
@@ -154,11 +154,11 @@ export const brandingProjectsData: BrandingProject[] = [
     heroHeadline: "For the Love of a Wagging Tail.",
     heroImage: "/static/wag/hero.webp",
     introText:
-      "WAG is a U.S.-based pet shop that offers quality pet food, accessories, and grooming services. It positions itself as more than just a store — it's a community for pet lovers. We set out to create an energetic, lovable, and approachable identity that captures the pure joy pets bring to our lives.",
+      "WAG is a U.S.-based pet shop that offers quality pet food, accessories, and grooming services. It positions itself as more than just a store, it's a community for pet lovers. We set out to create an energetic, lovable, and approachable identity that captures the pure joy pets bring to our lives.",
     challengeText:
-      "WAG needed a brand identity that speaks to modern pet owners — fun, trustworthy, and full of personality. The challenge was to create a visual identity that reflects love and care for pets, while being eye-catching and flexible across packaging, signage, and digital platforms.",
+      "WAG needed a brand identity that speaks to modern pet owners. fun, trustworthy, and full of personality. The challenge was to create a visual identity that reflects love and care for pets, while being eye-catching and flexible across packaging, signage, and digital platforms.",
     approachText:
-      "We crafted a logo where the word “WAG” itself becomes a character — integrating a happy dog face within the wordmark. The rounded, chunky typography combined with the warm yellow/orange palette radiates joy and friendliness. We also gave the brand a slight retro twist with playful shapes and soft curves to appeal emotionally to pet lovers.",
+      "We crafted a logo where the word “WAG” itself becomes a character, integrating a happy dog face within the wordmark. The rounded, chunky typography combined with the warm yellow/orange palette radiates joy and friendliness. We also gave the brand a slight retro twist with playful shapes and soft curves to appeal emotionally to pet lovers.",
     fullWidthImage: "/static/wag/full-width.webp",
     services: {
       title: "Brand Identity & Packaging Design",
@@ -186,7 +186,7 @@ export interface ProjectListing {
   title: string;
   category: string;
   thumbnail: StaticImageData;
-  type: "dynamic" | "hardcoded" | "branding"; // <-- Added 'branding' for clarity
+  type: "dynamic" | "hardcoded" | "branding";
 }
 
 // Hardcoded projects (unchanged)
