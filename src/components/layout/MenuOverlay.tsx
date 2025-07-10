@@ -2,7 +2,8 @@
 
 import React from "react";
 import { motion, Variants } from "framer-motion";
-import Link from "@/components/HoverableLink";
+import Link from "@/components/InteractiveLink";
+
 import Image from "next/image";
 import { easings } from "@/utils/easings";
 import styles from "./MenuOverlay.module.css";

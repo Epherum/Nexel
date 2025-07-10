@@ -1,7 +1,8 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import Link from "@/components/HoverableLink";
+import Link from "@/components/InteractiveLink";
+
 import Image from "next/image";
 import styles from "./Footer.module.css";
 import { FaArrowRight } from "react-icons/fa";

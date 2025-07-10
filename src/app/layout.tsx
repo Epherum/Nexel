@@ -7,6 +7,7 @@ import { Analytics } from "@vercel/analytics/next";
 import Cursor from "@/components/cursor/Cursor";
 import { CursorProvider } from "@/components/cursor/CursorContext";
 import { PreloaderProvider } from "@/context/PreloaderContext"; // ✅ Import the new provider
+import { ViewTransitions } from "next-view-transitions";
 
 export const metadata = {
   title: "Nexel | Digital Design Agency",
@@ -21,20 +22,23 @@ export default function RootLayout({
   return (
     <html lang="en">
       <CursorProvider>
-        <body
-          suppressHydrationWarning
-          className={`${Clovergrotesk.variable} antialiased `}
-        >
-          <Cursor />
-          <main>
-            {/* ✅ Wrap the layout with the provider */}
-            <PreloaderProvider>
-              <Navbar /> {/* Now Navbar can access the context */}
-              <SmoothScrollWrapper>{children}</SmoothScrollWrapper>
-            </PreloaderProvider>
-          </main>
-          <Analytics />
-        </body>
+        <ViewTransitions>
+          <body
+            suppressHydrationWarning
+            className={`${Clovergrotesk.variable} antialiased `}
+          >
+            <Cursor />
+
+            <main>
+              {/* ✅ Wrap the layout with the provider */}
+              <PreloaderProvider>
+                <Navbar /> {/* Now Navbar can access the context */}
+                <SmoothScrollWrapper>{children}</SmoothScrollWrapper>
+              </PreloaderProvider>
+            </main>
+            <Analytics />
+          </body>
+        </ViewTransitions>
       </CursorProvider>
     </html>
   );

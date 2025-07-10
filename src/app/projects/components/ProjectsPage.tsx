@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "@/components/HoverableLink";
+import Link from "@/components/InteractiveLink";
 import styles from "./ProjectsPage.module.css"; // CHANGED: Import .css file
 import { motion, useInView, Variants } from "framer-motion";
 import { useRef } from "react";

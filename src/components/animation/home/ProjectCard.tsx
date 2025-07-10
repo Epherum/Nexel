@@ -6,7 +6,7 @@ import { useRef } from "react";
 // CHANGED: Import the converted .css file
 import styles from "@/app/(home)/components/ProjectsSection.module.css";
 import { easings } from "@/utils/easings";
-import Link from "@/components/HoverableLink";
+import Link from "@/components/InteractiveLink";
 
 interface ProjectCardProps {
   slug: string; // Use slug for the link and key

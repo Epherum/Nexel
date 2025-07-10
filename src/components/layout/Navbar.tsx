@@ -9,13 +9,13 @@ import {
   useMotionValueEvent,
   useAnimationControls,
 } from "framer-motion";
-import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation"; // ✨ 1. Import usePathname
 import styles from "./Navbar.module.css";
 import { easings } from "@/utils/easings";
 import MenuOverlay from "./MenuOverlay";
 import { usePreloader } from "@/context/PreloaderContext";
+import Link from "@/components/TransitionLink";
 
 // --- Animation Variants (Unchanged) ---
 const wrapperVariants: Variants = {
@@ -127,8 +127,8 @@ const Navbar = () => {
           animate="visible"
         >
           {/* Logo (Left) */}
-          <motion.div variants={itemVariants}>
-            <Link href="/" className={styles.logo}>
+          <motion.div variants={itemVariants} className={styles.logo}>
+            <Link href="/">
               <Image
                 src="/static/nexel/nexel-logo.svg"
                 alt="Nexel Logo"

@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useRef } from "react";
-import Link from "@/components/HoverableLink";
+import Link from "@/components/InteractiveLink";
 import { motion, useInView, Variants } from "framer-motion";
 import { allProjects, ProjectListing } from "@/data/allProjects"; // Import ProjectListing type
 import { easings } from "@/utils/easings";
