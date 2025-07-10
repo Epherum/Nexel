@@ -3,21 +3,17 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
+// Initialize Resend with the API key from environment variables
 const resend = new Resend(process.env.RESEND_API_KEY);
 const toEmail = process.env.CONTACT_FORM_TO_EMAIL;
-const fromDomain = process.env.RESEND_VERIFIED_DOMAIN; // <-- Get the domain
 
 export async function POST(request: NextRequest) {
-  // ============= DEBUGGING LOGS =============
-  console.log("Verified Domain from .env:", fromDomain);
-  const fromAddress = `Contact Form <contact@${fromDomain}>`;
-  console.log("Constructed 'from' address:", fromAddress);
-  // ==========================================
-
   try {
+    // 1. Parse the request body
     const body = await request.json();
     const { name, company, email, projectDetails, budget, services } = body;
 
+    // 2. Basic validation
     if (!name || !email || !projectDetails) {
       return NextResponse.json(
         { error: "Name, email, and project details are required." },
@@ -25,21 +21,22 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!toEmail || !fromDomain) {
-      // <-- Also check if fromDomain is set
-      console.error(
-        "Environment variables (TO_EMAIL or VERIFIED_DOMAIN) are not set."
-      );
+    if (!toEmail) {
+      console.error("CONTACT_FORM_TO_EMAIL environment variable is not set.");
       return NextResponse.json(
         { error: "Server configuration error." },
         { status: 500 }
       );
     }
 
+    // 3. Send the email using Resend
     const { data, error } = await resend.emails.send({
-      from: fromAddress, // <-- Use the constructed address
+      // The "from" address must be a verified domain in Resend.
+      // We recommend using something like "onboarding@yourdomain.com"
+      from: "Contact Form <contact@" + process.env.RESEND_VERIFIED_DOMAIN + ">", // Replace with your verified domain
       to: [toEmail],
       subject: `New Contact Form Submission from ${name}`,
+      // Use react-email for more complex templates
       html: `
         <h1>New Contact Form Submission</h1>
         <p><strong>Name:</strong> ${name}</p>
@@ -61,6 +58,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // 4. Return a success response
     return NextResponse.json(
       { message: "Email sent successfully!", data },
       { status: 200 }
