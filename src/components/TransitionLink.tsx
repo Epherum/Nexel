@@ -3,9 +3,8 @@
 import { useTransitionRouter } from "next-view-transitions";
 import Link, { type LinkProps } from "next/link";
 import type { PropsWithChildren } from "react";
-import { usePathname } from "next/navigation"; // ✨ 1. Import the usePathname hook
+import { usePathname } from "next/navigation";
 
-// The animation function remains unchanged
 function pageAnimate() {
   document.documentElement.animate(
     [
@@ -34,25 +33,34 @@ function pageAnimate() {
   );
 }
 
-// The reusable Link component
+// ✨ 1. UPDATE: Define props to explicitly include an optional onClick handler.
+interface TransitionLinkProps extends LinkProps {
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
+}
+
 export default function TransitionLink({
   children,
   href,
+  onClick, // ✨ 2. UPDATE: Destructure the onClick prop here.
   ...props
-}: PropsWithChildren<LinkProps>) {
+}: PropsWithChildren<TransitionLinkProps>) {
   const router = useTransitionRouter();
-  const pathname = usePathname(); // ✨ 2. Get the current path
+  const pathname = usePathname();
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    // ✨ 3. UPDATE: If an onClick prop was passed from the parent, call it first!
+    // This is what will trigger the menu to close.
+    if (onClick) {
+      onClick(e);
+    }
+
+    // Now, continue with the original transition logic.
     e.preventDefault();
 
-    // ✨ 3. Compare the link's href to the current pathname
     if (href.toString() === pathname) {
-      // If they are the same, do nothing.
       return;
     }
 
-    // If they are different, proceed with the transition.
     router.push(href.toString(), { onTransitionReady: pageAnimate });
   };
 

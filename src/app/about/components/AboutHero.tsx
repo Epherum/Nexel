@@ -113,8 +113,6 @@ const AboutHero = () => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const [stableHeight, setStableHeight] = useState(0);
 
-  // Measure the window height once on component mount to create a stable height
-  // that doesn't change when mobile browser UI appears/disappears.
   useLayoutEffect(() => {
     if (typeof window !== "undefined") {
       setStableHeight(window.innerHeight);
@@ -123,14 +121,17 @@ const AboutHero = () => {
 
   const { scrollYProgress } = useScroll({
     target: scrollContainerRef,
-    offset: ["start start", "end 0.7"],
+    // UPDATED: Changed offset to finish the animation when the container's
+    // end is 85% of the way down the viewport. This removes the "dead scroll" at the end.
+    offset: ["start start", "end 0.85"],
   });
 
-  const wrapperHeight = stableHeight ? `${stableHeight * 3.5}px` : "350lvh";
+  // UPDATED: Reduced the wrapper height. It's still long enough for a gentle
+  // scroll but less excessive now that we've removed the dead space.
+  const wrapperHeight = stableHeight ? `${stableHeight * 7.5}px` : "750lvh";
 
-  // Calculate hero height as 115% of the stable viewport height
-  const heroHeight = stableHeight ? `${stableHeight * 1.3}px` : "115svh"; // Multiplied by 1.15
-  const desktopHeroHeight = stableHeight ? `${stableHeight * 1.3}px` : "115vh"; // Multiplied by 1.15
+  const heroHeight = stableHeight ? `${stableHeight * 1.3}px` : "115svh";
+  const desktopHeroHeight = stableHeight ? `${stableHeight * 1.3}px` : "115vh";
 
   return (
     <div

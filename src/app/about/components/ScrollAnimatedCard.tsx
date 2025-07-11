@@ -16,7 +16,7 @@ interface ScrollAnimatedCardProps {
     };
     initialRotate: { mobile: number; desktop: number };
     finalRotate: { mobile: number; desktop: number };
-    zIndex: { mobile: number; desktop: number }; // <-- UPDATED PROP TYPE
+    zIndex: { mobile: number; desktop: number };
   };
   index: number;
   totalCards: number;
@@ -31,7 +31,6 @@ const ScrollAnimatedCard: React.FC<ScrollAnimatedCardProps> = ({
   scrollYProgress,
   isDesktop,
 }) => {
-  // Select the correct values based on the isDesktop prop
   const currentPosition = isDesktop
     ? card.positions.desktop
     : card.positions.mobile;
@@ -41,14 +40,23 @@ const ScrollAnimatedCard: React.FC<ScrollAnimatedCardProps> = ({
   const currentFinalRotate = isDesktop
     ? card.finalRotate.desktop
     : card.finalRotate.mobile;
-  const currentZIndex = isDesktop ? card.zIndex.desktop : card.zIndex.mobile; // <-- ADDED for zIndex
+  const currentZIndex = isDesktop ? card.zIndex.desktop : card.zIndex.mobile;
 
-  // Staggered animation timeline logic (remains the same)
-  const animationTimelineEnd = 0.9;
-  const animationDuration = 0.5;
-  const staggerRange = animationTimelineEnd - animationDuration;
-  const animationStart = (index / (totalCards - 1)) * staggerRange;
-  const animationEnd = animationStart + animationDuration;
+  // --- UPDATED ANIMATION LOGIC ---
+  // We dedicate 80% of the total scroll progress to animating all the cards sequentially.
+  const totalAnimationTimeline = 0.8;
+
+  // We calculate how much of the scroll progress each card's animation will take.
+  // For example, with 6 cards, each animation will take up 0.8 / 6 = ~13.3% of the scroll.
+  const animationDurationPerCard = totalAnimationTimeline / totalCards;
+
+  // We determine the start and end point for this specific card's animation.
+  // The first card (index 0) starts at 0.0 and ends at 0.133.
+  // The second card (index 1) starts at 0.133 and ends at 0.266, and so on.
+  const animationStart = index * animationDurationPerCard;
+  const animationEnd = animationStart + animationDurationPerCard;
+  // --- END OF UPDATED LOGIC ---
+
   const customEase = cubicBezier(...easings.gentleEaseOut);
 
   const y = useTransform(
@@ -85,7 +93,7 @@ const ScrollAnimatedCard: React.FC<ScrollAnimatedCardProps> = ({
         y,
         scale,
         rotate,
-        zIndex: currentZIndex, // <-- USE THE DYNAMIC zIndex
+        zIndex: currentZIndex,
       }}
       className={styles.card}
     >
