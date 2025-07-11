@@ -1,4 +1,3 @@
-// src/app/about/components/TeamSection.tsx
 "use client";
 
 import Image from "next/image";
@@ -58,7 +57,7 @@ const TeamSection = () => {
     once: true,
   });
 
-  const gridRef = useRef(null); // Changed from sliderRef
+  const gridRef = useRef(null);
   const isGridInView = useInView(gridRef, {
     margin: "0px 0px -200px 0px",
     once: true,
@@ -94,6 +93,10 @@ const TeamSection = () => {
                 {index < headlineText.split(" ").length - 1 ? "\u00A0" : ""}
               </AnimatedWord>
             )}
+
+            {/* --- THIS IS THE CHANGE --- */}
+            {/* If the current word is "minds.", render a line break after it. */}
+            {word === "minds." && <br />}
           </React.Fragment>
         ))}
       </motion.h2>
@@ -101,8 +104,8 @@ const TeamSection = () => {
       {/* REPLACED SWIPER WITH A SIMPLE GRID CONTAINER */}
       <motion.div
         ref={gridRef}
-        className={styles.teamGrid} // New class name
-        variants={wordRevealContainer} // Re-using variants for staggered animation
+        className={styles.teamGrid}
+        variants={wordRevealContainer}
         initial="hidden"
         animate={isGridInView ? "visible" : "hidden"}
       >

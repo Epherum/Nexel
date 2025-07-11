@@ -242,9 +242,9 @@ const ContactPage = () => {
           animate={isIntroInView ? "visible" : "hidden"}
         >
           <motion.p className={styles.introText} variants={fadeInUpVariants}>
-            Our form is a 24/7 gateway to creativity – always awake, just like
-            inspiration. Drop us a line anytime, day or night, and let’s spark a
-            conversation that could redefine your digital journey.
+            Ready to start a project? Our form is the quickest way to get in
+            touch. Fill out the details below, day or night, and let's begin
+            building something remarkable for your brand.
           </motion.p>
           <motion.div
             className={styles.floatingCircle}
@@ -344,9 +344,7 @@ const ContactPage = () => {
             className={styles.formGroup}
             variants={fadeInUpVariants}
           >
-            <legend className={styles.legend}>
-              Ready to become a Rockstar?
-            </legend>
+            <legend className={styles.legend}>Ready to make an impact?</legend>
             <button
               type="submit"
               className={styles.submitButton}
