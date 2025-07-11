@@ -21,11 +21,10 @@ import FullWidthImageSection from "./components/FullWidthImageSection";
 
 // Data
 const heroHeadline = {
-  // ✨ Reworded for a stronger, more positive tone
   line1: "More than an organizer,",
-  line2Start: "we create",
-  // ✨ "Unforgettable" is more evocative than "lasting"
-  highlight: "unforgettable experiences.",
+  line2Start: "we create ", // The part of line 2 that is not highlighted
+  line2Highlight: "unforgettable", // The highlighted part of line 2
+  line3Highlight: "experiences.", // The highlighted third line
 };
 
 const projectData = {
@@ -55,7 +54,8 @@ export default function Page() {
       <HeroSection
         line1={heroHeadline.line1}
         line2Start={heroHeadline.line2Start}
-        highlight={heroHeadline.highlight}
+        line2Highlight={heroHeadline.line2Highlight}
+        line3Highlight={heroHeadline.line3Highlight}
       />
 
       <main>

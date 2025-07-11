@@ -5,7 +5,7 @@
 import { useState, useEffect } from "react";
 
 // The IANA time zone name for France is "Europe/Paris"
-const TIME_ZONE = "Europe/Paris";
+const TIME_ZONE = "Africa/Tunis";
 
 // Options for formatting the time string (e.g., "11:12 PM")
 const timeOptions: Intl.DateTimeFormatOptions = {

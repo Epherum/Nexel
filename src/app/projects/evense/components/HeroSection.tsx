@@ -1,4 +1,3 @@
-// src/app/projects/evense/components/HeroSection.tsx
 "use client";
 import React from "react";
 import { motion, Variants } from "framer-motion";
@@ -29,16 +28,21 @@ const wordVariants: Variants = {
   visible: { y: "0%", transition: { duration: 0.8, ease: easings.easeOut } },
 };
 
-interface HeroSectionProps {
+// --- 1. UPDATED PROP TYPES ---
+// These now match the detailed data structure from page.tsx
+type HeroSectionProps = {
   line1: string;
   line2Start: string;
-  highlight: string;
-}
+  line2Highlight: string;
+  line3Highlight: string;
+};
 
+// --- 2. UPDATED COMPONENT LOGIC ---
 const HeroSection: React.FC<HeroSectionProps> = ({
   line1,
   line2Start,
-  highlight,
+  line2Highlight,
+  line3Highlight,
 }) => {
   return (
     <header className={styles.hero}>
@@ -48,21 +52,36 @@ const HeroSection: React.FC<HeroSectionProps> = ({
         initial="hidden"
         animate="visible"
       >
+        {/* --- Line 1 Rendering --- */}
         {line1.split(" ").map((word, index) => (
           <AnimatedWord key={`line1-${index}`} variants={wordVariants}>
             {word}
             {"\u00A0"}
+            {/* Adds a space */}
           </AnimatedWord>
         ))}
+
         <br />
-        {line2Start.split(" ").map((word, index) => (
-          <AnimatedWord key={`line2-${index}`} variants={wordVariants}>
-            {word}
-            {"\u00A0"}
-          </AnimatedWord>
-        ))}
+
+        {/* --- Line 2 Rendering (in two parts) --- */}
+        {line2Start
+          .trim()
+          .split(" ")
+          .map((word, index) => (
+            <AnimatedWord key={`line2-start-${index}`} variants={wordVariants}>
+              {word}
+              {"\u00A0"}
+            </AnimatedWord>
+          ))}
         <span className={styles.highlight}>
-          <AnimatedWord variants={wordVariants}>{highlight}</AnimatedWord>
+          <AnimatedWord variants={wordVariants}>{line2Highlight}</AnimatedWord>
+        </span>
+
+        <br />
+
+        {/* --- Line 3 Rendering (highlighted) --- */}
+        <span className={styles.highlight}>
+          <AnimatedWord variants={wordVariants}>{line3Highlight}</AnimatedWord>
         </span>
       </motion.h1>
     </header>

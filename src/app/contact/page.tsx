@@ -218,7 +218,7 @@ const ContactPage = () => {
             variants={fadeInUpVariants}
             className={styles.achievementItem}
           >
-            <p className={styles.label}>Local time (GMT+2)</p>
+            <p className={styles.label}>Local time (GMT+1)</p>
             <CurrentTime className={styles.value} />
           </motion.div>
           <motion.div
@@ -306,7 +306,7 @@ const ContactPage = () => {
               <input
                 type="text"
                 name="company"
-                placeholder="Company (Optional)"
+                placeholder="Company"
                 className={styles.textInput}
                 value={formData.company}
                 onChange={handleInputChange}

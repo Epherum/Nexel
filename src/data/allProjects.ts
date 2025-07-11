@@ -120,12 +120,12 @@ export const brandingProjectsData: BrandingProject[] = [
     heroImage: "/static/matuky/hero.webp",
     introText:
       // ✨ Corrected
-      "MATUKy is a modern matcha café concept that brings the traditional taste of Japanese matcha to a trendy, design-conscious audience. Our goal was to build a brand that blends tradition and fun, appealing to both matcha connoisseurs and newcomers alike.",
+      "Matuky is a modern matcha café concept that brings the traditional taste of Japanese matcha to a trendy, design-conscious audience. Our goal was to build a brand that blends tradition and fun, appealing to both matcha connoisseurs and newcomers alike.",
     challengeText:
       "Creating a unique and playful identity for a new matcha café that stands out in a saturated market of coffee and tea shops. The goal was to build a visual brand that reflects the Japanese heritage of matcha while feeling modern, warm, and fun, especially for a young audience.",
     approachText:
       // ✨ Corrected name and mascot explanation
-      "We developed the name “MATUKy” by merging “matcha” and “tanuki” (the Japanese raccoon dog), giving it a friendly and memorable ring. The logo combines soft, bubbly typography with a tanuki mascot holding a traditional matcha whisk,evoking authenticity and cuteness. A mix of Japanese and English typography was used to give an international flair. Earthy green tones paired with creamy whites convey freshness, nature, and relaxation. ideal for a cozy café vibe.",
+      "We developed the name “MATUKY” by merging “matcha” and “tanuki” (the Japanese raccoon dog), giving it a friendly and memorable ring. The logo combines soft, bubbly typography with a tanuki mascot holding a traditional matcha whisk,evoking authenticity and cuteness. A mix of Japanese and English typography was used to give an international flair. Earthy green tones paired with creamy whites convey freshness, nature, and relaxation. ideal for a cozy café vibe.",
     fullWidthImage: "/static/matuky/full-width.webp",
     services: {
       title: "Identity & Brand Application",

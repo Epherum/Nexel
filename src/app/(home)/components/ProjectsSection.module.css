@@ -33,7 +33,7 @@
 }
 
 .line {
-  width: 100%;
+  width: 98%;
   height: 1px;
   background-color: var(--secondary-text);
   transform-origin: left;
@@ -136,9 +136,6 @@
     flex: 1 1 35%;
   }
 
-  .description {
-    max-width: 40ch;
-  }
   .rightColumn {
     flex: 1 1 60%;
     grid-template-columns: repeat(2, 1fr);
