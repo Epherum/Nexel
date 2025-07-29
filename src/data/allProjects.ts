@@ -269,9 +269,29 @@ const dynamicBrandingProjects: ProjectListing[] = brandingProjectsData.map(
   })
 );
 
-// --- 5. UPDATED: Combine and export the single master list ---
-export const allProjects: ProjectListing[] = [
+// --- 5. MODIFIED: Combine and export the single master list, with Krai as the 3rd project ---
+
+// First, create a combined list of all projects EXCEPT for the one we want to move.
+const kraiProject = dynamicBrandingProjects.find(
+  (p) => p.slug === "branding/krai"
+);
+const otherBrandingProjects = dynamicBrandingProjects.filter(
+  (p) => p.slug !== "branding/krai"
+);
+
+// Combine all other projects in their default order.
+const allOtherProjects = [
   ...hardcodedProjects,
   ...dynamicSocialProjects,
-  ...dynamicBrandingProjects, // <-- Added our new list here
+  ...otherBrandingProjects,
 ];
+
+// Now, construct the final master list by inserting the Krai project at the 3rd position (index 2).
+// We add a check to ensure the krai project was actually found to prevent errors.
+export const allProjects: ProjectListing[] = kraiProject
+  ? [
+      ...allOtherProjects.slice(0, 2), // The first two projects from the list
+      kraiProject, // Insert Krai as the third project
+      ...allOtherProjects.slice(2), // The rest of the projects
+    ]
+  : allOtherProjects; // Fallback to the original list if krai isn't found for some reason

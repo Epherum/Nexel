@@ -111,10 +111,10 @@ const ProjectsSection = () => {
   const orderedSlugs = [
     "branding/wag",
     "branding/matuky",
+    "branding/krai",
     "book-app",
     "moondivine",
     "social/tresors-naturels", // Assuming this is the correct slug for the social project
-    "branding/bilargo",
   ];
 
   // 2. Create a Map for efficient lookup from the main `allProjects` array.
