@@ -13,6 +13,7 @@ import spacefoodThumbnail from "/public/static/thumbnails/spacefood-thumbnail.we
 import matukyThumbnail from "/public/static/thumbnails/matuky-thumbnail.webp";
 import wagThumbnail from "/public/static/thumbnails/wag-thumbnail.webp";
 import moondivineThumbnail from "/public/static/thumbnails/moondivine-thumbnail.webp";
+import kraiThumbnail from "/public/static/thumbnails/krai-thumbnail.webp";
 
 // =================================================================
 // --- 2. NEW: Branding Project Data (The detailed content for the template) ---
@@ -173,6 +174,38 @@ export const brandingProjectsData: BrandingProject[] = [
         "/static/wag/4.webp",
       ],
       text: "The entire brand system is designed to feel as happy and dependable as a loyal companion. The clever logo, warm colors, and friendly typography work together to build trust and create an emotional connection with pet owners from the moment they see the brand.",
+    },
+  },
+  {
+    slug: "krai",
+    meta: {
+      title: "Krai Vodka Branding | Nexel",
+      description:
+        "Crafting a premium, evocative brand identity for Krai, an arctic vodka inspired by the silent, majestic beauty of the polar wilderness.",
+    },
+    thumbnail: kraiThumbnail, // Assuming you have a thumbnail variable
+    heroHeadline: "The Spirit of the Silent North.",
+    heroImage: "/static/krai/hero.webp", // Placeholder image path
+    introText:
+      "Krai is a premium arctic vodka that captures the essence of the planet’s most remote and untouched landscapes. We were tasked with creating a brand identity that tells a story of solitude, purity, and adventure, appealing to discerning drinkers who appreciate craftsmanship and a powerful narrative.",
+    challengeText:
+      "The premium vodka market is saturated with brands focused on nightlife and luxury. Krai needed an identity that would carve its own niche by communicating a sense of rugged elegance and profound purity. The challenge was to visually translate the concepts of 'distilled in the cold,' 'glacial water,' and 'crafted in silence' into a compelling and memorable brand.",
+    approachText:
+      "Our approach centered on the lone explorer, a symbol of resilience and discovery. The central illustration, framed like a classic portrait, evokes a sense of quiet majesty. We chose a deep blue and teal color palette to mirror the arctic twilight and glacial ice, while intricate, frost-like patterns add a layer of refined detail. The strong, elegant typography grounds the design, ensuring it feels both premium and timeless.",
+    fullWidthImage: "/static/krai/full-width.webp", // Placeholder image path
+    services: {
+      title: "Brand Identity & Packaging Design",
+      subtitle: "Bottling the Arctic Essence",
+      body: "We developed the complete brand identity from the ground up, including the logotype, custom illustration, and the ornate pattern system. Our work focused on the packaging design, creating a distinctive label that tells the Krai story through its layers of text and imagery. Every element, from the cork stopper to the tax seal, was considered to create a cohesive and premium experience.",
+    },
+    showcase: {
+      images: [
+        "/static/krai/1.webp",
+        "/static/krai/2.webp",
+        "/static/krai/3.webp",
+        "/static/krai/4.webp",
+      ], // Placeholder image paths
+      text: "The Krai brand is a journey in a bottle. The combination of the stoic explorer, the cool, layered color palette, and the elegant details creates a sense of premium craftsmanship rooted in a powerful natural story. The final design invites consumers to experience the pure, crisp, and silent spirit of the arctic.",
     },
   },
 ];
